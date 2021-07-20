@@ -1,0 +1,10 @@
+Название сайта	
+Moonglade
+Имя пользователя	
+moonglade
+Пароль	
+AhDf[5_[j3mHXHt
+Ваш e-mail	me
+
+C:\xampp\htdocs\moonglade\wp-content\themes\moonglade
+browser-sync start --proxy "localhost/moonglade" --files "**/*" --no-notify
