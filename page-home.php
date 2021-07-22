@@ -161,7 +161,7 @@ Template Name: Страница Главная
                       <div class="absolute w-full h-full parallax-media h-full overflow-hidden" data-scroll="">
                         <div class="parallax-media__element absolute w-full h-full" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                           <div class="absolute h-full w-full top-0 left-0">
-                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>video/2.mp4" 1.mp4" playsinline="" autoplay="" muted="" loop=""></video>
+                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('first_video')); ?>" 1.mp4" playsinline="" autoplay="" muted="" loop=""></video>
                           </div>
                         </div>
                       </div>
@@ -169,7 +169,7 @@ Template Name: Страница Главная
                     </div>
                     <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
                       <div data-magnet="">
-                        <button class="btn btn--play" type="button" data-video-id="290865574" data-component="fullscreen-video"><span class="btn__text-holder"></span></button>
+                        <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option('first_video_vimeo_id'); ?>" data-component="fullscreen-video"><span class="btn__text-holder"></span></button>
                       </div>
                     </div>
                   </div>
@@ -190,31 +190,15 @@ Template Name: Страница Главная
                     </h2>
                     <div class="lg:mb-80 relative z-2" data-component="horizontal-scroll-section" data-target="#h-photos">
                       <div class="horizontal-blocks grid grid-flow-col auto-cols-max">
-                        <!-- начало -->
-                        <!-- <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.1" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="2">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01.jpg" width="455" height="257" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01.jpg 1x,
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
-                              </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">
-                                Lifestyle and health <br />
-                                support
-                              </h3>
-                            </div>
-                          </div>
-                        </div> -->
-
-
                         <?php
                         $table = carbon_get_theme_option('gorizont_pictures');
                         if (!empty($table)) : ?>
-                          <?php foreach ($table as $key=>$tr) : ?>
+                          <?php foreach ($table as $key => $tr) : ?>
 
                             <div class="image-heading-block inline-block align-top">
-                              <div data-scroll="" data-scroll-call="moveLeft" data-delay="<?php $key = $key/5; echo (string) $key; ?>" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                                <div data-block="" data-scroll-speed="<?php echo (rand(0, 30))/10; ?>">
+                              <div data-scroll="" data-scroll-call="moveLeft" data-delay="<?php $key = $key / 5;
+                                                                                          echo (string) $key; ?>" data-ease="power3.out" data-movement="200" data-speed="1.3">
+                                <div data-block="" data-scroll-speed="<?php echo (rand(0, 30)) / 10; ?>">
                                   <div class="mb-15 md:mb-20 overflow-hidden relative">
                                     <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo $tr['gor_img500x250']; ?>" width="455" height="257" data-srcset="<?php echo $tr['gor_img500x250']; ?> 1x,
                                     <?php echo $tr['gor_img1000x5000']; ?> 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
@@ -268,16 +252,14 @@ Template Name: Страница Главная
                     <div data-scroll="" data-scroll-repeat="" data-scroll-call="progress-scale" data-from="1.5" data-to="1" data-scroll-id="large-image-scale">
                       <div class="relative parallax-media overflow-hidden" data-scroll="">
                         <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.8">
-                          <picture><img class="w-full max-w-full transition-opacity duration-300 md:transform md:scale-105" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1270 1570'%3E%3C/svg%3E" width="1270" height="1570" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05@2x.jpg 2x" alt="image description" /></picture><span class="bg-black-100 absolute left-0 top-0 w-full h-full"></span>
+                          <picture><img class="w-full max-w-full transition-opacity duration-300 md:transform md:scale-105" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1270 1570'%3E%3C/svg%3E" width="1270" height="1570" data-src="<?php echo carbon_get_theme_option('first_big_picture_1x'); ?>" data-srcset="<?php echo carbon_get_theme_option('first_big_picture_1x'); ?>, <?php echo carbon_get_theme_option('first_big_picture_2x'); ?> 2x" alt="image description" /></picture><span class="bg-black-100 absolute left-0 top-0 w-full h-full"></span>
                         </div>
                       </div>
                     </div>
                     <div class="absolute w-full bottom-0 left-0 right-0 p-30 md:py-50 lg:py-110 text-center large-image__text">
                       <div class="max-w-680 mx-auto">
                         <h3 class="large-image__title uppercase font-serif mb-0" data-scroll="" data-scroll-call="split" data-split="chars, lines" data-animation-type="fade" data-interval="0.07" data-speed="2.5">
-                          L I F E ST YL E ~ <br />
-                          and HE A L TH <br />
-                          ` S U PP ORT
+                          <?php echo carbon_get_theme_option('first_big_picture_text'); ?>
                         </h3>
                       </div>
                     </div>
@@ -299,14 +281,14 @@ Template Name: Страница Главная
                         <div class="relative w-full parallax-media overflow-hidden" data-scroll="">
                           <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                             <div data-component="video-poster">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>video/2.mp4" playsinline="" autoplay="" muted="" loop=""></video>
+                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('second_video')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
                             </div>
                           </div>
                         </div>
                         <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span>
                         <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
                           <div data-magnet="">
-                            <button class="btn btn--play" type="button" data-video-id="290865574" data-component="fullscreen-video">
+                            <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option('second_video_vimeo_id'); ?>" data-component="fullscreen-video">
                               <span class="btn__text-holder"></span>
                             </button>
                           </div>
@@ -318,10 +300,7 @@ Template Name: Страница Главная
                         </div>
                         <div class="col-span-10 md:col-span-8 flex-grow">
                           <h2 class="h4 mb-0 video-block__title uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
-                            TAKING CARE ABOUT <br />
-                            OUR BODIES AND SOULS ~ <br />
-                            FINDING BALANCE IN LIFE <br />
-                            ` DUALITIES.
+                            <?php echo carbon_get_theme_option('second_video_text'); ?>
                           </h2>
                         </div>
                         <div class="hidden md:col-span-2 md:flex justify-end" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
@@ -334,14 +313,14 @@ Template Name: Страница Главная
                         <div class="relative w-full parallax-media overflow-hidden" data-scroll="">
                           <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                             <div data-component="video-poster">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>video/2.mp4" 3.mp4" playsinline="" autoplay="" muted="" loop=""></video>
+                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('third_video')); ?>" 3.mp4" playsinline="" autoplay="" muted="" loop=""></video>
                             </div>
                           </div>
                         </div>
                         <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span>
                         <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
                           <div data-magnet="">
-                            <button class="btn btn--play" type="button" data-video-id="290865574" data-component="fullscreen-video">
+                            <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option('third_video_vimeo_id'); ?>" data-component="fullscreen-video">
                               <span class="btn__text-holder"></span>
                             </button>
                           </div>
@@ -353,9 +332,7 @@ Template Name: Страница Главная
                         </div>
                         <div class="col-span-10 md:col-span-8 flex-grow">
                           <h2 class="h4 mb-0 video-block__title uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
-                            TO CREATE SOMETHING ~ <br />
-                            YOU NEED SPIRIT <br />
-                            ` AND NOTHING
+                            <?php echo carbon_get_theme_option('second_video_text'); ?>
                           </h2>
                         </div>
                         <div class="hidden md:col-span-2 md:flex justify-end" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
@@ -380,12 +357,12 @@ Template Name: Страница Главная
                       <div class="absolute w-full h-full parallax-media h-full overflow-hidden" data-scroll="">
                         <div class="parallax-media__element absolute w-full h-full" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                           <div class="absolute h-full w-full top-0 left-0">
-                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>video/2.mp4" 4.mp4" playsinline="" autoplay="" muted="" loop=""></video>
+                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('fourth_video')); ?>" 4.mp4" playsinline="" autoplay="" muted="" loop=""></video>
                           </div>
                           <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span><span class="absolute left-0 top-0 w-full h-full bg-repeat opacity-50 pointer-events-none" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/noize.png)"></span>
                           <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
                             <div data-magnet="">
-                              <button class="btn btn--play" type="button" data-video-id="290865574" data-component="fullscreen-video">
+                              <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option('fourth_video_vimeo_id'); ?>" data-component="fullscreen-video">
                                 <span class="btn__text-holder"></span>
                               </button>
                             </div>
@@ -411,7 +388,7 @@ Template Name: Страница Главная
                     <div class="md:col-start-3 md:col-span-9 xl:col-start-4 xl:col-span-6">
                       <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5">Moon InSpiration</p>
                       <p class="h4 text-gray font-serif leading-none" data-scroll="" data-scroll-call="split" data-split="lines" data-speed="2">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        <?php echo carbon_get_theme_option('moon_inspiration_text'); ?>
                       </p>
                     </div>
                   </div>
