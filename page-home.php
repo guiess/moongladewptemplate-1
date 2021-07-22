@@ -190,7 +190,8 @@ Template Name: Страница Главная
                     </h2>
                     <div class="lg:mb-80 relative z-2" data-component="horizontal-scroll-section" data-target="#h-photos">
                       <div class="horizontal-blocks grid grid-flow-col auto-cols-max">
-                        <div class="image-heading-block inline-block align-top">
+                        <!-- начало -->
+                        <!-- <div class="image-heading-block inline-block align-top">
                           <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.1" data-ease="power3.out" data-movement="200" data-speed="1.3">
                             <div data-block="" data-scroll-speed="2">
                               <div class="mb-15 md:mb-20 overflow-hidden relative">
@@ -203,68 +204,30 @@ Template Name: Страница Главная
                               </h3>
                             </div>
                           </div>
-                        </div>
-                        <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.2" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="3">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02.jpg" width="409" height="292" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02.jpg 1x
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
+                        </div> -->
+
+
+                        <?php
+                        $table = carbon_get_theme_option('gorizont_pictures');
+                        if (!empty($table)) : ?>
+                          <?php foreach ($table as $key=>$tr) : ?>
+
+                            <div class="image-heading-block inline-block align-top">
+                              <div data-scroll="" data-scroll-call="moveLeft" data-delay="<?php $key = $key/5; echo (string) $key; ?>" data-ease="power3.out" data-movement="200" data-speed="1.3">
+                                <div data-block="" data-scroll-speed="<?php echo (rand(0, 30))/10; ?>">
+                                  <div class="mb-15 md:mb-20 overflow-hidden relative">
+                                    <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo $tr['gor_img500x250']; ?>" width="455" height="257" data-srcset="<?php echo $tr['gor_img500x250']; ?> 1x,
+                                    <?php echo $tr['gor_img1000x5000']; ?> 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
+                                  </div>
+                                  <h3 class="text-sm md:text-md mb-0 font-sans"><?php echo $tr['title']; ?></h3>
+                                </div>
                               </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">
-                                Unique being <br />
-                                project / brand
-                              </h3>
                             </div>
-                          </div>
-                        </div>
-                        <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.30000000000000004" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="1">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03.jpg" width="550" height="328" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03.jpg 1x
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
-                              </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">Timeless vision</h3>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.4" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="1.5">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01.jpg" width="455" height="257" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01.jpg 1x
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image01@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
-                              </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">
-                                Green planet <br />
-                                activist
-                              </h3>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.5" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="2">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02.jpg" width="409" height="292" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02.jpg 1x
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image02@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
-                              </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">Mystic mind</h3>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="image-heading-block inline-block align-top">
-                          <div data-scroll="" data-scroll-call="moveLeft" data-delay="0.6000000000000001" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                            <div data-block="" data-scroll-speed="0">
-                              <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03.jpg" width="550" height="328" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03.jpg 1x
-                                    <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image03@2x.jpg 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
-                              </div>
-                              <h3 class="text-sm md:text-md mb-0 font-sans">Living is an Ar</h3>
-                            </div>
-                          </div>
-                        </div>
+
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <!-- конец -->
                       </div>
                     </div>
                   </div>
