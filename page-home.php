@@ -200,8 +200,8 @@ Template Name: Страница Главная
                                                                                           echo (string) $key; ?>" data-ease="power3.out" data-movement="200" data-speed="1.3">
                                 <div data-block="" data-scroll-speed="<?php echo (rand(0, 30)) / 10; ?>">
                                   <div class="mb-15 md:mb-20 overflow-hidden relative">
-                                    <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo $tr['gor_img500x250']; ?>" width="455" height="257" data-srcset="<?php echo $tr['gor_img500x250']; ?> 1x,
-                                    <?php echo $tr['gor_img1000x5000']; ?> 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
+                                    <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo image_downsize($tr['gor_img500x250'], 'full')[0]; ?>" width="<?php echo image_downsize($tr['gor_img500x250'], 'full')[1]; ?>" height="<?php echo image_downsize($tr['gor_img500x250'], 'full')[2]; ?>" data-srcset="<?php echo image_downsize($tr['gor_img500x250'], 'full')[0]; ?> 1x,
+                                    <?php echo image_downsize($tr['gor_img1000x5000'], 'full')[0]; ?> 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
                                   </div>
                                   <h3 class="text-sm md:text-md mb-0 font-sans"><?php echo $tr['title']; ?></h3>
                                 </div>
@@ -332,7 +332,7 @@ Template Name: Страница Главная
                         </div>
                         <div class="col-span-10 md:col-span-8 flex-grow">
                           <h2 class="h4 mb-0 video-block__title uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
-                            <?php echo carbon_get_theme_option('second_video_text'); ?>
+                            <?php echo carbon_get_theme_option('third_video_text'); ?>
                           </h2>
                         </div>
                         <div class="hidden md:col-span-2 md:flex justify-end" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
@@ -399,111 +399,38 @@ Template Name: Страница Главная
                       </h2>
                     </div>
                     <div class="photo-vertical-flow">
-                      <div class="photo-vertical-flow__item">
-                        <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="-0.3">
-                          <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">53</div>
-                            <div class="photo-box__meta-element">M5</div>
-                            <div class="photo-box__meta-element">FF800-2</div>
-                          </div>
-                          <div class="relative">
-                            <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
-                              <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 582 346'%3E%3C/svg%3E" width="582" height="346" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image08.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image08.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image08@2x.jpg 2x" alt="image description" /></picture>
+
+                      <?php $data_scroll_speed = -0.3;
+                      $table = carbon_get_theme_option('moon_spirit_pictures');
+                      if (!empty($table)) : ?>
+                        <?php foreach ($table as $tr) : ?>
+
+                          <div class="photo-vertical-flow__item">
+                            <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="<?php echo $data_scroll_speed;
+                                                                                                                                                                $data_scroll_speed = $data_scroll_speed * -1; ?>">
+                              <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
+                                <div class="photo-box__meta-element"><?php echo $tr['left_up_text']; ?></div>
+                                <div class="photo-box__meta-element"><?php echo $tr['center_up_text']; ?></div>
+                                <div class="photo-box__meta-element"><?php echo $tr['right_up_text']; ?></div>
+                              </div>
+                              <div class="relative">
+                                <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
+                                  <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
+                                    <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 <?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[1]; ?> <?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[2]; ?>'%3E%3C/svg%3E" width="<?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[1]; ?>" height="<?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[2]; ?>" data-src="<?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[0]; ?>" data-srcset="<?php echo image_downsize($tr['moon_spirit_pictur_1x'], 'full')[0]; ?> 1x, <?php echo image_downsize($tr['moon_spirit_pictur_2x'], 'full')[0]; ?> 2x" alt="image description" /></picture>
+                                  </div>
+                                </div>
+                                <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
+                              </div>
+                              <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
+                                <div class="photo-box__meta-element"><?php echo $tr['left_down_text']; ?></div>
+                                <div class="photo-box__meta-element"><?php echo $tr['location_text']; ?></div>
                               </div>
                             </div>
-                            <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
                           </div>
-                          <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">048</div>
-                            <div class="photo-box__meta-element">Location: Moscow</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="photo-vertical-flow__item">
-                        <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="0.3">
-                          <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">53</div>
-                            <div class="photo-box__meta-element">M5</div>
-                            <div class="photo-box__meta-element">FF800-2</div>
-                          </div>
-                          <div class="relative">
-                            <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
-                              <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 356 250'%3E%3C/svg%3E" width="356" height="250" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image09.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image09.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image09@2x.jpg 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
-                          </div>
-                          <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">048</div>
-                            <div class="photo-box__meta-element">Location: Moscow</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="photo-vertical-flow__item">
-                        <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="-0.3">
-                          <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">53</div>
-                            <div class="photo-box__meta-element">M5</div>
-                            <div class="photo-box__meta-element">FF800-2</div>
-                          </div>
-                          <div class="relative">
-                            <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
-                              <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 386'%3E%3C/svg%3E" width="480" height="386" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image10.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image10.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image10@2x.jpg 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
-                          </div>
-                          <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">048</div>
-                            <div class="photo-box__meta-element">Location: Moscow</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="photo-vertical-flow__item">
-                        <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="0.3">
-                          <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">53</div>
-                            <div class="photo-box__meta-element">M5</div>
-                            <div class="photo-box__meta-element">FF800-2</div>
-                          </div>
-                          <div class="relative">
-                            <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
-                              <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 430 244'%3E%3C/svg%3E" width="430" height="244" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image11.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image11.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image11@2x.jpg 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
-                          </div>
-                          <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">048</div>
-                            <div class="photo-box__meta-element">Location: Moscow</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="photo-vertical-flow__item">
-                        <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="-0.3">
-                          <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">53</div>
-                            <div class="photo-box__meta-element">M5</div>
-                            <div class="photo-box__meta-element">FF800-2</div>
-                          </div>
-                          <div class="relative">
-                            <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
-                              <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 710 348'%3E%3C/svg%3E" width="710" height="348" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image12.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image12.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image12@2x.jpg 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
-                          </div>
-                          <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
-                            <div class="photo-box__meta-element">048</div>
-                            <div class="photo-box__meta-element">Location: Moscow</div>
-                          </div>
-                        </div>
-                      </div>
+
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+
                     </div>
                   </div>
                 </div>
@@ -536,15 +463,14 @@ Template Name: Страница Главная
                         <div class="relative">
                           <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
                             <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 564'%3E%3C/svg%3E" width="946" height="564" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image13.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image13.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image13@2x.jpg 2x" alt="image description" /></picture>
+                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?> <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>'%3E%3C/svg%3E" width="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?>" height="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>" data-src="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>" data-srcset="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>, <?php echo image_downsize(carbon_get_theme_option('last_left_picture_2x'), 'full')[1]; ?> 2x" alt="image description" /></picture>
                             </div>
                           </div>
                           <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
                         </div>
                         <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
                           <div class="photo-box__meta-element">
-                            YOUR BODY IS THE TEMPLE <br />
-                            OF YOUR SOUL.
+                            <?php echo carbon_get_theme_option("last_left_picture_text"); ?>
                           </div>
                         </div>
                       </div>
@@ -554,23 +480,20 @@ Template Name: Страница Главная
                         <div class="relative">
                           <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
                             <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 564'%3E%3C/svg%3E" width="946" height="564" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image14.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image14.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image14@2x.jpg 2x" alt="image description" /></picture>
+                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 <?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[1]; ?> <?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[2]; ?>'%3E%3C/svg%3E" width="<?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[1]; ?>" height="<?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[2]; ?>" data-src="<?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[0]; ?>" data-srcset="<?php echo image_downsize(carbon_get_theme_option('last_right_picture_1x'), 'full')[0]; ?>, <?php echo image_downsize(carbon_get_theme_option('last_right_picture_2x'), 'full')[0]; ?> 2x" alt="image description" /></picture>
                             </div>
                           </div>
                           <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>
                         </div>
                         <div class="photo-box__footer mt-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
                           <div class="photo-box__meta-element">
-                            Lorem Ipsum is simply dummy text <br />
-                            of the printing and
+                            <?php echo carbon_get_theme_option("last_right_picture_text_1"); ?>
                           </div>
                           <div class="photo-box__meta-element">
-                            WE CAN CHANGE <br />
-                            THE FUTURE.
+                            <?php echo carbon_get_theme_option("last_right_picture_text_2"); ?>
                           </div>
                           <div class="photo-box__meta-element">
-                            15.8700° N, 100.9925° E, <br />
-                            Bali
+                            <?php echo carbon_get_theme_option("last_right_picture_text_3"); ?>
                           </div>
                         </div>
                       </div>
