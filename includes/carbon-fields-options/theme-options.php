@@ -9,6 +9,11 @@ use Carbon_Fields\Field;
 
 Container::make('theme_options', 'Настройки сайта')
   // ->set_icon('dashicons-carrot') //добавить иконку
+  ->add_tab('Социалки', [
+    Field::make('text', 'instagram_link', 'Ссылка на профиль Instagram'),
+    Field::make('text', 'vimeo_link', 'Ссылка на профиль Vimeo')
+  ])
+
   ->add_tab('Первое видео', [
     Field::make('file', 'first_video')
       ->set_type('video'),

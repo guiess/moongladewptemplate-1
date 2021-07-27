@@ -95,7 +95,7 @@ Template Name: Страница Главная
                 </div>
                 <div class="header-menu__subnav text-center grid gap-10 lg:hidden">
                   <ul class="social-list list--tilda">
-                    <li class="header-nav__stagger"><a class="link" href="?instagram" target="_blank">Instagram</a></li>
+                    <li class="header-nav__stagger"><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
                   </ul>
                   <ul class="list--tilda">
                     <li class="header-nav__stagger"><a class="link" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a></li>
@@ -304,7 +304,7 @@ Template Name: Страница Главная
                           </h2>
                         </div>
                         <div class="hidden md:col-span-2 md:flex justify-end" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
-                          <a class="text-left uppercase group" href="https://vimeo.com/290865574"><span class="link">moonglade</span><br /><span class="link">Films</span></a>
+                          <a class="text-left uppercase group" href="<?php echo carbon_get_theme_option('vimeo_link'); ?>"><span class="link">moonglade</span><br /><span class="link">Films</span></a>
                         </div>
                       </div>
                     </div>
@@ -336,7 +336,7 @@ Template Name: Страница Главная
                           </h2>
                         </div>
                         <div class="hidden md:col-span-2 md:flex justify-end" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
-                          <a class="text-left uppercase group" href="https://vimeo.com/290865574"><span class="link">moonglade</span><br /><span class="link">Films</span></a>
+                          <a class="text-left uppercase group" href="<?php echo carbon_get_theme_option('vimeo_link'); ?>"><span class="link">moonglade</span><br /><span class="link">Films</span></a>
                         </div>
                       </div>
                     </div>
@@ -727,7 +727,7 @@ Template Name: Страница Главная
                     </div>
                   </div>
                   <div class="text-center" data-scroll="" data-css-call="moveUp" data-delay="5">
-                    <a class="btn btn--light" href="/products.html"><span class="btn__text-holder"><span class="btn__text">Visit our Store</span></span></a>
+                    <a class="btn btn--light" href="<?php echo home_url('/products', ''); ?>"><span class="btn__text-holder"><span class="btn__text">Visit our Store</span></span></a>
                   </div>
                 </div>
               </div>

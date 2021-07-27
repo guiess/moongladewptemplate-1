@@ -2,7 +2,7 @@
   <div class="footer__holder container">
     <div class="footer__top-bar">
       <ul class="footer-list list--tilda mb-10 md:mb-0 lg:w-1/5">
-        <li><a class="link" href="?instagram" target="_blank">Instagram</a></li>
+        <li><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
       </ul>
       <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center opacity-40">
         <ul class="footer-list list--tilda mb-10 md:mb-0">
