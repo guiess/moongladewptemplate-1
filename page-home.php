@@ -548,177 +548,36 @@ Template Name: Страница Главная
                   <div class="mb-40 lg:mb-100" data-component="products-carousel">
                     <div class="swiper-container mb-50" data-carousel="" data-component="drag-carousel">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.30000000000000004" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.4" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.5" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.6000000000000001" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.7000000000000001" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.8" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="0.9" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="1" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="swiper-slide" data-scroll="" data-scroll-call="moveLeft" data-delay="1.1" data-ease="circ.out" data-movement="60" data-speed="1">
-                          <a class="product-simple" href="/products.html">
-                            <div class="relative mb-15 text-center">
-                              <div class="product-simple__image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                              <div class="product-simple__hover-image">
-                                <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
-                              </div>
-                            </div>
-                            <div class="product-simple__info">
-                              <h4 class="product-simple__title">TURMERIC</h4>
-                              <div class="product-simple__meta">
-                                <div class="product-simple__category">Leaf Powder</div>
-                                <div class="product-simple__price">$ 30</div>
-                              </div>
-                            </div>
-                          </a>
-                        </div>
+                        <?php
+
+                        $catalog_products = carbon_get_theme_option("catalog_products");
+                        $catalog_products_ids = wp_list_pluck($catalog_products, "id");
+
+                        // echo "<pre>";
+                        // print_r($catalog_products);
+                        // print_r($catalog_products_ids);
+                        // echo "</pre>";
+
+                        $catalog_products_args = [
+                          'post_type' => 'product',
+                          'post__in' => $catalog_products_ids
+                        ];
+                        $catalog_products_query = new WP_Query($catalog_products_args);
+                        ?>
+
+                        <?php if ($catalog_products_query->have_posts()) : ?>
+
+                          <?php $count_delay = 2; ?>
+                          
+                          <?php while ($catalog_products_query->have_posts()) : $catalog_products_query->the_post(); ?>
+
+                            <?php $count_delay = $count_delay + 1;
+                            echo get_template_part('product-box-content', null, ['count_delay' => "$count_delay"]); ?>
+
+                          <?php endwhile; ?>
+
+                        <?php endif; ?>
+
                       </div>
                     </div>
                     <div class="flex items-center justify-between laptop:hidden">

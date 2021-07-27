@@ -131,4 +131,14 @@ Container::make('theme_options', 'Home Page Settings')
       ->set_width(33),
     Field::make('textarea', 'last_right_picture_text_3', 'Signature bottom right (to wrap lines, write <br/>)')
       ->set_width(33),
+  ])
+
+  ->add_tab('Activation Products', [
+    Field::make('association', 'catalog_products', 'Товары')
+      ->set_types([
+        [
+          'type'      => 'post',
+          'post_type' => 'product',
+        ]
+      ])
   ]);
