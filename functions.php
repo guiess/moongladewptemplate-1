@@ -46,6 +46,7 @@ add_action('carbon_fields_register_fields', 'register_carbon_fields');
 function register_carbon_fields()
 {
   require_once('includes/carbon-fields-options/theme-options.php');
+  require_once('includes/carbon-fields-options/theme-products-page-options.php');
   require_once( 'includes/carbon-fields-options/post-meta.php' );
 }
 
@@ -67,10 +68,10 @@ function register_post_types()
       'menu_name'          => 'Products', // название меню
     ],
     'menu_icon'          => 'dashicons-palmtree',
-    'public'             => true,
+    'public'             => false,
     'menu_position'      => 5,
-    'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
-    'has_archive'        => true,
+    'supports'           => ['title', 'editor', 'thumbnail'],
+    'has_archive'        => false,
     'rewrite'            => ['slug' => 'products']
   ]);
 }

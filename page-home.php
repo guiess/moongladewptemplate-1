@@ -406,8 +406,9 @@ Template Name: Страница Главная
                         <?php foreach ($table as $tr) : ?>
 
                           <div class="photo-vertical-flow__item">
-                            <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="<?php echo $data_scroll_speed;
-                                                                                                                                                                $data_scroll_speed = $data_scroll_speed * -1; ?>">
+                            <div class="photo-box photo-box--oldscool" data-no-touch-parallax="" data-component="webgl-light" data-scroll="" data-scroll-speed="
+                            <?php echo $data_scroll_speed;
+                            $data_scroll_speed = $data_scroll_speed * -1; ?>">
                               <div class="photo-box__header mb-10 grid grid-flow-col gap-x-10 justify-between items-start uppercase text-xxs md:text-sm">
                                 <div class="photo-box__meta-element"><?php echo $tr['left_up_text']; ?></div>
                                 <div class="photo-box__meta-element"><?php echo $tr['center_up_text']; ?></div>
@@ -562,13 +563,24 @@ Template Name: Страница Главная
                           'post_type' => 'product',
                           'post__in' => $catalog_products_ids
                         ];
+                        
+                        // echo "<pre>";
+                        // print_r($catalog_products_args);
+                        // echo "</pre>";
+
                         $catalog_products_query = new WP_Query($catalog_products_args);
+                        ?>
+
+                        <?php
+                        // echo "<pre>";
+                        // print_r($catalog_products_query);
+                        // echo "</pre>";
                         ?>
 
                         <?php if ($catalog_products_query->have_posts()) : ?>
 
                           <?php $count_delay = 2; ?>
-                          
+
                           <?php while ($catalog_products_query->have_posts()) : $catalog_products_query->the_post(); ?>
 
                             <?php $count_delay = $count_delay + 1;
@@ -577,6 +589,8 @@ Template Name: Страница Главная
                           <?php endwhile; ?>
 
                         <?php endif; ?>
+
+                        <?php wp_reset_query(); ?>
 
                       </div>
                     </div>

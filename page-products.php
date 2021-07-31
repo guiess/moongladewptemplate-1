@@ -71,7 +71,7 @@ Template Name: Страница с Продукцией
             </svg></a>
           <div class="ml-20 justify-end items-center header-part--secondary uppercase">
             <ul class="main-nav main-nav--secondary hidden lg:flex">
-              <li class="main-nav__item hidden lg:block"><a class="link" href="<?php echo get_template_directory_uri() . "/home"; ?>">Moonglade website</a></li>
+              <li class="main-nav__item hidden lg:block"><a class="link" href="<?php echo home_url('', ''); ?>">Moonglade website</a></li>
               <li class="main-nav__item hidden lg:block">
                 <span class="inline-flex items-center group" data-toggle-popup="popup-cart-empty"><span class="link hidden lg:block">CART</span></span>
               </li>
@@ -95,7 +95,7 @@ Template Name: Страница с Продукцией
                 </div>
                 <div class="header-menu__subnav text-center grid gap-10 lg:hidden">
                   <ul class="social-list list--tilda">
-                    <li class="header-nav__stagger"><a class="link" href="?instagram" target="_blank">Instagram</a></li>
+                    <li class="header-nav__stagger"><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
                   </ul>
                   <ul class="list--tilda">
                     <li class="header-nav__stagger"><a class="link" href="<?php echo get_template_directory_uri(); ?>/privacypolicy/">Privacy Policy</a></li>
@@ -165,196 +165,43 @@ Template Name: Страница с Продукцией
                     <div class="md:col-start-3 md:col-span-9 xl:col-start-4 xl:col-span-6">
                       <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5">Moon InSpiration</p>
                       <p class="h4 text-gray font-serif leading-none" data-scroll="" data-scroll-call="split" data-split="lines" data-speed="2">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        <?php echo carbon_get_theme_option("slogan_product_text"); ?>
                       </p>
                     </div>
                   </div>
                   <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">
                     <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="-0.3" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_01">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">TURMERIC</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_02">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">NONI</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                    </div>
-                    <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="0.6" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_03">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image03@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image03-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">Moringa</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                    </div>
-                    <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="-0.6" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_04">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image04@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image04-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">RED GINGER</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_05">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">MANGOSTEENA</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
+
+                      <?php
+                      $count_delay = 1;
+                      $catalog_products = carbon_get_theme_option("catalog_products");
+                      $catalog_products_ids = wp_list_pluck($catalog_products, "id");
+
+                      // echo "<pre>";
+                      // print_r($catalog_products);
+                      // print_r($catalog_products_ids);
+                      // echo "</pre>";
+
+                      $catalog_products_args = [
+                        'post_type' => 'product',
+                        'post__in' => $catalog_products_ids
+                      ];
+                      $catalog_products_query = new WP_Query($catalog_products_args);
+                      ?>
+
+                      <?php if ($catalog_products_query->have_posts()) : ?>
+
+                        <?php while ($catalog_products_query->have_posts()) : $catalog_products_query->the_post(); ?>
+
+                          <?php echo get_template_part('products-page-content', null, ['count' => "$count_delay"]);
+                          $count_delay++; ?>
+
+                          <?php if ($count_delay == 6) break; ?>
+
+                        <?php endwhile; ?>
+
+                      <?php endif; ?>
+
                     </div>
                   </div>
                 </div>
@@ -390,226 +237,29 @@ Template Name: Страница с Продукцией
                   </div>
                   <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">
                     <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="-0.3" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_06">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">TURMERIC</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_07">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">NONI</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                    </div>
-                    <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="0.6" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_08">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image03@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image03-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">Moringa</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_09">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image02-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">NONI</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                    </div>
-                    <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="-0.6" data-no-touch-parallax="">
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_10">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image04@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image04-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">RED GINGER</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
-                      <!-- new code start -->
-                      <div class="product" data-component="product">
-                        <div class="product__layout">
-                          <div class="product__visual" data-toggle-popup="product_11">
-                            <div class="product__image product__image--main">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__image product__image--hover">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 w-full h-full object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01-hover@2x.jpg" alt="image description" /></picture>
-                            </div>
-                            <div class="product__labels w-full flex flex-wrap absolute top-0 left-0 p-20">
-                              <span class="badge mr-10 mb-10">HEALING</span><span class="badge mr-10 mb-10">ENERGY SUPPORT</span><span class="badge mr-10 mb-10">SHINE BRIGHT</span>
-                            </div>
-                            <div class="product__hover-note"><span>More info</span></div>
-                          </div>
-                          <div class="product__content">
-                            <h3 class="product__title" data-product-title="">MANGOSTEENA</h3>
-                            <p class="product__price"><span>$ 30</span><span class="ml-5">(150gr)</span></p>
-                            <div class="flex md:block lg:flex justify-between -mx-10">
-                              <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-                                <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                                  <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                                  <input class="stepper__input" type="number" data-input="" value="1" />
-                                  <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                                </div>
-                              </div>
-                              <div class="flex-grow px-10">
-                                <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
-                                  <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- new code end -->
+
+                      <?php
+                      $catalog_products = carbon_get_theme_option("catalog_products");
+                      $catalog_products_ids = wp_list_pluck($catalog_products, "id");                      
+                      $catalog_products_args = [
+                        'post_type' => 'product',
+                        'post__in' => $catalog_products_ids
+                      ];
+                      $catalog_products_query = new WP_Query($catalog_products_args);
+                      ?>
+
+                      <?php if ($catalog_products_query->have_posts()) : ?>
+
+                        <?php while ($catalog_products_query->have_posts()) : $catalog_products_query->the_post(); ?>
+                          <?php
+                          $count_delay++;
+                          if ($count_delay < 12) continue; ?>
+                          <?php echo get_template_part('products-page-content', null, ['count' => "$count_delay"]); ?>                          
+
+                        <?php endwhile; ?>
+
+                      <?php endif; ?>
+
                     </div>
                   </div>
                 </div>
@@ -666,7 +316,7 @@ Template Name: Страница с Продукцией
         <div class="footer__holder container">
           <div class="footer__top-bar">
             <ul class="footer-list list--tilda mb-10 md:mb-0 lg:w-1/5">
-              <li><a class="link" href="?instagram" target="_blank">Instagram</a></li>
+              <li><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
             </ul>
             <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center opacity-40">
               <ul class="footer-list list--tilda mb-10 md:mb-0">

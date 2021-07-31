@@ -7,8 +7,8 @@ if (!defined('ABSPATH')) {
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-Container::make('theme_options', 'Home Page Settings')
-  // ->set_icon('dashicons-carrot') //добавить иконку
+Container::make('theme_options', 'Home Page')
+  ->set_icon('dashicons-admin-home')
   ->add_tab('Socials', [
     Field::make('text', 'instagram_link', 'Instagram Link')
       ->set_width(50),

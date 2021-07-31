@@ -1,5 +1,10 @@
 <?php
-$count_delay = $args['count_delay']/10;
+
+if (!defined('ABSPATH')) {
+  exit;
+}
+
+$count_delay = $args['count_delay'] / 10;
 $product_id = get_the_ID();
 
 $product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
