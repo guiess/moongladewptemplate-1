@@ -68,9 +68,9 @@ function register_post_types()
       'menu_name'          => 'Products', // название меню
     ],
     'menu_icon'          => 'dashicons-palmtree',
-    'public'             => false,
+    'public'             => true,
     'menu_position'      => 5,
-    'supports'           => ['title', 'editor', 'thumbnail'],
+    'supports'           => ['excerpt', 'title', 'editor', 'thumbnail'],
     'has_archive'        => false,
     'rewrite'            => ['slug' => 'products']
   ]);

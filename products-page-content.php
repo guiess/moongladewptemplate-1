@@ -11,9 +11,9 @@ $product_price =  carbon_get_post_meta($product_id, 'product_price');
 $product_wight =  carbon_get_post_meta($product_id, 'product_wight');
 $product_bw_image_2x =  carbon_get_post_meta($product_id, 'product_bw_image_2x');
 $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
-$product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
-$product_use =  carbon_get_post_meta($product_id, 'product_use');
-$product_contains =  carbon_get_post_meta($product_id, 'product_contains');
+// $product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
+// $product_use =  carbon_get_post_meta($product_id, 'product_use');
+// $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
 
 ?>
 
@@ -64,12 +64,10 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
 
 <?php
 
+
 if ($count == 2 || $count == 3 || $count == 13 || $count == 15) {
   $data_scroll_speed_count = ($count == 2 || $count == 13) ? "0.6": "-0.6";
   echo '</div>
   <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="' . $data_scroll_speed_count . '" data-no-touch-parallax="">';
 }
 ?>
-
-
-<!-- <?php the_content(); ?> -->

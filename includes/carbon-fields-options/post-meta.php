@@ -67,7 +67,7 @@ Container::make('post_meta', 'Product fields')
   ])
 
   ->add_tab('Contains', [
-    Field::make('textarea', 'product_contains', 'Contains:')
+    Field::make('textarea', 'product_contains', 'Contains: (to wrap lines, write <br/>)')
   ])
 
   ->add_tab('Effects', [
