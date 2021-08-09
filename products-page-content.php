@@ -17,7 +17,7 @@ $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
 
 ?>
 
-<div class="product" data-component="product">
+<div class="product js-product" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-component="product">
   <div class="product__layout">
     <div class="product__visual" data-toggle-popup="product_<?php echo $product_id; ?>">
       <div class="product__image product__image--main">
@@ -53,7 +53,7 @@ $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
           </div>
         </div>
         <div class="flex-grow px-10">
-          <button class="btn btn--primary w-full px-10" type="button" data-control="submit">
+          <button class="btn btn--primary w-full px-10 js-btn-add-to-cart" type="button" data-control="submit">
             <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
           </button>
         </div>
@@ -66,7 +66,7 @@ $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
 
 
 if ($count == 2 || $count == 3 || $count == 13 || $count == 15) {
-  $data_scroll_speed_count = ($count == 2 || $count == 13) ? "0.6": "-0.6";
+  $data_scroll_speed_count = ($count == 2 || $count == 13) ? "0.6" : "-0.6";
   echo '</div>
   <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="' . $data_scroll_speed_count . '" data-no-touch-parallax="">';
 }

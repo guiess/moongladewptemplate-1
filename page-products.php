@@ -350,7 +350,7 @@ Template Name: Страница с Продукцией
   <?php if ($catalog_products_query->have_posts()) : ?>
 
     <?php while ($catalog_products_query->have_posts()) : $catalog_products_query->the_post(); ?>
-      
+
       <?php echo get_template_part('products-info-content'); ?>
 
     <?php endwhile; ?>
@@ -429,7 +429,7 @@ Template Name: Страница с Продукцией
       </div>
     </div>
   </div>
-  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right" data-component="popup" id="popup-cart-full">
+  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right js-cart" data-component="popup" id="popup-cart-full">
     <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
     <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
       <div class="popup-close">
@@ -445,6 +445,8 @@ Template Name: Страница с Продукцией
           <div class="flex flex-col flex-grow overflow-hidden">
             <form class="flex flex-col flex-grow h-full max-h-full overflow-y-auto" action="#">
               <div class="flex-grow">
+
+                <!-- начала продукта -->
                 <div class="cart-popup__product border-b border-black-100">
                   <div class="cart-product uppercase flex items-start">
                     <div class="cart-product__visual overflow-hidden flex-shrink-0">
@@ -452,6 +454,7 @@ Template Name: Страница с Продукцией
                     </div>
                     <div class="flex-grow">
                       <h4 class="cart-product__title laptop:w-8/12">Moringa</h4>
+                      
                       <div class="cart-product__info-line flex justify-between items-baseline">
                         <div class="cart-product__info-item">
                           <span>$ 30</span><span class="opacity-50 weight">(100<span class="lowercase">gr</span>)</span>
@@ -471,6 +474,9 @@ Template Name: Страница с Продукцией
                     </div>
                   </div>
                 </div>
+                <!-- конец продукта -->
+
+                <!-- начало последнего продукта -->
                 <div class="cart-popup__product">
                   <div class="cart-product uppercase flex items-start">
                     <div class="cart-product__visual overflow-hidden flex-shrink-0">
@@ -497,6 +503,8 @@ Template Name: Страница с Продукцией
                     </div>
                   </div>
                 </div>
+                <!-- конец последнего продукта -->
+                
               </div>
               <div class="border-t border-black-100 cart-popup__footer">
                 <div class="cart-popup__total flex justify-between items-baseline uppercase"><span>Total</span><span>$ 90</span></div>
