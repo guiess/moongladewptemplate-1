@@ -429,7 +429,7 @@ Template Name: Страница с Продукцией
       </div>
     </div>
   </div>
-  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right js-cart" data-component="popup" id="popup-cart-full">
+  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right" data-component="popup" id="popup-cart-full">
     <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
     <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
       <div class="popup-close">
