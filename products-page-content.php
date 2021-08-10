@@ -17,7 +17,7 @@ $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
 
 ?>
 
-<div class="product js-product" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-component="product">
+<div class="product js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image_2x; ?>">
   <div class="product__layout">
     <div class="product__visual" data-toggle-popup="product_<?php echo $product_id; ?>">
       <div class="product__image product__image--main">
@@ -54,7 +54,7 @@ $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
         </div>
         <div class="flex-grow px-10">
           <button class="btn btn--primary w-full px-10 js-btn-add-to-cart" type="button" data-control="submit">
-            <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
+            <span class="btn__text-holder"><span class="btn__text js-btn-add-to-cart">add to cart</span></span>
           </button>
         </div>
       </div>

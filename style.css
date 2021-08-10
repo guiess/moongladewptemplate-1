@@ -5572,3 +5572,7 @@ select.form-control {
 		padding-bottom: 3rem
 	}
 }
+
+.is-empty {
+	display: none;
+}

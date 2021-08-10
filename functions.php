@@ -27,53 +27,53 @@ function site_scripts()
   // wp_enqueue_style('icomoon-fonts', get_template_directory_uri() . '/assets/fonts/icomoon.woff', [], $version);
   wp_enqueue_style('main-style', get_stylesheet_uri(), [], $version); //подключили стили
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/app.js', [], $version, true); // подключили app.js основной скрипт
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/cart.js', [], $version, true); // подключили cart.js скрипт корзины}
+  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/cart.js', [], $version, true); // подключили cart.js скрипт корзины
+}
 
-  add_action('after_setup_theme', 'crb_load');
-  function crb_load()
-  {
-    require_once('includes/carbon-fields/vendor/autoload.php');
-    \Carbon_Fields\Carbon_Fields::boot();
-  }
+add_action('after_setup_theme', 'crb_load');
+function crb_load()
+{
+  require_once('includes/carbon-fields/vendor/autoload.php');
+  \Carbon_Fields\Carbon_Fields::boot();
+}
 
-  add_action('after_setup_theme', 'theme_support');
-  function theme_support()
-  {
-    add_theme_support('post-thumbnails'); // добавление в пост выбоор пикчи
-    // add_image_size('product', 500, 313, true); // добавление кастомного разрешениея для тамбов
-  }
+add_action('after_setup_theme', 'theme_support');
+function theme_support()
+{
+  add_theme_support('post-thumbnails'); // добавление в пост выбоор пикчи
+  // add_image_size('product', 500, 313, true); // добавление кастомного разрешениея для тамбов
+}
 
-  add_action('carbon_fields_register_fields', 'register_carbon_fields');
-  function register_carbon_fields()
-  {
-    require_once('includes/carbon-fields-options/theme-options.php');
-    require_once('includes/carbon-fields-options/theme-products-page-options.php');
-    require_once('includes/carbon-fields-options/post-meta.php');
-  }
+add_action('carbon_fields_register_fields', 'register_carbon_fields');
+function register_carbon_fields()
+{
+  require_once('includes/carbon-fields-options/theme-options.php');
+  require_once('includes/carbon-fields-options/theme-products-page-options.php');
+  require_once('includes/carbon-fields-options/post-meta.php');
+}
 
-  add_action('init', 'register_post_types');
-  function register_post_types()
-  {
-    register_post_type('product', [
-      'labels' => [
-        'name'               => 'Products', // основное название для типа записи
-        'singular_name'      => 'Product', // название для одной записи этого типа
-        'add_new'            => 'Add product', // для добавления новой записи
-        'add_new_item'       => 'Adding a product', // заголовка у вновь создаваемой записи в админ-панели.
-        'edit_item'          => 'Editing an product', // для редактирования типа записи
-        'new_item'           => 'New product', // текст новой записи
-        'view_item'          => 'View product', // для просмотра записи этого типа.
-        'search_items'       => 'Search product', // для поиска по этим типам записи
-        'not_found'          => 'Not found', // если в результате поиска ничего не было найдено
-        'not_found_in_trash' => 'Not found in the cart', // если не было найдено в корзине
-        'menu_name'          => 'Products', // название меню
-      ],
-      'menu_icon'          => 'dashicons-palmtree',
-      'public'             => true,
-      'menu_position'      => 5,
-      'supports'           => ['excerpt', 'title', 'editor', 'thumbnail'],
-      'has_archive'        => false,
-      'rewrite'            => ['slug' => 'products']
-    ]);
-  }
+add_action('init', 'register_post_types');
+function register_post_types()
+{
+  register_post_type('product', [
+    'labels' => [
+      'name'               => 'Products', // основное название для типа записи
+      'singular_name'      => 'Product', // название для одной записи этого типа
+      'add_new'            => 'Add product', // для добавления новой записи
+      'add_new_item'       => 'Adding a product', // заголовка у вновь создаваемой записи в админ-панели.
+      'edit_item'          => 'Editing an product', // для редактирования типа записи
+      'new_item'           => 'New product', // текст новой записи
+      'view_item'          => 'View product', // для просмотра записи этого типа.
+      'search_items'       => 'Search product', // для поиска по этим типам записи
+      'not_found'          => 'Not found', // если в результате поиска ничего не было найдено
+      'not_found_in_trash' => 'Not found in the cart', // если не было найдено в корзине
+      'menu_name'          => 'Products', // название меню
+    ],
+    'menu_icon'          => 'dashicons-palmtree',
+    'public'             => true,
+    'menu_position'      => 5,
+    'supports'           => ['excerpt', 'title', 'editor', 'thumbnail'],
+    'has_archive'        => false,
+    'rewrite'            => ['slug' => 'products']
+  ]);
 }

@@ -42,7 +42,7 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
           <picture><img class="w-full max-w-full transition-opacity duration-300 lg:w-full lg:h-full lg:object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image_2x; ?>" alt="image description" /></picture>
         </div>
       </div>
-      <div class="lg:col-span-5 product-popup__content-part" data-component="product">
+      <div class="lg:col-span-5 product-popup__content-part js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image_2x; ?>">
         <div class="product-popup__content-scroller">
           <h2 class="product-popup__title font-serif" data-product-title=""><?php the_title(); ?></h2>
           <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5">(<?php echo $product_wight; ?>gr)</span></p>
@@ -55,8 +55,8 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
               </div>
             </div>
             <div class="product-popup__button-item flex-grow">
-              <button class="btn btn--primary" type="button" data-control="submit">
-                <span class="btn__text-holder"><span class="btn__text">add to cart</span></span>
+              <button class="btn btn--primary js-btn-add-to-cart" type="button" data-control="submit">
+                <span class="btn__text-holder"><span class="btn__text js-btn-add-to-cart">add to cart</span></span>
               </button>
             </div>
           </div>

@@ -73,11 +73,11 @@ Template Name: Страница с Продукцией
             <ul class="main-nav main-nav--secondary hidden lg:flex">
               <li class="main-nav__item hidden lg:block"><a class="link" href="<?php echo home_url('', ''); ?>">Moonglade website</a></li>
               <li class="main-nav__item hidden lg:block">
-                <span class="inline-flex items-center group" data-toggle-popup="popup-cart-empty"><span class="link hidden lg:block">CART</span></span>
+                <span class="inline-flex items-center group" data-toggle-popup="popup-cart-full"><span class="link hidden lg:block">CART</span></span>
               </li>
             </ul>
             <div class="pl-10 cursor-pointer">
-              <span class="w-40 h-40 lg:w-30 lg:h-30 bg-white text-black inline-flex rounded-full items-center justify-center text-sm" data-toggle-popup="popup-cart-full">0</span>
+              <span class="w-40 h-40 lg:w-30 lg:h-30 bg-white text-black inline-flex rounded-full items-center justify-center text-sm js-cart-total-count-items-corner" data-toggle-popup="popup-cart-full">0</span>
             </div>
           </div>
           <div class="ml-20 header-part--main">
@@ -95,7 +95,9 @@ Template Name: Страница с Продукцией
                 </div>
                 <div class="header-menu__subnav text-center grid gap-10 lg:hidden">
                   <ul class="social-list list--tilda">
-                    <li class="header-nav__stagger"><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
+                    <li class="header-nav__stagger"><a class="link" href="
+                    <?php echo carbon_get_theme_option('instagram_link'); ?>
+                    " target="_blank">Instagram</a></li>
                   </ul>
                   <ul class="list--tilda">
                     <li class="header-nav__stagger"><a class="link" href="<?php echo get_template_directory_uri(); ?>/privacypolicy/">Privacy Policy</a></li>
@@ -169,7 +171,7 @@ Template Name: Страница с Продукцией
                       </p>
                     </div>
                   </div>
-                  <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">
+                  <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative js-catalog">
                     <div class="grid gap-20 laptop:gap-80 mb-20 md:mb-0" data-scroll="" data-scroll-speed="-0.3" data-no-touch-parallax="">
 
                       <?php
@@ -440,74 +442,35 @@ Template Name: Страница с Продукцией
       <div class="popup-body bg-white text-black lg:max-h-full">
         <div class="flex flex-col h-full cart-popup__holder">
           <div class="cart-popup__headline">
-            <h4 class="popup-title pt-5 md:pt-10 laptop:pt-0">YOUR CART (3)</h4>
+            <h4 class="popup-title pt-5 md:pt-10 laptop:pt-0 js-cart-total-count-items">YOUR CART (3)</h4>
           </div>
-          <div class="flex flex-col flex-grow overflow-hidden">
+          <!-- cart-empty -->
+          <div class="flex-grow md:flex md:flex-col" id="js-cart-wrapper-empty">
+            <div class="flex-grow flex items-center cart-popup__body">
+              <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+                It appears that your cart <br />
+                is currently empty!
+              </p>
+            </div>
+            <div class="cart-popup__footer">
+              <button class="btn btn--outline w-full" type="button" data-popup-close="">
+                <span class="btn__text-holder"><span class="btn__text">Continue browsing</span></span>
+              </button>
+            </div>
+          </div>
+          <!-- cart-empty -->
+          <div class="flex flex-col flex-grow overflow-hidden" id="js-cart-wrapper-full">
             <form class="flex flex-col flex-grow h-full max-h-full overflow-y-auto" action="#">
-              <div class="flex-grow">
+              <div class="flex-grow js-cart">
 
-                <!-- начала продукта -->
-                <div class="cart-popup__product border-b border-black-100">
-                  <div class="cart-product uppercase flex items-start">
-                    <div class="cart-product__visual overflow-hidden flex-shrink-0">
-                      <picture><img class="w-full max-w-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image01-hover.jpg" alt="image description" /></picture>
-                    </div>
-                    <div class="flex-grow">
-                      <h4 class="cart-product__title laptop:w-8/12">Moringa</h4>
-                      
-                      <div class="cart-product__info-line flex justify-between items-baseline">
-                        <div class="cart-product__info-item">
-                          <span>$ 30</span><span class="opacity-50 weight">(100<span class="lowercase">gr</span>)</span>
-                        </div>
-                        <div class="cart-product__info-item"><span>$ 60</span></div>
-                      </div>
-                      <div class="flex justify-between items-center">
-                        <div class="cart-product__info-item">
-                          <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                            <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                            <input class="stepper__input" type="number" data-input="" value="2" />
-                            <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                          </div>
-                        </div>
-                        <div class="cart-product__info-item flex"><span class="link link--underline opacity-30">remove</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- конец продукта -->
+                <!-- start -->
+                <!-- goods -->
+                <!-- end -->
 
-                <!-- начало последнего продукта -->
-                <div class="cart-popup__product">
-                  <div class="cart-product uppercase flex items-start">
-                    <div class="cart-product__visual overflow-hidden flex-shrink-0">
-                      <picture><img class="w-full max-w-full" src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/product-image04-hover.jpg" alt="image description" /></picture>
-                    </div>
-                    <div class="flex-grow">
-                      <h4 class="cart-product__title laptop:w-8/12">Moringa</h4>
-                      <div class="cart-product__info-line flex justify-between items-baseline">
-                        <div class="cart-product__info-item">
-                          <span>$ 30</span><span class="opacity-50 weight">(100<span class="lowercase">gr</span>)</span>
-                        </div>
-                        <div class="cart-product__info-item"><span>$ 30</span></div>
-                      </div>
-                      <div class="flex justify-between items-center">
-                        <div class="cart-product__info-item">
-                          <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
-                            <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                            <input class="stepper__input" type="number" data-input="" value="1" />
-                            <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
-                          </div>
-                        </div>
-                        <div class="cart-product__info-item flex"><span class="link link--underline opacity-30">remove</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- конец последнего продукта -->
-                
               </div>
               <div class="border-t border-black-100 cart-popup__footer">
-                <div class="cart-popup__total flex justify-between items-baseline uppercase"><span>Total</span><span>$ 90</span></div>
+                <div class="cart-popup__total flex justify-between items-baseline uppercase"><span>Total</span><span class="js-cart-total-price">$ 90</span></div>
+                <input class="js-cart-total-price-input" type="hidden" name="Total Price">
                 <button class="btn btn--primary w-full" type="submit">
                   <span class="btn__text-holder"><span class="btn__text">Checkout</span></span>
                 </button>
@@ -546,6 +509,7 @@ Template Name: Страница с Продукцией
   </div>
   <!-- new code end -->
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cart.js"></script>
 </body>
 
 </html>
