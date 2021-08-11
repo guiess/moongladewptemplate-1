@@ -1,8 +1,3 @@
-//todo убрать последнее подчеркивание у тьоваров в корзине IT APPEARS THAT YOUR CART // IS CURRENTLY EMPTY!
-//todo пустая корзина надо будет выводить текст котоырй дизайнеры придумали
-//todo при инит выполнить проверку есть ли товары в корзине через локалстор и в зависимости от этого поменять .. data-toggle-popup="popup-cart .. через cartItemDOMElement.classList.add("..."); cartItemDOMElement.classList ...del... ("...");
-//todo сделать в корзине поле инпут лиссенер для того, чтобы менять кол-во через это поле. пока не стал делать. добавил readonly
-
 (function () {
   const cartDOMElement = document.querySelector(".js-cart");
 
@@ -10,7 +5,8 @@
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || {}; //если значение в localStorage отсутствует - сохдаём новый пустой объект
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -22,9 +18,6 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
-    const cartItemInputPriceDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-input-price"
-    );
     const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-input-quantity"
     );
@@ -32,8 +25,6 @@
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
     cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
-    cartItemInputPriceDOMElement.value = quantity * cart[id].price;
-    cartItemInputQuantityDOMElement.value = quantity;
 
     updateCart();
   };
@@ -50,23 +41,8 @@
     }
   };
 
-  const getProductData = (productDOMElement) => {
-    const id = productDOMElement.getAttribute("data-product-id");
-
-    const name = productDOMElement.getAttribute("data-product-name");
-    const price = productDOMElement.getAttribute("data-product-price");
-    const weight = productDOMElement.getAttribute("data-product-weight");
-    const src = productDOMElement.getAttribute("data-product-src");
-    const quantity = productDOMElement.querySelector("input").value;
-
-    return { name, price, src, quantity, id, weight };
-  };
-
-  const cartItemsCounterDOMElement = document.querySelector(
-    ".js-cart-total-count-items"
-  );
-  const cartItemsCounterCornerDOMElement = document.querySelector(
-    ".js-cart-total-count-items-corner"
+  const cartSubtotalPriceDOMElement = document.querySelector(
+    ".js-cart-subtotal-price"
   );
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
@@ -78,22 +54,19 @@
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
-    //! скорее всего надо будет чикнуть инпута эти. их необходимо вставить на третьей странице оформления заказа
+
     const cartItemTemplate = `
-    <div class="cart-popup__product border-b border-black-100">
       <div class="cart-product uppercase flex items-start">
         <div class="cart-product__visual overflow-hidden flex-shrink-0">
-          <picture><img class="w-full max-w-full" src="${src}" alt="image description" /></picture>
+          <picture>
+          <img class="w-full max-w-full transition-opacity duration-300 entered loaded" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="${src}" alt="image description" data-ll-status="loaded" srcset="${src}">
+          </picture>
         </div>
         <div class="flex-grow">
           <h4 class="cart-product__title laptop:w-8/12">${name}</h4>
-           
-            <input type="hidden" name="${id}-Product" value="${name}">
-            <input class="js-cart-input-quantity" type="hidden" name="${id}-Quantity" value="${quantity}">
-            <input class="js-cart-input-price" type="hidden" name="${id}-Price" value="${summitem}">
           <div class="cart-product__info-line flex justify-between items-baseline">
             <div class="cart-product__info-item">
-              <span>$ ${price}</span><span class="opacity-50 weight js-cart-item-weight">(${weight}<span class="lowercase">gr</span>)</span>
+              <span>$ ${price}</span><span class="opacity-50 weight">(${weight}<span class="lowercase">gr</span>)</span>
             </div>
             <div class="cart-product__info-item"><span class="js-cart-item-price">$ ${summitem}</span></div>
           </div>
@@ -101,15 +74,14 @@
             <div class="cart-product__info-item">
               <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
                 <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
-                <input class="stepper__input js-cart-item-quantity" type="number" data-input="" readonly value="${quantity}" />
+                <input class="stepper__input js-cart-item-quantity" readonly type="number" data-input="" value="${quantity}" />
                 <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>
               </div>
             </div>
-            <div class="cart-product__info-item flex"><span class="link link--underline opacity-30 js-btn-cart-item-remove">remove</span></div>
+            <div class="cart-product__info-item flex"><span class="link link--underline opacity-30 js-btn-cart-item-remove"">remove</span></div>
           </div>
         </div>
       </div>
-    </div>
     `;
 
     cartItemDOMElement.innerHTML = cartItemTemplate;
@@ -123,12 +95,20 @@
     localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON
   };
 
+  const saveCustomer = () => {
+    localStorage.setItem("customer", JSON.stringify(customer)); //преобразуем в строку JSON
+  };
+
   const updateCartTotalPrice = () => {
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
       const { quantity, price } = cart[id];
       return acc + price * quantity;
     }, 0);
 
+    if (cartSubtotalPriceDOMElement) {
+      cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
+    }
+    //TODO тут должно добавиться - купон + доставка
     if (cartTotalPriceDOMElement) {
       cartTotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
@@ -138,40 +118,36 @@
     }
   };
 
-  const updateCartTotalItemsCounter = () => { 
-    const totalQuantity = Object.keys(cart).reduce((acc, id) => {
-      const { quantity } = cart[id];
-      return acc + Number(quantity);
-    }, 0);
-
-    if (cartItemsCounterDOMElement) {
-      cartItemsCounterDOMElement.textContent = `YOUR CART (${totalQuantity})`;
-      cartItemsCounterCornerDOMElement.textContent = totalQuantity;
-    }
-
-    return totalQuantity;
-  };
-
   const updateCart = () => {
-    const totalQuantity = updateCartTotalItemsCounter();
     updateCartTotalPrice();
     saveCart();
 
     itemWrapFull = document.getElementById("js-cart-wrapper-full");
     itemWrapEmpty = document.getElementById("js-cart-wrapper-empty");
 
-    if (totalQuantity === 0) {
-      //
-      itemWrapFull.classList.add("is-empty");
-      itemWrapEmpty.classList.remove("is-empty");
-    } else {
-      itemWrapFull.classList.remove("is-empty");
-      itemWrapEmpty.classList.add("is-empty");
-      //
-    }
+    //! сделать пустую корзину
+    // if (totalQuantity === 0) {
+    //   //
+    //   itemWrapFull.classList.add("is-empty");
+    //   itemWrapEmpty.classList.remove("is-empty");
+    // } else {
+    //   itemWrapFull.classList.remove("is-empty");
+    //   itemWrapEmpty.classList.add("is-empty");
+    //   //
+    // }
+  };
+
+  const countItemsInCart = () => {
+    const count = Object.keys(cart).length;
+    console.log(count);
+    return count;
   };
 
   const deleteCartItem = (id) => {
+    if (countItemsInCart() === 1) {
+      return;
+    }
+
     const cartItemDOMElement = cartDOMElement.querySelector(
       `[data-product-id="${id}"]`
     );
@@ -181,41 +157,69 @@
     updateCart();
   };
 
-  const addCartItem = (data) => {
-    const { id } = data; // const id = data.id;
-    console.log(data);
-    if (cart[id]) {
-      increaseQuantity(id, data.quantity);
-      return;
-    }
-
-    cart[id] = data;
-
-    renderCartItem(data);
-
-    updateCart();
-  };
-
   const renderCart = () => {
     const ids = Object.keys(cart);
 
     ids.forEach((id) => renderCartItem(cart[id]));
   };
 
+  const saveDataCustomer = (customerForm) => {
+    const email = customerForm.elements.customerShippingEmail.value;
+    const address = customerForm.elements.customerShippingAddress.value;
+    const shippingMethod =
+      customerForm.elements.customerSelectShippingMethod.value;
+
+    const typeOfCreditСard =
+      customerForm.elements.customerSelectCreditСard.value;
+    const nameOnCard = customerForm.customerNameOnCard.value;
+    const cardExpiration = customerForm.customerCardExpiration.value;
+    const cardSecurityCode = customerForm.customerCardSecurityCode.value;
+    //!тут проверка на Remember me
+
+    customer.shippingEmail = email;
+    customer.shippingAddress = address;
+    customer.shippingMethod = shippingMethod;
+
+    customer.typeOfCreditСard = typeOfCreditСard;
+    customer.nameOnCard = nameOnCard;
+    customer.cardExpiration = cardExpiration;
+    customer.cardSecurityCode = cardSecurityCode;
+
+    console.log(customer);
+    console.log(JSON.stringify(customer)); // в JSON
+
+    saveCustomer();
+
+    // location.href = "WPJS/checkout-payment";
+  };
+
+  const renderForm = () => {
+    if (customer) {
+      const customerForm = document.forms.customerinfo;
+
+      customer.email
+        ? (customerForm.customerShippingEmail.value = customer.email)
+        : (customerForm.customerShippingEmail.value = "");
+
+      customer.shippingAddress
+        ? (customerForm.customerShippingAddress.value =
+            customer.shippingAddress)
+        : (customerForm.customerShippingAddress.value = "");
+
+      customer.shippingMethod
+        ? (customerForm.elements.customerSelectShippingMethod.value =
+            customer.shippingMethod)
+        : (customerForm.elements.customerSelectShippingMethod.value = "");
+    }
+  };
+
   const cartInit = () => {
+    renderForm();
     renderCart();
     updateCart();
 
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
-
-      if (target.classList.contains("js-btn-add-to-cart")) {
-        e.preventDefault();
-        const productDOMElement = target.closest(".js-product");
-
-        const data = getProductData(productDOMElement);
-        addCartItem(data);
-      }
 
       if (target.classList.contains("js-btn-cart-item-remove")) {
         e.preventDefault();
@@ -232,14 +236,18 @@
       }
 
       if (target.classList.contains("js-btn-product-decrease-quantity")) {
-        e.preventDefault();
+        // e.preventDefault();
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         decreaseQuantity(productID);
       }
-      ///
-      ///
-      ///
+
+      if (target.classList.contains("js-btn-continue")) {
+        e.preventDefault();
+
+        const customerForm = document.forms.customerinfo;
+        saveDataCustomer(customerForm);
+      }
     });
   };
 

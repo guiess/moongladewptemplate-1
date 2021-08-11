@@ -28,6 +28,9 @@ function site_scripts()
   wp_enqueue_style('main-style', get_stylesheet_uri(), [], $version); //подключили стили
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/app.js', [], $version, true); // подключили app.js основной скрипт
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/cart.js', [], $version, true); // подключили cart.js скрипт корзины
+  wp_localize_script('main-js', 'WPJS', [
+    'siteUrl' => get_template_directory_uri(),
+  ]);
 }
 
 add_action('after_setup_theme', 'crb_load');

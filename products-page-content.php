@@ -11,13 +11,14 @@ $product_price =  carbon_get_post_meta($product_id, 'product_price');
 $product_wight =  carbon_get_post_meta($product_id, 'product_wight');
 $product_bw_image_2x =  carbon_get_post_meta($product_id, 'product_bw_image_2x');
 $product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
+$product_weight =  carbon_get_post_meta($product_id, 'product_wight');
 // $product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
 // $product_use =  carbon_get_post_meta($product_id, 'product_use');
 // $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
 
 ?>
 
-<div class="product js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image_2x; ?>">
+<div class="product js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-weight="<?php echo $product_weight; ?>" data-product-src="<?php echo $product_image_2x; ?>">
   <div class="product__layout">
     <div class="product__visual" data-toggle-popup="product_<?php echo $product_id; ?>">
       <div class="product__image product__image--main">

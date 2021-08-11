@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Страница вводо данных покупателя
+Template Name: Страница Ввода платежной информации
 */
 ?>
 
@@ -68,51 +68,61 @@ Template Name: Страница вводо данных покупателя
                     </div>
                     <div class="flex justify-center mb-40">
                       <ul class="form-steps-list">
-                        <li class="form-steps-list__item form-steps-list__item--active">
-                          <a class="form-steps-list__link link link--underline" href="/checkout-customer.html">Customer info</a>
-                        </li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-customer.html">Customer info</a></li>
                         <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-shipping.html">Shipping</a></li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-payment.html">Payment</a></li>
+                        <li class="form-steps-list__item form-steps-list__item--active">
+                          <a class="form-steps-list__link link link--underline" href="/checkout-payment.html">Payment</a>
+                        </li>
                       </ul>
                     </div>
-                    <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
-                    <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-shipping">
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="email" placeholder="E-mail" /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " /></div>
-                      </div>
-                      <div class="md:grid md:grid-cols-2 md:gap-x-20">
+                    <form name="customerinfo" class="form-theme--dark" action="/checkout-payment.html">
+                      <div class="mb-45">
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" /></div>
+                        </div>
                         <div class="form-group">
                           <div class="form-group__control">
-                            <select id="customerInfoSelectCity" class="form-control">
-                              <option value="placeholder">City</option>
-                              <option value="Bali">Bali</option>
-                              <option value="New York">New York</option>
-                              <option value="Moscow">Moscow</option>
+                            <select id="customerSelectShippingMethod" class="form-control">
+                              <option value="01">AusPost - INTL STANDARD/PACK &amp; TRACK ($15)</option>
+                              <option value="Other">Other</option>
                             </select>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" /></div>
+                      </div>
+                      <h2 class="h5 font-serif mb-15 normal-case">Payment</h2>
+                      <div class="form-group">
+                        <div class="form-group__control">
+                          <select id="customerSelectCreditСard" class="form-control">
+                            <option value="01">Credit card (Visa, Mastercard, Amex)</option>
+                            <option value="Other">Other</option>
+                          </select>
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" /></div>
+                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="text" placeholder="Card number" /></div>
                       </div>
-                      <div class="text-right pt-20">
-                        <button class="btn btn--light js-btn-continue" type="submit">
-                          <span class="btn__text-holder"><span class="btn__text js-btn-continue">Continue</span></span>
+                      <div class="form-group">
+                        <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" /></div>
+                      </div>
+                      <div class="md:grid md:grid-cols-2 md:gap-x-20">
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerCardExpiration" class="form-control" type="text" placeholder="Expiration (MM / YY)" /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerCardSecurityCode" class="form-control" type="text" placeholder="Security code" /></div>
+                        </div>
+                      </div>
+                      <div class="md:flex md:justify-between md:items-center pt-20">
+                        <div class="mb-40 md:mb-0">
+                          <div class="custom-control custom-checkbox">
+                            <input class="custom-control__input" type="checkbox" id="remember_me" /><label class="custom-control__label" for="remember_me">Remember me</label>
+                          </div>
+                        </div>
+                        <button class="btn btn--light" type="button" data-toggle-popup="popup-thanks">
+                          <span class="btn__text-holder"><span class="btn__text">Pay now</span></span>
                         </button>
                       </div>
                     </form>
@@ -244,7 +254,7 @@ Template Name: Страница вводо данных покупателя
     /* ]]> */
   </script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/checkout.js"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/payment.js"></script>
 </body>
 
 </html>

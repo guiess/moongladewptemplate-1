@@ -460,7 +460,7 @@ Template Name: Страница с Продукцией
           </div>
           <!-- cart-empty -->
           <div class="flex flex-col flex-grow overflow-hidden" id="js-cart-wrapper-full">
-            <form class="flex flex-col flex-grow h-full max-h-full overflow-y-auto" method="POST" action="<?php echo home_url(); ?>/checkout-customer1">
+            <form class="flex flex-col flex-grow h-full max-h-full overflow-y-auto" method="POST" action="<?php echo home_url(); ?>/checkout-customer">
               <div class="flex-grow js-cart">
 
                 <!-- start -->
