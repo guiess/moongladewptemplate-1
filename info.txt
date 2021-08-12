@@ -8,3 +8,7 @@ AhDf[5_[j3mHXHt
 
 C:\xampp\htdocs\moonglade\wp-content\themes\moonglade
 browser-sync start --proxy "localhost/moonglade" --files "**/*" --no-notify
+
+u1441555_moongladb2 имя базы на хостинге
+u1441555_j123rf4 логин базы на хостинге
+B33hA7Kge7Za3kH пароль

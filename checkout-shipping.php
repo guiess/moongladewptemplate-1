@@ -70,12 +70,12 @@ Template Name: Страница ввода адреса доставки
                       <ul class="form-steps-list">
                         <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-customer">Customer info</a></li>
                         <li class="form-steps-list__item form-steps-list__item--active">
-                          <a class="form-steps-list__link link link--underline" href="/checkout-shipping.html">Shipping</a>
+                          <a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-shipping">Shipping</a>
                         </li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-payment.html">Payment</a></li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-payment">Payment</a></li>
                       </ul>
                     </div>
-                    <form name="customerinfo" class="form-theme--dark" action="/checkout-payment.html">
+                    <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-payment">
                       <div class="mb-45">
                         <div class="form-group">
                           <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" /></div>

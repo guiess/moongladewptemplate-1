@@ -69,10 +69,10 @@ Template Name: Страница вводо данных покупателя
                     <div class="flex justify-center mb-40">
                       <ul class="form-steps-list">
                         <li class="form-steps-list__item form-steps-list__item--active">
-                          <a class="form-steps-list__link link link--underline" href="/checkout-customer.html">Customer info</a>
+                          <a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-customer">Customer info</a>
                         </li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-shipping.html">Shipping</a></li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="/checkout-payment.html">Payment</a></li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-shipping">Shipping</a></li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-payment">Payment</a></li>
                       </ul>
                     </div>
                     <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
