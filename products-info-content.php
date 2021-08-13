@@ -9,8 +9,8 @@ $product_id = get_the_ID();
 
 $product_price =  carbon_get_post_meta($product_id, 'product_price');
 $product_wight =  carbon_get_post_meta($product_id, 'product_wight');
-$product_bw_image_2x =  carbon_get_post_meta($product_id, 'product_bw_image_2x');
-$product_image_2x =  carbon_get_post_meta($product_id, 'product_image_2x');
+$product_bw_image_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_bw_image_2x'));
+$product_image_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image_2x'));
 $product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
 $product_use =  carbon_get_post_meta($product_id, 'product_use');
 $product_contains =  carbon_get_post_meta($product_id, 'product_contains');

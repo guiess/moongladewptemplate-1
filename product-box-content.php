@@ -8,13 +8,11 @@ $count_delay = $args['count_delay'] / 10;
 $product_id = get_the_ID();
 
 $product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
-$product_box_image_1x = carbon_get_post_meta($product_id, 'product_box_image_1x');
-$product_box_image_2x = carbon_get_post_meta($product_id, 'product_box_image_2x');
-$product_box_hover_image_1x = carbon_get_post_meta($product_id, 'product_box_hover_image_1x');
-$product_box_hover_image_2x = carbon_get_post_meta($product_id, 'product_box_hover_image_2x');
+$product_box_image_1x = wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_box_image_1x'));
+$product_box_image_2x = wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_box_image_2x'));
+$product_box_hover_image_1x = wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_box_hover_image_1x'));
+$product_box_hover_image_2x = wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_box_hover_image_2x'));
 $product_price =  carbon_get_post_meta($product_id, 'product_price');
-
-
 
 // $product_attributes = carbon_get_post_meta($product_id, 'product_attributes');
 // $product_img_src = get_the_post_thumbnail_url($product_id, 'product');

@@ -44,10 +44,8 @@ Container::make('theme_options', 'Home Page')
 
   ->add_tab('First big picture', [
     Field::make('image', 'first_big_picture_1x', 'Picture recommended size 1270x1570 (170KB)')
-      ->set_value_type('url')
       ->set_width(33),
     Field::make('image', 'first_big_picture_2x', 'Picture for tablets 2540х3140 (700KB)')
-      ->set_value_type('url')
       ->set_width(33),
     Field::make('textarea', 'first_big_picture_text', 'Signature (to wrap lines, write <br/>)')
   ])

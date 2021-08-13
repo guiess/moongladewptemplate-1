@@ -13,5 +13,6 @@
   <link rel="preload" as="font" href="<?php echo get_template_directory_uri() . "/assets/fonts/Plain-Bold-Italic.woff2"; ?>" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="<?php echo get_template_directory_uri() . "/assets/fonts/CaliforniaSansMoonglade-Regular.woff2"; ?>" type="font/woff2" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="facebook-domain-verification" content="gxzukv6dl8i53z9pmqv0cyyqijgvke" />
   <?php wp_head(); ?>
 </head>
