@@ -5445,8 +5445,8 @@ select.form-control {
 		padding-bottom: 0
 	}
 }
-
-@media (min-width:1280px) {
+/* убрал косяк с разметкой в районе скрола боксов на главной странице */
+@media (min-width:2560px) {
 	.laptop\:flex {
 		display: flex
 	}

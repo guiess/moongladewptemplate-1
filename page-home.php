@@ -191,14 +191,17 @@ Template Name: Страница Главная
                     <div class="lg:mb-80 relative z-2" data-component="horizontal-scroll-section" data-target="#h-photos">
                       <div class="horizontal-blocks grid grid-flow-col auto-cols-max">
                         <?php
+
+                        $scroll_speed = [2, 3, 1, 1.5, 2, 0];
+
                         $table = carbon_get_theme_option('gorizont_pictures');
                         if (!empty($table)) : ?>
                           <?php foreach ($table as $key => $tr) : ?>
 
                             <div class="image-heading-block inline-block align-top">
-                              <div data-scroll="" data-scroll-call="moveLeft" data-delay="<?php $key = $key / 5;
+                              <div data-scroll="" data-scroll-call="moveLeft" data-delay="<?php $key / 5;
                                                                                           echo (string) $key; ?>" data-ease="power3.out" data-movement="200" data-speed="1.3">
-                                <div data-block="" data-scroll-speed="<?php echo (rand(0, 30)) / 10; ?>">
+                                <div data-block="" data-scroll-speed="<?php echo $scroll_speed[$key]; ?>">
                                   <div class="mb-15 md:mb-20 overflow-hidden relative">
                                     <picture><img class="transition-opacity duration-300 object-cover" data-animate="data-animate" src="<?php echo image_downsize($tr['gor_img500x250'], 'full')[0]; ?>" width="<?php echo image_downsize($tr['gor_img500x250'], 'full')[1]; ?>" height="<?php echo image_downsize($tr['gor_img500x250'], 'full')[2]; ?>" data-srcset="<?php echo image_downsize($tr['gor_img500x250'], 'full')[0]; ?> 1x,
                                     <?php echo image_downsize($tr['gor_img1000x5000'], 'full')[0]; ?> 2x" alt="image description" /></picture><span class="bg-black opacity-10 absolute w-full h-full top-0 left-0"></span>
@@ -563,7 +566,7 @@ Template Name: Страница Главная
                           'post_type' => 'product',
                           'post__in' => $catalog_products_ids
                         ];
-                        
+
                         // echo "<pre>";
                         // print_r($catalog_products_args);
                         // echo "</pre>";
