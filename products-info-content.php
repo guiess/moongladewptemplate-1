@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-$count = $args['count'];
+//$count = $args['count'];
 $product_id = get_the_ID();
 
 $product_price =  carbon_get_post_meta($product_id, 'product_price');
