@@ -149,7 +149,7 @@ Template Name: Страница с Продукцией
                   <div class="absolute bottom-0 w-full text-center opacity-70 left-0 pb-45 xl:pb-60 h-min:pb-30">
                     <div data-scroll="" data-scroll-call="fadeIn" data-delay="1.2">
                       <i class="scroll-down__icon icon-infinity mb-5"></i>
-                      <p class="scroll-down uppercase mb-0"><span>Roll Down</span></p>
+                      <p class="scroll-down uppercase mb-0"><span>~ Scroll Down ~</span></p>
                     </div>
                   </div>
                   <div class="text-center md:left-0 mt-30 md:mt-0 md:absolute md:w-full md:text-right md:right-0 md:mx-auto md:bottom-0 container md:pb-35 lg:pb-50 h-min:pb-20" data-scroll="" data-scroll-call="fadeIn" data-delay="1.5">
@@ -485,7 +485,7 @@ Template Name: Страница с Продукцией
   <div class="fixed right-20 bottom-20 left-20 z-30 js-cookies" data-cookies-popup="">
     <div class="bg-gray-800 text-white p-15 lg:px-40 lg:py-25 text-sm md:flex md:items-center md:justify-between max-w-800 ml-auto rounded-3xl">
       <div class="w-full mb-20 md:mb-0 md:pr-40 max-w-500 uppercase reset-last">
-        <p>By continuing to use our site you agree to using cookies in accordance with our <a class="link link--underline">Privacy Policy</a>.</p>
+        <p>By continuing to use our site you agree to using cookies in accordance with our <a class="link link--underline" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a>.</p>
       </div>
       <div class="grid justify-between gap-20 grid-flow-col items-center md:justify-end flex-shrink-0">
         <button class="btn btn--light py-10 h-46 js-btn-cookies" type="button" data-control="accept">

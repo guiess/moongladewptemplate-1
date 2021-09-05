@@ -50,7 +50,7 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
             <div class="product-popup__button-item flex-shrink-0">
               <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
                 <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-                <input class="stepper__input" type="number" data-input="" value="1" />
+                <input class="stepper__input" type="number" data-input="" value="1" min="3" max="100" oninput="validity.valid||(value='1');" />
                 <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
               </div>
             </div>

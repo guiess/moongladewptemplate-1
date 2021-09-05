@@ -147,7 +147,7 @@ Template Name: Страница Главная
                   <div class="absolute bottom-0 w-full text-center opacity-70 left-0 pb-45 xl:pb-60 h-min:pb-30">
                     <div data-scroll="" data-scroll-call="fadeIn" data-delay="1.2">
                       <i class="scroll-down__icon icon-infinity mb-5"></i>
-                      <p class="scroll-down uppercase mb-0"><span>Roll Down</span></p>
+                      <p class="scroll-down uppercase mb-0"><span>~ Scroll Down ~</span></p>
                     </div>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ Template Name: Страница Главная
                         <div class="relative">
                           <div class="relative w-full parallax-media h-full overflow-hidden" data-scroll="">
                             <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?> <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>'%3E%3C/svg%3E" width="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?>" height="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>" data-src="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>" data-srcset="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>, <?php echo image_downsize(carbon_get_theme_option('last_left_picture_2x'), 'full')[1]; ?> 2x" alt="image description" /></picture>
+                              <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?> <?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>'%3E%3C/svg%3E" width="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[1]; ?>" height="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[2]; ?>" data-src="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>" data-srcset="<?php echo image_downsize(carbon_get_theme_option('last_left_picture_1x'), 'full')[0]; ?>, <?php echo image_downsize(carbon_get_theme_option('last_left_picture_2x'), 'full')[0]; ?> 2x" alt="image description" /></picture>
                             </div>
                           </div>
                           <span class="absolute w-full h-full top-0 left-0 bg-black opacity-25"></span>

@@ -93,7 +93,7 @@
             <input class="js-cart-input-price" type="hidden" name="${id}-Price" value="${summitem}">
           <div class="cart-product__info-line flex justify-between items-baseline">
             <div class="cart-product__info-item">
-              <span>$ ${price}</span><span class="opacity-50 weight js-cart-item-weight">(${weight}<span class="lowercase">gr</span>)</span>
+              <span>$ ${price}</span><span class="opacity-50 weight js-cart-item-weight">(${weight}<span class="uppercase">GR</span>)</span>
             </div>
             <div class="cart-product__info-item"><span class="js-cart-item-price">$ ${summitem}</span></div>
           </div>

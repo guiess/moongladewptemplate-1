@@ -49,7 +49,7 @@ $product_weight =  carbon_get_post_meta($product_id, 'product_wight');
         <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
           <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
             <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-            <input class="stepper__input" type="number" data-input="" value="1" />
+            <input class="stepper__input" type="number" data-input="" value="1" min="3" max="100" oninput="validity.valid||(value='1');" />
             <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
           </div>
         </div>
