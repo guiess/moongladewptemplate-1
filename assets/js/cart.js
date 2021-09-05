@@ -183,7 +183,6 @@
 
   const addCartItem = (data) => {
     const { id } = data; // const id = data.id;
-    console.log(data);
     if (cart[id]) {
       increaseQuantity(id, data.quantity);
       return;

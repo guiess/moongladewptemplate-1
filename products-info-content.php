@@ -45,7 +45,7 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
       <div class="lg:col-span-5 product-popup__content-part js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image_2x; ?>">
         <div class="product-popup__content-scroller">
           <h2 class="product-popup__title font-serif" data-product-title=""><?php the_title(); ?></h2>
-          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5">(<?php echo $product_wight; ?>gr)</span></p>
+          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5">(<?php echo $product_wight; ?>GR)</span></p>
           <div class="product-popup__buttons-panel flex justify-between">
             <div class="product-popup__button-item flex-shrink-0">
               <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">

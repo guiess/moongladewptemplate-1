@@ -15,7 +15,7 @@ Container::make('post_meta', 'Product fields')
   ])
 
   ->add_tab('Wight', [
-    Field::make('text', 'product_wight', 'Wight (gr)')
+    Field::make('text', 'product_wight', 'Wight (GR)')
   ])
 
   ->add_tab('Box image', [

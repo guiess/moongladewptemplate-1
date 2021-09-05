@@ -139,7 +139,6 @@
 
   const countItemsInCart = () => {
     const count = Object.keys(cart).length;
-    console.log(count);
     return count;
   };
 
@@ -172,9 +171,6 @@
     customer.shippingEmail = email;
     customer.shippingAddress = address;
     customer.shippingMethod = shippingMethod;
-
-    console.log(customer);
-    console.log(JSON.stringify(customer)); // в JSON
 
     saveCustomer();
 

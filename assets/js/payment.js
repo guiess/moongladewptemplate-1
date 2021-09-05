@@ -139,7 +139,6 @@
 
   const countItemsInCart = () => {
     const count = Object.keys(cart).length;
-    console.log(count);
     return count;
   };
 
@@ -184,9 +183,6 @@
     customer.nameOnCard = nameOnCard;
     customer.cardExpiration = cardExpiration;
     customer.cardSecurityCode = cardSecurityCode;
-
-    console.log(customer);
-    console.log(JSON.stringify(customer)); // в JSON
 
     saveCustomer();
 

@@ -7,7 +7,6 @@
 
   const cart = JSON.parse(localStorage.getItem("cart"));
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
-  console.log(customer);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -140,7 +139,6 @@
 
   const countItemsInCart = () => {
     const count = Object.keys(cart).length;
-    console.log(count);
     return count;
   };
 
@@ -183,9 +181,6 @@
     customer.city = city;
     customer.postalCode = postalCode;
     customer.infoPhone = infoPhone;
-
-    console.log(customer);
-    console.log(JSON.stringify(customer)); // в JSON
 
     saveCustomer();
 
