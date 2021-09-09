@@ -260,10 +260,41 @@
         e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
-        saveDataCustomer(customerForm);
+        checkValidityOurFunc(customerForm);
+        // saveDataCustomer(customerForm);
       }
     });
   };
 
   cartInit();
 })();
+
+const checkValidityOurFunc = (customerForm) => {
+  // if (!customerForm.customerInfoEmail.checkValidity()) {
+  //   alert("Please check your email spelling");
+  // }
+
+  // if (!customerForm.customerInfoFirstName.checkValidity()) {
+  //   alert("Please check your FirstName spelling");
+  // }
+
+  // if (!customerForm.customerInfoLastName.checkValidity()) {
+  //   alert("Please check your LastName spelling");
+  // }
+
+  // if (!customerForm.customerInfoAddress.checkValidity()) {
+  //   alert("Please check your Address spelling");
+  // }
+
+  // if (!customerForm.customerInfoApartment.checkValidity()) {
+  //   alert("Please check your Apartment spelling");
+  // }
+
+  // if (!customerForm.customerInfoPostalCode.checkValidity()) {
+  //   alert("Please check your PostalCode spelling");
+  // }
+
+  if (!customerForm.customerInfoPhone.checkValidity()) {
+    alert("Please check your Phone spelling");
+  }
+};

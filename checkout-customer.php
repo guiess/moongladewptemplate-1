@@ -81,16 +81,16 @@ Template Name: Страница вводо данных покупателя
                         <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="email" placeholder="E-mail" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" required /></div>
+                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" required /></div>
+                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" required /></div>
+                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength = "300" maxlength = "30" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " required /></div>
+                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength = "30" required /></div>
                       </div>
                       <div class="md:grid md:grid-cols-2 md:gap-x-20">
                         <div class="form-group">
@@ -104,11 +104,11 @@ Template Name: Страница вводо данных покупателя
                           </div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" required /></div>
+                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" maxlength = "10" pattern="[a-zA-Z0-9]+$" required /></div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" required /></div>
+                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength = "20" pattern="[^A-Za-z]+$" required /></div>
                       </div>
                       <div class="text-right pt-20">
                         <button class="btn btn--light js-btn-continue" type="submit">
@@ -244,7 +244,7 @@ Template Name: Страница вводо данных покупателя
     /* ]]> */
   </script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/checkout.js"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/checkout.js?ver=0.0.0.2"></script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>
 </body>
 

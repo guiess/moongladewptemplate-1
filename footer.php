@@ -66,7 +66,6 @@
 </div>
 <!-- new code end -->
 <?php wp_footer(); ?>
-<script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>
+<script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js?ver=0.0.0.1"></script>
 </body>
-
 </html>
