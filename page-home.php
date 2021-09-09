@@ -88,8 +88,8 @@ Template Name: Страница Главная
                   <div class="flex-grow flex items-center justify-center lg:block">
                     <ul class="main-nav main-nav--main">
                       <li class="main-nav__item"><a class="link" href="<?php echo home_url('/products', ''); ?>">SuperFood </a></li>
-                      <li class="main-nav__item"><a class="link" href="<?php echo home_url('/films', ''); ?>" target="_blank">Films</a></li>
-                      <li class="main-nav__item"><a class="link" href="<?php echo home_url('/sounds', ''); ?>" target="_blank">Sound</a></li>
+                      <li class="main-nav__item"><a class="link" href="<?php echo carbon_get_theme_option('vimeo_link'); ?>" target="_blank">Films</a></li>
+                      <li class="main-nav__item"><a class="link" href="<?php echo carbon_get_theme_option('sound_link'); ?>" target="_blank">Sound</a></li>
                     </ul>
                   </div>
                 </div>
@@ -345,7 +345,7 @@ Template Name: Страница Главная
                     </div>
                   </div>
                   <div class="my-50 md:hidden text-center">
-                    <button class="btn btn--dark" type="button">
+                    <button class="btn btn--dark" type="button" onClick='location.href="<?php echo carbon_get_theme_option('vimeo_link'); ?>"'>
                       <span class="btn__text-holder"><span class="btn__text">moonglade Films</span></span>
                     </button>
                   </div>

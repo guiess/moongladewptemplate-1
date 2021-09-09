@@ -5573,6 +5573,22 @@ select.form-control {
 	}
 }
 
+/* drw */
 .is-empty {
 	display: none;
 }
+/* 
+input:invalid {
+  border: 2px dashed white;
+}
+
+input:invalid:required {
+  background:#000
+}
+
+input:valid {
+  border: 2px solid blue;
+	background:hsla(0, 0%, 100%, .2)
+} */
+
+/* drw */

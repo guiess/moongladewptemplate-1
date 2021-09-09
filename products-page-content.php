@@ -47,9 +47,9 @@ $product_weight =  carbon_get_post_meta($product_id, 'product_wight');
       <p class="product__price"><span>$ <?php echo $product_price; ?></span><span class="ml-5">(<?php echo $product_wight; ?>GR)</span></p>
       <div class="flex md:block lg:flex justify-between -mx-10">
         <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
-          <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
+          <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
             <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus"></i></div>
-            <input class="stepper__input" type="number" data-input="" value="1" min="3" max="100" oninput="validity.valid||(value='1');" />
+            <input class="stepper__input" type="number" data-input="" value="1" min="1" max="99" oninput="validity.valid||(value='1');" readonly />
             <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus"></i></div>
           </div>
         </div>

@@ -11,9 +11,11 @@ Container::make('theme_options', 'Home Page')
   ->set_icon('dashicons-admin-home')
   ->add_tab('Socials', [
     Field::make('text', 'instagram_link', 'Instagram Link')
-      ->set_width(50),
+      ->set_width(33),
     Field::make('text', 'vimeo_link', 'Vimeo Link')
-      ->set_width(50)
+      ->set_width(33),
+    Field::make('text', 'sound_link', 'Sound Link')
+      ->set_width(33)
   ])
 
   ->add_tab('First video', [

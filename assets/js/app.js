@@ -7521,6 +7521,8 @@
 				this.input.addEventListener("input", this.changeListener)
 			}
 		}
+
+		//! DRW replaced this.max = parseInt(this.holder.getAttribute(this.settings.state.max), 10) || 100 на this.max = parseInt(this.holder.getAttribute(this.settings.state.max), 10) || 99
 		class po {
 			constructor({
 				holder: t,
@@ -7547,7 +7549,7 @@
 					increase: this.holder.querySelector(this.settings.DOM.increment),
 					decrease: this.holder.querySelector(this.settings.DOM.decrement),
 					input: this.holder.querySelector(this.settings.DOM.input)
-				}, this.increaseListener = () => this.increment(), this.decreaseListener = () => this.decrement(), this.inputListener = () => this.inputChange(), this.min = parseInt(this.holder.getAttribute(this.settings.state.min), 10) || 1, this.max = parseInt(this.holder.getAttribute(this.settings.state.max), 10) || 100, this.step = parseInt(this.holder.getAttribute(this.settings.state.step), 10) || 1, this.count = this.inputValue
+				}, this.increaseListener = () => this.increment(), this.decreaseListener = () => this.decrement(), this.inputListener = () => this.inputChange(), this.min = parseInt(this.holder.getAttribute(this.settings.state.min), 10) || 1, this.max = parseInt(this.holder.getAttribute(this.settings.state.max), 10) || 99, this.step = parseInt(this.holder.getAttribute(this.settings.state.step), 10) || 1, this.count = this.inputValue
 			}
 			init() {
 				this.isMax && this.deactivateIncrement(), this.isMin && this.deactivateDecrement(), this.updateValue(), this.attachEvents()

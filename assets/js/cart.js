@@ -1,8 +1,3 @@
-//todo убрать последнее подчеркивание у тьоваров в корзине IT APPEARS THAT YOUR CART // IS CURRENTLY EMPTY!
-//todo пустая корзина надо будет выводить текст котоырй дизайнеры придумали
-//todo при инит выполнить проверку есть ли товары в корзине через локалстор и в зависимости от этого поменять .. data-toggle-popup="popup-cart .. через cartItemDOMElement.classList.add("..."); cartItemDOMElement.classList ...del... ("...");
-//todo сделать в корзине поле инпут лиссенер для того, чтобы менять кол-во через это поле. пока не стал делать. добавил readonly
-
 (function () {
   const cartDOMElement = document.querySelector(".js-cart");
 
@@ -40,7 +35,11 @@
 
   const increaseQuantity = (id, quantity) => {
     const newQuantity = Number(cart[id].quantity) + Number(quantity);
-    updateQuantity(id, newQuantity);
+    
+    if (newQuantity <= 99) {
+      updateQuantity(id, newQuantity);
+    }
+    else updateQuantity(id, 99);
   };
 
   const decreaseQuantity = (id) => {
@@ -78,7 +77,7 @@
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
-    //! скорее всего надо будет чикнуть инпута эти. их необходимо вставить на третьей странице оформления заказа
+    //! скорее всего надо будет чикнуть инпута эти. их необходимо вставить на третьей странице оформления заказа возможно. ждём заказчика с оплатными решениями
     const cartItemTemplate = `
     <div class="cart-popup__product border-b border-black-100">
       <div class="cart-product uppercase flex items-start">
@@ -99,7 +98,7 @@
           </div>
           <div class="flex justify-between items-center">
             <div class="cart-product__info-item">
-              <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
+              <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
                 <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
                 <input class="stepper__input js-cart-item-quantity" type="number" data-input="" readonly value="${quantity}" />
                 <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>

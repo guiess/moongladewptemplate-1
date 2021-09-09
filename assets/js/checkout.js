@@ -31,7 +31,9 @@
 
   const increaseQuantity = (id, quantity) => {
     const newQuantity = Number(cart[id].quantity) + Number(quantity);
-    updateQuantity(id, newQuantity);
+    if (newQuantity <= 99) {
+      updateQuantity(id, newQuantity);
+    }
   };
 
   const decreaseQuantity = (id) => {
@@ -72,7 +74,7 @@
           </div>
           <div class="flex justify-between items-center">
             <div class="cart-product__info-item">
-              <div class="stepper" data-component="stepper" data-min="1" data-max="100" data-step="1">
+              <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
                 <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
                 <input class="stepper__input js-cart-item-quantity" readonly type="number" data-input="" value="${quantity}" />
                 <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>

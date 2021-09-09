@@ -20,7 +20,7 @@ add_action("wp_enqueue_scripts", "site_scripts");
 
 function site_scripts()
 {
-  $version = '0.0.0.0';
+  $version = '0.0.0.1';
   wp_dequeue_style('wp-block-library'); // нужен для редактора Gutenberg. нам не нужен
   wp_deregister_script('wp-embed'); // удалим wp-embed.min.js?ver=5.7.2' в футере
 
