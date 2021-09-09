@@ -260,8 +260,13 @@
         e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
-        checkValidityOurFunc(customerForm);
-        // saveDataCustomer(customerForm);
+        if (!checkValidityOurFunc(customerForm)) {
+          console.log(123);
+          return;
+        } else {
+          console.log(321);
+          saveDataCustomer(customerForm);
+        }
       }
     });
   };
@@ -270,31 +275,40 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
-  // if (!customerForm.customerInfoEmail.checkValidity()) {
-  //   alert("Please check your email spelling");
-  // }
+  if (!customerForm.customerInfoEmail.checkValidity()) {
+    alert("Please check your email spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoFirstName.checkValidity()) {
-  //   alert("Please check your FirstName spelling");
-  // }
+  if (!customerForm.customerInfoFirstName.checkValidity()) {
+    alert("Please check your FirstName spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoLastName.checkValidity()) {
-  //   alert("Please check your LastName spelling");
-  // }
+  if (!customerForm.customerInfoLastName.checkValidity()) {
+    alert("Please check your LastName spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoAddress.checkValidity()) {
-  //   alert("Please check your Address spelling");
-  // }
+  if (!customerForm.customerInfoAddress.checkValidity()) {
+    alert("Please check your Address spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoApartment.checkValidity()) {
-  //   alert("Please check your Apartment spelling");
-  // }
+  if (!customerForm.customerInfoApartment.checkValidity()) {
+    alert("Please check your Apartment spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoPostalCode.checkValidity()) {
-  //   alert("Please check your PostalCode spelling");
-  // }
+  if (!customerForm.customerInfoPostalCode.checkValidity()) {
+    alert("Please check your PostalCode spelling");
+    return;
+  }
 
   if (!customerForm.customerInfoPhone.checkValidity()) {
     alert("Please check your Phone spelling");
+    return;
   }
+
+  return true;
 };
