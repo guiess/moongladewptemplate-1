@@ -78,10 +78,10 @@ Template Name: Страница Ввода платежной информаци
                     <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-payment">
                       <div class="mb-45">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" /></div>
+                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" /></div>
+                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength = "300" required /></div>
                         </div>
                         <div class="form-group">
                           <div class="form-group__control">
@@ -254,7 +254,7 @@ Template Name: Страница Ввода платежной информаци
     /* ]]> */
   </script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/payment.js"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/payment.js?ver=0.0.0.2"></script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>
 </body>
 

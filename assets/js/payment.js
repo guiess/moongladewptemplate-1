@@ -258,35 +258,38 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
+
+  if (!customerForm.customerShippingEmail.checkValidity()) {
+    alert("Please check your Email spelling");
+    return;
+  }
+
+  if (!customerForm.customerShippingAddress.checkValidity()) {
+    alert("Please check your Shipping Address spelling");
+    return;
+  }
+
   if (!customerForm.customerCardNumber.checkValidity()) {
     alert("Please check your Card Number spelling");
     return;
-  }
-  
-  // if (!customerForm.customerInfoLastName.checkValidity()) {
-  //   alert("Please check your LastName spelling");
-  //   return;
-  // }
+  } 
 
-  if (!customerForm.customerCardSecurityCode.checkValidity()) {
-    alert("Please check your CardSecurityCode spelling");
+  if (!customerForm.customerNameOnCard.checkValidity()) {
+    alert("Please check your Name On Card spelling");
     return;
   }
 
-  // if (!customerForm.customerInfoAddress.checkValidity()) {
-  //   alert("Please check your Address spelling");
-  //   return;
-  // }
+  if (!customerForm.customerCardExpiration.checkValidity()) {
+    alert("Please check your Card Expiration spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoApartment.checkValidity()) {
-  //   alert("Please check your Apartment spelling");
-  //   return;
-  // }
+  if (!customerForm.customerCardSecurityCode.checkValidity()) {
+    alert("Please check your Card Security Code spelling");
+    return;
+  }
 
-  // if (!customerForm.customerInfoPostalCode.checkValidity()) {
-  //   alert("Please check your PostalCode spelling");
-  //   return;
-  // }
+
 
   // if (!customerForm.customerInfoPhone.checkValidity()) {
   //   alert("Please check your Phone spelling");
