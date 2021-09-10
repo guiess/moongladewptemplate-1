@@ -240,14 +240,58 @@
         decreaseQuantity(productID);
       }
 
-      if (target.classList.contains("js-btn-continue")) {
+      if (target.classList.contains("js-btn-paynow")) {
         e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
-        saveDataCustomer(customerForm);
+
+        if (!checkValidityOurFunc(customerForm)) {
+          return;
+        } else {
+          saveDataCustomer(customerForm);
+        }
       }
     });
   };
 
   cartInit();
 })();
+
+const checkValidityOurFunc = (customerForm) => {
+  if (!customerForm.customerCardNumber.checkValidity()) {
+    alert("Please check your Card Number spelling");
+    return;
+  }
+  
+  // if (!customerForm.customerInfoLastName.checkValidity()) {
+  //   alert("Please check your LastName spelling");
+  //   return;
+  // }
+
+  if (!customerForm.customerCardSecurityCode.checkValidity()) {
+    alert("Please check your CardSecurityCode spelling");
+    return;
+  }
+
+  // if (!customerForm.customerInfoAddress.checkValidity()) {
+  //   alert("Please check your Address spelling");
+  //   return;
+  // }
+
+  // if (!customerForm.customerInfoApartment.checkValidity()) {
+  //   alert("Please check your Apartment spelling");
+  //   return;
+  // }
+
+  // if (!customerForm.customerInfoPostalCode.checkValidity()) {
+  //   alert("Please check your PostalCode spelling");
+  //   return;
+  // }
+
+  // if (!customerForm.customerInfoPhone.checkValidity()) {
+  //   alert("Please check your Phone spelling");
+  //   return;
+  // }
+
+  return true;
+};

@@ -238,10 +238,28 @@
         e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
-        saveDataCustomer(customerForm);
+        if (!checkValidityOurFunc(customerForm)) {
+          return;
+        } else {
+          saveDataCustomer(customerForm);
+        }
       }
     });
   };
 
   cartInit();
 })();
+
+const checkValidityOurFunc = (customerForm) => {
+  if (!customerForm.customerShippingEmail.checkValidity()) {
+    alert("Please check your email spelling");
+    return;
+  }
+
+  if (!customerForm.customerShippingAddress.checkValidity()) {
+    alert("Please check your Shipping Address spelling");
+    return;
+  }
+
+  return true;
+};

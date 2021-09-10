@@ -87,7 +87,7 @@ Template Name: Страница вводо данных покупателя
                         <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength = "300" maxlength = "30" required /></div>
+                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength = "30" required /></div>
                       </div>
                       <div class="form-group">
                         <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength = "30" required /></div>

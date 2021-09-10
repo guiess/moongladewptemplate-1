@@ -261,10 +261,8 @@
 
         const customerForm = document.forms.customerinfo;
         if (!checkValidityOurFunc(customerForm)) {
-          console.log(123);
           return;
         } else {
-          console.log(321);
           saveDataCustomer(customerForm);
         }
       }

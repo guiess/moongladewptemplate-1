@@ -102,17 +102,17 @@ Template Name: Страница Ввода платежной информаци
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="text" placeholder="Card number" /></div>
+                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="tel" placeholder="Card number" maxlength = "12" pattern="[\d]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" /></div>
+                        <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" maxlength = "30" pattern="[a-zA-Z]+$" required /></div>
                       </div>
                       <div class="md:grid md:grid-cols-2 md:gap-x-20">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerCardExpiration" class="form-control" type="text" placeholder="Expiration (MM / YY)" /></div>
+                          <div class="form-group__control"><input name="customerCardExpiration" class="form-control" type="tel" placeholder="Expiration (MM / YY)" maxlength = "5" pattern="\d{1,3}\/\d{1,3}" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerCardSecurityCode" class="form-control" type="text" placeholder="Security code" /></div>
+                          <div class="form-group__control"><input name="customerCardSecurityCode" class="form-control" type="tel" placeholder="Security code" maxlength = "3" pattern="[\d]+$" required /></div>
                         </div>
                       </div>
                       <div class="md:flex md:justify-between md:items-center pt-20">
@@ -121,8 +121,8 @@ Template Name: Страница Ввода платежной информаци
                             <input class="custom-control__input" type="checkbox" id="remember_me" /><label class="custom-control__label" for="remember_me">Remember me</label>
                           </div>
                         </div>
-                        <button class="btn btn--light" type="button" data-toggle-popup="popup-thanks">
-                          <span class="btn__text-holder"><span class="btn__text">Pay now</span></span>
+                        <button class="btn btn--light js-btn-paynow" type="button" data-toggle-popup="popup-thanks">
+                          <span class="btn__text-holder"><span class="btn__text js-btn-paynow">Pay now</span></span>
                         </button>
                       </div>
                     </form>

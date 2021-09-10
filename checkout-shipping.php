@@ -78,10 +78,10 @@ Template Name: Страница ввода адреса доставки
                     <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-payment">
                       <div class="mb-45">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" /></div>
+                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" /></div>
+                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength = "300" required /></div>
                         </div>
                       </div>
                       <h2 class="h5 font-serif mb-15 normal-case">Shipping method</h2>
@@ -227,7 +227,7 @@ Template Name: Страница ввода адреса доставки
     /* ]]> */
   </script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/shipping.js"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/shipping.js?ver=0.0.0.2"></script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>
 </body>
 
