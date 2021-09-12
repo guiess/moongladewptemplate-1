@@ -81,7 +81,7 @@ Template Name: Страница Ввода платежной информаци
                           <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength = "300" required /></div>
+                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength="300" required /></div>
                         </div>
                         <div class="form-group">
                           <div class="form-group__control">
@@ -102,17 +102,17 @@ Template Name: Страница Ввода платежной информаци
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="tel" placeholder="Card number" maxlength = "12" pattern="[\d]+$" required /></div>
+                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="tel" placeholder="Card number" maxlength="12" pattern="[\d]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" maxlength = "30" pattern="[a-zA-Z]+$" required /></div>
+                        <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" maxlength="30" pattern="[a-zA-Z]+$" required /></div>
                       </div>
                       <div class="md:grid md:grid-cols-2 md:gap-x-20">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerCardExpiration" class="form-control" type="tel" placeholder="Expiration (MM / YY)" maxlength = "5" pattern="\d{1,3}\/\d{1,3}" required /></div>
+                          <div class="form-group__control"><input name="customerCardExpiration" class="form-control" type="tel" placeholder="Expiration (MM / YY)" maxlength="5" pattern="\d{1,3}\/\d{1,3}" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerCardSecurityCode" class="form-control" type="tel" placeholder="Security code" maxlength = "3" pattern="[\d]+$" required /></div>
+                          <div class="form-group__control"><input name="customerCardSecurityCode" class="form-control" type="tel" placeholder="Security code" maxlength="3" pattern="[\d]+$" required /></div>
                         </div>
                       </div>
                       <div class="md:flex md:justify-between md:items-center pt-20">

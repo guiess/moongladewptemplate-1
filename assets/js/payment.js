@@ -102,6 +102,9 @@
   };
 
   const updateCartTotalPrice = () => {
+    if (!cart) {
+      return;
+    }
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
       const { quantity, price } = cart[id];
       return acc + price * quantity;
@@ -159,9 +162,10 @@
   };
 
   const renderCart = () => {
-    const ids = Object.keys(cart);
-
-    ids.forEach((id) => renderCartItem(cart[id]));
+    if (cart) {
+      const ids = Object.keys(cart);
+      ids.forEach((id) => renderCartItem(cart[id]));
+    }
   };
 
   const saveDataCustomer = (customerForm) => {
@@ -258,7 +262,6 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
-
   if (!customerForm.customerShippingEmail.checkValidity()) {
     alert("Please check your Email spelling");
     return;
@@ -272,7 +275,7 @@ const checkValidityOurFunc = (customerForm) => {
   if (!customerForm.customerCardNumber.checkValidity()) {
     alert("Please check your Card Number spelling");
     return;
-  } 
+  }
 
   if (!customerForm.customerNameOnCard.checkValidity()) {
     alert("Please check your Name On Card spelling");
@@ -288,8 +291,6 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your Card Security Code spelling");
     return;
   }
-
-
 
   // if (!customerForm.customerInfoPhone.checkValidity()) {
   //   alert("Please check your Phone spelling");

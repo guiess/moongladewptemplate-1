@@ -102,6 +102,9 @@
   };
 
   const updateCartTotalPrice = () => {
+    if (!cart) {
+      return;
+    }
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
       const { quantity, price } = cart[id];
       return acc + price * quantity;
@@ -159,6 +162,9 @@
   };
 
   const renderCart = () => {
+    if (!cart) {
+      return;
+    }
     const ids = Object.keys(cart);
 
     ids.forEach((id) => renderCartItem(cart[id]));
