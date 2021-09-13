@@ -7772,16 +7772,61 @@
 					...e
 				})
 			}
-			init() {
+			init() {				
 				this.targetID = this.holder.getAttribute(this.settings.DOM.target), this.targetDOM = document.getElementById(this.targetID), this.targetDOM && (this.popupClose = [...this.targetDOM.querySelectorAll(this.settings.DOM.close)], this.scroller = this.targetDOM.querySelector(this.settings.DOM.scroller) || this.targetDOM, this.hidePopup(), this.targetDOM.Popup = this, super.init())
 			}
 			get transitionDuration() {
 				return parseFloat(getComputedStyle(this.targetDOM).transitionDuration)
 			}
-			attachEvents() {
+			attachEvents() {				
 				this.onCloseListener = () => this.setState().innactive(), this.popupClose.length && this.popupClose.forEach((t => t.addEventListener("click", this.onCloseListener))), super.attachEvents()
 			}
+			//drw-
+			// checkValidityOurFunc() {
+			// 	console.log("checkValidityOurFunc");
+			// 	const customerForm = document.forms.customerinfo;
+
+			// 	if (!customerForm.customerShippingEmail.checkValidity()) {
+			// 		alert("Please check your Email spelling");
+			// 		return;
+			// 	}
+			
+			// 	if (!customerForm.customerShippingAddress.checkValidity()) {
+			// 		alert("Please check your Shipping Address spelling");
+			// 		return;
+			// 	}
+			
+			// 	if (!customerForm.customerCardNumber.checkValidity()) {
+			// 		alert("Please check your Card Number spelling");
+			// 		return;
+			// 	}
+			
+			// 	if (!customerForm.customerNameOnCard.checkValidity()) {
+			// 		alert("Please check your Name On Card spelling");
+			// 		return;
+			// 	}
+			
+			// 	if (!customerForm.customerCardExpiration.checkValidity()) {
+			// 		alert("Please check your Card Expiration spelling");
+			// 		return;
+			// 	}
+			
+			// 	if (!customerForm.customerCardSecurityCode.checkValidity()) {
+			// 		alert("Please check your Card Security Code spelling");
+			// 		return;
+			// 	}
+			// 	return true;				
+			// }
+			//- drw
 			onActiveState() {
+				//drw-
+				// console.log("onActiveState");
+				return;
+				// if (!this.checkValidityOurFunc()) {
+        //   return;
+        // }
+				// console.log("onActiveState2");				
+				//- drw
 				this.targetDOM.classList.remove(this.settings.popupInnactiveClass);
 				const t = [...this.targetDOM.querySelectorAll('[data-component="lazyload"]:not(.loaded)')];
 				setTimeout((() => {
@@ -7793,8 +7838,9 @@
 					};
 					h(T, t), h(v, e), this.disableScroll()
 				}), 100)
-			}
+			}			
 			onInnactiveState() {
+				// console.log("onInnactiveState");
 				this.targetDOM.classList.remove(this.settings.popupActiveClass);
 				const t = {
 					target: this.targetDOM,

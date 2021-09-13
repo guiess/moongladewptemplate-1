@@ -215,6 +215,13 @@
     }
   };
 
+  const showPopUp = () => {
+    const x = document.getElementById("popup-thanks");
+    // console.log(x);
+    x.classList.remove("is-hidden");
+    x.classList.add("is-active");
+  };
+
   const cartInit = () => {
     renderForm();
     renderCart();
@@ -253,6 +260,8 @@
           return;
         } else {
           saveDataCustomer(customerForm);
+          console.log("showPopUp");
+          showPopUp();
         }
       }
     });
@@ -291,11 +300,6 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your Card Security Code spelling");
     return;
   }
-
-  // if (!customerForm.customerInfoPhone.checkValidity()) {
-  //   alert("Please check your Phone spelling");
-  //   return;
-  // }
 
   return true;
 };
