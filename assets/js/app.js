@@ -7761,7 +7761,9 @@
 		class vo extends ao {
 			constructor(t, e) {
 				super(t, document, {
-					activeClass: "popup--opened",
+					//drw- popup--opened -> popup--opened2
+					activeClass: "popup--opened2",
+					//-drw
 					popupActiveClass: "is-active",
 					popupInnactiveClass: "is-hidden",
 					DOM: {
@@ -7820,7 +7822,7 @@
 			//- drw
 			onActiveState() {
 				//drw-
-				// console.log("onActiveState");
+				console.log("onActiveState");
 				return;
 				// if (!this.checkValidityOurFunc()) {
         //   return;

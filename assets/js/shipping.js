@@ -266,6 +266,5 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your Shipping Address spelling");
     return;
   }
-
   return true;
 };
