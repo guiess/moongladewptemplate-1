@@ -7762,7 +7762,7 @@
 			constructor(t, e) {
 				super(t, document, {
 					//drw- popup--opened -> popup--opened2
-					activeClass: "popup--opened2",
+					activeClass: "popup--opened",
 					//-drw
 					popupActiveClass: "is-active",
 					popupInnactiveClass: "is-hidden",
@@ -7822,8 +7822,8 @@
 			//- drw
 			onActiveState() {
 				//drw-
-				console.log("onActiveState");
-				return;
+				// console.log("onActiveState");
+				// return;
 				// if (!this.checkValidityOurFunc()) {
         //   return;
         // }

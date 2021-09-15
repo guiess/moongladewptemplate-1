@@ -12,3 +12,7 @@ browser-sync start --proxy "localhost/moonglade" --files "**/*" --no-notify
 u1441555_moongladb2 имя базы на хостинге
 u1441555_j123rf4 логин базы на хостинге
 B33hA7Kge7Za3kH пароль
+
+почта на рег ру
+moonglade@u1441555.isp.regruhosting.ru
+Jhj213ras

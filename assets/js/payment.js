@@ -147,9 +147,11 @@
     return count;
   };
 
-  const deleteCartItem = (id) => {
-    if (countItemsInCart() === 1) {
-      return;
+  const deleteCartItem = (id, deleteAll) => {
+    if (!deleteAll) {
+      if (countItemsInCart() === 1) {
+        return;
+      }
     }
 
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -160,6 +162,16 @@
     delete cart[id];
     updateCart();
   };
+
+  // const deleteAllCartItem = (id) => {
+  //   const cartItemDOMElement = cartDOMElement.querySelector(
+  //     `[data-product-id="${id}"]`
+  //   );
+
+  //   cartDOMElement.removeChild(cartItemDOMElement);
+  //   delete cart[id];
+  //   updateCart();
+  // };
 
   const renderCart = () => {
     if (cart) {
@@ -215,11 +227,54 @@
     }
   };
 
-  const showPopUp = () => {
-    const x = document.getElementById("popup-thanks");
-    // console.log(x);
-    x.classList.remove("is-hidden");
-    x.classList.add("is-active");
+  // const showPopUp = () => {
+  //   const x = document.getElementById("popup-thanks");
+  //   // console.log(x);
+  //   x.classList.remove("is-hidden");
+  //   x.classList.add("is-active");
+  // };
+
+  const resetCart = () => {
+    if (!cart) {
+      return;
+    }
+    const ids = Object.keys(cart);
+    // ids.forEach((id) => deleteAllCartItem(cart[id].id));
+    ids.forEach((id) => deleteCartItem(cart[id].id, true));
+  };
+
+  var formSend = function (cart) {
+    var data = cart;
+    var xhr = new XMLHttpRequest();
+    var url = WPJS.ajaxUrl + "?action=send_email";
+    // var url = 'http://localhost/moonglade/wp-admin/admin-ajax.php?action=send_email';
+
+    console.log(url);
+
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      // var activePopup = document.querySelector(".popup.is-active");
+
+      // if (activePopup) {
+      //   activePopup.classList.remove("is-active");
+      // } else {
+      //   myLib.toggleScroll();
+      // }
+
+      if (xhr.response === "success") {
+        console.log("response succes");
+        // document.querySelector(".popup-thanks").classList.add("is-active");
+        // document.dispatchEvent(new CustomEvent("reset-cart"));
+      } else {
+        console.log("not response");
+      }
+
+      // cart.reset(); //! пока не могу понять нужно это делать или нет, но вроде как да. если что убрать потом.
+    };
+    console.log("SENDING: " + data);
+    xhr.send(data);
   };
 
   const cartInit = () => {
@@ -234,7 +289,7 @@
         e.preventDefault();
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
-        deleteCartItem(productID);
+        deleteCartItem(productID, false);
       }
 
       if (target.classList.contains("js-btn-product-increase-quantity")) {
@@ -260,8 +315,9 @@
           return;
         } else {
           saveDataCustomer(customerForm);
-          console.log("showPopUp");
-          showPopUp();
+          // showPopUp();
+          resetCart(); //! это конечно же после протестестирования надо перенести ниже после положительного результата отправки и нужен какой-то дизайн + верстка для этого
+          formSend("test test test");
         }
       }
     });

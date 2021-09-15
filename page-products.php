@@ -508,7 +508,7 @@ Template Name: Страница с Продукцией
     </div>
   </div>
   <!-- new code end -->
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/app.js"></script>
+  <?php wp_footer(); ?>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cart.js"></script>
   <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>  
 </body>
