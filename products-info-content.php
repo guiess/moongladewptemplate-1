@@ -10,7 +10,11 @@ $product_id = get_the_ID();
 $product_price =  carbon_get_post_meta($product_id, 'product_price');
 $product_wight =  carbon_get_post_meta($product_id, 'product_wight');
 $product_bw_image_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_bw_image_2x'));
-$product_image_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image_2x'));
+$product_image1_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image1_2x'));
+$product_image2_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image2_2x'));
+$product_image3_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image3_2x'));
+$product_image4_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image4_2x'));
+$product_image5_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image5_2x'));
 $product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
 $product_use =  carbon_get_post_meta($product_id, 'product_use');
 $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
@@ -39,10 +43,52 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
 
         </ul>
         <div class="flex-grow product-popup__visual">
-          <picture><img class="w-full max-w-full transition-opacity duration-300 lg:w-full lg:h-full lg:object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image_2x; ?>" alt="image description" /></picture>
+
+          <div class="w-full h-full" data-component="product-carousel">
+            <div class="swiper-container w-full h-full" data-carousel="">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide w-full h-full">
+                  <div class="slide-inner w-full h-full">
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image1_2x; ?>" alt="image description" /></picture>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full h-full">
+                  <div class="slide-inner w-full h-full">
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image2_2x; ?>" alt="image description" /></picture>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full h-full">
+                  <div class="slide-inner w-full h-full">
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image3_2x; ?>" alt="image description" /></picture>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full h-full">
+                  <div class="slide-inner w-full h-full">
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image4_2x; ?>" alt="image description" /></picture>
+                  </div>
+                </div>
+                <div class="swiper-slide w-full h-full">
+                  <div class="slide-inner w-full h-full">
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image5_2x; ?>" alt="image description" /></picture>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute p-10 md:p-30 left-0 top-1/2 transform -translate-y-1/2 z-5">
+                <button class="btn btn--control" type="button" data-control="prev">
+                  <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-arrow-left"></i></span>
+                </button>
+              </div>
+              <div class="absolute p-10 md:p-30 right-0 top-1/2 transform -translate-y-1/2 z-5">
+                <button class="btn btn--control" type="button" data-control="next">
+                  <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-arrow-right"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="lg:col-span-5 product-popup__content-part js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image_2x; ?>">
+
+      <div class="lg:col-span-5 product-popup__content-part js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image1_2x; ?>">
         <div class="product-popup__content-scroller">
           <h2 class="product-popup__title font-serif" data-product-title=""><?php the_title(); ?></h2>
           <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5">(<?php echo $product_wight; ?>GR)</span></p>

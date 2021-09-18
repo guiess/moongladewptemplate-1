@@ -118,6 +118,18 @@ html.has-scroll-dragging {
 	-moz-osx-font-smoothing: grayscale
 }
 
+.icon-arrow-left:before {
+	/* content: "" */
+	/* content: "🡄" */
+	content: "⮜"
+}
+
+.icon-arrow-right:before {
+	/* content: "" */
+	/* content: "🡆" */
+	content: "⮞"
+}
+
 .icon-burger:before {
 	content: ""
 }
@@ -661,6 +673,11 @@ input:-webkit-autofill:hover {
 
 .editable-field__overlay:before {
 	content: attr(data-edit-text)
+}
+
+select option {
+	background: #000;
+	color: #fff
 }
 
 .is-loading,
@@ -1855,6 +1872,37 @@ button:focus {
 	animation: none
 }
 
+.btn--control {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	font-size: 8px;
+	padding: 0;
+	color: #000;
+	background-color: #fff
+}
+
+@media (min-width:1280px) {
+	.btn--control {
+		width: 56px;
+		height: 56px
+	}
+}
+
+.btn--control:before {
+	background-color: #000
+}
+
+.no-touchevents .btn--control.is-active,
+.no-touchevents .btn--control:hover,
+.no-touchevents .button--hover .btn--control,
+.no-touchevents .group:not(.group--no-events):hover .btn--control {
+	color: #fff
+}
+
 .form-group {
 	margin-bottom: 2rem
 }
@@ -2510,6 +2558,18 @@ textarea {
 [data-slide-current]:after {
 	content: "-";
 	margin: 0 .5rem
+}
+
+[data-component=product-carousel] .swiper-slide {
+	overflow: hidden
+}
+
+[data-component=product-carousel] img {
+	transition: transform 1.2s cubic-bezier(.3, .86, .36, .95)
+}
+
+[data-component=product-carousel] .swiper-slide-next img {
+	transform: scale(1.2)!important
 }
 
 .product-simple[data-toggle-popup] {
@@ -4652,6 +4712,10 @@ select.form-control {
 
 .p-0 {
 	padding: 0
+}
+
+.p-10 {
+	padding: 1rem
 }
 
 .p-15 {

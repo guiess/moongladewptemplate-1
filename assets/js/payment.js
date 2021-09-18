@@ -239,7 +239,6 @@
       return;
     }
     const ids = Object.keys(cart);
-    // ids.forEach((id) => deleteAllCartItem(cart[id].id));
     ids.forEach((id) => deleteCartItem(cart[id].id, true));
   };
 
@@ -262,7 +261,8 @@
       // } else {
       //   myLib.toggleScroll();
       // }
-
+      console.log(xhr.response);
+      
       if (xhr.response === "success") {
         console.log("response succes");
         // document.querySelector(".popup-thanks").classList.add("is-active");
@@ -308,17 +308,21 @@
 
       if (target.classList.contains("js-btn-paynow")) {
         e.preventDefault();
+        
+        // TODO test test test
+        formSend("test test test");
+        // TODO test test test
 
-        const customerForm = document.forms.customerinfo;
+        // const customerForm = document.forms.customerinfo;
 
-        if (!checkValidityOurFunc(customerForm)) {
-          return;
-        } else {
-          saveDataCustomer(customerForm);
-          // showPopUp();
-          resetCart(); //! это конечно же после протестестирования надо перенести ниже после положительного результата отправки и нужен какой-то дизайн + верстка для этого
-          formSend("test test test");
-        }
+        // if (!checkValidityOurFunc(customerForm)) {
+        //   return;
+        // } else {
+        //   saveDataCustomer(customerForm);
+        //   // showPopUp();
+        //   // resetCart(); //! это конечно же после протестестирования надо перенести ниже после положительного результата отправки и нужен какой-то дизайн + верстка для этого
+        //   formSend("test test test");
+        // }
       }
     });
   };

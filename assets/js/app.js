@@ -22769,6 +22769,45 @@
 						})), t.addEventListener("mouseup", (() => {
 							a.classList.remove(e)
 						})), o.init()
+					})), document.querySelectorAll('[data-component="product-carousel"]').forEach((t => {
+						const e = t.querySelector("[data-carousel]"),
+							i = t.querySelector('[data-control="next"]'),
+							n = t.querySelector('[data-control="prev"]'),
+							r = "next",
+							s = "prev";
+						let a = r;
+						i.addEventListener("click", (() => {
+							a = r
+						})), n.addEventListener("click", (() => {
+							a = s
+						}));
+						const o = new Mt(e, {
+							init: !1,
+							watchSlidesProgress: !0,
+							preventInteractionOnTransition: !0,
+							speed: 1e3,
+							effect: "slide",
+							navigation: {
+								nextEl: i,
+								prevEl: n
+							},
+							loop: !0,
+							on: {
+								progress() {
+									for (let t = 0; t < o.slides.length; t++) {
+										const e = o.slides[t].progress;
+										o.slides[t].querySelector(".slide-inner").style.transform = 1 === e ? `translate3d(${o.width}px, 0, 0)` : ""
+									}
+								},
+								touchStart() {
+									for (let t = 0; t < o.slides.length; t++) o.slides[t].style.transition = ""
+								},
+								setTransition() {
+									for (let t = 0; t < o.slides.length; t++) o.slides[t].style.transition = "1000ms", o.slides[t].querySelector(".slide-inner").style.transition = "1000ms"
+								}
+							}
+						});
+						o.init(), h(D)
 					}))
 				}(), yo(), fo(),
 					function () {

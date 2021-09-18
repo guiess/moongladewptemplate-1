@@ -37,12 +37,41 @@ Container::make('post_meta', 'Product fields')
   ])
 
   ->add_tab('Product image', [
-    Field::make('image', 'product_image_1x', 'Product image')
+    Field::make('image', 'product_image1_1x', 'Product image 1')
       ->set_help_text('Approximate size 352х419')
       ->set_width(50),
-    Field::make('image', 'product_image_2x', 'Product image for tablets')
+    Field::make('image', 'product_image1_2x', 'Product image 1 for tablets')
       ->set_help_text('Approximate size 704х838')
       ->set_width(50),
+
+    Field::make('image', 'product_image2_1x', 'Product image2 ')
+      ->set_help_text('Approximate size 352х419')
+      ->set_width(50),
+    Field::make('image', 'product_image2_2x', 'Product image 2 for tablets')
+      ->set_help_text('Approximate size 704х838')
+      ->set_width(50),
+
+    Field::make('image', 'product_image3_1x', 'Product image 3')
+      ->set_help_text('Approximate size 352х419')
+      ->set_width(50),
+    Field::make('image', 'product_image3_2x', 'Product image 3 for tablets')
+      ->set_help_text('Approximate size 704х838')
+      ->set_width(50),
+
+    Field::make('image', 'product_image4_1x', 'Product image 4')
+      ->set_help_text('Approximate size 352х419')
+      ->set_width(50),
+    Field::make('image', 'product_image4_2x', 'Product image 4 for tablets')
+      ->set_help_text('Approximate size 704х838')
+      ->set_width(50),
+
+    Field::make('image', 'product_image5_1x', 'Product image 5')
+      ->set_help_text('Approximate size 352х419')
+      ->set_width(50),
+    Field::make('image', 'product_image5_2x', 'Product image 5 for tablets')
+      ->set_help_text('Approximate size 704х838')
+      ->set_width(50),
+
   ])
 
   ->add_tab('Product BW image', [
