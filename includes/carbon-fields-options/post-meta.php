@@ -82,6 +82,11 @@ Container::make('post_meta', 'Product fields')
       ->set_help_text('Approximate size 704х838')
       ->set_width(50),
   ])
+  
+  ->add_tab('Product mail image', [
+    Field::make('image', 'product_mail_image', 'Product black and white image')
+      ->set_help_text('Approximate size 43х50')
+  ])
 
   ->add_tab('Category', [
     Field::make('text', 'product_form_factor', 'Category:')

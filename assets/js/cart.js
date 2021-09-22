@@ -119,7 +119,7 @@
   };
 
   const saveCart = () => {
-    localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON
+    localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON    
   };
 
   const updateCartTotalPrice = () => {

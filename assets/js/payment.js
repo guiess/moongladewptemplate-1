@@ -163,16 +163,6 @@
     updateCart();
   };
 
-  // const deleteAllCartItem = (id) => {
-  //   const cartItemDOMElement = cartDOMElement.querySelector(
-  //     `[data-product-id="${id}"]`
-  //   );
-
-  //   cartDOMElement.removeChild(cartItemDOMElement);
-  //   delete cart[id];
-  //   updateCart();
-  // };
-
   const renderCart = () => {
     if (cart) {
       const ids = Object.keys(cart);
@@ -188,6 +178,7 @@
 
     const typeOfCreditСard =
       customerForm.elements.customerSelectCreditСard.value;
+    const customerCardNumber = customerForm.customerCardNumber.value;
     const nameOnCard = customerForm.customerNameOnCard.value;
     const cardExpiration = customerForm.customerCardExpiration.value;
     const cardSecurityCode = customerForm.customerCardSecurityCode.value;
@@ -198,6 +189,7 @@
     customer.shippingMethod = shippingMethod;
 
     customer.typeOfCreditСard = typeOfCreditСard;
+    customer.customerCardNumber = customerCardNumber;
     customer.nameOnCard = nameOnCard;
     customer.cardExpiration = cardExpiration;
     customer.cardSecurityCode = cardSecurityCode;
@@ -240,41 +232,65 @@
     }
     const ids = Object.keys(cart);
     ids.forEach((id) => deleteCartItem(cart[id].id, true));
+    // TODO сброс customer данных
   };
 
-  var formSend = function (cart) {
-    var data = cart;
+  const onlyPurchasedGoods = () => {
+    const ids = Object.keys(cart);
+    let xmlPurchasedGoods = "";
+    ids.forEach(
+      (id) =>
+        (xmlPurchasedGoods +=
+          cart[id].id.replace('product_','') + "=" + Number(cart[id].quantity) + "&")
+    );
+    return xmlPurchasedGoods;
+  };
+
+  const customerinfoToSend = () => {
+    let xmlCustomerinfoToSend = "";
+    for (let key in customer) {
+      if (customer.hasOwnProperty(key)) {
+        // console.log(`${key} : ${customer[key]}`);
+        xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
+      }
+    }
+    return xmlCustomerinfoToSend;
+  };
+
+  const formSend = function () {
+    if (!cart) {
+      return;
+    }
+    console.log(JSON.stringify(cart) );
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=send_email";
     // var url = 'http://localhost/moonglade/wp-admin/admin-ajax.php?action=send_email';
 
-    console.log(url);
-
-    xhr.open("POST", url);
+    xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {
-      // var activePopup = document.querySelector(".popup.is-active");
-
-      // if (activePopup) {
-      //   activePopup.classList.remove("is-active");
-      // } else {
-      //   myLib.toggleScroll();
-      // }
       console.log(xhr.response);
-      
+
       if (xhr.response === "success") {
         console.log("response succes");
-        // document.querySelector(".popup-thanks").classList.add("is-active");
-        // document.dispatchEvent(new CustomEvent("reset-cart"));
+        // resetCart();
       } else {
         console.log("not response");
       }
-
-      // cart.reset(); //! пока не могу понять нужно это делать или нет, но вроде как да. если что убрать потом.
     };
-    console.log("SENDING: " + data);
-    xhr.send(data);
+
+    let infoToSend = onlyPurchasedGoods();
+    // TODO некоторые данные необходимо брать из формы и не надо сохранять их в storage
+    infoToSend += customerinfoToSend();
+    infoToSend = infoToSend.substring(0, infoToSend.length - 1);
+
+    console.log(infoToSend);
+    xhr.send(infoToSend);
+
+    // console.log(JSON.stringify(cart));
+    // console.log(customer);
+    // xhr.send("foo=bar&lorem=ipsum&rem=sum&more=good");
   };
 
   const cartInit = () => {
@@ -308,21 +324,16 @@
 
       if (target.classList.contains("js-btn-paynow")) {
         e.preventDefault();
-        
-        // TODO test test test
-        formSend("test test test");
-        // TODO test test test
 
-        // const customerForm = document.forms.customerinfo;
+        const customerForm = document.forms.customerinfo;
 
-        // if (!checkValidityOurFunc(customerForm)) {
-        //   return;
-        // } else {
-        //   saveDataCustomer(customerForm);
-        //   // showPopUp();
-        //   // resetCart(); //! это конечно же после протестестирования надо перенести ниже после положительного результата отправки и нужен какой-то дизайн + верстка для этого
-        //   formSend("test test test");
-        // }
+        if (!checkValidityOurFunc(customerForm)) {
+          return;
+        } else {
+          saveDataCustomer(customerForm);
+          // showPopUp();
+          formSend();
+        }
       }
     });
   };
