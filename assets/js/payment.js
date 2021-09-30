@@ -7,6 +7,10 @@
 
   const cart = JSON.parse(localStorage.getItem("cart"));
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
+  let discountValue = Number(localStorage.getItem("discountValue")) || 0;
+  let discountCode = localStorage.getItem("discountCode") || "";
+  console.log("discountValue = " + discountValue);
+  console.log("discountCode = " + discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -48,6 +52,9 @@
   );
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
+  );
+  const cartDiscountSumDOMElement = document.querySelector(
+    ".js-discount-sum"
   );
   const cartTotalPriceInputDOMElement = document.querySelector(
     ".js-cart-total-price-input"
@@ -114,8 +121,12 @@
       cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
     //TODO тут должно добавиться - купон + доставка
+    if (cartDiscountSumDOMElement) {
+      cartDiscountSumDOMElement.textContent = "-" + discountValue + "$"; //! totalPrice поменять
+    }
+    
     if (cartTotalPriceDOMElement) {
-      cartTotalPriceDOMElement.textContent = "$ " + totalPrice;
+      cartTotalPriceDOMElement.textContent = "$ " + totalPrice - discountValue;
     }
 
     if (cartTotalPriceInputDOMElement) {
@@ -241,7 +252,10 @@
     ids.forEach(
       (id) =>
         (xmlPurchasedGoods +=
-          cart[id].id.replace('product_','') + "=" + Number(cart[id].quantity) + "&")
+          cart[id].id.replace("product_", "") +
+          "=" +
+          Number(cart[id].quantity) +
+          "&")
     );
     return xmlPurchasedGoods;
   };
@@ -261,7 +275,7 @@
     if (!cart) {
       return;
     }
-    console.log(JSON.stringify(cart) );
+    // console.log(JSON.stringify(cart));
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=send_email";
     // var url = 'http://localhost/moonglade/wp-admin/admin-ajax.php?action=send_email';
@@ -275,6 +289,7 @@
       if (xhr.response === "success") {
         console.log("response succes");
         // resetCart();
+        // TODO res loc stor -> input fields info
       } else {
         console.log("not response");
       }
@@ -285,12 +300,47 @@
     infoToSend += customerinfoToSend();
     infoToSend = infoToSend.substring(0, infoToSend.length - 1);
 
-    console.log(infoToSend);
+    // console.log(infoToSend);
     xhr.send(infoToSend);
 
-    // console.log(JSON.stringify(cart));
-    // console.log(customer);
     // xhr.send("foo=bar&lorem=ipsum&rem=sum&more=good");
+  };
+
+  const makeDiscount = (discount) => {
+    if(discount.startsWith('fix')){
+      discountValue = discount.substr(3, );
+      
+      localStorage.setItem("discountValue", discountValue)
+      console.log(discountValue);
+    }
+    updateCartTotalPrice();   
+  };
+
+  const discountCheck = function () {
+    if (!cart) {
+      return;
+    }    
+
+    var xhr = new XMLHttpRequest();
+    var url = WPJS.ajaxUrl + "?action=discount_check";
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      const response = xhr.response;
+      console.log(response);
+
+      if (response === "false") {
+        console.log("response false");
+        return;
+      } else {
+        makeDiscount(response);
+      }
+    };
+
+    discountCode = document.getElementsByName("discountInputField")[0].value;
+    xhr.send("discountcode=" + discountCode);
   };
 
   const cartInit = () => {
@@ -320,6 +370,12 @@
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         decreaseQuantity(productID);
+      }
+
+      if (target.classList.contains("js-button-apply-disount")) {
+        e.preventDefault();
+
+        discountCheck();
       }
 
       if (target.classList.contains("js-btn-paynow")) {
