@@ -139,7 +139,7 @@ Template Name: Страница Ввода платежной информаци
                         <div class="px-15 md:px-30 laptop:px-50 py-25 lg:py-30 border-b border-black-100">
                           <form class="form-theme--light mb-25" action="#" data-component="discount-form">
                             <div class="flex">
-                              <div class="flex-grow"><input class="form-control" name="discountInputField" type="text" placeholder="Discount code " /></div>
+                              <div class="flex-grow"><input class="form-control" id="discountInputField" type="text" placeholder="Discount code " /></div>
                               <div class="flex-shrink-0 ml-15">
                                 <button class="btn btn--primary" type="button">
                                   <span class="btn__text-holder"><span class="btn__text js-button-apply-disount">apply</span></span>
@@ -154,7 +154,7 @@ Template Name: Страница Ввода платежной информаци
                           </div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 90</span></div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span>15$</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">-20$</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">0$</span></div>
                         </div>
 
                       </div>

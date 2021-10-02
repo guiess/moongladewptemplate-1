@@ -9,8 +9,8 @@
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
-  console.log("discountValue = " + discountValue);
-  console.log("discountCode = " + discountCode);
+  // console.log("discountValue = " + discountValue);
+  // console.log("discountCode = " + discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -53,12 +53,7 @@
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
   );
-  const cartDiscountSumDOMElement = document.querySelector(
-    ".js-discount-sum"
-  );
-  const cartTotalPriceInputDOMElement = document.querySelector(
-    ".js-cart-total-price-input"
-  );
+  const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
@@ -112,25 +107,33 @@
     if (!cart) {
       return;
     }
+    let discountValueMath;
+
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
       const { quantity, price } = cart[id];
       return acc + price * quantity;
     }, 0);
 
+    document.getElementById('discountInputField').value = discountCode;
+
     if (cartSubtotalPriceDOMElement) {
       cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
-    //TODO тут должно добавиться - купон + доставка
-    if (cartDiscountSumDOMElement) {
-      cartDiscountSumDOMElement.textContent = "-" + discountValue + "$"; //! totalPrice поменять
-    }
-    
-    if (cartTotalPriceDOMElement) {
-      cartTotalPriceDOMElement.textContent = "$ " + totalPrice - discountValue;
+
+    if (discountValue < 0) {
+      discountValueMath = Math.abs(discountValue);
+    } else {
+      // if (discountValue > 100) return;
+      discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
     }
 
-    if (cartTotalPriceInputDOMElement) {
-      cartTotalPriceInputDOMElement.value = totalPrice;
+    if (cartDiscountSumDOMElement) {
+      cartDiscountSumDOMElement.textContent = "-" + discountValueMath + "$";
+    }
+
+    if (cartTotalPriceDOMElement) {
+      cartTotalPriceDOMElement.textContent =
+        "$ " + (Number(totalPrice) - discountValueMath);
     }
   };
 
@@ -175,10 +178,12 @@
   };
 
   const renderCart = () => {
-    if (cart) {
-      const ids = Object.keys(cart);
-      ids.forEach((id) => renderCartItem(cart[id]));
+    if (!cart) {
+      return;
     }
+    const ids = Object.keys(cart);
+
+    ids.forEach((id) => renderCartItem(cart[id]));
   };
 
   const saveDataCustomer = (customerForm) => {
@@ -284,12 +289,16 @@
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {
-      console.log(xhr.response);
+      const response = xhr.response.trim();
 
-      if (xhr.response === "success") {
+      if (response == "success") {
         console.log("response succes");
         // resetCart();
-        // TODO res loc stor -> input fields info
+        // resetCustomerInfoInputFieldsStorage();
+        // resetDiscountInputFieldsStorage();
+        // resetCart();
+
+        // TODO reset local storage -> and input fields info and discount inputs and storage discount
       } else {
         console.log("not response");
       }
@@ -298,28 +307,34 @@
     let infoToSend = onlyPurchasedGoods();
     // TODO некоторые данные необходимо брать из формы и не надо сохранять их в storage
     infoToSend += customerinfoToSend();
-    infoToSend = infoToSend.substring(0, infoToSend.length - 1);
+    infoToSend += "discountCode=" + discountCode;
+
+    // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
 
     // console.log(infoToSend);
     xhr.send(infoToSend);
 
-    // xhr.send("foo=bar&lorem=ipsum&rem=sum&more=good");
+    // xhr.send("foo=bar&rem=sum&more=good");
   };
 
   const makeDiscount = (discount) => {
-    if(discount.startsWith('fix')){
-      discountValue = discount.substr(3, );
-      
-      localStorage.setItem("discountValue", discountValue)
-      console.log(discountValue);
+    discountValue = Math.abs(Number(discount.substr(3))); //откинем минус если вдруг в админке ввели минус
+    discountCode = document.getElementById('discountInputField').value;
+
+    if (discount.startsWith("fix")) {
+      discountValue *= -1;
     }
-    updateCartTotalPrice();   
+
+    // console.log(discountValue);
+    localStorage.setItem("discountCode", discountCode);
+    localStorage.setItem("discountValue", discountValue);
+    updateCartTotalPrice();
   };
 
   const discountCheck = function () {
     if (!cart) {
       return;
-    }    
+    }
 
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=discount_check";
@@ -339,7 +354,7 @@
       }
     };
 
-    discountCode = document.getElementsByName("discountInputField")[0].value;
+    discountCode = document.getElementById('discountInputField').value;
     xhr.send("discountcode=" + discountCode);
   };
 
@@ -373,7 +388,7 @@
       }
 
       if (target.classList.contains("js-button-apply-disount")) {
-        e.preventDefault();
+        // e.preventDefault();
 
         discountCheck();
       }

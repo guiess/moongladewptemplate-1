@@ -7,6 +7,10 @@
 
   const cart = JSON.parse(localStorage.getItem("cart"));
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
+  let discountValue = Number(localStorage.getItem("discountValue")) || 0;
+  let discountCode = localStorage.getItem("discountCode") || "";
+  // console.log("discountValue = " + discountValue);
+  // console.log("discountCode = " + discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -49,9 +53,7 @@
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
   );
-  const cartTotalPriceInputDOMElement = document.querySelector(
-    ".js-cart-total-price-input"
-  );
+  const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
@@ -105,21 +107,33 @@
     if (!cart) {
       return;
     }
+    let discountValueMath;
+
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
       const { quantity, price } = cart[id];
       return acc + price * quantity;
     }, 0);
 
+    document.getElementById("discountInputField").value = discountCode;
+
     if (cartSubtotalPriceDOMElement) {
       cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
-    //TODO тут должно добавиться - купон + доставка
-    if (cartTotalPriceDOMElement) {
-      cartTotalPriceDOMElement.textContent = "$ " + totalPrice;
+
+    if (discountValue < 0) {
+      discountValueMath = Math.abs(discountValue);
+    } else {
+      // if (discountValue > 100) return;
+      discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
     }
 
-    if (cartTotalPriceInputDOMElement) {
-      cartTotalPriceInputDOMElement.value = totalPrice;
+    if (cartDiscountSumDOMElement) {
+      cartDiscountSumDOMElement.textContent = "-" + discountValueMath + "$";
+    }
+
+    if (cartTotalPriceDOMElement) {
+      cartTotalPriceDOMElement.textContent =
+        "$ " + (Number(totalPrice) - discountValueMath);
     }
   };
 
@@ -210,6 +224,48 @@
         : (customerForm.elements.customerSelectShippingMethod.value = "");
     }
   };
+  
+  const makeDiscount = (discount) => {
+    discountValue = Math.abs(Number(discount.substr(3))); //откинем минус если вдруг в админке ввели минус
+    discountCode = document.getElementById("discountInputField").value;
+
+    if (discount.startsWith("fix")) {
+      discountValue *= -1;
+    }
+
+    // console.log(discountValue);
+    localStorage.setItem("discountCode", discountCode);
+    localStorage.setItem("discountValue", discountValue);
+    updateCartTotalPrice();
+  };
+
+  const discountCheck = function () {
+    if (!cart) {
+      return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    var url = WPJS.ajaxUrl + "?action=discount_check";
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      const response = xhr.response;
+      console.log(response);
+
+      if (response === "false") {
+        console.log("response false");
+        return;
+      } else {
+        makeDiscount(response);
+      }
+    };
+
+    discountCode = document.getElementById("discountInputField").value;
+
+    xhr.send("discountcode=" + discountCode);
+  };
 
   const cartInit = () => {
     renderForm();
@@ -238,6 +294,12 @@
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         decreaseQuantity(productID);
+      }
+
+      if (target.classList.contains("js-button-apply-disount")) {
+        // e.preventDefault();
+
+        discountCheck();
       }
 
       if (target.classList.contains("js-btn-continue")) {
