@@ -78,7 +78,7 @@ Template Name: Страница вводо данных покупателя
                     <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
                     <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-shipping">
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="email" placeholder="E-mail" required /></div>
+                        <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="text" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
                       </div>
                       <div class="form-group">
                         <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>

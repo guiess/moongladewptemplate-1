@@ -110,3 +110,18 @@ function discount_check()
   }
   require_once('includes/ajax-requests/discount.php');
 }
+
+add_action('wp_ajax_feedback_send', 'feedback_send');
+add_action('wp_ajax_nopriv_feedback_send', 'feedback_send');
+
+function feedback_send()
+{
+  echo 'feedback_send';
+  
+  $method = $_SERVER['REQUEST_METHOD'];
+
+  if ($method !== 'POST') {
+    exit();
+  }
+  require_once('includes/mail-forms/feedback.php');
+}

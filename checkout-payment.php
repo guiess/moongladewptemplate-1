@@ -78,7 +78,7 @@ Template Name: Страница Ввода платежной информаци
                     <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-payment">
                       <div class="mb-45">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="email" value="" placeholder="E-mail" required /></div>
+                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="text" value="" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
                         </div>
                         <div class="form-group">
                           <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength="300" required /></div>

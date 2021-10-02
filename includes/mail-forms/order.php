@@ -1,7 +1,5 @@
-
 <?php
 
-// $admin_email = 'moonglade@u1441555.isp.regruhosting.ru';
 $email_from = 'moonglade@u1441555.isp.regruhosting.ru';
 $email_to = 'dearwhynot@gmail.com';
 //! $email_to = $_POST['email']; 

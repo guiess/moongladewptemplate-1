@@ -39,7 +39,7 @@ Template Name: Страница с Продукцией
     <header class="header" data-component="header">
       <div class="container">
         <div class="header__holder flex justify-between items-center">
-          <a class="header__logo" href="<?php echo home_url(); ?>"><svg class="logo--default" width="132" height="14" viewbox="0 0 132 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <a class="header__logo" href="<?php echo home_url(); ?>/products"><svg class="logo--default" width="132" height="14" viewbox="0 0 132 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M21.4953 0.991113C18.0516 2.98086 17.2538 6.85284 19.0773 10.013C20.9007 13.1703 24.6556 14.4177 28.0992 12.4279C31.5429 10.4413 32.3406 6.56621 30.5172 3.40911C28.6936 0.248775 24.9389 -0.998638 21.4953 0.991113ZM27.8897 12.0676C25.6226 13.3767 22.4838 11.9844 20.7744 9.02432C19.0648 6.06114 19.4284 2.64826 21.6954 1.33914C23.9625 0.0300223 27.1012 1.42229 28.8107 4.38239C30.5201 7.34573 30.1568 10.7586 27.8897 12.0676Z" fill="currentColor"></path>
               <path d="M87.1709 12.6607H82.6688V2.24732C82.6688 1.6034 83.0384 0.709882 83.4819 0.300146V0.232422H80.3154V0.300146C80.7591 0.709882 81.1286 1.6034 81.1286 2.24732V11.1696C81.1286 11.8135 80.759 12.707 80.3154 13.1167V13.1845H81.1286H82.6686V13.1843H89.6883V12.6618H89.6885V11.637H89.6011C88.9888 12.2761 88.1874 12.6553 87.1709 12.6607Z" fill="currentColor"></path>
               <path d="M112.78 0.235199V0.232422H108.038V0.235044H108.034H107.221V0.304465C107.666 0.714201 108.034 1.60572 108.034 2.2521V11.1614C108.034 11.8079 107.666 12.6994 107.221 13.109V13.1785H108.034V13.1382H108.038V13.1797H112.779V13.1845C116.678 13.1848 119.254 10.2861 119.254 6.7103C119.254 3.13436 116.679 0.235353 112.78 0.235199ZM112.779 12.7744V12.779H109.575V0.63321H112.78V0.630588C115.347 0.630742 117.329 3.34941 117.329 6.70289C117.328 10.0562 115.346 12.7746 112.779 12.7744Z" fill="currentColor"></path>
@@ -373,24 +373,21 @@ Template Name: Страница с Продукцией
             <h4 class="popup-title">Do you have any questions?</h4>
           </div>
           <div class="md:h-full md:max-h-full md:flex md:flex-col md:overflow-y-auto laptop:px-20">
-            <form class="flex-grow md:flex md:flex-col" action="#">
+            <form name="feedbackUserForm" class="flex-grow md:flex md:flex-col">
               <div class="flex-grow">
                 <div class="form-group">
-                  <div class="form-group__control"><input class="form-control" type="text" placeholder="Name" /></div>
+                  <div class="form-group__control"><input class="form-control" name="feedbackSenderName" type="text" placeholder="Name" /></div>
                 </div>
                 <div class="form-group">
-                  <div class="form-group__control"><input class="form-control" type="email" placeholder="Email" /></div>
+                  <div class="form-group__control"><input class="form-control" name="feedbackSenderEmail" type="text" placeholder="Email" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$"/></div>
                 </div>
                 <div class="form-group">
-                  <div class="form-group__control"><input class="form-control" type="phone" placeholder="Phone number" /></div>
-                </div>
-                <div class="form-group">
-                  <div class="form-group__control"><textarea class="form-control" placeholder="Message"></textarea></div>
+                  <div class="form-group__control"><textarea class="form-control" name="feedbackSenderMessage" placeholder="Message"></textarea></div>
                 </div>
               </div>
               <div class="pt-10">
-                <button class="btn btn--primary w-full" type="submit">
-                  <span class="btn__text-holder"><span class="btn__text">send</span></span>
+                <button class="btn btn--primary w-full js-feedback-button"">
+                  <span class="btn__text-holder"><span class="btn__text  js-feedback-button">send</span></span>
                 </button>
               </div>
             </form>
@@ -509,8 +506,9 @@ Template Name: Страница с Продукцией
   </div>
   <!-- new code end -->
   <?php wp_footer(); ?>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cart.js"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>  
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cart.js?ver=0.0.0.2"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js?ver=0.0.0.1"></script>  
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/feedback.js?ver=0.0.0.1"></script>
 </body>
 
 </html>

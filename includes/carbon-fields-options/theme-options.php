@@ -141,4 +141,8 @@ Container::make('theme_options', 'Home Page')
           'post_type' => 'product',
         ]
       ])
+  ])
+
+  ->add_tab('Support email', [
+    Field::make('text', 'moon_support_email', 'Support email, which will receive letters from the feedback form'),
   ]);

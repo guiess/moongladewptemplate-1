@@ -35,11 +35,10 @@
 
   const increaseQuantity = (id, quantity) => {
     const newQuantity = Number(cart[id].quantity) + Number(quantity);
-    
+
     if (newQuantity <= 99) {
       updateQuantity(id, newQuantity);
-    }
-    else updateQuantity(id, 99);
+    } else updateQuantity(id, 99);
   };
 
   const decreaseQuantity = (id) => {
@@ -119,7 +118,7 @@
   };
 
   const saveCart = () => {
-    localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON    
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const updateCartTotalPrice = () => {
@@ -137,7 +136,7 @@
     }
   };
 
-  const updateCartTotalItemsCounter = () => { 
+  const updateCartTotalItemsCounter = () => {
     const totalQuantity = Object.keys(cart).reduce((acc, id) => {
       const { quantity } = cart[id];
       return acc + Number(quantity);

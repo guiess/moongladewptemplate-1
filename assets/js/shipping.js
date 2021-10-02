@@ -257,7 +257,7 @@
       if (response === "false") {
         console.log("response false");
         return;
-      } else {
+      } else if (response.startsWith("fix") || response.startsWith("per")){
         makeDiscount(response);
       }
     };
