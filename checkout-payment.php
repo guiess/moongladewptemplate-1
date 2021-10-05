@@ -102,7 +102,7 @@ Template Name: Страница Ввода платежной информаци
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="tel" placeholder="Card number" maxlength="12" pattern="[\d]+$" required /></div>
+                        <div class="form-group__control"><input name="customerCardNumber" class="form-control" type="tel" placeholder="Card number" maxlength="16" pattern="[\d]+$" required /></div>
                       </div>
                       <div class="form-group">
                         <div class="form-group__control"><input name="customerNameOnCard" class="form-control" type="text" placeholder="Name on card" maxlength="30" pattern="[a-zA-Z]+$" required /></div>
