@@ -94,7 +94,7 @@ Template Name: Страница ввода адреса доставки
                         </div>
                       </div>
                       <div class="text-right pt-20">
-                        <button class="btn btn--light js-btn-continue" type="submit">
+                        <button class="btn btn--light js-btn-continue">
                           <span class="btn__text-holder"><span class="btn__text js-btn-continue">Continue</span></span>
                         </button>
                       </div>

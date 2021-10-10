@@ -76,7 +76,7 @@ Template Name: Страница вводо данных покупателя
                       </ul>
                     </div>
                     <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
-                    <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-shipping">
+                    <form name="customerinfo" class="form-theme--dark">
                       <div class="form-group">
                         <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="text" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
                       </div>
@@ -92,26 +92,35 @@ Template Name: Страница вводо данных покупателя
                       <div class="form-group">
                         <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength = "30" required /></div>
                       </div>
+                      <div class="form-group">
+                        <div class="form-group__control">
+                          <select id="customerInfoSelectCountry" class="form-control js-select-country">
+                            <option value="placeholder">Country</option>
+                            <?php
+                              $countries_string = carbon_get_theme_option("moon_countries_list");
+                              $countries_array = explode("\n", $countries_string);
+                              sort($countries_array); ?>
+                                <?php foreach ($countries_array as $tr) : ?>
+
+                                  <option value="<?php echo trim($tr); ?>"><?php echo trim($tr); ?></option>
+
+                                <?php endforeach; ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="md:grid md:grid-cols-2 md:gap-x-20">
                         <div class="form-group">
-                          <div class="form-group__control">
-                            <select id="customerInfoSelectCity" class="form-control">
-                              <option value="placeholder">City</option>
-                              <option value="Bali">Bali</option>
-                              <option value="New York">New York</option>
-                              <option value="Moscow">Moscow</option>
-                            </select>
-                          </div>
+                          <div class="form-group__control"><input name="customerInfoCity" class="form-control" type="text" placeholder="City" maxlength = "50" pattern="[a-zA-Z]+$" required /></div>
                         </div>
                         <div class="form-group">
                           <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" maxlength = "10" pattern="[a-zA-Z0-9]+$" required /></div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength = "20" pattern="[^A-Za-z]+$" required /></div>
+                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength = "15" minlength="10" pattern="[+][0-9]+$"/></div>
                       </div>
                       <div class="text-right pt-20">
-                        <button class="btn btn--light js-btn-continue" type="submit">
+                        <button class="btn btn--light js-btn-continue">
                           <span class="btn__text-holder"><span class="btn__text js-btn-continue">Continue</span></span>
                         </button>
                       </div>

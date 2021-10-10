@@ -22,9 +22,9 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
-    const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-input-quantity"
-    );
+    // const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
+    //   ".js-cart-input-quantity"
+    // );
 
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
@@ -190,8 +190,8 @@
     const lastName = customerForm.elements.customerInfoLastName.value;
     const address = customerForm.elements.customerInfoAddress.value;
     const apartment = customerForm.elements.customerInfoApartment.value;
-    const city = customerForm.elements.customerInfoSelectCity.value;
-    // customerForm.elements.customerInfoSelectCity.value = "Moscow";
+    const country = customerForm.elements.customerInfoSelectCountry.value;
+    const city = customerForm.elements.customerInfoCity.value;
     const postalCode = customerForm.elements.customerInfoPostalCode.value;
     const infoPhone = customerForm.elements.customerInfoPhone.value;
 
@@ -200,6 +200,7 @@
     customer.lastName = lastName;
     customer.address = address;
     customer.apartment = apartment;
+    customer.country = country;
     customer.city = city;
     customer.postalCode = postalCode;
     customer.infoPhone = infoPhone;
@@ -233,9 +234,13 @@
         ? (customerForm.customerInfoApartment.value = customer.apartment)
         : (customerForm.customerInfoApartment.value = "");
 
+      customer.country
+        ? (customerForm.customerInfoSelectCountry.value = customer.country)
+        : (customerForm.customerInfoSelectCountry.value = "placeholder");
+
       customer.city
-        ? (customerForm.elements.customerInfoSelectCity.value = customer.city)
-        : (customerForm.elements.customerInfoSelectCity.value = "placeholder");
+        ? (customerForm.elements.customerInfoCity.value = customer.city)
+        : (customerForm.elements.customerInfoCity.value = "");
 
       customer.postalCode
         ? (customerForm.customerInfoPostalCode.value = customer.postalCode)
@@ -246,7 +251,7 @@
         : (customerForm.customerInfoPhone.value = "");
     }
   };
-  
+
   const makeDiscount = (discount) => {
     discountValue = Math.abs(Number(discount.substr(3))); //откинем минус если вдруг в админке ввели минус
     discountCode = document.getElementById("discountInputField").value;
@@ -279,7 +284,7 @@
       if (response === "false") {
         console.log("response false");
         return;
-      } else if (response.startsWith("fix") || response.startsWith("per")){
+      } else if (response.startsWith("fix") || response.startsWith("per")) {
         makeDiscount(response);
       }
     };
@@ -365,12 +370,22 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your Apartment spelling");
     return;
   }
+  console.log(customerForm.customerInfoSelectCountry.value);
+  if (customerForm.customerInfoSelectCountry.value === "placeholder") {
+    alert("Please check your Country spelling");
+    return;
+  }
+
+  if (!customerForm.customerInfoCity.checkValidity()) {
+    alert("Please check your City spelling");
+    return;
+  }
 
   if (!customerForm.customerInfoPostalCode.checkValidity()) {
     alert("Please check your PostalCode spelling");
     return;
   }
-
+  console.log(customerForm.customerInfoPhone.value);
   if (!customerForm.customerInfoPhone.checkValidity()) {
     alert("Please check your Phone spelling");
     return;

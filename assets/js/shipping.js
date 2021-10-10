@@ -22,9 +22,9 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
-    const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-input-quantity"
-    );
+    // const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
+    //   ".js-cart-input-quantity"
+    // );
 
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
@@ -209,13 +209,15 @@
 
       customer.address
         ? (customerForm.customerShippingAddress.value =
-            customer.address +
-            " " +
-            customer.apartment +
+            customer.postalCode +
+            ", " +
+            customer.country +
             ", " +
             customer.city +
             ", " +
-            customer.postalCode)
+            customer.address +
+            " " +
+            customer.apartment)
         : (customerForm.customerShippingAddress.value = "");
 
       customer.shippingMethod
@@ -224,7 +226,7 @@
         : (customerForm.elements.customerSelectShippingMethod.value = "");
     }
   };
-  
+
   const makeDiscount = (discount) => {
     discountValue = Math.abs(Number(discount.substr(3))); //откинем минус если вдруг в админке ввели минус
     discountCode = document.getElementById("discountInputField").value;
@@ -257,7 +259,7 @@
       if (response === "false") {
         console.log("response false");
         return;
-      } else if (response.startsWith("fix") || response.startsWith("per")){
+      } else if (response.startsWith("fix") || response.startsWith("per")) {
         makeDiscount(response);
       }
     };
@@ -319,8 +321,13 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
+  customerForm.customerShippingEmail.setCustomValidity("");  
   if (!customerForm.customerShippingEmail.checkValidity()) {
-    alert("Please check your email spelling");
+    
+    customerForm.customerShippingEmail.setCustomValidity(
+      "Сheck this field. Something is wrong with him"
+    );
+    // alert("Please check your email spelling");
     return;
   }
 

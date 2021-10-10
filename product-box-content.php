@@ -27,7 +27,7 @@ $product_price =  carbon_get_post_meta($product_id, 'product_price');
         <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 202 305'%3E%3C/svg%3E" width="202" height="305" data-src="<?php echo $product_box_image_1x; ?>" data-srcset="<?php echo $product_box_image_1x; ?> 1x, <?php echo $product_box_image_2x; ?> 2x" alt="image description" /></picture>
       </div>
       <div class="product-simple__hover-image">
-        <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/product-box01-hover@2x.png 2x" alt="image description" /></picture>
+        <picture><img class="transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 161 227'%3E%3C/svg%3E" width="161" height="227" data-src="<?php echo $product_box_hover_image_1x; ?>" data-srcset="<?php echo $product_box_hover_image_1x; ?>, <?php echo $product_box_hover_image_2x; ?> 2x" alt="image description" /></picture>
       </div>
     </div>
     <div class="product-simple__info">

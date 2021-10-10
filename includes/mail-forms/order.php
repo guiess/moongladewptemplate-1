@@ -1,8 +1,8 @@
 <?php
 
-$email_from = 'moonglade@u1441555.isp.regruhosting.ru';
-$email_to = 'dearwhynot@gmail.com';
-//! $email_to = $_POST['email']; 
+// $email_from = 'moonglade@u1441555.isp.regruhosting.ru';
+$email_from = $_POST['email'];
+$email_to = carbon_get_theme_option('moon_order_email');
 $form_subject = 'Заявка с сайта Moonglade';
 $message = "";
 
@@ -11,6 +11,7 @@ unset($_POST["firstName"]);
 unset($_POST["lastName"]);
 unset($_POST["address"]);
 unset($_POST["apartment"]);
+unset($_POST["country"]);
 unset($_POST["city"]);
 unset($_POST["postalCode"]);
 unset($_POST["infoPhone"]);
