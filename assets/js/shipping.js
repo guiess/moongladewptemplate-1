@@ -305,7 +305,7 @@
       }
 
       if (target.classList.contains("js-btn-continue")) {
-        e.preventDefault();
+        // e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
         if (!checkValidityOurFunc(customerForm)) {
@@ -321,9 +321,10 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
-  customerForm.customerShippingEmail.setCustomValidity("");  
+  customerForm.customerShippingEmail.setCustomValidity(""); //!new
+
   if (!customerForm.customerShippingEmail.checkValidity()) {
-    
+    //!new
     customerForm.customerShippingEmail.setCustomValidity(
       "Сheck this field. Something is wrong with him"
     );

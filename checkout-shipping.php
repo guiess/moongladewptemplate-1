@@ -125,7 +125,7 @@ Template Name: Страница ввода адреса доставки
                                 <path d="M3.41782 5.93809C3.34481 6.01521 3.21855 6.0211 3.13724 5.95115L0.063382 3.3067C-0.0179317 3.23675 -0.0214671 3.11906 0.0554389 3.04515L1.03479 2.1045C1.11174 2.03059 1.24122 2.02738 1.32253 2.09728L3.00165 3.54175C3.08297 3.61169 3.20923 3.60581 3.28223 3.52868L6.56265 0.0641111C6.63566 -0.0130139 6.76486 -0.0218198 6.84966 0.0445795L7.92947 0.889365C8.01432 0.955723 8.024 1.07316 7.95096 1.15029L3.41782 5.93809Z" fill="currentColor" />
                               </svg></span>
                           </div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 90</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 0</span></div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span>15$</span></div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">0$</span></div>
                         </div>
@@ -140,7 +140,7 @@ Template Name: Страница ввода адреса доставки
                                 <path d="M4 -3.49691e-07L0.535899 4.5L7.4641 4.5L4 -3.49691e-07Z" fill="currentColor" />
                               </svg></span></span>
                         </div>
-                        <span class="text-right js-cart-total-price">$ 90</span>
+                        <span class="text-right js-cart-total-price">$ 0</span>
                       </div>
                     </div>
                   </div>

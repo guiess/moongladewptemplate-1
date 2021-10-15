@@ -140,7 +140,7 @@ Template Name: Страница вводо данных покупателя
                             <div class="flex">
                               <div class="flex-grow"><input class="form-control" id="discountInputField" type="text" placeholder="Discount code " /></div>
                               <div class="flex-shrink-0 ml-15">
-                                <button class="btn btn--primary" type="button">
+                                <button class="btn btn--primary js-button-apply-disount" type="button">
                                   <span class="btn__text-holder"><span class="btn__text js-button-apply-disount">apply</span></span>
                                 </button>
                               </div>

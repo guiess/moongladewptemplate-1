@@ -117,7 +117,7 @@ add_action('wp_ajax_nopriv_feedback_send', 'feedback_send');
 function feedback_send()
 {
   echo 'feedback_send';
-  
+
   $method = $_SERVER['REQUEST_METHOD'];
 
   if ($method !== 'POST') {

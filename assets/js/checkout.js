@@ -346,8 +346,20 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
+  // Array.prototype.forEach.call(
+  //   document.querySelectorAll("input[type=text]"),
+  //   function (ths) {
+  //     console.log(ths.name);
+  //     console.log(ths.checkValidity());
+  //   }
+  // );
+
+  // customerForm.customerInfoFirstName.setCustomValidity("123");
   if (!customerForm.customerInfoEmail.checkValidity()) {
     alert("Please check your email spelling");
+    // customerForm.customerInfoEmail.setCustomValidity(
+    //   "Please complete this field"
+    // );
     return;
   }
 
@@ -370,7 +382,7 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your Apartment spelling");
     return;
   }
-  console.log(customerForm.customerInfoSelectCountry.value);
+
   if (customerForm.customerInfoSelectCountry.value === "placeholder") {
     alert("Please check your Country spelling");
     return;
@@ -385,7 +397,7 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your PostalCode spelling");
     return;
   }
-  console.log(customerForm.customerInfoPhone.value);
+  
   if (!customerForm.customerInfoPhone.checkValidity()) {
     alert("Please check your Phone spelling");
     return;
