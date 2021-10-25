@@ -5,12 +5,10 @@
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
-  // console.log("discountValue = " + discountValue);
-  // console.log("discountCode = " + discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -22,9 +20,6 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
-    // const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
-    //   ".js-cart-input-quantity"
-    // );
 
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
@@ -54,6 +49,7 @@
     ".js-cart-total-price"
   );
   const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
+  const cartDeliveryDOMElement = document.querySelector(".js-delivery-sum");
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
@@ -104,9 +100,9 @@
   };
 
   const updateCartTotalPrice = () => {
-    if (!cart) {
-      return;
-    }
+    // console.log(cart);
+    if (cartEmpty()) return;
+
     let discountValueMath;
 
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
@@ -127,13 +123,26 @@
       discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
     }
 
+    discountValueMath = Math.round(discountValueMath);
+
     if (cartDiscountSumDOMElement) {
-      cartDiscountSumDOMElement.textContent = "-" + discountValueMath + "$";
+      cartDiscountSumDOMElement.textContent = discountValueMath
+        ? "-" + discountValueMath + "$"
+        : "";
+    }
+
+    if (cartDeliveryDOMElement) {
+      Object.keys(cart).length
+        ? (cartDeliveryDOMElement.textContent = customer.deliveryPrice + "$")
+        : null;
     }
 
     if (cartTotalPriceDOMElement) {
       cartTotalPriceDOMElement.textContent =
-        "$ " + (Number(totalPrice) - discountValueMath);
+        "$ " +
+        (Number(totalPrice) -
+          discountValueMath +
+          Number(customer.deliveryPrice));
     }
   };
 
@@ -176,9 +185,8 @@
   };
 
   const renderCart = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     const ids = Object.keys(cart);
 
     ids.forEach((id) => renderCartItem(cart[id]));
@@ -190,6 +198,10 @@
     const lastName = customerForm.elements.customerInfoLastName.value;
     const address = customerForm.elements.customerInfoAddress.value;
     const apartment = customerForm.elements.customerInfoApartment.value;
+    const countryName =
+      customerForm.customerInfoSelectCountry.options[
+        customerForm.customerInfoSelectCountry.selectedIndex
+      ].text;
     const country = customerForm.elements.customerInfoSelectCountry.value;
     const city = customerForm.elements.customerInfoCity.value;
     const postalCode = customerForm.elements.customerInfoPostalCode.value;
@@ -200,6 +212,7 @@
     customer.lastName = lastName;
     customer.address = address;
     customer.apartment = apartment;
+    customer.countryName = countryName;
     customer.country = country;
     customer.city = city;
     customer.postalCode = postalCode;
@@ -260,16 +273,13 @@
       discountValue *= -1;
     }
 
-    // console.log(discountValue);
     localStorage.setItem("discountCode", discountCode);
     localStorage.setItem("discountValue", discountValue);
     updateCartTotalPrice();
   };
 
   const discountCheck = function () {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
 
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=discount_check";
@@ -279,7 +289,6 @@
 
     xhr.onload = function () {
       const response = xhr.response;
-      // console.log(response);
 
       if (response === "false") {
         console.log("response false");
@@ -294,7 +303,29 @@
     xhr.send("discountcode=" + discountCode);
   };
 
+  const cartEmpty = function () {
+    return !Object.keys(cart).length;
+  };
+
+  const cartIsEmptyPlug = function () {
+    emptyCartDOMelement = document.querySelector(".js-cart-is-empty-plug");
+    const cartEmptyPlug = `
+    <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+      <br><br><br><br><br>
+      It appears that your cart <br>
+      is currently empty!
+      <br><br><br><br><br>  
+    </p>
+    `;
+    emptyCartDOMelement.innerHTML = cartEmptyPlug;
+  };
+
   const cartInit = () => {
+    if (cartEmpty()) {
+      cartIsEmptyPlug();
+      return;
+    }
+
     renderForm();
     renderCart();
     updateCart();
@@ -397,7 +428,7 @@ const checkValidityOurFunc = (customerForm) => {
     alert("Please check your PostalCode spelling");
     return;
   }
-  
+
   if (!customerForm.customerInfoPhone.checkValidity()) {
     alert("Please check your Phone spelling");
     return;

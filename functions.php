@@ -125,3 +125,16 @@ function feedback_send()
   }
   require_once('includes/mail-forms/feedback.php');
 }
+
+add_action('wp_ajax_delivery_rank', 'delivery_rank');
+add_action('wp_ajax_nopriv_delivery_rank', 'delivery_rank');
+
+function delivery_rank()
+{
+  $method = $_SERVER['REQUEST_METHOD'];
+
+  if ($method !== 'POST') {
+    exit();
+  }
+  require_once('includes/ajax-requests/delivery-rate-shop.php');
+}

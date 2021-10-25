@@ -5,7 +5,7 @@
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
@@ -54,6 +54,7 @@
     ".js-cart-total-price"
   );
   const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
+  const cartDeliveryDOMElement = document.querySelector(".js-delivery-sum");
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
@@ -104,9 +105,8 @@
   };
 
   const updateCartTotalPrice = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     let discountValueMath;
 
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
@@ -114,7 +114,7 @@
       return acc + price * quantity;
     }, 0);
 
-    document.getElementById('discountInputField').value = discountCode;
+    document.getElementById("discountInputField").value = discountCode;
 
     if (cartSubtotalPriceDOMElement) {
       cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
@@ -127,13 +127,26 @@
       discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
     }
 
+    discountValueMath = Math.round(discountValueMath);
+
     if (cartDiscountSumDOMElement) {
-      cartDiscountSumDOMElement.textContent = "-" + discountValueMath + "$";
+      cartDiscountSumDOMElement.textContent = discountValueMath
+        ? "-" + discountValueMath + "$"
+        : "";
+    }
+
+    if (cartDeliveryDOMElement) {
+      Object.keys(cart).length
+        ? (cartDeliveryDOMElement.textContent = customer.deliveryPrice + "$")
+        : null;
     }
 
     if (cartTotalPriceDOMElement) {
       cartTotalPriceDOMElement.textContent =
-        "$ " + (Number(totalPrice) - discountValueMath);
+        "$ " +
+        (Number(totalPrice) -
+          discountValueMath +
+          Number(customer.deliveryPrice));
     }
   };
 
@@ -178,9 +191,8 @@
   };
 
   const renderCart = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     const ids = Object.keys(cart);
 
     ids.forEach((id) => renderCartItem(cart[id]));
@@ -189,8 +201,8 @@
   const saveDataCustomer = (customerForm) => {
     const email = customerForm.elements.customerShippingEmail.value;
     const address = customerForm.elements.customerShippingAddress.value;
-    const shippingMethod =
-      customerForm.elements.customerSelectShippingMethod.value;
+    // const shippingMethod =
+    //   customerForm.customerSelectShippingMethod.value;
 
     const typeOfCreditСard =
       customerForm.elements.customerSelectCreditСard.value;
@@ -202,7 +214,7 @@
 
     customer.shippingEmail = email;
     customer.shippingAddress = address;
-    customer.shippingMethod = shippingMethod;
+    // customer.shippingMethod = shippingMethod;
 
     customer.typeOfCreditСard = typeOfCreditСard;
     customer.customerCardNumber = customerCardNumber;
@@ -228,10 +240,10 @@
             customer.shippingAddress)
         : (customerForm.customerShippingAddress.value = "");
 
-      customer.shippingMethod
-        ? (customerForm.elements.customerSelectShippingMethod.value =
-            customer.shippingMethod)
-        : (customerForm.elements.customerSelectShippingMethod.value = "");
+      customer.deliveryMethodText
+        ? (customerForm.customerShippingMethod.value =
+            customer.deliveryMethodText)
+        : (customerForm.customerShippingMethod.value = "");
     }
   };
 
@@ -243,9 +255,8 @@
   // };
 
   const resetCart = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     const ids = Object.keys(cart);
     ids.forEach((id) => deleteCartItem(cart[id].id, true));
     // TODO сброс customer данных
@@ -277,9 +288,8 @@
   };
 
   const formSend = function () {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     // console.log(JSON.stringify(cart));
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=send_email";
@@ -293,12 +303,13 @@
 
       if (response == "success") {
         console.log("response succes");
+        window.location.reload();
         resetCart();
+        window.location.reload();
+        // TODO reset local storage -> and input fields info and discount inputs and storage discount
+        // localStorage.clear(); //! включить на проде
         // resetCustomerInfoInputFieldsStorage();
         // resetDiscountInputFieldsStorage();
-        // resetCart();
-
-        // TODO reset local storage -> and input fields info and discount inputs and storage discount
       } else {
         console.log("not response");
       }
@@ -319,7 +330,7 @@
 
   const makeDiscount = (discount) => {
     discountValue = Math.abs(Number(discount.substr(3))); //откинем минус если вдруг в админке ввели минус
-    discountCode = document.getElementById('discountInputField').value;
+    discountCode = document.getElementById("discountInputField").value;
 
     if (discount.startsWith("fix")) {
       discountValue *= -1;
@@ -332,9 +343,7 @@
   };
 
   const discountCheck = function () {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
 
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=discount_check";
@@ -349,16 +358,38 @@
       if (response === "false") {
         console.log("response false");
         return;
-      } else if (response.startsWith("fix") || response.startsWith("per")){
+      } else if (response.startsWith("fix") || response.startsWith("per")) {
         makeDiscount(response);
       }
     };
 
-    discountCode = document.getElementById('discountInputField').value;
+    discountCode = document.getElementById("discountInputField").value;
     xhr.send("discountcode=" + discountCode);
   };
 
+  const cartEmpty = function () {
+    return !Object.keys(cart).length;
+  };
+
+  const cartIsEmptyPlug = function () {
+    emptyCartDOMelement = document.querySelector(".js-cart-is-empty-plug");
+    const cartEmptyPlug = `
+    <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+      <br><br><br><br><br>
+      It appears that your cart <br>
+      is currently empty!
+      <br><br><br><br><br>  
+    </p>
+    `;
+    emptyCartDOMelement.innerHTML = cartEmptyPlug;
+  };
+
   const cartInit = () => {
+    if (cartEmpty()) {
+      cartIsEmptyPlug();
+      return;
+    }
+
     renderForm();
     renderCart();
     updateCart();
@@ -394,7 +425,7 @@
       }
 
       if (target.classList.contains("js-btn-paynow")) {
-        e.preventDefault();
+        // e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
 

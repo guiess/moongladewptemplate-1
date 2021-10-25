@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+  exit;
+}
+
 $discount_code_from_ajax = $_POST['discountcode'];
 
 $table_fixed = carbon_get_theme_option('coupons_fixed');

@@ -75,20 +75,20 @@ Template Name: Страница ввода адреса доставки
                         <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-payment">Payment</a></li>
                       </ul>
                     </div>
-                    <form name="customerinfo" class="form-theme--dark" action="<?php echo home_url(); ?>/checkout-payment">
+                    <form name="customerinfo" class="form-theme--dark">
                       <div class="mb-45">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="text" value="" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
+                          <div class="form-group__control"><input name="customerShippingEmail" class="form-control" type="text" value="" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" readonly></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength = "300" required /></div>
+                          <div class="form-group__control"><input name="customerShippingAddress" class="form-control" type="text" value="" placeholder="Address" maxlength="300" readonly></div>
                         </div>
                       </div>
                       <h2 class="h5 font-serif mb-15 normal-case">Shipping method</h2>
                       <div class="form-group">
                         <div class="form-group__control">
                           <select id="customerSelectShippingMethod" class="form-control">
-                            <option value="01">AusPost - INTL STANDARD/PACK &amp; TRACK ($15)</option>
+
                             <option value="Other">Other</option>
                           </select>
                         </div>
@@ -110,6 +110,8 @@ Template Name: Страница ввода адреса доставки
 
                         <!-- тут уже идет рассчет -->
                         <div class="px-15 md:px-30 laptop:px-50 py-25 lg:py-30 border-b border-black-100">
+                          <div class="flex-grow flex items-center cart-popup__body js-cart-is-empty-plug">
+                          </div>
                           <form class="form-theme--light mb-25" action="#" data-component="discount-form">
                             <div class="flex">
                               <div class="flex-grow"><input class="form-control" id="discountInputField" type="text" placeholder="Discount code " /></div>
@@ -126,7 +128,7 @@ Template Name: Страница ввода адреса доставки
                               </svg></span>
                           </div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 0</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span>15$</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">0$</span></div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">0$</span></div>
                         </div>
 

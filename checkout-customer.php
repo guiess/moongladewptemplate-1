@@ -81,43 +81,48 @@ Template Name: Страница вводо данных покупателя
                         <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="text" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>
+                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" maxlength = "30" pattern="[A-Za-z]+$" required /></div>
+                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength = "30" required /></div>
+                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength="30" required /></div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength = "30" required /></div>
+                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength="30" required /></div>
                       </div>
                       <div class="form-group">
                         <div class="form-group__control">
                           <select id="customerInfoSelectCountry" class="form-control js-select-country">
                             <option value="placeholder">Country</option>
                             <?php
-                              $countries_string = carbon_get_theme_option("moon_countries_list");
-                              $countries_array = explode("\n", $countries_string);
-                              sort($countries_array); ?>
-                                <?php foreach ($countries_array as $tr) : ?>
+                            $countries_string = carbon_get_theme_option("moon_countries_list");
+                            $countries_array = explode("\n", $countries_string);
+                            sort($countries_array); ?>
+                            <?php foreach ($countries_array as $tr) : ?>
+                              <?php
+                              $tr = trim($tr);
+                              $pieces = explode(",", $tr);
 
-                                  <option value="<?php echo trim($tr); ?>"><?php echo trim($tr); ?></option>
+                              ?>
 
-                                <?php endforeach; ?>
+                              <option value="<?php echo trim($pieces[1]); ?>"><?php echo trim($pieces[0]); ?></option>
+
+                            <?php endforeach; ?>
                           </select>
                         </div>
                       </div>
                       <div class="md:grid md:grid-cols-2 md:gap-x-20">
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoCity" class="form-control" type="text" placeholder="City" maxlength = "50" pattern="[a-zA-Z]+$" required /></div>
+                          <div class="form-group__control"><input name="customerInfoCity" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z]+$" required /></div>
                         </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" maxlength = "10" pattern="[a-zA-Z0-9]+$" required /></div>
+                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" maxlength="10" pattern="[a-zA-Z0-9]+$" required /></div>
                         </div>
                       </div>
                       <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength = "15" minlength="10" pattern="[+][0-9]+$"/></div>
+                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength="15" minlength="10" pattern="[+][0-9]+$" /></div>
                       </div>
                       <div class="text-right pt-20">
                         <button class="btn btn--light js-btn-continue">
@@ -136,6 +141,8 @@ Template Name: Страница вводо данных покупателя
 
                         <!-- тут уже идет рассчет -->
                         <div class="px-15 md:px-30 laptop:px-50 py-25 lg:py-30 border-b border-black-100">
+                          <div class="flex-grow flex items-center cart-popup__body js-cart-is-empty-plug">                            
+                          </div>
                           <form class="form-theme--light mb-25" action="#" data-component="discount-form">
                             <div class="flex">
                               <div class="flex-grow"><input class="form-control" id="discountInputField" type="text" placeholder="Discount code " /></div>
@@ -151,8 +158,8 @@ Template Name: Страница вводо данных покупателя
                                 <path d="M3.41782 5.93809C3.34481 6.01521 3.21855 6.0211 3.13724 5.95115L0.063382 3.3067C-0.0179317 3.23675 -0.0214671 3.11906 0.0554389 3.04515L1.03479 2.1045C1.11174 2.03059 1.24122 2.02738 1.32253 2.09728L3.00165 3.54175C3.08297 3.61169 3.20923 3.60581 3.28223 3.52868L6.56265 0.0641111C6.63566 -0.0130139 6.76486 -0.0218198 6.84966 0.0445795L7.92947 0.889365C8.01432 0.955723 8.024 1.07316 7.95096 1.15029L3.41782 5.93809Z" fill="currentColor" />
                               </svg></span>
                           </div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 90</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span>15$</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 0</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">0$</span></div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">0$</span></div>
                         </div>
 
@@ -166,7 +173,7 @@ Template Name: Страница вводо данных покупателя
                                 <path d="M4 -3.49691e-07L0.535899 4.5L7.4641 4.5L4 -3.49691e-07Z" fill="currentColor" />
                               </svg></span></span>
                         </div>
-                        <span class="text-right js-cart-total-price">$ 90</span>
+                        <span class="text-right js-cart-total-price">$ 0</span>
                       </div>
                     </div>
                   </div>

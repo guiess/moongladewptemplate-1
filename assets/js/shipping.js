@@ -5,12 +5,13 @@
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
-  // console.log("discountValue = " + discountValue);
-  // console.log("discountCode = " + discountCode);
+  let deliveryPrice = customer.deliveryPrice || 0;
+
+  // console.log(customer);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -22,9 +23,6 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
-    // const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
-    //   ".js-cart-input-quantity"
-    // );
 
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
@@ -54,6 +52,7 @@
     ".js-cart-total-price"
   );
   const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
+  const cartDeliveryDOMElement = document.querySelector(".js-delivery-sum");
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
@@ -104,9 +103,8 @@
   };
 
   const updateCartTotalPrice = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     let discountValueMath;
 
     const totalPrice = Object.keys(cart).reduce((acc, id) => {
@@ -127,13 +125,23 @@
       discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
     }
 
+    discountValueMath = Math.round(discountValueMath);
+
     if (cartDiscountSumDOMElement) {
-      cartDiscountSumDOMElement.textContent = "-" + discountValueMath + "$";
+      cartDiscountSumDOMElement.textContent = discountValueMath
+        ? "-" + discountValueMath + "$"
+        : "";
+    }
+
+    if (cartDeliveryDOMElement) {
+      Object.keys(cart).length
+        ? (cartDeliveryDOMElement.textContent = customer.deliveryPrice + "$")
+        : null;
     }
 
     if (cartTotalPriceDOMElement) {
       cartTotalPriceDOMElement.textContent =
-        "$ " + (Number(totalPrice) - discountValueMath);
+        "$ " + (Number(totalPrice) - discountValueMath + Number(deliveryPrice));
     }
   };
 
@@ -176,9 +184,8 @@
   };
 
   const renderCart = () => {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
+
     const ids = Object.keys(cart);
 
     ids.forEach((id) => renderCartItem(cart[id]));
@@ -187,12 +194,12 @@
   const saveDataCustomer = (customerForm) => {
     const email = customerForm.elements.customerShippingEmail.value;
     const address = customerForm.elements.customerShippingAddress.value;
-    const shippingMethod =
-      customerForm.elements.customerSelectShippingMethod.value;
+    // const shippingMethod =
+    //   customerForm.elements.customerSelectShippingMethod.value;
 
     customer.shippingEmail = email;
     customer.shippingAddress = address;
-    customer.shippingMethod = shippingMethod;
+    // customer.shippingMethod = shippingMethod;
 
     saveCustomer();
 
@@ -211,7 +218,7 @@
         ? (customerForm.customerShippingAddress.value =
             customer.postalCode +
             ", " +
-            customer.country +
+            customer.countryName +
             ", " +
             customer.city +
             ", " +
@@ -220,10 +227,12 @@
             customer.apartment)
         : (customerForm.customerShippingAddress.value = "");
 
-      customer.shippingMethod
-        ? (customerForm.elements.customerSelectShippingMethod.value =
-            customer.shippingMethod)
-        : (customerForm.elements.customerSelectShippingMethod.value = "");
+      // customerForm.elements.customerSelectShippingMethod.selectedOption = 65;
+
+      // customer.deliveryCode
+      //   ? (customerForm.elements.customerSelectShippingMethod.value =
+      //       customer.deliveryCode)
+      //   : (customerForm.elements.customerSelectShippingMethod.value = "");
     }
   };
 
@@ -242,9 +251,7 @@
   };
 
   const discountCheck = function () {
-    if (!cart) {
-      return;
-    }
+    if (cartEmpty()) return;
 
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=discount_check";
@@ -269,10 +276,124 @@
     xhr.send("discountcode=" + discountCode);
   };
 
+  const renderDelivery = function () {
+    if (
+      cartEmpty() ||
+      !customer.country ||
+      !customer.city ||
+      !customer.postalCode
+    ) {
+      return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    var url = WPJS.ajaxUrl + "?action=delivery_rank";
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      const response = xhr.response;
+      console.log(response);
+
+      responseJSON = JSON.parse(response);
+      // console.log(responseJSON);
+
+      // console.log(responseJSON.price[0]);
+      // console.log(responseJSON.price.length);
+
+      //<!-- <option value="01">AusPost - INTL STANDARD/PACK &amp; TRACK ($15)</option> -->
+
+      for (i = 0; i < responseJSON.price.length; i++) {
+        // console.log(responseJSON.shippingcode[i]);
+        // console.log(responseJSON.shipingmethod[i]);
+        // console.log(responseJSON.price[i]);
+        let selectedOption = document.getElementById(
+          "customerSelectShippingMethod"
+        );
+        let newOption = new Option(
+          responseJSON.shippingmethod[i] + " " + "$" + responseJSON.price[i],
+          responseJSON.shippingcode[i]
+        );
+        newOption.setAttribute("data-price", responseJSON.price[i]);
+        newOption.setAttribute(
+          "data-shippingmethod",
+          responseJSON.shippingmethod[i]
+        );
+
+        if (responseJSON.shippingcode[i] == customer.deliveryCode) {
+          newOption.setAttribute("selected", "selected");
+        }
+
+        selectedOption.append(newOption);
+      }
+
+      // if (response === "false") {
+      //   console.log("response false");
+      //   return;
+      // } else if (response.startsWith("fix") || response.startsWith("per")) {
+      //   // makeDiscount(response);
+      // }
+    };
+
+    infoToSend = `country=${customer.country}&city=${customer.city}&postalcode=${customer.postalCode}`;
+    console.log(infoToSend);
+
+    xhr.send(infoToSend);
+  };
+
+  const cartEmpty = function () {
+    return !Object.keys(cart).length;
+  };
+
+  const cartIsEmptyPlug = function () {
+    emptyCartDOMelement = document.querySelector(".js-cart-is-empty-plug");
+    const cartEmptyPlug = `
+    <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+      <br><br><br><br><br>
+      It appears that your cart <br>
+      is currently empty!
+      <br><br><br><br><br>  
+    </p>
+    `;
+    emptyCartDOMelement.innerHTML = cartEmptyPlug;
+  };
+
   const cartInit = () => {
+    if (cartEmpty()) {
+      cartIsEmptyPlug();
+      return;
+    }
+
     renderForm();
     renderCart();
     updateCart();
+    renderDelivery();
+
+    const selectElement = document.getElementById(
+      "customerSelectShippingMethod"
+    );
+
+    selectElement.addEventListener("change", (event) => {
+      // deliveryMethodText =
+      //   selectElement.options[selectElement.selectedIndex].text;
+      deliveryMethodText = selectElement.options[
+        selectElement.selectedIndex
+      ].getAttribute("data-shippingmethod");
+      customer.deliveryMethodText = deliveryMethodText;
+
+      deliveryCode = event.target.value;
+      customer.deliveryCode = deliveryCode;
+
+      deliveryPrice =
+        selectElement.options[selectElement.selectedIndex].getAttribute(
+          "data-price"
+        );
+      customer.deliveryPrice = deliveryPrice;
+
+      saveCustomer();
+      updateCartTotalPrice();
+    });
 
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
@@ -305,7 +426,7 @@
       }
 
       if (target.classList.contains("js-btn-continue")) {
-        // e.preventDefault();
+        e.preventDefault();
 
         const customerForm = document.forms.customerinfo;
         if (!checkValidityOurFunc(customerForm)) {

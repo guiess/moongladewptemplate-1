@@ -1,6 +1,10 @@
 
 <?php
 
+if (!defined('ABSPATH')) {
+  exit;
+}
+
 // $email_from = 'moonglade@u1441555.isp.regruhosting.ru';
 $email_from = $_POST['fbemail'];
 $email_to = carbon_get_theme_option("moon_support_email");
