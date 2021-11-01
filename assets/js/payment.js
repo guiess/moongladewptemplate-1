@@ -9,8 +9,6 @@
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
-  // console.log("discountValue = " + discountValue);
-  // console.log("discountCode = " + discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -21,9 +19,6 @@
     );
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
-    );
-    const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-input-quantity"
     );
 
     cart[id].quantity = quantity;
@@ -156,17 +151,6 @@
 
     itemWrapFull = document.getElementById("js-cart-wrapper-full");
     itemWrapEmpty = document.getElementById("js-cart-wrapper-empty");
-
-    //! сделать пустую корзину
-    // if (totalQuantity === 0) {
-    //   //
-    //   itemWrapFull.classList.add("is-empty");
-    //   itemWrapEmpty.classList.remove("is-empty");
-    // } else {
-    //   itemWrapFull.classList.remove("is-empty");
-    //   itemWrapEmpty.classList.add("is-empty");
-    //   //
-    // }
   };
 
   const countItemsInCart = () => {
@@ -201,20 +185,15 @@
   const saveDataCustomer = (customerForm) => {
     const email = customerForm.elements.customerShippingEmail.value;
     const address = customerForm.elements.customerShippingAddress.value;
-    // const shippingMethod =
-    //   customerForm.customerSelectShippingMethod.value;
-
     const typeOfCreditСard =
       customerForm.elements.customerSelectCreditСard.value;
     const customerCardNumber = customerForm.customerCardNumber.value;
     const nameOnCard = customerForm.customerNameOnCard.value;
     const cardExpiration = customerForm.customerCardExpiration.value;
     const cardSecurityCode = customerForm.customerCardSecurityCode.value;
-    //!тут проверка на Remember me
 
     customer.shippingEmail = email;
     customer.shippingAddress = address;
-    // customer.shippingMethod = shippingMethod;
 
     customer.typeOfCreditСard = typeOfCreditСard;
     customer.customerCardNumber = customerCardNumber;
@@ -293,7 +272,6 @@
     // console.log(JSON.stringify(cart));
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=send_email";
-    // var url = 'http://localhost/moonglade/wp-admin/admin-ajax.php?action=send_email';
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -305,18 +283,15 @@
         console.log("response succes");
         window.location.reload();
         resetCart();
-        window.location.reload();
-        // TODO reset local storage -> and input fields info and discount inputs and storage discount
         // localStorage.clear(); //! включить на проде
-        // resetCustomerInfoInputFieldsStorage();
-        // resetDiscountInputFieldsStorage();
+        //!проверка на Remember me
+        window.location.reload();
       } else {
         console.log("not response");
       }
     };
 
     let infoToSend = onlyPurchasedGoods();
-    // TODO некоторые данные необходимо брать из формы и не надо сохранять их в storage
     infoToSend += customerinfoToSend();
     infoToSend += "discountCode=" + discountCode;
 

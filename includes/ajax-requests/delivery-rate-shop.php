@@ -56,7 +56,8 @@ $access = "DDA73248ECBDDD92";
 $userid = "moongladebali";
 $passwd = "Moongladesuperfood21";
 
-$endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate"; //testing url
+$endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate"; //?testing url
+// $endpointurl = "https://onlinetools.ups.com/ups.app/xml/Rate"; //?prod url
 $outputFileName = "XOLTResult.xml";
 
 try {
