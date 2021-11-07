@@ -73,6 +73,7 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
                   </div>
                 </div>
               </div>
+              <div class="carousel-pagination"></div>
               <div class="absolute p-10 md:p-30 left-0 top-1/2 transform -translate-y-1/2 z-5">
                 <button class="btn btn--control" type="button" data-control="prev">
                   <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-arrow-left"></i></span>
@@ -101,7 +102,7 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
               </div>
             </div>
             <div class="product-popup__button-item flex-grow">
-              <button class="btn btn--primary js-btn-add-to-cart" type="button" data-control="submit">
+              <button class="btn btn--primary call-modal-add-to-cart js-btn-add-to-cart" type="button" data-control="submit">
                 <span class="btn__text-holder"><span class="btn__text js-btn-add-to-cart">add to cart</span></span>
               </button>
             </div>

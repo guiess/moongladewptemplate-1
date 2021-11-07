@@ -9,12 +9,18 @@ use Carbon_Fields\Field;
 
 Container::make('theme_options', 'Product Page')
   ->set_icon('dashicons-carrot') //добавить иконку
-  ->add_tab('Settings', [
+  ->add_tab('Slogan products text', [
     // Field::make('textarea', 'first_product_page_text', 'First text (to wrap lines, write <br/>)')
     //   ->set_width(50),
     // Field::make('image', 'first_product_page_image', 'Image')
     //   ->set_width(50),
     Field::make('textarea', 'slogan_product_text', 'MOON INSPIRATION text (to wrap lines, write <br/>)')
+  ])
+
+  ->add_tab('First video products page', [
+    Field::make('file', 'first_video_products_page')
+      ->set_type('video'),
+      Field::make('text', 'first_video_products_page_vimeo_id', 'ID file on vimeo')
   ])
 
   ->add_tab('Activation Products', [

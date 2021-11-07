@@ -20,15 +20,41 @@ add_action("wp_enqueue_scripts", "site_scripts");
 
 function site_scripts()
 {
-  $version = '0.0.0.3';
+  // $version = '0.0.1.0';
   wp_dequeue_style('wp-block-library'); // нужен для редактора Gutenberg. нам не нужен
   wp_deregister_script('wp-embed'); // удалим wp-embed.min.js?ver=5.7.2' в футере
 
   // wp_enqueue_style('icomoon-fonts', get_template_directory_uri() . '/assets/fonts/icomoon.woff', [], $version);
-  wp_enqueue_style('main-style', get_stylesheet_uri(), [], $version); //подключили стили
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/app.js', [], $version, true); // подключили app.js основной скрипт
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/cart.js', [], $version, true); // подключили cart.js скрипт корзины
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/cookies.js', [], $version, true); // подключили cookies.js скрипт корзины  
+  wp_enqueue_style('main-style', get_stylesheet_uri(), [],); //подключили стили
+  // wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/normalize.css', [], $version); //подключили стили
+  wp_enqueue_script('jquery-main', get_template_directory_uri() . '/assets/js/jquery.js', [], null, true);
+  wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main'], null, true);
+  wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main', 'gsap-main'], null, true);
+  wp_enqueue_script('inputmask-main', get_template_directory_uri() . '/assets/js/inputmask.js', ['jquery-main', 'gsap-main', 'swiper-main'], null, true);
+
+  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);  
+  wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true); 
+
+  if (is_page('products')) {
+    wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/cart.js', [], null, true);
+  }
+
+  if (is_page('products')) {
+    wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/feedback.js', [], null, true);
+  }
+
+  if (is_page('checkout-customer')) {
+    wp_enqueue_script('discount-js', get_template_directory_uri() . '/assets/js/checkout-customer.js', [], null, true);
+  }
+
+  if (is_page('checkout-shipping')) {
+    wp_enqueue_script('shipping-js', get_template_directory_uri() . '/assets/js/checkout-shipping.js', [], null, true);
+  }
+
+  if (is_page('checkout-payment')) {
+    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/checkout-payment.js', [], null, true);
+  }
+
   wp_localize_script('main-js', 'WPJS', [
     'siteUrl' => get_template_directory_uri(),
     // 'ajaxUrl' => admin_url('admin-ajax.php', 'http'),
@@ -116,7 +142,7 @@ add_action('wp_ajax_nopriv_feedback_send', 'feedback_send');
 
 function feedback_send()
 {
-  echo 'feedback_send';
+  // echo 'feedback_send';
 
   $method = $_SERVER['REQUEST_METHOD'];
 

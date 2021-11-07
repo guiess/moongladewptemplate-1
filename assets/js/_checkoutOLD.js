@@ -377,20 +377,8 @@
 })();
 
 const checkValidityOurFunc = (customerForm) => {
-  // Array.prototype.forEach.call(
-  //   document.querySelectorAll("input[type=text]"),
-  //   function (ths) {
-  //     console.log(ths.name);
-  //     console.log(ths.checkValidity());
-  //   }
-  // );
-
-  // customerForm.customerInfoFirstName.setCustomValidity("123");
   if (!customerForm.customerInfoEmail.checkValidity()) {
     alert("Please check your email spelling");
-    // customerForm.customerInfoEmail.setCustomValidity(
-    //   "Please complete this field"
-    // );
     return;
   }
 

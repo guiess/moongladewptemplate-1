@@ -1,17 +1,4 @@
-<?php
-/*
-Template Name: Страница с Продукцией
-*/
-?>
 
-<?php get_header(); ?>
-
-<body class="page-products header-secondary">
-
-  <?php include(get_template_directory() . "/include/preloader.php"); ?>
-
-  <div data-page-layout>
-    <?php include(get_template_directory() . "/include/menu.php"); ?>
     <div class="wrapper w-full min-h-screen flex flex-col" data-scroller="">
       <div class="flex-grow">
         <div class="page-holder">
@@ -34,7 +21,7 @@ Template Name: Страница с Продукцией
                       <div data-element="parallax-box">
                         <div data-scroll="" data-scroll-speed="0.7" data-delay="0.15">
                           <div data-scroll="" data-scroll-call="scale" data-delay="0.8" data-speed="2">
-                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 234 220'%3E%3C/svg%3E" width="234" height="220" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01.png" data-srcset="assets/img/products/hero-decoration01.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01@2x.png 2x" alt="image description" /></picture>
+                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 234 220'%3E%3C/svg%3E" width="234" height="220" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01@2x.png 2x" alt="image description" /></picture>
                           </div>
                         </div>
                       </div>
@@ -43,11 +30,11 @@ Template Name: Страница с Продукцией
                   <div class="absolute bottom-0 w-full text-center opacity-70 left-0 pb-45 xl:pb-60 h-min:pb-30">
                     <div data-scroll="" data-scroll-call="fadeIn" data-delay="1.2">
                       <i class="scroll-down__icon icon-infinity mb-5"></i>
-                      <p class="scroll-down uppercase mb-0"><span>~ Scoll Down ~</span></p>
+                      <p class="scroll-down uppercase mb-0"><span>~ Scroll Down ~</span></p>
                     </div>
                   </div>
                   <div class="text-center md:left-0 mt-30 md:mt-0 md:absolute md:w-full md:text-right md:right-0 md:mx-auto md:bottom-0 container md:pb-35 lg:pb-50 h-min:pb-20" data-scroll="" data-scroll-call="fadeIn" data-delay="1.5">
-                    <button class="btn btn--dark call-modal-support" type="button">
+                    <button class="btn btn--dark" type="button" data-toggle-popup="popup-support">
                       <span class="btn__text-holder"><span class="btn__text">Support</span></span>
                     </button>
                   </div>
@@ -103,49 +90,13 @@ Template Name: Страница с Продукцией
                 </div>
               </div>
             </section>
-            <section class="site-section relative">
-              <div class="section__holder overflow-hidden lg:h-screen">
-                <div class="lg:h-full px-15 md:px-0" data-scroll="" data-scroll-speed="-8" data-scroll-offset="-100%, 100%" data-no-touch-parallax="">
-                  <div class="embed-responsive aspect-ratio-1270/800 lg:aspect-ratio-none lg:p-0 lg:h-full min-h-350" data-scroll="" data-scroll-call="video-component" data-scroll-repeat="" data-scroll-offset="-20%, -20%">
-                    <div class="embed-responsive-item lg:h-full" data-scroll="" data-scroll-call="container-mask" data-scroll-offset="100%, 0" data-scroll-id="video-container-mask">
-                      <div class="absolute w-full h-full parallax-media h-full overflow-hidden" data-scroll="">
-                        <div class="parallax-media__element absolute w-full h-full" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
-                          <div class="absolute h-full w-full top-0 left-0">
-                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('first_video_products_page')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
-                          </div>
-                          <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span><span class="absolute left-0 top-0 w-full h-full bg-repeat opacity-50 pointer-events-none" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/noize.png)"></span>
-                          <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
-                            <div data-magnet="">
-                              <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option("first_video_products_page_vimeo_id"); ?>" data-component="fullscreen-video">
-                                <span class="btn__text-holder"></span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <section class="site-section relative site-section--wide-visual">
+              <div class="section__holder">
+                <div class="wide-visual" data-scroll="" data-scroll-speed="2" data-scroll-delay="" data-scroll-direction="horizontal">
+                  <picture><img class="w-full max-w-full transition-opacity duration-300 min-h-350 object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1933 863'%3E%3C/svg%3E" width="1933" height="863" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo@2x.jpg 2x" alt="image description" /></picture>
                 </div>
               </div>
             </section>
-            <!-- <section class="site-section relative site-section--wide-visual">
-                <div class="section__holder">
-                  <div class="wide-visual" data-scroll="" data-scroll-speed="2" data-scroll-delay="" data-scroll-direction="horizontal">
-                    <picture
-                      ><img
-                        class="w-full max-w-full transition-opacity duration-300 min-h-350 object-cover"
-                        data-component="lazyload"
-                        data-animate="data-animate"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1933 863'%3E%3C/svg%3E"
-                        width="1933"
-                        height="863"
-                        data-src="assets/img/home/wide-photo.jpg"
-                        data-srcset="assets/img/home/wide-photo.jpg 1x, assets/img/home/wide-photo@2x.jpg 2x"
-                        alt="image description"
-                    /></picture>
-                  </div>
-                </div>
-              </section> -->
             <section class="site-section relative site-section--products">
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
@@ -160,10 +111,11 @@ Template Name: Страница с Продукцией
                       ` WE HAVE
                     </h2>
                     <div class="flex justify-center -my-20 lg:-my-40" data-scroll="" data-scroll-speed="0.9">
-                      <picture><img class="transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big.png" alt="image description" /></picture>
+                      <picture><img class="transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="186" height="372" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/content-image01.png" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
-                      FOOD FOR LIFE
+                      LET’S KEEP THE <br />
+                      VIBE~VIBE
                     </h2>
                   </div>
                   <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">
@@ -232,7 +184,7 @@ Template Name: Страница с Продукцией
                       </svg>
                     </div>
                     <div class="text-center">
-                      <button class="btn btn--dark call-modal-support" type="button">
+                      <button class="btn btn--dark" type="button" data-toggle-popup="popup-support">
                         <span class="btn__text-holder"><span class="btn__text">Support</span></span>
                       </button>
                     </div>
@@ -243,7 +195,28 @@ Template Name: Страница с Продукцией
           </main>
         </div>
       </div>
-      <?php include(get_template_directory() . "/include/block-footer.php"); ?>
+      <footer class="footer" data-scroll="" data-scroll-repeat="" data-scroll-call="footer-inview">
+        <div class="footer__holder container">
+          <div class="footer__top-bar">
+            <ul class="footer-list list--tilda mb-10 md:mb-0 lg:w-1/5">
+              <li><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
+            </ul>
+            <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center opacity-40">
+              <ul class="footer-list list--tilda mb-10 md:mb-0">
+                <li><a class="link" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a></li>
+                <li><a class="link" href="<?php echo home_url('/termsconditions', ''); ?>">Terms &amp; Conditions</a></li>
+              </ul>
+              <p class="footer__copy"><span class="footer__copy-text">Moonglade &copy;2021. All rights reserved</span></p>
+            </div>
+            <div class="hidden lg:block lg:w-1/5 lg:text-right opacity-40"><a class="link" href="https://obys.agency">Designed by obys</a></div>
+          </div>
+          <div class="footer__bottom-bar lg:hidden opacity-40">
+            <div class="flex justify-between items-center">
+              <a class="link" href="https://obys.agency">Designed by obys</a><span class="lg:hidden" data-smooth-scroll="top">( Back to top )</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
 
@@ -267,15 +240,156 @@ Template Name: Страница с Продукцией
 
   <?php endif; ?>
 
-  <div class="video-modal" data-video-modal="">
-    <div class="video-modal__close">
-      <button class="btn btn--outline-light w-55 h-55 p-0" type="button" data-modal-close="">
-        <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close text-xs"></i></span>
-      </button>
-    </div>
-    <div class="video-modal__body">
-      <div class="video-modal__content" data-content=""></div>
+  <div class="fixed top-0 w-full h-full z-110 popup popup--flat popup--right" data-component="popup" id="popup-support">
+    <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
+    <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
+      <div class="popup-close">
+        <button class="btn btn--primary" type="button" data-popup-close="">
+          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
+        </button>
+      </div>
+      <div class="popup-body bg-white text-black lg:max-h-full">
+        <div class="p-15 md:p-30 laptop:pt-45 md:flex md:flex-col h-full">
+          <div class="laptop:px-20">
+            <h4 class="popup-title">Do you have any questions?</h4>
+          </div>
+          <div class="md:h-full md:max-h-full md:flex md:flex-col md:overflow-y-auto laptop:px-20">
+            <form name="feedbackUserForm" class="flex-grow md:flex md:flex-col">
+              <div class="flex-grow">
+                <div class="form-group">
+                  <div class="form-group__control"><input class="form-control" name="feedbackSenderName" type="text" placeholder="Name" /></div>
+                </div>
+                <div class="form-group">
+                  <div class="form-group__control"><input class="form-control" name="feedbackSenderEmail" type="text" placeholder="Email" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" /></div>
+                </div>
+                <div class="form-group">
+                  <div class="form-group__control"><textarea class="form-control" name="feedbackSenderMessage" placeholder="Message"></textarea></div>
+                </div>
+              </div>
+              <div class="pt-10">
+                <button class="btn btn--primary w-full js-feedback-button"">
+                  <span class=" btn__text-holder"><span class="btn__text  js-feedback-button">send</span></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right" data-component="popup" id="popup-cart-empty">
+    <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
+    <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
+      <div class="popup-close">
+        <button class="btn btn--primary" type="button" data-popup-close="">
+          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
+        </button>
+      </div>
+      <div class="popup-body bg-white text-black lg:max-h-full">
+        <div class="md:flex md:flex-col h-full cart-popup__holder">
+          <div class="cart-popup__headline">
+            <h4 class="popup-title pt-5 md:pt-10 laptop:pt-0">YOUR CART (0)</h4>
+          </div>
+          <div class="md:h-full md:max-h-full md:flex md:flex-col md:overflow-y-auto">
+            <div class="flex-grow md:flex md:flex-col">
+              <div class="flex-grow flex items-center cart-popup__body">
+                <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+                  It appears that your cart <br />
+                  is currently empty!
+                </p>
+              </div>
+              <div class="cart-popup__footer">
+                <button class="btn btn--outline w-full" type="button" data-popup-close="">
+                  <span class="btn__text-holder"><span class="btn__text">Continue browsing</span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed top-0 w-full h-full z-110 popup cart-popup popup--flat popup--right" data-component="popup" id="popup-cart-full">
+    <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
+    <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
+      <div class="popup-close">
+        <button class="btn btn--primary" type="button" data-popup-close="">
+          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
+        </button>
+      </div>
+      <div class="popup-body bg-white text-black lg:max-h-full">
+        <div class="flex flex-col h-full cart-popup__holder">
+          <div class="cart-popup__headline">
+            <h4 class="popup-title pt-5 md:pt-10 laptop:pt-0 js-cart-total-count-items">YOUR CART (3)</h4>
+          </div>
+          <!-- cart-empty -->
+          <div class="flex-grow md:flex md:flex-col" id="js-cart-wrapper-empty">
+            <div class="flex-grow flex items-center cart-popup__body">
+              <p class="uppercase opacity-50 text-center w-full cart-popup__empty-message">
+                It appears that your cart <br />
+                is currently empty!
+              </p>
+            </div>
+            <div class="cart-popup__footer">
+              <button class="btn btn--outline w-full" type="button" data-popup-close="">
+                <span class="btn__text-holder"><span class="btn__text">Continue browsing</span></span>
+              </button>
+            </div>
+          </div>
+          <!-- cart-empty -->
+          <div class="flex flex-col flex-grow overflow-hidden" id="js-cart-wrapper-full">
+            <form class="flex flex-col flex-grow h-full max-h-full overflow-y-auto" method="POST" action="<?php echo home_url(); ?>/checkout-customer">
+              <div class="flex-grow js-cart">
 
-  <?php get_footer(); ?>
+                <!-- start -->
+                <!-- goods -->
+                <!-- end -->
+
+              </div>
+              <div class="border-t border-black-100 cart-popup__footer">
+                <div class="cart-popup__total flex justify-between items-baseline uppercase"><span>Total</span><span class="js-cart-total-price">$ 90</span></div>
+                <input class="js-cart-total-price-input" type="hidden" name="Total Price">
+                <button class="btn btn--primary w-full" type="submit">
+                  <span class="btn__text-holder"><span class="btn__text">Checkout</span></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="custom-cursor pointer-events-none" data-page-cursor=""><span class="custom-cursor__body fixed left-0 top-0 rounded-full pointer-events-none"><span class="custom-cursor__zoomer"></span></span></span><span class="fixed w-full h-full z-100 bg-black page-overlay top-0 left-0"></span><!-- new code start -->
+  <div class="fixed right-20 bottom-20 left-20 z-30 js-cookies" data-cookies-popup="">
+    <div class="bg-gray-800 text-white p-15 lg:px-40 lg:py-25 text-sm md:flex md:items-center md:justify-between max-w-800 ml-auto rounded-3xl">
+      <div class="w-full mb-20 md:mb-0 md:pr-40 max-w-500 uppercase reset-last">
+        <p>By continuing to use our site you agree to using cookies in accordance with our <a class="link link--underline" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a>.</p>
+      </div>
+      <div class="grid justify-between gap-20 grid-flow-col items-center md:justify-end flex-shrink-0">
+        <button class="btn btn--light py-10 h-46 js-btn-cookies" type="button" data-control="accept">
+          <span class="btn__text-holder"><span class="btn__text js-btn-cookies">Accept cookies</span></span></button><button class="btn btn--outline w-46 h-46 rounded-full border-white border-opacity-10 text-white p-0 hover:text-black text-xxs" type="button" data-control="decline">
+          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="fixed bg-gray-800 text-white top-0 left-0 right-0 py-15 px-20 lg:px-40 z-110 flex items-center justify-between" data-product-added-panel="">
+    <div class="pr-20 reset-last">
+      <p class="text-base uppercase">
+        <span class="mr-10" data-count=""></span><span class="mr-10" data-product-name=""></span><span class="opacity-50">added to Your order</span>
+      </p>
+    </div>
+    <div class="grid justify-between gap-20 grid-flow-col items-center md:justify-end flex-shrink-0">
+      <button class="btn btn--outline w-45 h-45 rounded-full border-white border-opacity-10 text-white p-0 hover:text-black text-xxs" type="button" data-control="close">
+        <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
+      </button>
+    </div>
+  </div>
+  <!-- new code end -->
+  <?php wp_footer(); ?>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cart.js?ver=0.0.0.2"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js?ver=0.0.0.1"></script>
+  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/feedback.js?ver=0.0.0.1"></script>
+</body>
+
+</html>

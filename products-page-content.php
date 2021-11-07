@@ -54,7 +54,7 @@ $product_weight =  carbon_get_post_meta($product_id, 'product_wight');
           </div>
         </div>
         <div class="flex-grow px-10">
-          <button class="btn btn--primary w-full px-10 js-btn-add-to-cart" type="button" data-control="submit">
+          <button class="btn btn--primary w-full px-10 call-modal-add-to-cart js-btn-add-to-cart" type="button" data-control="submit">
             <span class="btn__text-holder"><span class="btn__text js-btn-add-to-cart">add to cart</span></span>
           </button>
         </div>

@@ -15,7 +15,8 @@ Container::make('theme_options', 'Home Page')
     Field::make('text', 'vimeo_link', 'Vimeo Link')
       ->set_width(33),
     Field::make('text', 'sound_link', 'Sound Link')
-      ->set_width(33)
+      ->set_width(33),
+    Field::make('text', 'facebook_domain_verification', 'Facebook domain verification')
   ])
 
   ->add_tab('First video', [

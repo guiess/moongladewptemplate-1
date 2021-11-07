@@ -5,8 +5,6 @@
     return;
   }
 
-  let totalQuantity;
-
   const cart = JSON.parse(localStorage.getItem("cart")) || {}; //если значение в localStorage отсутствует - сохдаём новый пустой объект
 
   const updateQuantity = (id, quantity) => {
@@ -19,10 +17,18 @@
     const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
       ".js-cart-item-price"
     );
+    const cartItemInputPriceDOMElement = cartItemDOMElement.querySelector(
+      ".js-cart-input-price"
+    );
+    const cartItemInputQuantityDOMElement = cartItemDOMElement.querySelector(
+      ".js-cart-input-quantity"
+    );
 
     cart[id].quantity = quantity;
     cartItemQuantityDOMElement.value = quantity;
     cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
+    cartItemInputPriceDOMElement.value = quantity * cart[id].price;
+    cartItemInputQuantityDOMElement.value = quantity;
 
     updateCart();
   };
@@ -63,30 +69,44 @@
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
   );
+  const cartTotalPriceInputDOMElement = document.querySelector(
+    ".js-cart-total-price-input"
+  );
 
   const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
-
     const cartItemTemplate = `
-                    <div class="cart-item">
-                      <figure class=" bg-cover" style="background-image: url(${src});"></figure>
-                      <div class="cart-item-content">
-                        <p class="name">${name}</p>
-                        <div class="cart-item-price-weight">
-                          <p><span class="price js-cart-item-price">$ ${price}</span> <span class="weight">(${weight}gr)</span></p>
-                          <p class="total-price">$ ${summitem}</p>
-                        </div>
-                        <div class="btn-wrap">
-                          <div class="counter">
-                            <button class="minus js-btn-product-decrease-quantity">-</button>
-                            <input type="number" class="js-cart-item-quantity" value="${quantity}" min="1" max="99" readonly>
-                            <button class="plus js-btn-product-increase-quantity">+</button>
-                          </div>
-                          <button class="btn-remove js-btn-cart-item-remove">Remove</button>
-                        </div>
-                      </div>
-                    </div>
+    <div class="cart-popup__product border-b border-black-100">
+      <div class="cart-product uppercase flex items-start">
+        <div class="cart-product__visual overflow-hidden flex-shrink-0">
+          <picture><img class="w-full max-w-full" src="${src}" alt="image description" /></picture>
+        </div>
+        <div class="flex-grow">
+          <h4 class="cart-product__title laptop:w-8/12">${name}</h4>
+           
+            <input type="hidden" name="${id}-Product" value="${name}">
+            <input class="js-cart-input-quantity" type="hidden" name="${id}-Quantity" value="${quantity}">
+            <input class="js-cart-input-price" type="hidden" name="${id}-Price" value="${summitem}">
+          <div class="cart-product__info-line flex justify-between items-baseline">
+            <div class="cart-product__info-item">
+              <span>$ ${price}</span><span class="opacity-50 weight js-cart-item-weight">(${weight}<span class="uppercase">GR</span>)</span>
+            </div>
+            <div class="cart-product__info-item"><span class="js-cart-item-price">$ ${summitem}</span></div>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="cart-product__info-item">
+              <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
+                <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
+                <input class="stepper__input js-cart-item-quantity" type="number" data-input="" readonly value="${quantity}" />
+                <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>
+              </div>
+            </div>
+            <div class="cart-product__info-item flex"><span class="link link--underline opacity-30 js-btn-cart-item-remove">remove</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
     `;
 
     cartItemDOMElement.innerHTML = cartItemTemplate;
@@ -109,10 +129,14 @@
     if (cartTotalPriceDOMElement) {
       cartTotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
+
+    if (cartTotalPriceInputDOMElement) {
+      cartTotalPriceInputDOMElement.value = totalPrice;
+    }
   };
 
   const updateCartTotalItemsCounter = () => {
-    totalQuantity = Object.keys(cart).reduce((acc, id) => {
+    const totalQuantity = Object.keys(cart).reduce((acc, id) => {
       const { quantity } = cart[id];
       return acc + Number(quantity);
     }, 0);
@@ -126,13 +150,21 @@
   };
 
   const updateCart = () => {
-    totalQuantity = updateCartTotalItemsCounter();
+    const totalQuantity = updateCartTotalItemsCounter();
     updateCartTotalPrice();
     saveCart();
 
-    if (totalQuantity === 0 && $("body").hasClass("noscroll")) {
-      $(".modal-cart-empty").addClass("active");
-      $(".modal-cart-not-empty").removeClass("active");
+    itemWrapFull = document.getElementById("js-cart-wrapper-full");
+    itemWrapEmpty = document.getElementById("js-cart-wrapper-empty");
+
+    if (totalQuantity === 0) {
+      //
+      itemWrapFull.classList.add("is-empty");
+      itemWrapEmpty.classList.remove("is-empty");
+    } else {
+      itemWrapFull.classList.remove("is-empty");
+      itemWrapEmpty.classList.add("is-empty");
+      //
     }
   };
 
@@ -200,21 +232,6 @@
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         decreaseQuantity(productID);
-      }
-
-      if (target.classList.contains("js-btn-show-cart")) {
-        // e.preventDefault();
-        $("body").addClass("noscroll");
-        $(".modal-shadow").fadeIn();
-        $(".modal-shadow").addClass("active");
-
-        if (totalQuantity > 0) $(".modal-cart-not-empty").addClass("active");
-        else $(".modal-cart-empty").addClass("active");
-      }
-
-      if (target.classList.contains("js-btn-checkout")) {
-        // e.preventDefault();
-        location.href = "WPJS/checkout-customer";
       }
       ///
       ///

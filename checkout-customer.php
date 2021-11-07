@@ -7,45 +7,20 @@ Template Name: Страница вводо данных покупателя
 <?php get_header(); ?>
 
 <body>
-  <div class="fixed w-full h-full bg-black text-white flex items-center justify-center p-40 lg:p-60 text-center" data-component="preloader">
-    <div class="w-full h-full preloader-holder relative">
-      <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7/10 flex justify-center">
-        <div class="relative" data-preloader-image="">
-          <img src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/preloader/image01@2x.jpg" width="276" height="163" alt="preloader" /><span class="preloader__image-overlay absolute w-full h-full top-0 left-0 opacity-50" data-image-overlay=""></span>
-        </div>
-      </div>
-      <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center" data-preloader-logo="">
-        <svg class="max-w-full h-auto" width="480" height="52" viewbox="0 0 316 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M51.4581 2.37256C43.214 7.1359 41.3044 16.4052 45.6696 23.9705C50.0348 31.5287 59.0238 34.515 67.2675 29.7516C75.5116 24.9957 77.4213 15.719 73.056 8.16111C68.6904 0.595448 59.7018 -2.39078 51.4581 2.37256ZM66.766 28.8889C61.3386 32.0229 53.8247 28.6899 49.7323 21.6036C45.6397 14.5099 46.5101 6.33968 51.9371 3.20572C57.3645 0.0717679 64.8784 3.40478 68.9707 10.4911C73.063 17.5851 72.1933 25.7553 66.766 28.8889Z" fill="currentColor"></path>
-          <path d="M208.682 30.3093H197.904V5.38018C197.904 3.83869 198.789 1.69965 199.851 0.718767V0.556641H192.271V0.718767C193.333 1.69965 194.217 3.83869 194.217 5.38018V26.7395C194.217 28.281 193.332 30.4201 192.271 31.4009V31.5631H194.217H197.904V31.5627H214.709V30.3118H214.709V27.8585H214.5C213.034 29.3886 211.116 30.2963 208.682 30.3093Z" fill="currentColor"></path>
-          <path d="M269.988 0.563288V0.556641H258.636V0.562919H258.628H256.68V0.729108C257.745 1.70999 258.628 3.84423 258.628 5.39163V26.7199C258.628 28.2677 257.745 30.402 256.68 31.3825V31.5487H258.628V31.4523H258.636V31.5516H269.986V31.5631C279.321 31.5638 285.486 24.6245 285.487 16.0643C285.487 7.50371 279.323 0.563657 269.988 0.563288ZM269.986 30.5814V30.5925H262.315V1.5161H269.988V1.50983C276.133 1.5102 280.878 8.01852 280.877 16.0466C280.876 24.0742 276.131 30.5818 269.986 30.5814Z" fill="currentColor"></path>
-          <path d="M17.8081 28.7191L4.93323 0.558594H0V0.772423C1.30514 2.02586 2.16083 3.60391 2.38167 5.55054V26.7356C2.38167 28.2841 1.49681 30.415 0.435046 31.3959V31.5654H5.5821V31.3959C4.57906 30.4741 3.73851 28.5496 3.63547 27.0306V6.59051L15.0501 31.5658H18.0293L18.5308 30.3049L19.0763 28.9259L29.0679 3.75902V26.7359C29.0679 28.2844 28.1831 30.4154 27.1213 31.3962V31.5658H34.7017V31.3962C33.64 30.4154 32.7551 28.2844 32.7551 26.7359V6.63446C32.7551 4.17893 33.6695 2.24707 35.2106 0.772054V0.558594H28.9941L17.8081 28.7191Z" fill="currentColor"></path>
-          <path d="M90.9633 21.2008C86.6346 13.709 88.117 4.65392 94.1563 0.317871C93.7582 0.509542 93.3597 0.715986 92.969 0.944588C85.0643 5.50887 82.3506 15.6187 86.9223 23.5308C91.4866 31.4428 101.596 34.1491 109.508 29.5848C109.884 29.371 110.246 29.1424 110.593 28.899C103.809 31.9152 95.2698 28.6631 90.9633 21.2008Z" fill="currentColor"></path>
-          <path d="M140.396 0.723162C141.465 1.70405 142.343 3.83496 142.343 5.38347V28.0435L122.987 0.561035H117.213V0.767479C118.754 2.24213 119.661 4.17435 119.661 6.6369V27.0257C119.558 28.5447 118.717 30.4695 117.722 31.3909V31.5604H122.868V31.3983C121.799 30.4174 120.914 28.2791 120.914 26.738V4.02663L140.308 31.5608H143.596V5.38347C143.596 3.83496 144.481 1.70405 145.543 0.723162V0.561035H140.396V0.723162H140.396Z" fill="currentColor"></path>
-          <path d="M245.554 26.4017L236.064 0.549316H230.762V0.75576C231.949 1.89138 232.214 3.37342 231.779 5.0619L223.779 26.8363L223.624 27.2714C222.813 29.4097 221.7 31.0025 220.195 31.3859V31.548H225.335L225.328 31.3859C223.956 30.936 224.421 28.783 224.937 27.3452C224.937 27.3305 224.944 27.3083 224.952 27.2935L227.387 20.6652H239.519L242.339 28.3405C242.73 29.5497 242.598 30.501 241.58 31.3859L241.572 31.5554H243.519V31.548H249.278V31.5554H249.381L249.389 31.3859C248.216 31.0989 246.114 27.8102 245.554 26.4017ZM227.864 19.37L233.453 4.14047L238.903 18.9911L239.042 19.37H227.864Z" fill="currentColor"></path>
-          <path d="M309.94 1.81166C312.389 1.81609 314.318 2.72644 315.791 4.26313H316V1.81092H315.999V0.558594H299.195H295.509H293.561V0.724783C294.626 1.7053 295.509 3.8399 295.509 5.38731V26.7367C295.509 28.2841 294.626 30.4183 293.561 31.3992V31.5654H295.509H295.525H316V30.3131H316V27.8605H315.791C314.318 29.3975 312.388 30.3083 309.937 30.3123H299.195V16.6878H305.353C307.659 16.7639 309.494 17.6528 310.905 19.1252H311.115V16.6878V15.4347V12.9976H310.905C309.497 14.4675 307.665 15.3557 305.365 15.4347H299.195V1.81166H309.94Z" fill="currentColor"></path>
-          <path d="M167.868 17.937H179.359V23.4589C179.355 23.5778 179.348 23.8592 179.346 23.9719C179.333 25.318 179.293 27.3776 176.974 28.7987C176.96 28.8065 176.949 28.8165 176.936 28.8242C171.509 31.9582 163.789 28.3958 159.783 21.6578C155.774 14.9127 156.682 6.27349 162.11 3.13953C166.623 0.536644 173.103 2.47441 177.175 7.19048H182.684C177.753 -0.183508 168.583 -2.02119 161.631 2.30563C161.63 2.30637 161.629 2.30711 161.627 2.30785C153.383 7.06418 151.473 16.3405 155.839 23.9058C160.204 31.464 169.314 34.4503 177.558 29.6869C177.568 29.6814 177.576 29.6747 177.586 29.6688C181.014 27.6572 182.784 25.102 183.406 23.8001C183.442 23.7248 183.448 23.6051 183.447 23.515H183.447V17.937H183.453V16.6832H167.867V17.937H167.868Z" fill="currentColor"></path>
-        </svg>
-      </div>
-      <div class="flex justify-center absolute bottom-0 w-full opacity-70 text-sm">
-        <div class="preloader__progress flex items-center justify-center">
-          <div class="preloader__progress-item" data-progress-value="">000</div>
-          <div class="preloader__progress-item">100</div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <?php include(get_template_directory() . "/include/preloader.php"); ?>
+
   <div data-page-layout>
     <div class="wrapper w-full min-h-screen flex flex-col" data-scroller="">
       <div class="flex-grow">
         <div class="page-holder">
           <main class="main">
             <section class="site-section relative">
-              <div class="section__holder pb-60 lg:pb-100">
+              <div class="section__holder lg:pb-100">
                 <div class="md:grid md:grid-cols-2 md:items-start" id="sticky-container">
                   <div class="py-40 lg:py-80 px-15 laptop:px-120">
                     <div class="text-center">
-                      <a class="inline-flex mb-30" href="<?php echo home_url(); ?>/products"><svg class="max-w-full block logo-food w-130 md:w-250 h-auto mx-auto" width="564" height="112" viewbox="0 0 564 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <a class="inline-flex mb-30" href="<?php echo home_url('/products', ''); ?>"><svg class="max-w-full block logo-food w-130 md:w-250 h-auto mx-auto" width="564" height="112" viewbox="0 0 564 112" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M137.402 103.748C137.402 105.157 137.104 106.376 136.508 107.406C135.913 108.436 135.141 109.29 134.194 109.967C133.246 110.645 132.164 111.153 130.946 111.492C129.728 111.83 128.496 112 127.251 112C124.598 112 122.19 111.404 120.025 110.212L119.7 106.878C121.892 109.155 124.557 110.293 127.698 110.293C128.51 110.293 129.322 110.198 130.134 110.008C130.947 109.819 131.678 109.507 132.327 109.073C132.977 108.64 133.497 108.091 133.89 107.427C134.282 106.764 134.479 105.958 134.479 105.009C134.479 103.003 133.342 101.337 131.068 100.009C130.013 99.4404 128.957 98.8715 127.901 98.302C126.845 97.7332 125.776 97.1782 124.694 96.6357C122.42 95.1185 121.283 93.2351 121.283 90.9855C121.283 89.7125 121.554 88.6216 122.096 87.7136C122.637 86.8055 123.347 86.0677 124.227 85.4982C125.107 84.9287 126.095 84.5156 127.191 84.2582C128.288 84.0015 129.39 83.8728 130.5 83.8728C132.395 83.8728 134.155 84.2252 135.779 84.9294L135.941 87.9379C134.344 86.339 132.382 85.5398 130.054 85.5398C129.35 85.5398 128.639 85.6282 127.922 85.8037C127.205 85.9799 126.548 86.2505 125.954 86.6168C125.358 86.983 124.878 87.4569 124.512 88.0389C124.147 88.6223 123.964 89.3198 123.964 90.1328C123.964 91.84 125.128 93.3031 127.456 94.5226C128.538 95.0658 129.614 95.5996 130.684 96.1282C131.753 96.6568 132.828 97.192 133.911 97.7338C136.237 99.2767 137.402 101.282 137.402 103.748Z" fill="currentColor"></path>
                           <path d="M177.23 84.3585C176.987 84.8739 176.865 85.9575 176.865 87.6106V100.74C176.865 108.246 173.306 112 166.187 112C159.258 112 155.793 108.437 155.793 101.309V87.6106C155.793 85.8763 155.684 84.7928 155.468 84.3585H159.285C159.041 85.1174 158.919 86.2017 158.919 87.6106V101.675C158.919 107.42 161.368 110.293 166.268 110.293C171.952 110.293 174.794 107.353 174.794 101.472V87.6106C174.794 85.9311 174.685 84.8469 174.469 84.3585H177.23Z" fill="currentColor"></path>
                           <path d="M212.594 91.7562C212.594 92.9758 212.343 94.0732 211.843 95.0486C211.342 96.0246 210.679 96.8442 209.854 97.5081C209.028 98.1727 208.08 98.6867 207.011 99.0523C205.942 99.4186 204.839 99.6007 203.702 99.6007C202.565 99.6007 201.361 99.3843 200.089 98.9501V108.218C200.089 109.898 200.211 110.982 200.455 111.47H196.719C196.963 110.982 197.085 109.899 197.085 108.218V87.6086C197.085 86.0374 196.963 84.9538 196.719 84.3565H203.337C204.501 84.3565 205.638 84.4925 206.748 84.7631C207.857 85.0343 208.845 85.4678 209.712 86.0638C210.578 86.6597 211.275 87.4252 211.803 88.3603C212.329 89.2974 212.594 90.4291 212.594 91.7562ZM209.507 92.0004C209.507 88.0435 206.976 86.0657 201.915 86.0657H200.088V97.2441C201.306 97.7048 202.469 97.9351 203.579 97.9351C205.392 97.9351 206.833 97.3999 207.903 96.3295C208.973 95.2591 209.507 93.8159 209.507 92.0004Z" fill="currentColor"></path>
@@ -69,98 +44,99 @@ Template Name: Страница вводо данных покупателя
                     <div class="flex justify-center mb-40">
                       <ul class="form-steps-list">
                         <li class="form-steps-list__item form-steps-list__item--active">
-                          <a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-customer">Customer info</a>
+                          <a class="form-steps-list__link link link--underline" href="<?php echo home_url('/checkout-customer', ''); ?>">Customer info</a>
                         </li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-shipping">Shipping</a></li>
-                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url(); ?>/checkout-payment">Payment</a></li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url('/checkout-shipping', ''); ?>">Shipping</a></li>
+                        <li class="form-steps-list__item"><a class="form-steps-list__link link link--underline" href="<?php echo home_url('/checkout-payment', ''); ?>">Payment</a></li>
                       </ul>
                     </div>
-                    <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
-                    <form name="customerinfo" class="form-theme--dark">
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoEmail" class="form-control" type="text" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoFirstName" class="form-control" type="text" placeholder="First name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoLastName" class="form-control" type="text" placeholder="Last name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength="30" required /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength="30" required /></div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control">
-                          <select id="customerInfoSelectCountry" class="form-control js-select-country">
-                            <option value="placeholder">Country</option>
-                            <?php
-                            $countries_string = carbon_get_theme_option("moon_countries_list");
-                            $countries_array = explode("\n", $countries_string);
-                            sort($countries_array); ?>
-                            <?php foreach ($countries_array as $tr) : ?>
+                    <div class="hidden-form-empty-cart">
+                      <h2 class="h5 font-serif mb-15 normal-case">Customer info</h2>
+                      <form name="customerinfo" class="form-theme--dark">
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoEmail" data-inputmask-regex="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" class="form-control" type="text" placeholder="E-mail" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoFirstName" data-inputmask-regex="[A-Za-z]+$" class="form-control" type="text" placeholder="First name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoLastName" data-inputmask-regex="[A-Za-z]+$" class="form-control" type="text" placeholder="Last name" maxlength="30" pattern="[A-Za-z]+$" required /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoAddress" class="form-control" type="text" placeholder="Address" maxlength="60" required /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoApartment" class="form-control" type="text" placeholder="Apartment, suite, etc.  " maxlength="30" required /></div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-group__control">
+                            <select id="customerInfoSelectCountry" class="form-control js-select-country">
+                              <option value="placeholder">Country</option>
                               <?php
-                              $tr = trim($tr);
-                              $pieces = explode(",", $tr);
+                              $countries_string = carbon_get_theme_option("moon_countries_list");
+                              $countries_array = explode("\n", $countries_string);
+                              sort($countries_array); ?>
+                              <?php foreach ($countries_array as $tr) : ?>
+                                <?php
+                                $tr = trim($tr);
+                                $pieces = explode(",", $tr);
 
-                              ?>
+                                ?>
 
-                              <option value="<?php echo trim($pieces[1]); ?>"><?php echo trim($pieces[0]); ?></option>
+                                <option value="<?php echo trim($pieces[1]); ?>"><?php echo trim($pieces[0]); ?></option>
 
-                            <?php endforeach; ?>
-                          </select>
+                              <?php endforeach; ?>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="md:grid md:grid-cols-2 md:gap-x-20">
+                        <div class="md:grid md:grid-cols-2 md:gap-x-20">
+                          <div class="form-group">
+                            <div class="form-group__control"><input name="customerInfoCity" data-inputmask-regex="[a-zA-Z0-9]+$" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z0-9]+$" required /></div>
+                          </div>
+                          <div class="form-group">
+                            <div class="form-group__control"><input name="customerInfoPostalCode" data-inputmask-regex="[a-zA-Z0-9]+$" class="form-control" type="text" placeholder="Postal code" maxlength="10" pattern="[a-zA-Z0-9]+$" required /></div>
+                          </div>
+                        </div>
                         <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoCity" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z]+$" required /></div>
+                          <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength="15" minlength="10" pattern="[+][0-9]+$" /></div>
                         </div>
-                        <div class="form-group">
-                          <div class="form-group__control"><input name="customerInfoPostalCode" class="form-control" type="text" placeholder="Postal code" maxlength="10" pattern="[a-zA-Z0-9]+$" required /></div>
+                        <div class="text-right pt-20">
+                          <button class="btn btn--light js-btn-continue">
+                            <span class="btn__text-holder"><span class="btn__text js-btn-continue">Continue</span></span>
+                          </button>
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="form-group__control"><input name="customerInfoPhone" class="form-control" type="text" placeholder="Phone (optional)" maxlength="15" minlength="10" pattern="[+][0-9]+$" /></div>
-                      </div>
-                      <div class="text-right pt-20">
-                        <button class="btn btn--light js-btn-continue">
-                          <span class="btn__text-holder"><span class="btn__text js-btn-continue">Continue</span></span>
-                        </button>
-                      </div>
-                    </form>
+                      </form>
+                    </div>
+
                   </div>
                   <div class="fixed bottom-0 right-0 w-full md:static" data-component="checkout-products" data-scroll="" data-scroll-sticky="" data-scroll-target="#sticky-container">
                     <div class="w-full text-black bg-white pb-80 md:pb-0" data-products="">
                       <div class="overflow-y-auto md:overflow-visible max-h-full h-full" data-scroller="">
 
                         <div class="px-15 md:px-30 laptop:px-50 border-b border-black-100 js-cart">
-                          <!-- товар тут -->
+
+                          <!-- goods here -->
+
                         </div>
 
-                        <!-- тут уже идет рассчет -->
                         <div class="px-15 md:px-30 laptop:px-50 py-25 lg:py-30 border-b border-black-100">
-                          <div class="flex-grow flex items-center cart-popup__body js-cart-is-empty-plug">                            
+                          <div class="flex-grow flex items-center cart-popup__body js-cart-is-empty-plug">
                           </div>
-                          <form class="form-theme--light mb-25" action="#" data-component="discount-form">
-                            <div class="flex">
-                              <div class="flex-grow"><input class="form-control" id="discountInputField" type="text" placeholder="Discount code " /></div>
+                          <form class="form-theme--light mb-25" data-component="discount-form">
+                            <div class="flex items-center">
+                              <div class="flex-grow"><input id="discountInputField" class="form-control" type="text" placeholder="Discount code " /></div>
                               <div class="flex-shrink-0 ml-15">
-                                <button class="btn btn--primary js-button-apply-disount" type="button">
+
+                                <button class="btn btn--primary js-button-apply-disount">
                                   <span class="btn__text-holder"><span class="btn__text js-button-apply-disount">apply</span></span>
                                 </button>
+
                               </div>
                             </div>
                           </form>
-                          <div class="mb-25 flex justify-between items-center p-15 lg:p-20 rounded-md lg:rounded-2xl bg-black-50">
-                            <span class="uppercase mr-10 text-sm lg:text-md">superfood</span><span class="w-20 h-20 rounded-full text-white bg-black-200 inline-flex items-center justify-center"><svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.41782 5.93809C3.34481 6.01521 3.21855 6.0211 3.13724 5.95115L0.063382 3.3067C-0.0179317 3.23675 -0.0214671 3.11906 0.0554389 3.04515L1.03479 2.1045C1.11174 2.03059 1.24122 2.02738 1.32253 2.09728L3.00165 3.54175C3.08297 3.61169 3.20923 3.60581 3.28223 3.52868L6.56265 0.0641111C6.63566 -0.0130139 6.76486 -0.0218198 6.84966 0.0445795L7.92947 0.889365C8.01432 0.955723 8.024 1.07316 7.95096 1.15029L3.41782 5.93809Z" fill="currentColor" />
-                              </svg></span>
-                          </div>
                           <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 0</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">0$</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">0$</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">$ 0</span></div>
+                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">$ 0</span></div>
                         </div>
 
                       </div>
@@ -183,85 +159,8 @@ Template Name: Страница вводо данных покупателя
           </main>
         </div>
       </div>
-      <footer class="footer" data-scroll="" data-scroll-repeat="" data-scroll-call="footer-inview">
-        <div class="footer__holder container">
-          <div class="footer__top-bar">
-            <ul class="footer-list list--tilda mb-10 md:mb-0 lg:w-1/5">
-              <li><a class="link" href="?instagram" target="_blank">Instagram</a></li>
-            </ul>
-            <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center opacity-40">
-              <ul class="footer-list list--tilda mb-10 md:mb-0">
-                <li><a class="link" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a></li>
-                <li><a class="link" href="<?php echo home_url('/termsconditions', ''); ?>">Terms &amp; Conditions</a></li>
-              </ul>
-              <p class="footer__copy"><span class="footer__copy-text">Moonglade &copy;2021. All rights reserved</span></p>
-            </div>
-            <div class="hidden lg:block lg:w-1/5 lg:text-right opacity-40"><a class="link" href="https://obys.agency">Designed by obys</a></div>
-          </div>
-          <div class="footer__bottom-bar lg:hidden opacity-40">
-            <div class="flex justify-between items-center">
-              <a class="link" href="https://obys.agency">Designed by obys</a><span class="lg:hidden" data-smooth-scroll="top">( Back to top )</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <?php include(get_template_directory() . "/include/block-footer.php"); ?>
     </div>
   </div>
-  <div class="fixed top-0 w-full h-full z-110 popup popup--modal popup--small popup--rounded" data-component="popup" id="popup-thanks">
-    <span class="bg-black absolute w-full h-full left-0 top-0 popup-overlay" data-popup-close=""></span>
-    <div class="popup-container max-h-full lg:flex relative overflow-y-auto lg:overflow-visible" data-popup-scroller="">
-      <div class="popup-close">
-        <button class="btn btn--primary" type="button" data-popup-close="">
-          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
-        </button>
-      </div>
-      <div class="popup-body bg-white text-black lg:max-h-full">
-        <div class="py-65 px-25 md:py-80 md:px-90" data-popup-scroller="">
-          <h5 class="mb-5">Thank you for your order!</h5>
-          <div class="max-w-350 reset-last opacity-80">
-            <p>Your order has been placed and is being processed. You will receive an E-mail with the order details.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span class="fixed w-full h-full z-100 bg-black page-overlay top-0 left-0"></span><!-- new code start -->
-  <div class="fixed right-20 bottom-20 left-20 z-30 js-cookies" data-cookies-popup="">
-    <div class="bg-gray-800 text-white p-15 lg:px-40 lg:py-25 text-sm md:flex md:items-center md:justify-between max-w-800 ml-auto rounded-3xl">
-      <div class="w-full mb-20 md:mb-0 md:pr-40 max-w-500 uppercase reset-last">
-        <p>By continuing to use our site you agree to using cookies in accordance with our <a class="link link--underline" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a>.</p>
-      </div>
-      <div class="grid justify-between gap-20 grid-flow-col items-center md:justify-end flex-shrink-0">
-        <button class="btn btn--light py-10 h-46 js-btn-cookies" type="button" data-control="accept">
-          <span class="btn__text-holder"><span class="btn__text js-btn-cookies">Accept cookies</span></span></button><button class="btn btn--outline w-46 h-46 rounded-full border-white border-opacity-10 text-white p-0 hover:text-black text-xxs" type="button" data-control="decline">
-          <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="fixed bg-gray-800 text-white top-0 left-0 right-0 py-15 px-20 lg:px-40 z-110 flex items-center justify-between" data-product-added-panel="">
-    <div class="pr-20 reset-last">
-      <p class="text-base uppercase">
-        <span class="mr-10" data-count=""></span><span class="mr-10" data-product-name=""></span><span class="opacity-50">added to Your order</span>
-      </p>
-    </div>
-    <div class="grid justify-between gap-20 grid-flow-col items-center md:justify-end flex-shrink-0">
-      <button class="btn btn--outline w-45 h-45 rounded-full border-white border-opacity-10 text-white p-0 hover:text-black text-xxs" type="button" data-control="close">
-        <span class="btn__text-holder"><i class="btn__icon btn__icon--append icon-close"></i></span>
-      </button>
-    </div>
-  </div>
-  <!-- new code end -->
-  <script type='text/javascript' id='main-js-js-extra'>
-    /* <![CDATA[ */
-    var WPJS = {
-      "siteUrl": "<?php echo get_template_directory_uri(); ?>"
-    };
-    /* ]]> */
-  </script>
-  <?php wp_footer(); ?>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/checkout.js?ver=0.0.0.2"></script>
-  <script defer src="<?php echo get_template_directory_uri() . "/assets/"; ?>js/cookies.js"></script>
-</body>
 
-</html>
+  <?php get_footer(); ?>

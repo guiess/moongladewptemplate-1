@@ -5,12 +5,12 @@
     return;
   }
 
-  // localStorage.setItem("cookies", false);
+  // localStorage.setItem("cookies", true);
 
   let showCookies = JSON.parse(localStorage.getItem("cookies"))
 
   if (showCookies) {
-    cookiesDOMElement.style.transform = "translate(0px, 150%)";
+    cookiesDOMElement.classList.add("visible")
   }
 
   document.querySelector("body").addEventListener("click", (e) => {
@@ -18,7 +18,8 @@
 
     if (target.classList.contains("js-btn-cookies")) {
       e.preventDefault();
-      localStorage.setItem("cookies", true);
+      localStorage.setItem("cookies", false);
+      cookiesDOMElement.classList.remove("visible");
     }
   });
 })();

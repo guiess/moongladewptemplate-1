@@ -1,4 +1,10 @@
 (function () {
+  const feedbackDOMElementThanks = document.querySelector(".js-feedback-thanks"); 
+  const feedbackDOMElementError = document.querySelector(".js-feedback-error"); 
+
+  feedbackDOMElementThanks.hidden = true;
+  feedbackDOMElementError.hidden = true;
+
   const sendfeedbackForm = (feedbackForm) => {
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=feedback_send";
@@ -7,16 +13,19 @@
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {
-      const response = xhr.response;
-      console.log(response);
+      const response = xhr.response.trim();
 
-      if (response === "error") {
-        console.log("response false");
+      if (response == "error") {
+        console.log("response false");        
+        feedbackDOMElementError.hidden = false;
         return;
-      } else if (response === "success") {
+      } else if (response == "success") {
         console.log("response success");
-        //TODO чистим форму. вывод сообщения об успехе?
-      } 
+        feedbackForm.feedbackSenderName.value = "";
+        feedbackForm.feedbackSenderEmail.value = "";
+        feedbackForm.feedbackSenderMessage.value = "";
+        feedbackDOMElementThanks.hidden = false;
+      }
       // else return;
     };
 
@@ -26,7 +35,7 @@
 
     request =
       "fbname=" + fbname + "&fbemail=" + fbemail + "&fbmessage=" + fbmessage;
-    console.log(request);
+    // console.log(request);
 
     xhr.send(request);
   };
@@ -46,16 +55,15 @@
     const target = e.target;
 
     if (target.classList.contains("js-feedback-button")) {
-      // e.preventDefault();
+      e.preventDefault();
 
       const feedbackForm = document.forms.feedbackUserForm;
 
       if (!checkValidityOurFunc(feedbackForm)) {
-        console.log("checkValidityOurFunc not ok");
+        // console.log("checkValidityOurFunc not ok");
         return;
       } else {
-        console.log("checkValidityOurFunc ok");
-
+        // console.log("checkValidityOurFunc ok");
         sendfeedbackForm(feedbackForm);
       }
     }
