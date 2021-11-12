@@ -146,8 +146,15 @@
     }
   };
 
+  const disableDiscountApplyBtn = () => {
+    if (discountCode) {
+      $(".js-button-apply-disount").removeAttr("disabled");
+    }
+  };
+
   const updateCart = () => {
     updateCartTotalPrice();
+    disableDiscountApplyBtn();
     saveCart();
 
     itemWrapFull = document.getElementById("js-cart-wrapper-full");

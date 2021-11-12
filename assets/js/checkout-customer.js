@@ -5,11 +5,17 @@
     return;
   }
 
+  // localStorage.removeItem("discountValue");
+  // localStorage.removeItem("discountCode");
+
   const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
   let discountValue = Number(localStorage.getItem("discountValue")) || 0;
   let discountCode = localStorage.getItem("discountCode") || "";
   if (!customer.deliveryPrice) customer.deliveryPrice = 0;
+
+  // console.log(discountValue);
+  // console.log(discountCode);
 
   const updateQuantity = (id, quantity) => {
     const cartItemDOMElement = cartDOMElement.querySelector(
@@ -102,7 +108,6 @@
   };
 
   const updateCartTotalPrice = () => {
-    // console.log(cart);
     if (cartEmpty()) return;
 
     let discountValueMath;
@@ -141,7 +146,6 @@
     }
 
     if (cartTotalPriceDOMElement) {
-      console.log(customer.deliveryPrice);
       cartTotalPriceDOMElement.textContent =
         "$ " +
         (Number(totalPrice) -
@@ -150,15 +154,16 @@
     }
   };
 
-  const updateCart = () => {
-    // totalQuantity = updateCartTotalItemsCounter();
-    updateCartTotalPrice();
-    saveCart();
+  const disableDiscountApplyBtn = () => {
+    if (discountCode) {
+      $(".js-button-apply-disount").removeAttr("disabled");
+    }
+  };
 
-    // if (totalQuantity === 0 && $("body").hasClass("noscroll")) {
-    //   $(".modal-cart-empty").addClass("active");
-    //   $(".modal-cart-not-empty").removeClass("active");
-    // }
+  const updateCart = () => {
+    updateCartTotalPrice();
+    disableDiscountApplyBtn();
+    saveCart();
   };
 
   const countItemsInCart = () => {
@@ -189,7 +194,6 @@
   };
 
   const saveDataCustomer = (customerForm) => {
-    console.log(customerForm);
     const email = customerForm.elements.customerInfoEmail.value;
     const firstName = customerForm.elements.customerInfoFirstName.value;
     const lastName = customerForm.elements.customerInfoLastName.value;
@@ -288,7 +292,6 @@
       const response = xhr.response;
 
       if (response === "false") {
-        console.log("response false");
         return;
       } else if (response.startsWith("fix") || response.startsWith("per")) {
         makeDiscount(response);
@@ -348,7 +351,6 @@
       }
 
       if (target.classList.contains("js-btn-continue")) {
-        console.log("js-btn-continue");
         e.preventDefault();
         const customerForm = document.forms.customerinfo;
         if (!checkValidityOurFunc(customerForm)) {

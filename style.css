@@ -903,11 +903,11 @@ button:focus {
   border-radius: 50%;
 }
 
-/* .btn.disabled, */
-/* .btn:disabled {
+.btn.disabled,
+.btn:disabled {
   opacity: .3;
   pointer-events: none;
-} */
+}
 
 .no-touchevents .btn.is-active:before,
 .no-touchevents .btn:hover:before,
