@@ -6,7 +6,7 @@ Template Name: Страница Главная
 
 <?php get_header(); ?>
 
-<body>
+<body class="page-home">
 
   <?php include(get_template_directory() . "/include/preloader.php"); ?>
 
@@ -468,6 +468,7 @@ Template Name: Страница Главная
 
                         $catalog_products_args = [
                           'post_type' => 'product',
+                          'posts_per_page' => '6',
                           'post__in' => $catalog_products_ids
                         ];
 
@@ -513,7 +514,7 @@ Template Name: Страница Главная
                 </div>
               </div>
             </section>
-            <section class="site-section relative laptop:-mt-100">
+            <section class="site-section relative laptop:-mt-100 block-prefooter">
               <div class="section__holder">
                 <div class="relative laptop:h-screen" data-scroll="" data-scroll-speed="3" data-scroll-offset="0">
                   <picture><img class="w-full max-w-full transition-opacity duration-300 laptop:absolute laptop:top-0 laptop:w-full laptop:h-full object-cover min-h-400" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 2x" alt="image description" /></picture><span class="h-3/12 absolute left-0 -top-5 w-full bg-gradient-to-b from-black to-transparent"></span><span class="h-6/12 absolute left-0 -bottom-5 w-full bg-gradient-to-t from-black to-transparent"></span>

@@ -14,11 +14,11 @@
         </ul>
         <p class="footer__copy opacity-40"><span class="footer__copy-text">Moonglade &copy;2021. All rights reserved</span></p>
       </div>
-      <div class="hidden lg:block lg:text-right"><a class="link" href="https://obys.agency">Designed by obys</a></div>
+      <div class="hidden lg:block lg:text-right"><a class="footer-design" href="https://obys.agency" disabled>Designed by obys</a></div>
     </div>
     <div class="footer__bottom-bar md:hidden">
       <div class="flex justify-between items-center">
-        <a class="link" href="https://obys.agency">Designed by obys</a><span class="lg:hidden" data-smooth-scroll="top">( Back to top )</span>
+        <a class="footer-design" href="https://obys.agency" disabled>Designed by obys</a><span class="lg:hidden" data-smooth-scroll="top">( Back to top )</span>
       </div>
     </div>
   </div>

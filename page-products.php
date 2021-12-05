@@ -47,9 +47,9 @@ Template Name: Страница с Продукцией
                     </div>
                   </div>
                   <div class="text-center md:left-0 mt-30 md:mt-0 md:absolute md:w-full md:text-right md:right-0 md:mx-auto md:bottom-0 container md:pb-35 lg:pb-50 h-min:pb-20" data-scroll="" data-scroll-call="fadeIn" data-delay="1.5">
-                    <button class="btn btn--dark call-modal-support" type="button">
+                    <!-- <button class="btn btn--dark call-modal-support" type="button">
                       <span class="btn__text-holder"><span class="btn__text">Support</span></span>
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -160,10 +160,10 @@ Template Name: Страница с Продукцией
                       ` WE HAVE
                     </h2>
                     <div class="flex justify-center -my-20 lg:-my-40" data-scroll="" data-scroll-speed="0.9">
-                      <picture><img class="transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big.png" alt="image description" /></picture>
+                      <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.png" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
-                      FOOD FOR LIFE
+                      LET‘S KEEP <br>THE VIBE~VIBE
                     </h2>
                   </div>
                   <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">

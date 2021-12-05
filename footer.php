@@ -93,7 +93,8 @@
         <input data-inputmask-regex="[A-z  ]{1,30}" name="feedbackSenderName" type="text" placeholder="Name" required="required">
       </div>
       <div class="input-wrap">
-        <input type="text" placeholder="Email" name="feedbackSenderEmail" data-inputmask-regex="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required="required">
+        <!-- <input type="text" placeholder="Email" name="feedbackSenderEmail" data-inputmask-regex="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" pattern="^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$" required="required"> -->
+        <input type="text" placeholder="Email" name="feedbackSenderEmail" required="required">
       </div>
       <!-- <div class="input-wrap">
         <input data-inputmask-regex="[+0-9]{1,20}" type="tel" placeholder="Phone number" required="required">
