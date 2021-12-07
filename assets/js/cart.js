@@ -70,9 +70,9 @@
 
     const cartItemTemplate = `
                     <div class="cart-item">
-                      <figure class=" bg-cover" style="background-image: url(${src});"></figure>
+                    <a href=""><figure class="bg-cover js-btn-item-info" style="background-image: url(${src});"></figure></a>
                       <div class="cart-item-content">
-                        <p class="name">${name}</p>
+                        <a class="name js-btn-item-info" href="">${name}</a>
                         <div class="cart-item-price-weight">
                           <p><span class="price js-cart-item-price">$ ${price}</span> <span class="weight">(${weight}gr)</span></p>
                           <p class="total-price">$ ${summitem}</p>
@@ -172,6 +172,31 @@
 
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
+
+      if (target.classList.contains("js-btn-item-info")) {
+        e.preventDefault();
+        const cartItemDOMElement = target.closest(".js-cart-item");
+        const productID = cartItemDOMElement.getAttribute("data-product-id");
+        console.log(productID);
+
+        const modalCartNotEmpty = document.querySelector(".modal-cart-not-empty");
+        modalCartNotEmpty.classList.remove("active");
+
+        const modalShadow = document.querySelector(".modal-shadow");         
+        modalShadow.classList.remove("active");
+        modalShadow.style.display = "none";        
+
+        document.body.classList.remove("noscroll");
+        
+        elementHtml = document.querySelector(".no-touchevents"); 
+        elementHtml.classList.add("popup--opened");
+        
+        elementProductInfo = document.getElementById(productID);
+        elementProductInfo.classList.remove("is-hidden");
+        elementProductInfo.classList.add("is-active");
+        
+        document.body.style.overflow = "hidden";
+      }
 
       if (target.classList.contains("js-btn-add-to-cart")) {
         e.preventDefault();

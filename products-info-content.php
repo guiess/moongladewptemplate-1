@@ -49,27 +49,27 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
               <div class="swiper-wrapper">
                 <div class="swiper-slide w-full h-full">
                   <div class="slide-inner w-full h-full">
-                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image1_2x; ?>" alt="image description" /></picture>
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover loaded" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image1_2x; ?>" alt="image description" srcset="<?php echo $product_image1_2x; ?>" data-ll-status="loaded"/></picture>
                   </div>
                 </div>
                 <div class="swiper-slide w-full h-full">
                   <div class="slide-inner w-full h-full">
-                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image2_2x; ?>" alt="image description" /></picture>
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover loaded" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image2_2x; ?>" alt="image description" srcset="<?php echo $product_image2_2x; ?>" data-ll-status="loaded"/></picture>
                   </div>
                 </div>
                 <div class="swiper-slide w-full h-full">
                   <div class="slide-inner w-full h-full">
-                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image3_2x; ?>" alt="image description" /></picture>
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover loaded" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image3_2x; ?>" alt="image description" srcset="<?php echo $product_image3_2x; ?>" data-ll-status="loaded"/></picture>
                   </div>
                 </div>
                 <div class="swiper-slide w-full h-full">
                   <div class="slide-inner w-full h-full">
-                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image4_2x; ?>" alt="image description" /></picture>
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover loaded" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image4_2x; ?>" alt="image description" srcset="<?php echo $product_image4_2x; ?>" data-ll-status="loaded"/></picture>
                   </div>
                 </div>
                 <div class="swiper-slide w-full h-full">
                   <div class="slide-inner w-full h-full">
-                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image5_2x; ?>" alt="image description" /></picture>
+                    <picture><img class="w-full max-w-full lg:w-full lg:h-full lg:object-cover loaded" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-srcset="<?php echo $product_image5_2x; ?>" alt="image description" srcset="<?php echo $product_image5_2x; ?>" data-ll-status="loaded"/></picture>
                   </div>
                 </div>
               </div>
