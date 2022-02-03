@@ -116,7 +116,7 @@ Template Name: Страница с Продукцией
                           <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span><span class="absolute left-0 top-0 w-full h-full bg-repeat opacity-50 pointer-events-none" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/noize.png)"></span>
                           <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
                             <div data-magnet="">
-                              <button class="btn btn--play" type="button" data-video-id="<?php echo carbon_get_theme_option("first_video_products_page_vimeo_id"); ?>" data-component="fullscreen-video">
+                              <button class="btn btn--play call-modal-video" type="button" data-video-id="<?php echo carbon_get_theme_option("first_video_products_page_vimeo_id"); ?>" data-component="fullscreen-video">
                                 <span class="btn__text-holder"></span>
                               </button>
                             </div>
