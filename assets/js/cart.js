@@ -173,28 +173,40 @@
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
 
+      // if (target.classList.contains("btn btn--play")) {
+      //   e.preventDefault();
+      //   console.log("object");
+      // }
+
+      // if (target.classList.contains("btn__text-holder")) {
+      //   e.preventDefault();
+      //   console.log("object");
+      // }
+
       if (target.classList.contains("js-btn-item-info")) {
         e.preventDefault();
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         console.log(productID);
 
-        const modalCartNotEmpty = document.querySelector(".modal-cart-not-empty");
+        const modalCartNotEmpty = document.querySelector(
+          ".modal-cart-not-empty"
+        );
         modalCartNotEmpty.classList.remove("active");
 
-        const modalShadow = document.querySelector(".modal-shadow");         
+        const modalShadow = document.querySelector(".modal-shadow");
         modalShadow.classList.remove("active");
-        modalShadow.style.display = "none";        
+        modalShadow.style.display = "none";
 
         document.body.classList.remove("noscroll");
-        
-        elementHtml = document.querySelector(".no-touchevents"); 
+
+        elementHtml = document.querySelector(".no-touchevents");
         elementHtml.classList.add("popup--opened");
-        
+
         elementProductInfo = document.getElementById(productID);
         elementProductInfo.classList.remove("is-hidden");
         elementProductInfo.classList.add("is-active");
-        
+
         document.body.style.overflow = "hidden";
       }
 

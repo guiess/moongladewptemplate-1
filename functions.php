@@ -32,15 +32,17 @@ function site_scripts()
   wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main', 'gsap-main'], null, true);
   wp_enqueue_script('inputmask-main', get_template_directory_uri() . '/assets/js/inputmask.js', ['jquery-main', 'gsap-main', 'swiper-main'], null, true);
 
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);  
-  wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true); 
+  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);
+  wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
+
+  // if (is_page('')) {
+  //   wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
+  // }
 
   if (is_page('products')) {
     wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/cart.js', [], null, true);
-  }
-
-  if (is_page('products')) {
     wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/feedback.js', [], null, true);
+    // wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
   }
 
   if (is_page('checkout-customer')) {
