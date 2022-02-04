@@ -4,7 +4,7 @@
 	<div class="modal-video-bg"></div>
 	<div class="video-holder">
 		<div class="mngld-video">
-			<video id="video" src="https://u1441555.isp.regruhosting.ru/wp-content/uploads/2021/12/hawaii-001.mp4" playsinline autoplay muted loop></video>
+			<video id="video" src="" playsinline autoplay muted loop></video>
 			<div class="controls">
 				<div class="trigger pause">
 					<span>P</span>

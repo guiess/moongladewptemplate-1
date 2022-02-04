@@ -20,7 +20,9 @@ Container::make('theme_options', 'Product Page')
   ->add_tab('First video products page', [
     Field::make('file', 'first_video_products_page')
       ->set_type('video'),
-      Field::make('text', 'first_video_products_page_vimeo_id', 'ID file on vimeo')
+    Field::make('file', 'first_video_products_page_play')
+      ->set_type('video'),
+    // Field::make('text', 'first_video_products_page_vimeo_id', 'ID file on vimeo')
   ])
 
   ->add_tab('Activation Products', [

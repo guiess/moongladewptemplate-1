@@ -164,8 +164,13 @@ function videoChangeTime(e) {
     videoPlayer.currentTime = videoPlayer.duration * (progress / 100);
 }
 
-$(".call-modal-video").click(function(){
+$(".call-modal-video").click(function(e){
+    console.log(e);
+    e.preventDefault();
     $(".modal-video").addClass("active");
+    var videoVideo = $(this).closest('.call-modal-video').attr('data-video-link');
+    console.log(videoVideo);
+    $("#video").attr("src", videoVideo);
 });
 
 $(".modal-video .btn-close").click(function(){

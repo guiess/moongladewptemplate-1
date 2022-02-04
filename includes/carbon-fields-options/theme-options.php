@@ -22,7 +22,9 @@ Container::make('theme_options', 'Home Page')
   ->add_tab('First video', [
     Field::make('file', 'first_video')
       ->set_type('video'),
-    Field::make('text', 'first_video_vimeo_id', 'ID file on vimeo')
+    Field::make('file', 'first_video_play')
+      ->set_type('video')
+    // Field::make('text', 'first_video_vimeo_id', 'ID file on vimeo')
   ])
 
   ->add_tab("Pictures MONOWAY", [
@@ -63,14 +65,18 @@ Container::make('theme_options', 'Home Page')
   ->add_tab('Third video', [
     Field::make('file', 'third_video')
       ->set_type('video'),
-    Field::make('text', 'third_video_vimeo_id', 'ID file on vimeo'),
+    Field::make('file', 'third_video_play')
+      ->set_type('video'),
+    // Field::make('text', 'third_video_vimeo_id', 'ID file on vimeo'),
     Field::make('textarea', 'third_video_text', 'Signature (to wrap lines, write <br/>)')
   ])
 
   ->add_tab('Fourth video', [
     Field::make('file', 'fourth_video')
       ->set_type('video'),
-    Field::make('text', 'fourth_video_vimeo_id', 'ID file on vimeo'),
+    Field::make('file', 'fourth_video_play')
+      ->set_type('video'),
+    // Field::make('text', 'fourth_video_vimeo_id', 'ID file on vimeo'),
   ])
 
   ->add_tab('MOON INSPIRATION', [
