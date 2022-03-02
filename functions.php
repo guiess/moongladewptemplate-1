@@ -166,3 +166,7 @@ function delivery_rank()
   }
   require_once('includes/ajax-requests/delivery-rate-shop.php');
 }
+
+@ini_set ('upload_max_size', '32M');
+@ini_set ('post_max_size', '32M');
+@ini_set ('max_execution_time', '300');

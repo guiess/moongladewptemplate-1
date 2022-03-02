@@ -204,6 +204,7 @@
         customerForm.customerInfoSelectCountry.selectedIndex
       ].text;
     const country = customerForm.elements.customerInfoSelectCountry.value;
+    const province = customerForm.elements.customerInfoProvince.value;
     const city = customerForm.elements.customerInfoCity.value;
     const postalCode = customerForm.elements.customerInfoPostalCode.value;
     const infoPhone = customerForm.elements.customerInfoPhone.value;
@@ -215,6 +216,7 @@
     customer.apartment = apartment;
     customer.countryName = countryName;
     customer.country = country;
+    customer.province = province;
     customer.city = city;
     customer.postalCode = postalCode;
     customer.infoPhone = infoPhone;
@@ -251,6 +253,10 @@
       customer.country
         ? (customerForm.customerInfoSelectCountry.value = customer.country)
         : (customerForm.customerInfoSelectCountry.value = "placeholder");
+
+      customer.province
+        ? (customerForm.elements.customerInfoProvince.value = customer.province)
+        : (customerForm.elements.customerInfoProvince.value = "");
 
       customer.city
         ? (customerForm.elements.customerInfoCity.value = customer.city)
@@ -402,7 +408,7 @@ const checkValidityOurFunc = (customerForm) => {
   if (!customerForm.customerInfoApartment.checkValidity()) {
     alert("Please check your Apartment spelling");
     return;
-  }
+  }  
 
   if (customerForm.customerInfoSelectCountry.value === "placeholder") {
     alert("Please check your Country spelling");

@@ -9,6 +9,7 @@ $product_id = get_the_ID();
 
 $product_price =  carbon_get_post_meta($product_id, 'product_price');
 $product_wight =  carbon_get_post_meta($product_id, 'product_wight');
+$product_wight_oz =  carbon_get_post_meta($product_id, 'product_wight_oz');
 $product_bw_image_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_bw_image_2x'));
 $product_image1_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image1_2x'));
 $product_image2_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image2_2x'));
@@ -17,7 +18,9 @@ $product_image4_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id
 $product_image5_2x =  wp_get_original_image_url(carbon_get_post_meta($product_id, 'product_image5_2x'));
 $product_slogan =  carbon_get_post_meta($product_id, 'product_slogan');
 $product_use =  carbon_get_post_meta($product_id, 'product_use');
+$product_ingredients =  carbon_get_post_meta($product_id, 'product_ingredients');
 $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
+$product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
 
 ?>
 
@@ -92,7 +95,8 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
       <div class="lg:col-span-5 product-popup__content-part js-product" data-component="product" data-product-id="product_<?php echo $product_id; ?>" data-product-name="<?php the_title(); ?>" data-product-price="<?php echo $product_price; ?>" data-product-src="<?php echo $product_image1_2x; ?>">
         <div class="product-popup__content-scroller">
           <h2 class="product-popup__title font-serif" data-product-title=""><?php the_title(); ?></h2>
-          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5">(<?php echo $product_wight; ?>GR)</span></p>
+          <p class=""><span class="formfactor opacity-50"><?php echo $product_form_factor; ?></span></p>
+          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5 product-wight-mrg-lft"><?php echo $product_wight; ?> GR / <?php echo $product_wight_oz; ?> OZ</span></p>
           <div class="product-popup__buttons-panel flex justify-between">
             <div class="product-popup__button-item flex-shrink-0">
               <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
@@ -116,6 +120,10 @@ $product_contains =  carbon_get_post_meta($product_id, 'product_contains');
           <p class="product-popup__excerpt uppercase font-serif"><?php echo $product_slogan; ?></p>
           <hr class="opacity-10 border-black product-popup__divider" />
           <div class="product-popup__definitions grid">
+            <dl class="mb-0">
+              <dt class="opacity-50">Ingredients:</dt>
+              <dd><?php echo $product_ingredients; ?></dd>
+            </dl>
             <dl class="mb-0">
               <dt class="opacity-50">Use:</dt>
               <dd><?php echo $product_use; ?></dd>

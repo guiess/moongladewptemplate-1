@@ -89,6 +89,9 @@ Template Name: Страница вводо данных покупателя
                             </select>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <div class="form-group__control"><input name="customerInfoProvince" data-inputmask-regex="[a-zA-Z0-9 ]+$" class="form-control" type="text" placeholder="Province" maxlength="100" required /></div>
+                        </div>
                         <div class="md:grid md:grid-cols-2 md:gap-x-20">
                           <div class="form-group">
                             <div class="form-group__control"><input name="customerInfoCity" data-inputmask-regex="[a-zA-Z0-9]+$" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z0-9]+$" required /></div>

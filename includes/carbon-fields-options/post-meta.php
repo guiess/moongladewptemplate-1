@@ -15,7 +15,8 @@ Container::make('post_meta', 'Product fields')
   ])
 
   ->add_tab('Wight', [
-    Field::make('text', 'product_wight', 'Wight (GR)')
+    Field::make('text', 'product_wight', 'Wight (GR)'),
+    Field::make('text', 'product_wight_oz', 'Wight (OZ)')    
   ])
 
   ->add_tab('Box image', [
@@ -96,6 +97,10 @@ Container::make('post_meta', 'Product fields')
     Field::make('textarea', 'product_slogan', 'Slogan:')
   ])
 
+  ->add_tab('Ingredients', [
+    Field::make('textarea', 'product_ingredients', 'Ingredients:')
+  ])
+  
   ->add_tab('Use', [
     Field::make('textarea', 'product_use', 'Use:')
   ])

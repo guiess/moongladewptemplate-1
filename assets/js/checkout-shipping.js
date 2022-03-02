@@ -214,6 +214,8 @@
             ", " +
             customer.countryName +
             ", " +
+            customer.province +
+            ", " +
             customer.city +
             ", " +
             customer.address +

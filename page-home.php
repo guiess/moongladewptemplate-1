@@ -43,7 +43,7 @@ Template Name: Страница Главная
                   <div class="absolute bottom-0 w-full text-center opacity-70 left-0 pb-45 xl:pb-60 h-min:pb-30">
                     <div data-scroll="" data-scroll-call="fadeIn" data-delay="1.2">
                       <i class="scroll-down__icon icon-infinity mb-5"></i>
-                      <p class="scroll-down uppercase mb-0"><span>~ Scoll Down ~</span></p>
+                      <p class="scroll-down uppercase mb-0"><span>~ Scroll Down ~</span></p>
                     </div>
                   </div>
                 </div>
