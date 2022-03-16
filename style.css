@@ -8595,4 +8595,5 @@ textarea:-webkit-autofill {
 .product-wight-mrg-lft {
   margin-left: 55px;  
   font-size: 14px;
+  text-transform: lowercase;
 }

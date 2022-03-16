@@ -283,6 +283,8 @@
 
       responseJSON = JSON.parse(response);
 
+      console.log("responseJSON " + JSON.stringify(responseJSON));
+
       for (i = 0; i < responseJSON.price.length; i++) {
         let selectedOption = document.getElementById(
           "customerSelectShippingMethod"
@@ -306,6 +308,8 @@
     };
 
     infoToSend = `country=${customer.country}&city=${customer.city}&postalcode=${customer.postalCode}`;
+
+    console.log(infoToSend);
 
     xhr.send(infoToSend);
   };

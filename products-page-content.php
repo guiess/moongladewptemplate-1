@@ -47,7 +47,7 @@ $product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
     <div class="product__content">
       <h3 class="product__title" data-product-title=""><?php the_title(); ?></h3>
       <p class=""><span class="formfactor2 opacity-50"><?php echo $product_form_factor; ?></span></p>
-      <p class="product__price"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5 product-wight-mrg-lft"><?php echo $product_wight; ?> GR / <?php echo $product_wight_oz; ?> OZ</span></p>
+      <p class="product__price"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5 product-wight-mrg-lft">(<?php echo $product_wight; ?>g / <?php echo $product_wight_oz; ?>oz)</span></p>
       <div class="flex md:block lg:flex justify-between -mx-10">
         <div class="flex-shrink-0 px-10 mb-20 lg:mb-0">
           <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">

@@ -96,7 +96,7 @@ $product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
         <div class="product-popup__content-scroller">
           <h2 class="product-popup__title font-serif" data-product-title=""><?php the_title(); ?></h2>
           <p class=""><span class="formfactor opacity-50"><?php echo $product_form_factor; ?></span></p>
-          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5 product-wight-mrg-lft"><?php echo $product_wight; ?> GR / <?php echo $product_wight_oz; ?> OZ</span></p>
+          <p class="product-popup__price font-serif"><span>$ <?php echo $product_price; ?></span><span class="opacity-50 ml-5 product-wight-mrg-lft">(<?php echo $product_wight; ?>g / <?php echo $product_wight_oz; ?>oz)</span></p>
           <div class="product-popup__buttons-panel flex justify-between">
             <div class="product-popup__button-item flex-shrink-0">
               <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
@@ -117,7 +117,7 @@ $product_form_factor = carbon_get_post_meta($product_id, 'product_form_factor');
               <?php the_content(); ?>
             </p>
           </div>
-          <p class="product-popup__excerpt uppercase font-serif"><?php echo $product_slogan; ?></p>
+          <pre class="product-popup__excerpt uppercase font-serif"><?php echo $product_slogan; ?></pre>
           <hr class="opacity-10 border-black product-popup__divider" />
           <div class="product-popup__definitions grid">
             <dl class="mb-0">
