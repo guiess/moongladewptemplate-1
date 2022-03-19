@@ -7357,6 +7357,7 @@ textarea:-webkit-autofill {
 .product-popup__price {
   font-size: 2rem;
   margin-bottom: 25px;
+  font-family: Plain, -apple-system, Roboto, sans-serif;
 }
 
 .product-popup__buttons-panel {
@@ -8593,7 +8594,7 @@ textarea:-webkit-autofill {
 }
 
 .product-wight-mrg-lft {
-  margin-left: 55px;  
+  margin-left: 30px;  
   font-size: 14px;
   text-transform: lowercase;
 }
