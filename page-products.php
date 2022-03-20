@@ -60,9 +60,11 @@ Template Name: Страница с Продукцией
                   <div class="md:grid md:grid-cols-12 mb-50 md:mb-100 relative">
                     <div class="md:col-start-3 md:col-span-9 xl:col-start-4 xl:col-span-6">
                       <!-- <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5">Moon InSpiration</p> -->
-                      <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5"></p>
-                      <p class="h4 text-gray font-serif leading-none" data-scroll="" data-scroll-call="split" data-split="lines" data-speed="2">
+                      <!-- <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5"></p> -->
+                      <!-- <p class="h4 text-gray font-serif leading-none" data-scroll="" data-scroll-call="split" data-split="lines" data-speed="2"> -->
+                      <p class="h4 text-gray font-serif leading-none deltd-mooninsp" data-scroll="" data-speed="2">
                         <?php echo carbon_get_theme_option("slogan_product_text"); ?>
+                      <pre class="h4 text-gray font-serif leading-none">MOVE  IN  YOUR   OWN  RHYTHM.</pre>
                       </p>
                     </div>
                   </div>
@@ -160,7 +162,7 @@ Template Name: Страница с Продукцией
                     FOOD  <br />
                     FOR LIFE
                     </h2>
-                    <div class="flex justify-center -my-20 lg:-my-40" data-scroll="" data-scroll-speed="0.9">
+                    <div class="flex justify-center lg:-my-40" data-scroll="" data-scroll-speed="0.9">
                       <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.png" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
