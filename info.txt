@@ -16,3 +16,15 @@ B33hA7Kge7Za3kH пароль
 почта на рег ру
 moonglade@u1441555.isp.regruhosting.ru
 Jhj213ras
+
+liximomo.sftp
+{
+    "name": "moonglade",
+    "host": "37.140.192.174",
+    "protocol": "ftp",
+    "port": 21,
+    "username": "u1441555_admin",
+    "password": "mW5EFDU6ZXBvwVh",
+    "remotePath": "/www/u1441555.isp.regruhosting.ru/wp-content/themes/moonglade/",
+    "uploadOnSave": true
+}

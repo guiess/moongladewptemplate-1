@@ -26,7 +26,7 @@ Template Name: Страница с Продукцией
                   </span>
                   <div class="heading-decorated">
                     <h1 class="heading-decorated__title font-serif uppercase" data-scroll="" data-scroll-call="split" data-delay="0.5" data-split="words, lines" data-speed="2" data-interval="0.07">
-                      <div>WHEN EVER WE,</div>
+                      <div>WHENEVER WE</div>
                       <div>TOUCH &nbsp; &nbsp; NATURE</div>
                       <div>` WE GET CLEAN</div>
                     </h1>
@@ -159,14 +159,16 @@ Template Name: Страница с Продукцией
                   </span>
                   <div class="heading-centered text-center mb-50 md:mb-150">
                     <h2 class="mb-0 leading-xs" data-scroll="" data-scroll-call="split" data-speed="2">
-                    FOOD  <br />
-                    FOR LIFE
+                      <!-- <pre class="h4 text-gray font-serif leading-none">MOVE  IN  YOUR   OWN  RHYTHM.</pre> -->
+                      <pre class="text-gray font-serif">FOOD                   <br />
+         FOR LIFE</pre>
                     </h2>
                     <div class="flex justify-center lg:-my-40" data-scroll="" data-scroll-speed="0.9">
                       <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.png" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
-                    CHOOSE YOUR<br>SUPERPOWDER
+                    <pre class="text-gray font-serif">CHOOSE YOUR      
+               `SUPERPOWDER</pre>
                     </h2>
                   </div>
                   <div class="md:grid md:grid-cols-3 md:gap-20 laptop:gap-80 md:items-center relative">
