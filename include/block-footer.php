@@ -5,7 +5,7 @@
         <li><a class="link" href="<?php echo carbon_get_theme_option('vimeo_link'); ?>" target="_blank">Films</a></li>
         <li><a class="link" href="<?php echo carbon_get_theme_option('sound_link'); ?>" target="_blank">Sound</a></li>
         <!-- <li><a class="link" href="https://www.facebook.com/moonglade114" target="_blank">Facebook</a></li> -->
-        <li><a class="link" href="<?php echo carbon_get_theme_option('instagram_link'); ?>" target="_blank">Instagram</a></li>
+        <li><a class="link" href="<?php if(is_front_page()) {echo carbon_get_theme_option('instagram_link');} else {echo carbon_get_theme_option('instagram_link_superfood');} ?>" target="_blank">Instagram</a></li>
       </ul>
       <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center">
         <ul class="footer-list list--tilda mb-10 md:mb-0">

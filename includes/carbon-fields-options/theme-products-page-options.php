@@ -9,6 +9,11 @@ use Carbon_Fields\Field;
 
 Container::make('theme_options', 'Product Page')
   ->set_icon('dashicons-carrot') //добавить иконку
+
+  ->add_tab('Socials', [
+    Field::make('text', 'instagram_link_superfood', 'Instagram link in Product Page')
+  ])
+  
   ->add_tab('Slogan products text', [
     // Field::make('textarea', 'first_product_page_text', 'First text (to wrap lines, write <br/>)')
     //   ->set_width(50),

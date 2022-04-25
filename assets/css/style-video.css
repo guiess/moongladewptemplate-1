@@ -1,0 +1,400 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-overflow-style: scrollbar; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+button:active, button:focus, button:hover, input:active, input:focus, input:hover, textarea:active, textarea:focus, textarea:hover, select:active, select:focus, select:hover {
+  outline: none !important; }
+
+html, body {
+  width: 100%; }
+
+body.noscroll {
+  overflow: hidden; }
+
+@font-face {
+  font-family: Moonglade;
+  src: url(../fonts/CaliforniaSansMoonglade-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; }
+
+body {
+  background: #000; }
+
+.simple-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 100px auto;
+  padding: 0 15px; }
+
+.mngld-video {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  cursor: default; }
+  .mngld-video video {
+    width: 100%;
+    height: auto;
+    display: block; }
+  .mngld-video .controls {
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+    background: rgba(0, 0, 0, 0.5);
+    background: -webkit-linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(bottom, black 0%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(bottom, black 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0; }
+    .mngld-video .controls.visible {
+      opacity: 1; }
+    .mngld-video .controls .trigger {
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      opacity: 0.8; }
+      .mngld-video .controls .trigger span {
+        font-family: "moonglade", serif;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: -3px;
+        -webkit-transition: inherit;
+        -o-transition: inherit;
+        transition: inherit; }
+        .mngld-video .controls .trigger span:nth-of-type(2), .mngld-video .controls .trigger span:nth-of-type(4) {
+          -webkit-transition: all 1.4s ease;
+          -o-transition: all 1.4s ease;
+          transition: all 1.4s ease; }
+        .mngld-video .controls .trigger span:nth-of-type(6) {
+          -webkit-transition: all 2.1s ease;
+          -o-transition: all 2.1s ease;
+          transition: all 2.1s ease; }
+        .mngld-video .controls .trigger span:last-of-type {
+          margin-left: 5px; }
+      .mngld-video .controls .trigger:hover {
+        opacity: 1; }
+      .mngld-video .controls .trigger.play span:nth-of-type(1) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.play span:nth-of-type(2) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.play span:nth-of-type(3) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.play span:nth-of-type(4) {
+        opacity: 0; }
+      .mngld-video .controls .trigger.play span:nth-of-type(5) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.play span:nth-of-type(6) {
+        opacity: 0; }
+      .mngld-video .controls .trigger.play span:nth-of-type(7) {
+        opacity: 0; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(1) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(2) {
+        opacity: 0; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(3) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(4) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(5) {
+        opacity: 0; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(6) {
+        opacity: 0.8; }
+      .mngld-video .controls .trigger.pause span:nth-of-type(7) {
+        opacity: 0.8; }
+    .mngld-video .controls .progress {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      margin: 0 15px;
+      height: 60px;
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      position: relative; }
+      .mngld-video .controls .progress .progress-line {
+        height: 100%;
+        width: 0%;
+        background: #fff;
+        opacity: 0.8;
+        -webkit-transition: all 0.5s linear;
+        -o-transition: all 0.5s linear;
+        transition: all 0.5s linear; }
+        .mngld-video .controls .progress .progress-line:hover + .progress-selector {
+          background: #000; }
+      .mngld-video .controls .progress .progress-selector {
+        height: 100%;
+        width: 1px;
+        background: #fff;
+        top: 0;
+        display: none;
+        position: absolute;
+        pointer-events: none; }
+    .mngld-video .controls .time {
+      font-size: 20px;
+      font-family: "moonglade", serif;
+      color: #fff;
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      opacity: 0.8;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin-right: 15px; }
+      .mngld-video .controls .time span {
+        width: 23px;
+        display: block;
+        text-align: center; }
+    .mngld-video .controls .mute {
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      opacity: 0.8;
+      margin-right: 15px; }
+      .mngld-video .controls .mute:hover {
+        opacity: 1; }
+      .mngld-video .controls .mute.muted {
+        opacity: 0.3; }
+        .mngld-video .controls .mute.muted:hover {
+          opacity: 0.5; }
+    .mngld-video .controls .fullscreen {
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      opacity: 0.8;
+      position: relative;
+      top: -1px; }
+      .mngld-video .controls .fullscreen:hover {
+        opacity: 1; }
+  .mngld-video.already-fullscreen {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    position: fixed;
+    top: 0;
+    left: 0; }
+    .mngld-video.already-fullscreen .controls {
+      padding: 0 25px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%; }
+
+@-webkit-keyframes MoveScaleUpInitial {
+  to {
+    -webkit-transform: translate3d(0, -110%, 0);
+            transform: translate3d(0, -110%, 0);
+    opacity: 0; } }
+
+@keyframes MoveScaleUpInitial {
+  to {
+    -webkit-transform: translate3d(0, -110%, 0);
+            transform: translate3d(0, -110%, 0);
+    opacity: 0; } }
+
+@-webkit-keyframes MoveScaleUpEnd {
+  0% {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+    opacity: 0; }
+  to {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1; } }
+
+@keyframes MoveScaleUpEnd {
+  0% {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+    opacity: 0; }
+  to {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1; } }
+
+.modal-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: block;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  overflow: hidden;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%); }
+  .modal-video .modal-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: block;
+    z-index: 1; }
+  .modal-video .btn-close {
+    height: 62.41px;
+    width: 62.41px;
+    position: absolute;
+    z-index: 3;
+    top: 3rem;
+    right: 3rem;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    -webkit-border-radius: 50px;
+            border-radius: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, -webkit-box-shadow, -webkit-transform;
+    -webkit-transition-duration: 1.5s;
+         -o-transition-duration: 1.5s;
+            transition-duration: 1.5s;
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+         -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .modal-video .btn-close svg {
+      z-index: 1;
+      will-change: transform;
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit; }
+      .modal-video .btn-close svg path {
+        -webkit-transition: inherit;
+        -o-transition: inherit;
+        transition: inherit; }
+    .modal-video .btn-close:before {
+      content: "";
+      width: 150%;
+      height: 200%;
+      left: -25%;
+      top: -50%;
+      position: absolute;
+      -webkit-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+      -webkit-transform: scaleY(0);
+          -ms-transform: scaleY(0);
+              transform: scaleY(0);
+      -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+              transform-origin: 0 0;
+      will-change: transform;
+      z-index: 0;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
+      background: #fff; }
+    .modal-video .btn-close:hover {
+      border-color: #fff; }
+      .modal-video .btn-close:hover:before {
+        -webkit-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+                transform: scaleY(1);
+        -webkit-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+                transform-origin: 100% 100%; }
+      .modal-video .btn-close:hover svg {
+        -webkit-animation: MoveScaleUpInitial 0.5s forwards, MoveScaleUpEnd 0.5s 0.5s forwards;
+                animation: MoveScaleUpInitial 0.5s forwards, MoveScaleUpEnd 0.5s 0.5s forwards; }
+        .modal-video .btn-close:hover svg path {
+          fill: #000; }
+  .modal-video .video-holder {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    .modal-video .video-holder .mngld-video video {
+      height: 100vh;
+      width: 100vw; }
+    .modal-video .video-holder .mngld-video .controls {
+      padding: 0 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%; }
+  .modal-video.active {
+    -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+            transform: translateY(0%); }
+
+@media (max-width: 992px) {
+  .ccursor-video {
+    display: none !important; }
+  .mngld-video .controls {
+    height: 60px; }
+    .mngld-video .controls .trigger span {
+      font-size: 14px;
+      letter-spacing: -4px; }
+    .mngld-video .controls .progress {
+      height: 40px;
+      margin: 0 10px; }
+    .mngld-video .controls .time {
+      margin-right: 10px;
+      font-size: 16px; }
+      .mngld-video .controls .time span {
+        width: 18px; }
+    .mngld-video .controls .mute {
+      margin-right: 10px; }
+  .modal-video .btn-close {
+    height: 55px;
+    width: 55px;
+    right: 1.5rem;
+    top: 1.5rem; } }
+
+@media (max-width: 992px) and (orientation: portrait) {
+  .mngld-video.already-fullscreen .controls {
+    bottom: 0; } }

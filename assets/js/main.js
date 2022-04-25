@@ -1,5 +1,3 @@
-$(":input").inputmask({ placeholder: "" });
-
 // $(".modal-cookie").addClass("visible");
 
 // $(".modal-cookie .btn-close, .modal-cookie .btn-accept").click(function(){

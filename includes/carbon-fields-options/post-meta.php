@@ -15,8 +15,8 @@ Container::make('post_meta', 'Product fields')
   ])
 
   ->add_tab('Wight', [
-    Field::make('text', 'product_wight', 'Wight (GR)'),
-    Field::make('text', 'product_wight_oz', 'Wight (OZ)')    
+    Field::make('text', 'product_wight', 'Wight (GR)'), //TODO граматическая ошибка заменить на product_weight везде и оттестить
+    Field::make('text', 'product_wight_oz', 'Wight (OZ)') //TODO граматическая ошибка заменить на product_weight_oz везде и оттестить    
   ])
 
   ->add_tab('Box image', [

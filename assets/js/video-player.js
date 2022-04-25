@@ -165,11 +165,11 @@ function videoChangeTime(e) {
 }
 
 $(".call-modal-video").click(function(e){
-    console.log(e);
+    // console.log(e);
     e.preventDefault();
     $(".modal-video").addClass("active");
     var videoVideo = $(this).closest('.call-modal-video').attr('data-video-link');
-    console.log(videoVideo);
+    // console.log(videoVideo);
     $("#video").attr("src", videoVideo);
 });
 

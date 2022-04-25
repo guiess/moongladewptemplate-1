@@ -142,7 +142,7 @@ Template Name: Страница Главная
                     <div class="flex justify-center -my-10 lg:-my-40" data-scroll="" data-scroll-speed="0.9">
                       <div class="relative parallax-media overflow-hidden w-120 lg:w-auto" data-scroll="">
                         <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.8">
-                          <picture><img class="transition-opacity duration-300 md:transform md:scale-110" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 230 215'%3E%3C/svg%3E" width="230" height="215" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image04.png" alt="image description" /></picture>
+                          <picture><img class="transition-opacity duration-300 md:transform md:scale-110" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 230 215'%3E%3C/svg%3E" width="230" height="215" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image04.jpg" alt="image description" /></picture>
                         </div>
                       </div>
                     </div>
@@ -415,8 +415,8 @@ Template Name: Страница Главная
                   <div class="multi-parallax-visual overflow-hidden relative" id="multiparallax">
                     <div class="top-0 h-full w-full relative" data-no-touch-parallax="" data-scroll="" data-scroll-speed="2" data-scroll-offset="-50%, -100%">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_5.png" />
-                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/5.png" alt="image description" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_5.jpg" />
+                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/5.jpg" alt="image description" />
                       </picture>
                     </div>
                     <div class="top-0 h-full w-full absolute" data-no-touch-parallax="">
@@ -454,7 +454,7 @@ Template Name: Страница Главная
                   </div>
                   <div class="mb-40 lg:mb-100" data-component="products-carousel">
                     <div class="swiper-container mb-50" data-carousel="" data-component="drag-carousel">
-                      <div class="swiper-wrapper">
+                      <div class="swiper-wrapper swiper-custom">
 
                         <?php
 
@@ -468,7 +468,7 @@ Template Name: Страница Главная
 
                         $catalog_products_args = [
                           'post_type' => 'product',
-                          'posts_per_page' => '6',
+                          'posts_per_page' => '11',
                           'post__in' => $catalog_products_ids
                         ];
 
@@ -517,7 +517,7 @@ Template Name: Страница Главная
             <section class="site-section relative laptop:-mt-100 block-prefooter">
               <div class="section__holder">
                 <div class="relative laptop:h-screen" data-scroll="" data-scroll-speed="3" data-scroll-offset="0">
-                  <picture><img class="w-full max-w-full transition-opacity duration-300 laptop:absolute laptop:top-0 laptop:w-full laptop:h-full object-cover min-h-400" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 2x" alt="image description" /></picture><span class="h-3/12 absolute left-0 -top-5 w-full bg-gradient-to-b from-black to-transparent"></span><span class="h-6/12 absolute left-0 -bottom-5 w-full bg-gradient-to-t from-black to-transparent"></span>
+                  <picture><img width="100" height="100" class="w-full max-w-full transition-opacity duration-300 laptop:absolute laptop:top-0 laptop:w-full laptop:h-full object-cover min-h-400" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 2x" alt="image description" /></picture><span class="h-3/12 absolute left-0 -top-5 w-full bg-gradient-to-b from-black to-transparent"></span><span class="h-6/12 absolute left-0 -bottom-5 w-full bg-gradient-to-t from-black to-transparent"></span>
                   <div class="absolute w-full flex justify-center p-40 laptop:p-100 bottom-0" data-scroll="" data-scroll-call="reveal-random" data-target-selector="path">
                     <svg class="max-w-full h-auto large-logo" width="316" height="33" viewbox="0 0 316 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M51.4581 2.37256C43.214 7.1359 41.3044 16.4052 45.6696 23.9705C50.0348 31.5287 59.0238 34.515 67.2675 29.7516C75.5116 24.9957 77.4213 15.719 73.056 8.16111C68.6904 0.595448 59.7018 -2.39078 51.4581 2.37256ZM66.766 28.8889C61.3386 32.0229 53.8247 28.6899 49.7323 21.6036C45.6397 14.5099 46.5101 6.33968 51.9371 3.20572C57.3645 0.0717679 64.8784 3.40478 68.9707 10.4911C73.063 17.5851 72.1933 25.7553 66.766 28.8889Z" fill="currentColor"></path>
@@ -557,4 +557,4 @@ Template Name: Страница Главная
   </div>
   <div class="webgl-canvas"></div>
 
-  <?php get_footer(); ?>
+  <?php get_footer("main"); ?>

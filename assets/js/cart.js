@@ -48,10 +48,11 @@
     const name = productDOMElement.getAttribute("data-product-name");
     const price = productDOMElement.getAttribute("data-product-price");
     const weight = productDOMElement.getAttribute("data-product-weight");
+    const weightOz = productDOMElement.getAttribute("data-product-weight-oz");
     const src = productDOMElement.getAttribute("data-product-src");
     const quantity = productDOMElement.querySelector("input").value;
 
-    return { name, price, src, quantity, id, weight };
+    return { name, price, src, quantity, id, weight, weightOz};
   };
 
   const cartItemsCounterDOMElement = document.querySelector(
@@ -64,7 +65,7 @@
     ".js-cart-total-price"
   );
 
-  const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
+  const renderCartItem = ({ id, name, src, price, quantity, weight, weightOz}) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
 
@@ -74,7 +75,7 @@
                       <div class="cart-item-content">
                         <a class="name js-btn-item-info" href="">${name}</a>
                         <div class="cart-item-price-weight">
-                          <p><span class="price js-cart-item-price">$ ${price}</span> <span class="weight">(${weight}gr)</span></p>
+                          <p><span class="price js-cart-item-price font-moonglade">$ ${price}</span> <span class="weight font-moonglade">(${weight}g / ${weightOz}oz)</span></p>
                           <p class="total-price">$ ${summitem}</p>
                         </div>
                         <div class="btn-wrap">
@@ -173,40 +174,28 @@
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
 
-      // if (target.classList.contains("btn btn--play")) {
-      //   e.preventDefault();
-      //   console.log("object");
-      // }
-
-      // if (target.classList.contains("btn__text-holder")) {
-      //   e.preventDefault();
-      //   console.log("object");
-      // }
-
       if (target.classList.contains("js-btn-item-info")) {
         e.preventDefault();
         const cartItemDOMElement = target.closest(".js-cart-item");
         const productID = cartItemDOMElement.getAttribute("data-product-id");
         console.log(productID);
 
-        const modalCartNotEmpty = document.querySelector(
-          ".modal-cart-not-empty"
-        );
+        const modalCartNotEmpty = document.querySelector(".modal-cart-not-empty");
         modalCartNotEmpty.classList.remove("active");
 
-        const modalShadow = document.querySelector(".modal-shadow");
+        const modalShadow = document.querySelector(".modal-shadow");         
         modalShadow.classList.remove("active");
-        modalShadow.style.display = "none";
+        modalShadow.style.display = "none";        
 
         document.body.classList.remove("noscroll");
-
-        elementHtml = document.querySelector(".no-touchevents");
+        
+        elementHtml = document.querySelector(".no-touchevents"); 
         elementHtml.classList.add("popup--opened");
-
+        
         elementProductInfo = document.getElementById(productID);
         elementProductInfo.classList.remove("is-hidden");
         elementProductInfo.classList.add("is-active");
-
+        
         document.body.style.overflow = "hidden";
       }
 

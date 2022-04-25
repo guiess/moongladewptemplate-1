@@ -10,7 +10,7 @@ use Carbon_Fields\Field;
 Container::make('theme_options', 'Home Page')
   ->set_icon('dashicons-admin-home')
   ->add_tab('Socials', [
-    Field::make('text', 'instagram_link', 'Instagram Link')
+    Field::make('text', 'instagram_link', 'Instagram link in Home Page')
       ->set_width(33),
     Field::make('text', 'vimeo_link', 'Vimeo Link')
       ->set_width(33),

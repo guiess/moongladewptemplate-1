@@ -28,11 +28,12 @@ function site_scripts()
   wp_enqueue_style('main-style', get_stylesheet_uri(), [],); //подключили стили
   // wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/normalize.css', [], $version); //подключили стили
   wp_enqueue_script('jquery-main', get_template_directory_uri() . '/assets/js/jquery.js', [], null, true);
-  wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main'], null, true);
-  wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main', 'gsap-main'], null, true);
-  wp_enqueue_script('inputmask-main', get_template_directory_uri() . '/assets/js/inputmask.js', ['jquery-main', 'gsap-main', 'swiper-main'], null, true);
+  wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main'], null, true);
+  wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main', 'swiper-main'], null, true);
+  // wp_enqueue_script('inputmask-main', get_template_directory_uri() . '/assets/js/inputmask.js', ['jquery-main', 'gsap-main', 'swiper-main'], null, true);
 
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);
+  // wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);
+  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main'], null, true);
   wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
 
   // if (is_page('')) {
@@ -43,18 +44,22 @@ function site_scripts()
     wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/cart.js', [], null, true);
     wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/feedback.js', [], null, true);
     wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
+    wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-customer')) {
     wp_enqueue_script('discount-js', get_template_directory_uri() . '/assets/js/checkout-customer.js', [], null, true);
+    wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-shipping')) {
     wp_enqueue_script('shipping-js', get_template_directory_uri() . '/assets/js/checkout-shipping.js', [], null, true);
+    wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-payment')) {
     wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/checkout-payment.js', [], null, true);
+    wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   wp_localize_script('main-js', 'WPJS', [

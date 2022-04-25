@@ -59,7 +59,7 @@
   const cartDeliverySumDOMElement = document.querySelector(".js-delivery-sum");
   const hiddenFormEmptyCart = document.querySelector(".hidden-form-empty-cart");
 
-  const renderCartItem = ({ id, name, src, price, quantity, weight }) => {
+  const renderCartItem = ({ id, name, src, price, quantity, weight, weightOz}) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
 
@@ -74,7 +74,7 @@
           <h4 class="cart-product__title laptop:w-8/12">${name}</h4>
           <div class="cart-product__info-line flex justify-between items-baseline">
             <div class="cart-product__info-item">
-              <span>$ ${price}</span><span class="opacity-50 weight">(${weight}<span class="uppercase">GR</span>)</span>
+              <span class="font-moonglade">$ ${price}</span><span class="opacity-50 weight lowercase font-moonglade">(${weight}g / ${weightOz}oz)</span>
             </div>
             <div class="cart-product__info-item"><span class="js-cart-item-price">$ ${summitem}</span></div>
           </div>
