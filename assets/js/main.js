@@ -119,6 +119,20 @@ $(".modal-support .btn-close").click(function () {
   $(".modal-support").removeClass("active");
 });
 
+$(".call-modal-connect").click(function () {
+  $("body").addClass("noscroll");
+  $(".modal-shadow").fadeIn();
+  $(".modal-shadow").addClass("active");
+  $(".modal-connect").addClass("active");
+});
+
+$(".modal-connect .btn-close").click(function () {
+  $("body").removeClass("noscroll");
+  $(".modal-shadow").fadeOut();
+  $(".modal-shadow").removeClass("active");
+  $(".modal-connect").removeClass("active");
+});
+
 if ($(window).width() < 1025) {
   $(".horizontal-blocks").addClass("swiper");
   $(".horizontal-blocks .image-heading-block").addClass("swiper-slide");

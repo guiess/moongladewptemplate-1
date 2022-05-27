@@ -6,7 +6,13 @@
         <li><a class="link" href="<?php echo carbon_get_theme_option('sound_link'); ?>" target="_blank">Sound</a></li>
         <!-- <li><a class="link" href="https://www.facebook.com/moonglade114" target="_blank">Facebook</a></li> -->
         <li><a class="link" href="<?php if(is_front_page()) {echo carbon_get_theme_option('instagram_link');} else {echo carbon_get_theme_option('instagram_link_superfood');} ?>" target="_blank">Instagram</a></li>
+        <li><p class="link call-modal-connect" style="margin-bottom: 0;">Connect</p></li>
       </ul>
+      <!-- <div class="btn-connect-footer">
+          <button class="btn btn--dark call-modal-connect" type="button">
+            <span class="btn__text-holder"><span class="btn__text">Connect</span></span>
+          </button>
+      </div> -->
       <div class="footer__nav-wrapper lg:flex-grow lg:px-10 lg:justify-center">
         <ul class="footer-list list--tilda mb-10 md:mb-0">
           <li><a class="link" href="<?php echo home_url('/privacypolicy', ''); ?>">Privacy Policy</a></li>

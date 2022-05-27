@@ -48,6 +48,23 @@
   </div>
 </div>
 
+<div class="modal modal-connect">
+  <div class="modal-body">
+    <div class="modal-head">
+      <p></p>
+      <div class="btn-close">
+        <svg width="10" height="10" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M.409 7.003a.578.578 0 0 1 0-.817L6.186.408a.578.578 0 1 1 .817.817L1.226 7.003a.578.578 0 0 1-.817 0Z" fill="#000" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M.409.409a.578.578 0 0 1 .817 0l5.777 5.777a.578.578 0 1 1-.817.817L.409 1.226a.578.578 0 0 1 0-.817Z" fill="#000" />
+        </svg>
+      </div>
+    </div>
+    <div class="modal-content-thanks">
+      <p class="text-empty">SHARING OUR VISION?<br>JOIN MOONGLADE WORLD. <br>LETS CO-CREATE </br> <a class="link" href="mailto:connect@moonglade.world">connect@moonglade.world</a></p>
+    </div>
+  </div>
+</div>
+
 <span class="custom-cursor pointer-events-none" data-page-cursor=""><span class="custom-cursor__body fixed left-0 top-0 rounded-full pointer-events-none"><span class="custom-cursor__zoomer"></span></span></span>
 
 <span class="fixed w-full h-full z-100 bg-black page-overlay top-0 left-0"></span>
