@@ -5714,7 +5714,7 @@ textarea:-webkit-autofill {
   color: rgba(0, 0, 0, .5)
 }
 
-.modal-support .modal-body {
+.modal-support .modal-body, .modal-connect .modal-body {
   text-align: center;
   font-weight: 300;
   font-size: 20px;
@@ -6211,7 +6211,7 @@ textarea:-webkit-autofill {
   transform: scaleX(0)
 }
 
-.modal-support {
+.modal-support, .modal-connect {
   position: fixed;
   top: 0;
   left: 0;
@@ -6226,7 +6226,7 @@ textarea:-webkit-autofill {
   transform: translateX(100%)
 }
 
-.modal-support .modal-body {
+.modal-support .modal-body, .modal-connect .modal-body {
   position: absolute;
   top: 0;
   right: 0;
@@ -6248,11 +6248,11 @@ textarea:-webkit-autofill {
   scrollbar-width: none
 }
 
-.modal-support .modal-body::-webkit-scrollbar {
+.modal-support .modal-body::-webkit-scrollbar, .modal-connect .modal-body::-webkit-scrollbar {
   display: none
 }
 
-.modal-support .modal-body .modal-head {
+.modal-support .modal-body .modal-head, .modal-connect .modal-body .modal-head {
   padding: 44px 50px 27px 49px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -6268,7 +6268,7 @@ textarea:-webkit-autofill {
   justify-content: space-between
 }
 
-.modal-support .modal-body .modal-head p {
+.modal-support .modal-body .modal-head p, .modal-connect .modal-body .modal-head p {
   font-size: 30px;
   line-height: 39px;
   color: #000;
@@ -6279,7 +6279,7 @@ textarea:-webkit-autofill {
   text-align: left
 }
 
-.modal-support .modal-body .modal-head .btn-close {
+.modal-support .modal-body .modal-head .btn-close, .modal-connect .modal-body .modal-head .btn-close {
   position: relative;
   width: 42px;
   height: 42px;
@@ -6314,7 +6314,7 @@ textarea:-webkit-autofill {
   will-change: transform, top, left
 }
 
-.modal-support .modal-body .modal-head .btn-close:before {
+.modal-support .modal-body .modal-head .btn-close:before, .modal-connect .modal-body .modal-head .btn-close:before {
   background: #2a2a2a;
   content: "";
   width: 150%;
@@ -6337,7 +6337,7 @@ textarea:-webkit-autofill {
   border-radius: 50%
 }
 
-.modal-support .modal-body .modal-head .btn-close svg {
+.modal-support .modal-body .modal-head .btn-close svg, .modal-connect .modal-body .modal-head .btn-close svg {
   -webkit-transition: inherit;
   -o-transition: inherit;
   transition: inherit;
@@ -6345,22 +6345,22 @@ textarea:-webkit-autofill {
   z-index: 1
 }
 
-.modal-support .modal-body .modal-head .btn-close svg path {
+.modal-support .modal-body .modal-head .btn-close svg path, .modal-connect .modal-body .modal-head .btn-close svg path {
   -webkit-transition: inherit;
   -o-transition: inherit;
   transition: inherit;
   fill: #fff
 }
 
-.modal-support .modal-body .modal-head .btn-close:hover {
+.modal-support .modal-body .modal-head .btn-close:hover, .modal-connect .modal-body .modal-head .btn-close:hover {
   background: #2a2a2a
 }
 
-.modal-support .modal-body .modal-head .btn-close:hover svg path {
+.modal-support .modal-body .modal-head .btn-close:hover svg path, .modal-connect .modal-body .modal-head .btn-close:hover svg path {
   fill: #fff
 }
 
-.modal-support .modal-body .modal-head .btn-close:hover:before {
+.modal-support .modal-body .modal-head .btn-close:hover:before, .modal-connect .modal-body .modal-head .btn-close:hover:before {
   -webkit-transform: scaleY(1);
   -ms-transform: scaleY(1);
   transform: scaleY(1);
@@ -6577,7 +6577,7 @@ textarea:-webkit-autofill {
   transform-origin: 100% 100%
 }
 
-.modal-support.active {
+.modal-support.active, .modal-connect.active {
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0)
@@ -7491,16 +7491,16 @@ textarea:-webkit-autofill {
     line-height: 14px
   }
 
-  .modal-support .modal-body .modal-head {
+  .modal-support .modal-body .modal-head, .modal-connect .modal-body .modal-head {
     padding: 29px 23px 33px 23px
   }
 
-  .modal-support .modal-body .modal-head p {
+  .modal-support .modal-body .modal-head p, .modal-connect .modal-body .modal-head p {
     font-size: 28px;
     line-height: 36px
   }
 
-  .modal-support .modal-body .modal-head .btn-close {
+  .modal-support .modal-body .modal-head .btn-close, .modal-connect .modal-body .modal-head .btn-close {
     height: 39px;
     width: 39px
   }
@@ -7651,7 +7651,7 @@ textarea:-webkit-autofill {
     -webkit-appearance: none
   }
 
-  .modal-support .modal-body {
+  .modal-support .modal-body, .modal-connect .modal-body {
     padding-bottom: 120px
   }
 
@@ -8310,4 +8310,29 @@ textarea:-webkit-autofill {
 
 .font-moonglade {
   font-family: Moonglade, serif;
+}
+
+.btn-connect-footer{
+  margin-left: 20px;
+}
+
+@media (max-width: 992px){
+  .footer__top-bar{
+    flex-direction: column;
+  }
+  .btn-connect-footer{
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+.modal-connect .modal-content-thanks{
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
 }
