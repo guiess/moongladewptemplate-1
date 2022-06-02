@@ -28,3 +28,14 @@ liximomo.sftp
     "remotePath": "/www/u1441555.isp.regruhosting.ru/wp-content/themes/moonglade/",
     "uploadOnSave": true
 }
+
+{
+    "name": "moonglade",
+    "host": "moonglade.world",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "n2GXrXrGtFeT1F",
+    "password": "C3YWFmA3vVUCuO",
+    "remotePath": "/home/n2GXrXrGtFeT1F/html/wp-content/themes/moonglade/",
+    "uploadOnSave": false
+}

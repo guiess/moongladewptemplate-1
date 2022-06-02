@@ -162,7 +162,7 @@
       </div>
     </div>
     <div class="modal-content-thanks">
-      <p class="text-empty">SHARING OUR VISION?<br>JOIN MOONGLADE WORLD. <br>LETS CO-CREATE </br> <a class="link" href="mailto:connect@moonglade.world">connect@moonglade.world</a></p>
+      <p class="text-empty">SHARING OUR VISION?<br>JOIN MOONGLADE WORLD. <br>LETS CO-CREATE </br> <a class="link" href="mailto:<?php echo carbon_get_theme_option('contact_email'); ?>"><?php echo carbon_get_theme_option('contact_email'); ?></a></p>
     </div>
   </div>
 </div>
