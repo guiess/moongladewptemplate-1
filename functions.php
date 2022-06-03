@@ -91,6 +91,7 @@ function register_carbon_fields()
   require_once('includes/carbon-fields-options/post-meta.php');
   require_once('includes/carbon-fields-options/theme-discount.php');
   require_once('includes/carbon-fields-options/theme-delivery.php');
+  require_once('includes/carbon-fields-options/theme-settings.php');
 }
 
 add_action('init', 'register_post_types');
@@ -176,3 +177,21 @@ function delivery_rank()
 @ini_set('upload_max_size', '32M');
 @ini_set('post_max_size', '32M');
 @ini_set('max_execution_time', '300');
+
+add_action('wp_loaded', function () {
+  global $pagenow;
+  if (carbon_get_theme_option('maintenance_mode')) {
+    if (
+      is_page('wp-admin') ||
+      $pagenow !== 'wp-login.php' &&
+      !is_user_logged_in()
+    ) {
+      header('HTTP/1.1 Service Unavailable', true, 503);
+      header('Content-Type: text/html; charset=utf-8');
+      if (file_exists(WP_CONTENT_DIR . '/themes/moonglade/page-dummy.php')) {
+        require_once(WP_CONTENT_DIR . '/themes/moonglade/page-dummy.php');
+      }
+      die();
+    }
+  }
+});
