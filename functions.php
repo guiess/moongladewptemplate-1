@@ -90,6 +90,7 @@ function register_carbon_fields()
   require_once('includes/carbon-fields-options/theme-products-page-options.php');
   require_once('includes/carbon-fields-options/post-meta.php');
   require_once('includes/carbon-fields-options/theme-discount.php');
+  require_once('includes/carbon-fields-options/theme-delivery.php');
 }
 
 add_action('init', 'register_post_types');
@@ -175,25 +176,3 @@ function delivery_rank()
 @ini_set('upload_max_size', '32M');
 @ini_set('post_max_size', '32M');
 @ini_set('max_execution_time', '300');
-
-// Начало. Регистрируем опцию для включения Maintenance mode
-// class custom_general_settings
-// {
-//   function custom_general_settings()
-//   {
-//     add_filter('admin_init', array(&$this, 'custom_register_fields'));
-//   }
-//   function custom_register_fields()
-//   {
-//     register_setting('general', 'custom_under_maintenance', 'esc_attr');
-//     add_settings_field('mk_custom_under_maintenance', '<legend class="custom_under_maintenance"><span>' . __('Режим технического обслуживания', 'custom_under_maintenance') . '</legend>', array(&$this, 'clinto_fields_html'), 'general');
-//   }
-//   function clinto_fields_html()
-//   {
-//     $value = get_option('custom_under_maintenance');
-//     $checked = ($value == 'yes') ? 'checked="checked"' : '';
-//     echo '<label for="custom_under_maintenance"><input type="hidden" name="custom_under_maintenance" value="no" /><input id="custom_under_maintenance" type="checkbox" ' . $checked . ' name="custom_under_maintenance" value="yes" />Закрыть сайт</label>';
-//   }
-// }
-// $custom_general_settings = new custom_general_settings();
-// Регистрируем опцию для включения Maintenance mode. Коне

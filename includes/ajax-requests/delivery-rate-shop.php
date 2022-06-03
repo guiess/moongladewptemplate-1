@@ -51,10 +51,16 @@ $list->addChild("n71", "Worldwide Express Freight Midday");
 // echo '<pre>' . var_export($validDomesticValuesXML, true) . '</pre>
 // echo $list->n02 . "\n";
 
-// configuration
+/* configuration old
 $access = "DDA73248ECBDDD92";
 $userid = "moongladebali";
 $passwd = "Moongladesuperfood21";
+*/
+
+// configuration
+$userid = carbon_get_theme_option("ups_user_id");
+$passwd = carbon_get_theme_option("ups_user_pass");
+$access = carbon_get_theme_option("ups_user_key");
 
 $endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate"; //?testing url
 // $endpointurl = "https://onlinetools.ups.com/ups.app/xml/Rate"; //?prod url

@@ -40,25 +40,6 @@ Container::make('theme_options', 'Product Page')
       ])
   ])
 
-  ->add_tab("Countries list", [
-    Field::make('textarea', 'moon_countries_list', 'Coutries list for ordering'),
-  ])
-
-  ->add_tab("Order's email", [
-    Field::make('text', 'moon_order_email', 'Orders email, which will receive letters from the order form'),
-  ])
-
   ->add_tab('Support email', [
     Field::make('text', 'moon_support_email', 'Support email, which will receive letters from the feedback form'),
-  ])
-
-  ->add_tab('Adress shiping from', [
-    Field::make('text', 'delivery_from_country', 'Country code (Alpha2 format)'),
-    Field::make('text', 'delivery_from_city', 'City'),
-    Field::make('text', 'delivery_from_postalcode', 'Postal code'),
-    Field::make('text', 'delivery_weight', 'Weight for testing'),
-  ])
-
-  ->add_tab('Dollar rate (USD - IDR)', [
-    Field::make('text', 'moon_dollar_rate', 'Please write the current exchange rate taxes'),
   ]);
