@@ -4,7 +4,9 @@
   <div class="modal-video-bg"></div>
   <div class="video-holder">
     <div class="mngld-video">
-      <video id="video" src="" playsinline autoplay muted loop></video>
+      <video id="video" src="" playsinline autoplay muted loop>
+        <source src="" type="video/mp4">
+      </video>
       <div class="controls">
         <div class="trigger pause">
           <span>P</span>

@@ -8344,3 +8344,7 @@ textarea:-webkit-autofill {
 .page-dummy [data-component="preloader"], .page-dummy .preloader-holder{
   opacity: 1 !important;
 }
+
+.page-dummy .modal-cookie{
+  display: none;
+}
