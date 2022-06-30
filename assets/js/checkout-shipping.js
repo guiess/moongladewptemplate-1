@@ -7,43 +7,45 @@
 
   const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
-  let discountValue = Number(localStorage.getItem("discountValue")) || 0;
-  let discountCode = localStorage.getItem("discountCode") || "";
+  // let discountValue = Number(localStorage.getItem("discountValue")) || 0;
+  // let discountCode = localStorage.getItem("discountCode") || "";
+  let discountValue = Number(customer.discountValue) || 0;
+  let discountCode = customer.discountCode || "";
   let deliveryPrice = customer.deliveryPrice || 0;
 
   // console.log(customer);
 
-  const updateQuantity = (id, quantity) => {
-    const cartItemDOMElement = cartDOMElement.querySelector(
-      `[data-product-id="${id}"]`
-    );
-    const cartItemQuantityDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-item-quantity"
-    );
-    const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-item-price"
-    );
+  // const updateQuantity = (id, quantity) => {
+  //   const cartItemDOMElement = cartDOMElement.querySelector(
+  //     `[data-product-id="${id}"]`
+  //   );
+  //   const cartItemQuantityDOMElement = cartItemDOMElement.querySelector(
+  //     ".js-cart-item-quantity"
+  //   );
+  //   const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
+  //     ".js-cart-item-price"
+  //   );
 
-    cart[id].quantity = quantity;
-    cartItemQuantityDOMElement.value = quantity;
-    cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
+  //   cart[id].quantity = quantity;
+  //   cartItemQuantityDOMElement.value = quantity;
+  //   cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
 
-    updateCart();
-  };
+  //   updateCart();
+  // };
 
-  const increaseQuantity = (id, quantity) => {
-    const newQuantity = Number(cart[id].quantity) + Number(quantity);
-    if (newQuantity <= 99) {
-      updateQuantity(id, newQuantity);
-    }
-  };
+  // const increaseQuantity = (id, quantity) => {
+  //   const newQuantity = Number(cart[id].quantity) + Number(quantity);
+  //   if (newQuantity <= 99) {
+  //     updateQuantity(id, newQuantity);
+  //   }
+  // };
 
-  const decreaseQuantity = (id) => {
-    const newQuantity = cart[id].quantity - 1;
-    if (newQuantity >= 1) {
-      updateQuantity(id, newQuantity);
-    }
-  };
+  // const decreaseQuantity = (id) => {
+  //   const newQuantity = cart[id].quantity - 1;
+  //   if (newQuantity >= 1) {
+  //     updateQuantity(id, newQuantity);
+  //   }
+  // };
 
   const cartSubtotalPriceDOMElement = document.querySelector(
     ".js-cart-subtotal-price"
@@ -55,7 +57,15 @@
   const cartDeliveryDOMElement = document.querySelector(".js-delivery-sum");
   const hiddenFormEmptyCart = document.querySelector(".hidden-form-empty-cart");
 
-  const renderCartItem = ({ id, name, src, price, quantity, weight, weightOz}) => {
+  const renderCartItem = ({
+    id,
+    name,
+    src,
+    price,
+    quantity,
+    weight,
+    weightOz,
+  }) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
 
@@ -77,12 +87,11 @@
           <div class="flex justify-between items-center">
             <div class="cart-product__info-item">
               <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
-                <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
+                <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="js-btn-product-decrease-quantity"></i></div>
                 <input class="stepper__input js-cart-item-quantity" readonly type="number" data-input="" value="${quantity}" />
-                <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>
+                <div class="stepper__control stepper__control--increase" data-increment=""><i class="js-btn-product-increase-quantity"></i></div>
               </div>
             </div>
-            <div class="cart-product__info-item flex"><span class="link link--underline opacity-30 js-btn-cart-item-remove"">remove</span></div>
           </div>
         </div>
       </div>
@@ -166,19 +175,19 @@
     return count;
   };
 
-  const deleteCartItem = (id) => {
-    if (countItemsInCart() === 1) {
-      return;
-    }
+  // const deleteCartItem = (id) => {
+  //   if (countItemsInCart() === 1) {
+  //     return;
+  //   }
 
-    const cartItemDOMElement = cartDOMElement.querySelector(
-      `[data-product-id="${id}"]`
-    );
+  //   const cartItemDOMElement = cartDOMElement.querySelector(
+  //     `[data-product-id="${id}"]`
+  //   );
 
-    cartDOMElement.removeChild(cartItemDOMElement);
-    delete cart[id];
-    updateCart();
-  };
+  //   cartDOMElement.removeChild(cartItemDOMElement);
+  //   delete cart[id];
+  //   updateCart();
+  // };
 
   const renderCart = () => {
     if (cartEmpty()) return;
@@ -233,8 +242,12 @@
       discountValue *= -1;
     }
 
-    localStorage.setItem("discountCode", discountCode);
-    localStorage.setItem("discountValue", discountValue);
+    customer.discountCode = discountCode;
+    customer.discountValue = discountValue;
+    saveCustomer();
+
+    // localStorage.setItem("discountCode", discountCode);
+    // localStorage.setItem("discountValue", discountValue);
     updateCartTotalPrice();
   };
 
@@ -249,6 +262,8 @@
 
     xhr.onload = function () {
       const response = xhr.response;
+
+      // console.log(response);
 
       if (response === "false") {
         return;
@@ -281,9 +296,11 @@
     xhr.onload = function () {
       const response = xhr.response;
 
+      console.log(response);
+
       responseJSON = JSON.parse(response);
 
-      console.log("responseJSON " + JSON.stringify(responseJSON));
+      // console.log("responseJSON " + JSON.stringify(responseJSON));
 
       for (i = 0; i < responseJSON.price.length; i++) {
         let selectedOption = document.getElementById(
@@ -309,7 +326,7 @@
 
     infoToSend = `country=${customer.country}&city=${customer.city}&postalcode=${customer.postalCode}`;
 
-    console.log(infoToSend);
+    // console.log(infoToSend);
 
     xhr.send(infoToSend);
   };
@@ -335,26 +352,26 @@
     document.querySelector("body").addEventListener("click", (e) => {
       const target = e.target;
 
-      if (target.classList.contains("js-btn-cart-item-remove")) {
-        e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        deleteCartItem(productID);
-      }
+      // if (target.classList.contains("js-btn-cart-item-remove")) {
+      //   e.preventDefault();
+      //   const cartItemDOMElement = target.closest(".js-cart-item");
+      //   const productID = cartItemDOMElement.getAttribute("data-product-id");
+      //   deleteCartItem(productID);
+      // }
 
-      if (target.classList.contains("js-btn-product-increase-quantity")) {
-        e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        increaseQuantity(productID, 1);
-      }
+      // if (target.classList.contains("js-btn-product-increase-quantity")) {
+      //   e.preventDefault();
+      //   const cartItemDOMElement = target.closest(".js-cart-item");
+      //   const productID = cartItemDOMElement.getAttribute("data-product-id");
+      //   increaseQuantity(productID, 1);
+      // }
 
-      if (target.classList.contains("js-btn-product-decrease-quantity")) {
-        // e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        decreaseQuantity(productID);
-      }
+      // if (target.classList.contains("js-btn-product-decrease-quantity")) {
+      //   // e.preventDefault();
+      //   const cartItemDOMElement = target.closest(".js-cart-item");
+      //   const productID = cartItemDOMElement.getAttribute("data-product-id");
+      //   decreaseQuantity(productID);
+      // }
 
       if (target.classList.contains("js-button-apply-disount")) {
         // e.preventDefault();

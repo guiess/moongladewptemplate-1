@@ -48,7 +48,7 @@ $(".modal-success .btn-close").click(function () {
 $("#discountInputField").on("input", function () {
   // $(".modal-add-to-cart").removeClass("active");
   // $(".modal-add-to-cart").removeClass("active");
-  console.log("press");
+  // console.log("press");
   if ($("#discountInputField").val())
     $(".js-button-apply-disount").removeAttr("disabled");
   else $(".js-button-apply-disount").attr("disabled", "disabled");

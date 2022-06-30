@@ -5,11 +5,14 @@ if (!defined('ABSPATH')) {
 }
 
 // $email_from = 'moonglade@u1441555.isp.regruhosting.ru';
-$email_from = $_POST['email'];
-$email_to = carbon_get_theme_option('moon_order_email');
+// $email_from = 'moonglade.superfood@gmail.com';
+$email_from = carbon_get_theme_option('moon_order_email');
+$email_to = $_POST['email'];
 $form_subject = 'Заявка с сайта Moonglade';
 $message = "";
 $deliveryPrice = $_POST["deliveryPrice"];
+$deliveryPrice = $_POST["deliveryPrice"];
+
 
 unset($_POST["email"]);
 unset($_POST["firstName"]);
@@ -18,22 +21,24 @@ unset($_POST["address"]);
 unset($_POST["apartment"]);
 unset($_POST["country"]);
 unset($_POST["countryName"]);
+unset($_POST["province"]);
 unset($_POST["city"]);
 unset($_POST["postalCode"]);
 unset($_POST["infoPhone"]);
 unset($_POST["shippingEmail"]);
 unset($_POST["shippingAddress"]);
-unset($_POST["typeOfCreditСard"]);
-unset($_POST["customerCardNumber"]);
-unset($_POST["nameOnCard"]);
-unset($_POST["cardExpiration"]);
-unset($_POST["cardSecurityCode"]);
+
+//// unset($_POST["typeOfCreditСard"]);
+//// unset($_POST["customerCardNumber"]);
+//// unset($_POST["nameOnCard"]);
+//// unset($_POST["cardExpiration"]);
+//// unset($_POST["cardSecurityCode"]);
 
 //new
 unset($_POST["deliveryCode"]);
 unset($_POST["deliveryMethodText"]);
 unset($_POST["deliveryPrice"]);
-
+unset($_POST["discountValue"]);
 
 $discount_code_from_ajax = $_POST["discountCode"];
 unset($_POST["discountCode"]);
@@ -62,6 +67,7 @@ if (!empty($table_fixed)) {
       $code_from_base = $tr["coupons_percent_code"];
       if ($code_from_base == $discount_code_from_ajax) {
         $discountValue = intval($tr["coupons_percent_value"]) / 100 * $totalPrice;
+        $discountValue =round($discountValue);
         // echo $discountValue;
         break;
       }
@@ -153,7 +159,7 @@ $message .= '<table class="spacer" style="border-collapse:collapse;border-spacin
                   <th class="small-1 large-1 columns first" style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0 auto;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0 auto;padding-bottom:16px;padding-left:16px;padding-right:8px;padding-top:0;text-align:left;vertical-align:top;width:32.33px;word-wrap:break-word"><table style="border-collapse:collapse;border-spacing:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top"><th style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;word-wrap:break-word"></th></tr></tbody></table></th>
                   <th class="superfood-left small-5 large-5 columns" style="height:55px!important;-moz-hyphens:auto;-webkit-hyphens:auto;margin:0 auto;background:#f3f3f3;border-collapse:collapse!important;border-radius:10px 0 0 10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0 auto;padding-bottom:16px;padding-left:8px;padding-right:8px;padding-top:0;text-align:left;vertical-align:top;width:225.67px;word-wrap:break-word"><table style="border-collapse:collapse;border-spacing:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top"><th style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;word-wrap:break-word">
                     <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top"><td height="21" style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:21px;font-weight:400;hyphens:auto;line-height:21px;margin:0;mso-line-height-rule:exactly;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;word-wrap:break-word">&nbsp;</td></tr></tbody></table> 
-                    <p class="superfood-text" style="margin:0;Margin-bottom:10px;color:#000;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:400;letter-spacing:-.02em;line-height:20px;margin:0;margin-bottom:0;margin-left:16px;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;text-transform:uppercase">superfood</p>
+                    <p class="superfood-text" style="margin:0;Margin-bottom:10px;color:#000;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:400;letter-spacing:-.02em;line-height:20px;margin:0;margin-bottom:0;margin-left:16px;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;text-transform:uppercase">' . $discount_code_from_ajax . '</p>
                   </th></tr></tbody></table></th>
                   <th class="superfood-right small-5 large-5 columns" style="height:55px!important;-moz-hyphens:auto;-webkit-hyphens:auto;margin:0 auto;background:#f3f3f3;border-collapse:collapse!important;border-radius:0 10px 10px 0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0 auto;padding-bottom:16px;padding-left:8px;padding-right:8px;padding-top:0;text-align:left;vertical-align:top;width:225.67px;word-wrap:break-word"><table style="border-collapse:collapse;border-spacing:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top"><th style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;word-wrap:break-word">
                     <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top"><td height="21" style="-moz-hyphens:auto;-webkit-hyphens:auto;margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:21px;font-weight:400;hyphens:auto;line-height:21px;margin:0;mso-line-height-rule:exactly;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;vertical-align:top;word-wrap:break-word">&nbsp;</td></tr></tbody></table> 

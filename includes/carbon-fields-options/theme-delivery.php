@@ -21,7 +21,7 @@ Container::make('theme_options', 'Delivery')
     Field::make('text', 'delivery_from_country', 'Country code (Alpha2 format)'),
     Field::make('text', 'delivery_from_city', 'City'),
     Field::make('text', 'delivery_from_postalcode', 'Postal code'),
-    Field::make('text', 'delivery_weight', 'Weight for testing'),
+    Field::make('text', 'delivery_weight', 'Weight for testing in kilograms'),
   ])
 
   ->add_tab('Dollar rate (USD - IDR)', [

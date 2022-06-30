@@ -1,3 +1,19 @@
+// localStorage.clear();
+const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
+// console.log(cart);
+// console.log(JSON.stringify(cart));
+
+const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
+// console.log(JSON.stringify(customer));
+
+// let discountValue = Number(localStorage.getItem("discountValue")) || 0;
+// let discountCode = localStorage.getItem("discountCode") || "";
+let discountValue = Number(customer.discountValue) || 0;
+let discountCode = customer.discountCode || "";
+// console.log(JSON.stringify(discountCode));
+
+if (!customer.deliveryPrice) customer.deliveryPrice = 0;
+
 (function () {
   const cartDOMElement = document.querySelector(".js-cart");
 
@@ -5,43 +21,37 @@
     return;
   }
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
-  const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
-  let discountValue = Number(localStorage.getItem("discountValue")) || 0;
-  let discountCode = localStorage.getItem("discountCode") || "";
-  if (!customer.deliveryPrice) customer.deliveryPrice = 0;
+  // const updateQuantity = (id, quantity) => {
+  //   const cartItemDOMElement = cartDOMElement.querySelector(
+  //     `[data-product-id="${id}"]`
+  //   );
+  //   const cartItemQuantityDOMElement = cartItemDOMElement.querySelector(
+  //     ".js-cart-item-quantity"
+  //   );
+  //   const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
+  //     ".js-cart-item-price"
+  //   );
 
-  const updateQuantity = (id, quantity) => {
-    const cartItemDOMElement = cartDOMElement.querySelector(
-      `[data-product-id="${id}"]`
-    );
-    const cartItemQuantityDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-item-quantity"
-    );
-    const cartItemPriceDOMElement = cartItemDOMElement.querySelector(
-      ".js-cart-item-price"
-    );
+  //   cart[id].quantity = quantity;
+  //   cartItemQuantityDOMElement.value = quantity;
+  //   cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
 
-    cart[id].quantity = quantity;
-    cartItemQuantityDOMElement.value = quantity;
-    cartItemPriceDOMElement.textContent = "$ " + quantity * cart[id].price;
+  //   updateCart();
+  // };
 
-    updateCart();
-  };
+  // const increaseQuantity = (id, quantity) => {
+  //   const newQuantity = Number(cart[id].quantity) + Number(quantity);
+  //   if (newQuantity <= 99) {
+  //     updateQuantity(id, newQuantity);
+  //   }
+  // };
 
-  const increaseQuantity = (id, quantity) => {
-    const newQuantity = Number(cart[id].quantity) + Number(quantity);
-    if (newQuantity <= 99) {
-      updateQuantity(id, newQuantity);
-    }
-  };
-
-  const decreaseQuantity = (id) => {
-    const newQuantity = cart[id].quantity - 1;
-    if (newQuantity >= 1) {
-      updateQuantity(id, newQuantity);
-    }
-  };
+  // const decreaseQuantity = (id) => {
+  //   const newQuantity = cart[id].quantity - 1;
+  //   if (newQuantity >= 1) {
+  //     updateQuantity(id, newQuantity);
+  //   }
+  // };
 
   const cartSubtotalPriceDOMElement = document.querySelector(
     ".js-cart-subtotal-price"
@@ -49,12 +59,22 @@
   const cartTotalPriceDOMElement = document.querySelector(
     ".js-cart-total-price"
   );
+  const cartDiscountCodeDOMElement = document.querySelector(
+    ".activated-discount"
+  );
   const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
   const cartDeliverySumDOMElement = document.querySelector(".js-delivery-sum");
-  const rememberMeCheckbox = document.querySelector(".remember-me-checkbox");
   const hiddenFormEmptyCart = document.querySelector(".hidden-form-empty-cart");
 
-  const renderCartItem = ({ id, name, src, price, quantity, weight, weightOz}) => {
+  const renderCartItem = ({
+    id,
+    name,
+    src,
+    price,
+    quantity,
+    weight,
+    weightOz,
+  }) => {
     const cartItemDOMElement = document.createElement("div");
     const summitem = price * quantity;
 
@@ -76,12 +96,11 @@
           <div class="flex justify-between items-center">
             <div class="cart-product__info-item">
               <div class="stepper" data-component="stepper" data-min="1" data-max="99" data-step="1">
-                <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="icon-minus js-btn-product-decrease-quantity"></i></div>
-                <input class="stepper__input js-cart-item-quantity" readonly type="number" data-input="" value="${quantity}" />
-                <div class="stepper__control stepper__control--increase" data-increment=""><i class="icon-plus js-btn-product-increase-quantity"></i></div>
+              <div class="stepper__control stepper__control--decrease" data-decrement=""><i class="js-btn-product-decrease-quantity"></i></div>
+              <input class="stepper__input js-cart-item-quantity" readonly type="number" data-input="" value="${quantity}" />
+              <div class="stepper__control stepper__control--increase" data-increment=""><i class="js-btn-product-increase-quantity"></i></div>
               </div>
             </div>
-            <div class="cart-product__info-item flex"><span class="link link--underline opacity-30 js-btn-cart-item-remove"">remove</span></div>
           </div>
         </div>
       </div>
@@ -94,13 +113,13 @@
     cartDOMElement.appendChild(cartItemDOMElement);
   };
 
-  const saveCart = () => {
-    localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON
-  };
+  // const saveCart = () => {
+  //   localStorage.setItem("cart", JSON.stringify(cart)); //преобразуем в строку JSON
+  // };
 
-  const saveCustomer = () => {
-    localStorage.setItem("customer", JSON.stringify(customer)); //преобразуем в строку JSON
-  };
+  // const saveCustomer = () => {
+  //   localStorage.setItem("customer", JSON.stringify(customer)); //преобразуем в строку JSON
+  // };
 
   const updateCartTotalPrice = () => {
     if (cartEmpty()) return;
@@ -149,41 +168,48 @@
     }
   };
 
-  const disableDiscountApplyBtn = () => {
+  // const disableDiscountApplyBtn = () => {
+  //   if (discountCode) {
+  //     $(".js-button-apply-disount").removeAttr("disabled");
+  //   }
+  // };
+
+  const updateDiscountField = () => {
     if (discountCode) {
-      $(".js-button-apply-disount").removeAttr("disabled");
+      cartDiscountCodeDOMElement.innerText = discountCode;
     }
   };
 
   const updateCart = () => {
+    updateDiscountField();
     updateCartTotalPrice();
-    disableDiscountApplyBtn();
-    saveCart();
+    // disableDiscountApplyBtn();
+    // saveCart();
 
     itemWrapFull = document.getElementById("js-cart-wrapper-full");
     itemWrapEmpty = document.getElementById("js-cart-wrapper-empty");
   };
 
-  const countItemsInCart = () => {
-    const count = Object.keys(cart).length;
-    return count;
-  };
+  // const countItemsInCart = () => {
+  //   const count = Object.keys(cart).length;
+  //   return count;
+  // };
 
-  const deleteCartItem = (id, deleteAll) => {
-    if (!deleteAll) {
-      if (countItemsInCart() === 1) {
-        return;
-      }
-    }
+  // const deleteCartItem = (id) => {
+  //   if (!deleteAll) {
+  //     // if (countItemsInCart() === 1) {
+  //     //   return;
+  //     // }
+  //   }
 
-    const cartItemDOMElement = cartDOMElement.querySelector(
-      `[data-product-id="${id}"]`
-    );
+  //   const cartItemDOMElement = cartDOMElement.querySelector(
+  //     `[data-product-id="${id}"]`
+  //   );
 
-    cartDOMElement.removeChild(cartItemDOMElement);
-    delete cart[id];
-    updateCart();
-  };
+  //   cartDOMElement.removeChild(cartItemDOMElement);
+  //   delete cart[id];
+  //   updateCart();
+  // };
 
   const renderCart = () => {
     if (cartEmpty()) return;
@@ -193,27 +219,27 @@
     ids.forEach((id) => renderCartItem(cart[id]));
   };
 
-  const saveDataCustomer = (customerForm) => {
-    const email = customerForm.elements.customerShippingEmail.value;
-    const address = customerForm.elements.customerShippingAddress.value;
-    const typeOfCreditСard =
-      customerForm.elements.customerSelectCreditСard.value;
-    const customerCardNumber = customerForm.customerCardNumber.value;
-    const nameOnCard = customerForm.customerNameOnCard.value;
-    const cardExpiration = customerForm.customerCardExpiration.value;
-    const cardSecurityCode = customerForm.customerCardSecurityCode.value;
+  // const saveDataCustomer = (customerForm) => {
+  //   const email = customerForm.elements.customerShippingEmail.value;
+  //   const address = customerForm.elements.customerShippingAddress.value;
+  //   const typeOfCreditСard =
+  //     customerForm.elements.customerSelectCreditСard.value;
+  //   const customerCardNumber = customerForm.customerCardNumber.value;
+  //   const nameOnCard = customerForm.customerNameOnCard.value;
+  //   const cardExpiration = customerForm.customerCardExpiration.value;
+  //   const cardSecurityCode = customerForm.customerCardSecurityCode.value;
 
-    customer.shippingEmail = email;
-    customer.shippingAddress = address;
+  //   customer.shippingEmail = email;
+  //   customer.shippingAddress = address;
 
-    customer.typeOfCreditСard = typeOfCreditСard;
-    customer.customerCardNumber = customerCardNumber;
-    customer.nameOnCard = nameOnCard;
-    customer.cardExpiration = cardExpiration;
-    customer.cardSecurityCode = cardSecurityCode;
+  //   customer.typeOfCreditСard = typeOfCreditСard;
+  //   customer.customerCardNumber = customerCardNumber;
+  //   customer.nameOnCard = nameOnCard;
+  //   customer.cardExpiration = cardExpiration;
+  //   customer.cardSecurityCode = cardSecurityCode;
 
-    saveCustomer();
-  };
+  //   saveCustomer();
+  // };
 
   const renderForm = () => {
     if (customer) {
@@ -235,78 +261,82 @@
     }
   };
 
-  const resetCart = () => {
-    if (cartEmpty()) return;
+  // const resetCart = () => {
+  //   if (cartEmpty()) return;
 
-    const ids = Object.keys(cart);
-    ids.forEach((id) => deleteCartItem(cart[id].id, true));
-    // TODO сброс customer данных
-  };
+  //   // const ids = Object.keys(cart);
+  //   // ids.forEach((id) => deleteCartItem(cart[id].id));
+  //   // TODO сброс customer данных
+  // };
 
-  const onlyPurchasedGoods = () => {
-    const ids = Object.keys(cart);
-    let xmlPurchasedGoods = "";
-    ids.forEach(
-      (id) =>
-        (xmlPurchasedGoods +=
-          cart[id].id.replace("product_", "") +
-          "=" +
-          Number(cart[id].quantity) +
-          "&")
-    );
-    return xmlPurchasedGoods;
-  };
+  // const onlyPurchasedGoods = () => {
+  //   const ids = Object.keys(cart);
+  //   let xmlPurchasedGoods = "";
+  //   ids.forEach(
+  //     (id) =>
+  //       (xmlPurchasedGoods +=
+  //         cart[id].id.replace("product_", "") +
+  //         "=" +
+  //         Number(cart[id].quantity) +
+  //         "&")
+  //   );
+  //   return xmlPurchasedGoods;
+  // };
 
-  const customerinfoToSend = () => {
-    let xmlCustomerinfoToSend = "";
-    for (let key in customer) {
-      if (customer.hasOwnProperty(key)) {
-        // console.log(`${key} : ${customer[key]}`);
-        xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
-      }
-    }
-    return xmlCustomerinfoToSend;
-  };
-
-  const formSend = function () {
-    if (cartEmpty()) return;
-
-    // console.log(JSON.stringify(cart));
-    var xhr = new XMLHttpRequest();
-    var url = WPJS.ajaxUrl + "?action=send_email";
-
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onload = function () {
-      const response = xhr.response.trim();
-
-      if (response == "success") {
-        // console.log("response succes");
-        if (!rememberMeCheckbox.checked) localStorage.clear();
-        resetCart();
-        window.location.reload();
-      } else {
-        //TODO some actions need to be done
-        // console.log("not response");
-      }
-    };
-
-    let infoToSend = onlyPurchasedGoods();
-    infoToSend += customerinfoToSend();
-    infoToSend += "discountCode=" + discountCode;
-
-    // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
-
-    // console.log(infoToSend);
-    xhr.send(infoToSend);
-
-    // xhr.send("foo=bar&rem=sum&more=good");
-  };
+  // const customerinfoToSend = () => {
+  //   let xmlCustomerinfoToSend = "";
+  //   for (let key in customer) {
+  //     if (customer.hasOwnProperty(key)) {
+  //       // console.log(`${key} : ${customer[key]}`);
+  //       xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
+  //     }
+  //   }
+  //   return xmlCustomerinfoToSend;
+  // };
 
   const cartEmpty = function () {
     return !Object.keys(cart).length;
   };
+
+  // const formSend = function () {
+  //   if (cartEmpty()) return;
+
+  //   console.log(JSON.stringify(cart));
+  //   var xhr = new XMLHttpRequest();
+  //   var url = WPJS.ajaxUrl + "?action=send_email";
+
+  //   xhr.open("POST", url, true);
+  //   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  //   xhr.onload = function () {
+  //     const response = xhr.response.trim();
+  //     console.log("response = " + response);
+
+  //     if (response == "success") {
+  //       // console.log("response succes");
+  //       // if (!rememberMeCheckbox.checked) localStorage.clear();
+  //       // resetCart();
+  //       console.log("resetCart");
+  //       // window.location.reload();
+  //     } else {
+  //       //TODO some actions need to be done
+  //       console.log("not response");
+  //     }
+  //   };
+
+  //   let infoToSend = onlyPurchasedGoods();
+  //   infoToSend += customerinfoToSend();
+  //   // infoToSend += "discountCode=" + discountCode;
+
+  //   // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
+
+  //   console.log(infoToSend);
+  //   xhr.send(infoToSend);
+
+  //   // xhr.send("foo=bar&rem=sum&more=good");
+  // };
+
+  // formSend();
 
   const cartIsEmptyPlug = function () {
     emptyCartDOMelement = document.querySelector(".js-cart-is-empty-plug");
@@ -321,47 +351,47 @@
     emptyCartDOMelement.innerHTML = cartEmptyPlug;
   };
 
-  const allListeners = () => {
-    document.querySelector("body").addEventListener("click", (e) => {
-      const target = e.target;
+  // const allListeners = () => {
+  //   document.querySelector("body").addEventListener("click", (e) => {
+  //     const target = e.target;
 
-      if (target.classList.contains("js-btn-cart-item-remove")) {
-        e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        deleteCartItem(productID, false);
-      }
+  //     if (target.classList.contains("js-btn-cart-item-remove")) {
+  //       e.preventDefault();
+  //       const cartItemDOMElement = target.closest(".js-cart-item");
+  //       const productID = cartItemDOMElement.getAttribute("data-product-id");
+  //       deleteCartItem(productID, false);
+  //     }
 
-      if (target.classList.contains("js-btn-product-increase-quantity")) {
-        e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        increaseQuantity(productID, 1);
-      }
+  //     if (target.classList.contains("js-btn-product-increase-quantity")) {
+  //       e.preventDefault();
+  //       const cartItemDOMElement = target.closest(".js-cart-item");
+  //       const productID = cartItemDOMElement.getAttribute("data-product-id");
+  //       increaseQuantity(productID, 1);
+  //     }
 
-      if (target.classList.contains("js-btn-product-decrease-quantity")) {
-        e.preventDefault();
-        const cartItemDOMElement = target.closest(".js-cart-item");
-        const productID = cartItemDOMElement.getAttribute("data-product-id");
-        decreaseQuantity(productID);
-      }
+  //     if (target.classList.contains("js-btn-product-decrease-quantity")) {
+  //       e.preventDefault();
+  //       const cartItemDOMElement = target.closest(".js-cart-item");
+  //       const productID = cartItemDOMElement.getAttribute("data-product-id");
+  //       decreaseQuantity(productID);
+  //     }
 
-      if (target.classList.contains("js-btn-paynow")) {
-        e.preventDefault();
+  //     if (target.classList.contains("js-btn-paynow")) {
+  //       e.preventDefault();
 
-        const customerForm = document.forms.customerinfo;
-        if (!checkValidityOurFunc(customerForm)) {
-          return;
-        } else {
-          saveDataCustomer(customerForm);
-          formSend();
-        }
-      }
-    });
-  };
+  //       const customerForm = document.forms.customerinfo;
+  //       if (!checkValidityOurFunc(customerForm)) {
+  //         return;
+  //       } else {
+  //         saveDataCustomer(customerForm);
+  //         formSend();
+  //       }
+  //     }
+  //   });
+  // };
 
   const cartInit = () => {
-    allListeners();
+    // allListeners();
     if (cartEmpty()) {
       cartIsEmptyPlug();
       hiddenFormEmptyCart.hidden = true;
@@ -409,3 +439,188 @@ const checkValidityOurFunc = (customerForm) => {
 
   return true;
 };
+
+//! --------- Stripe underline
+//TODO добавить проверку на то, есть ли адрес доставки и прочие данные для верной доставки? форму не грузить(???), если адреса нет
+//? https://stripe.com/docs/api/payment_intents/create  <--- full api
+
+const stripe = Stripe(WPJS.pubKey);
+// const stripe = Stripe(
+//   "pk_test_51L8vkDCqha03Dodg279PHWVV1EgXQYLBFY4BFgY8bTpzUvckBZ6VtPC8nOSX4nSd7JQn4rS9BPbW2BmflDZKxjFf0042AQCYuU"
+// );
+let elements;
+
+initialize();
+checkStatus();
+
+document
+  .querySelector("#payment-form")
+  .addEventListener("submit", handleSubmit);
+
+// Fetches a payment intent and captures the client secret
+async function initialize() {
+  // const merged = { ...cart, ...customer };
+  const merged = { cart, customer };
+
+  // console.log(merged);
+  // console.log(JSON.stringify(merged));
+
+  const bodyText = JSON.stringify({ merged });
+  // console.log(bodyText);
+  // JSON.stringify({ cart }) +
+  // JSON.stringify({ customer }) +
+  // JSON.stringify({ discountCode });
+  const { clientSecret } = await fetch(
+    "https://moonglade.world/create-payment",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: bodyText,
+    }
+  ).then((r) => r.json());
+  // }).then(data => console.log(data));
+  // }).then((resp) => console.log(resp.text()));
+
+  const appearance = {
+    theme: "night",
+
+    //? https://stripe.com/docs/elements/appearance-api
+    variables: {
+      spacingUnit: 6.7,
+      colorBackground: "#000000",
+      colorPrimary: "#0d0d0d",
+      colorDanger: "#b4b4b4",
+      colorIconCardCvcError: "#b4b4b4",
+    },
+
+    rules: {
+      ".Tab--selected": {
+        borderColor: "#0d0d0d",
+      },
+    },
+  };
+
+  // console.log(clientSecret);
+
+  elements = stripe.elements({ clientSecret, appearance });
+
+  const paymentElement = elements.create("payment");
+  paymentElement.mount("#payment-element");
+
+  //? https://stripe.com/docs/js/element/events/on_change?type=paymentElement
+  // Triggered when the Element is fully rendered and can accept element.focus calls.
+  // paymentElement.on('ready', function(event) {
+  //   // Handle ready event
+  // });
+
+  // handler
+  // REQUIRED
+  // function
+  // handler(event) => void is a callback function that you provide that will be called when the event is fired.
+}
+
+async function handleSubmit(e) {
+  const rememberMeCheckbox = document.querySelector(".remember-me-checkbox");
+  localStorage.setItem("rememberMeCheckbox", rememberMeCheckbox.checked);
+
+  e.preventDefault();
+  setLoading(true);
+
+  //first method recomended by pidor from srtipe
+  const { error } = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      // Make sure to change this to your payment completion page
+      return_url: "https://moonglade.world/order-complete/",
+    },
+    // redirect: "if_required",
+  });
+
+  // //todo second method my alternative method
+  // stripe
+  //   .confirmPayment({
+  //     elements,
+  //     confirmParams: {
+  //       // Make sure to change this to your payment completion page
+  //       return_url: "https://moonglade.world/order-complete/",
+  //     },
+  //     // redirect: "if_required",
+  //   })
+  //   .then(function (result) {
+  //     console.log("result= " + JSON.stringify(result));
+  //     if (result.error) {
+  //       setLoading(false);
+  //       // Inform the customer that there was an error.
+  //     }
+  //   });
+
+  // This point will only be reached if there is an immediate error when
+  // confirming the payment. Otherwise, your customer will be redirected to
+  // your `return_url`. For some payment methods like iDEAL, your customer will
+  // be redirected to an intermediate site first to authorize the payment, then
+  // redirected to the `return_url`.
+  if (error.type === "card_error" || error.type === "validation_error") {
+    showMessage(error.message);
+  } else {
+    showMessage("An unexpected error occurred.");
+  }
+
+  // setLoading(false);
+}
+
+// Fetches the payment intent status after payment submission
+async function checkStatus() {
+  const clientSecret = new URLSearchParams(window.location.search).get(
+    "payment_intent_client_secret"
+  );
+
+  if (!clientSecret) {
+    return;
+  }
+
+  const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+  //cards for testing
+  //? https://stripe.com/docs/testing?numbers-or-method-or-token=card-numbers#cards
+
+  switch (paymentIntent.status) {
+    case "succeeded":
+      showMessage("Payment succeeded!");
+      break;
+    case "processing":
+      showMessage("Your payment is processing.");
+      break;
+    case "requires_payment_method":
+      showMessage("Your payment was not successful, please try again.");
+      break;
+    default:
+      showMessage("Something went wrong.");
+      break;
+  }
+}
+
+// ------- UI helpers -------
+function showMessage(messageText) {
+  const messageContainer = document.querySelector("#payment-message");
+
+  messageContainer.classList.remove("hidden");
+  messageContainer.textContent = messageText;
+
+  setTimeout(function () {
+    messageContainer.classList.add("hidden");
+    messageText.textContent = "";
+  }, 4000);
+}
+
+// Show a spinner on payment submission
+function setLoading(isLoading) {
+  if (isLoading) {
+    // Disable the button and show a spinner
+    document.querySelector("#submit").disabled = true;
+    document.querySelector("#spinner").classList.remove("hidden");
+    document.querySelector("#button-text").classList.add("hidden");
+  } else {
+    document.querySelector("#submit").disabled = false;
+    document.querySelector("#spinner").classList.add("hidden");
+    document.querySelector("#button-text").classList.remove("hidden");
+  }
+}
