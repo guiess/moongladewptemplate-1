@@ -38,7 +38,7 @@ const cartEmpty = function () {
   return !Object.keys(cart).length;
 };
 
-const formSend = function () {
+const formSend123 = function () {
   if (cartEmpty()) return;
 
   // console.log(JSON.stringify(cart));

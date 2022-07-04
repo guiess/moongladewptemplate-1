@@ -198,7 +198,7 @@ Template Name: Страница Ввода платежной информаци
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span>
                             <span class="js-delivery-sum">$ 0</span>
                           </div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">$ 0</span></div>
+                          <div class="discount-code-div flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">$ 0</span></div>
                         </div>
                       </div>
                     </div>

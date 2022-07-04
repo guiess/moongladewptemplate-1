@@ -14,6 +14,8 @@ let discountCode = customer.discountCode || "";
 
 if (!customer.deliveryPrice) customer.deliveryPrice = 0;
 
+let formSend = function () {};
+
 (function () {
   const cartDOMElement = document.querySelector(".js-cart");
 
@@ -65,6 +67,10 @@ if (!customer.deliveryPrice) customer.deliveryPrice = 0;
   const cartDiscountSumDOMElement = document.querySelector(".js-discount-sum");
   const cartDeliverySumDOMElement = document.querySelector(".js-delivery-sum");
   const hiddenFormEmptyCart = document.querySelector(".hidden-form-empty-cart");
+
+  const hiddenEmptyDiscountCode = document.querySelector(".mb-25");
+  const hiddenEmptyDiscountCodeDiv =
+    document.querySelector(".discount-code-div");
 
   const renderCartItem = ({
     id,
@@ -178,6 +184,11 @@ if (!customer.deliveryPrice) customer.deliveryPrice = 0;
     if (discountCode) {
       cartDiscountCodeDOMElement.innerText = discountCode;
     }
+    // hiddenEmptyDiscountCode.style.visibility = "hidden";
+    else {
+      hiddenEmptyDiscountCode.style.display = "none";
+      hiddenEmptyDiscountCodeDiv.style.display = "none";
+    }
   };
 
   const updateCart = () => {
@@ -269,74 +280,81 @@ if (!customer.deliveryPrice) customer.deliveryPrice = 0;
   //   // TODO сброс customer данных
   // };
 
-  // const onlyPurchasedGoods = () => {
-  //   const ids = Object.keys(cart);
-  //   let xmlPurchasedGoods = "";
-  //   ids.forEach(
-  //     (id) =>
-  //       (xmlPurchasedGoods +=
-  //         cart[id].id.replace("product_", "") +
-  //         "=" +
-  //         Number(cart[id].quantity) +
-  //         "&")
-  //   );
-  //   return xmlPurchasedGoods;
-  // };
+  const onlyPurchasedGoods = () => {
+    const ids = Object.keys(cart);
+    let xmlPurchasedGoods = "";
+    ids.forEach(
+      (id) =>
+        (xmlPurchasedGoods +=
+          cart[id].id.replace("product_", "") +
+          "=" +
+          Number(cart[id].quantity) +
+          "&")
+    );
+    return xmlPurchasedGoods;
+  };
 
-  // const customerinfoToSend = () => {
-  //   let xmlCustomerinfoToSend = "";
-  //   for (let key in customer) {
-  //     if (customer.hasOwnProperty(key)) {
-  //       // console.log(`${key} : ${customer[key]}`);
-  //       xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
-  //     }
-  //   }
-  //   return xmlCustomerinfoToSend;
-  // };
+  const customerinfoToSend = () => {
+    let xmlCustomerinfoToSend = "";
+    for (let key in customer) {
+      if (customer.hasOwnProperty(key)) {
+        // console.log(`${key} : ${customer[key]}`);
+        xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
+      }
+    }
+    return xmlCustomerinfoToSend;
+  };
 
   const cartEmpty = function () {
     return !Object.keys(cart).length;
   };
 
-  // const formSend = function () {
-  //   if (cartEmpty()) return;
+  formSend = function () {
+    if (cartEmpty()) return;
 
-  //   console.log(JSON.stringify(cart));
-  //   var xhr = new XMLHttpRequest();
-  //   var url = WPJS.ajaxUrl + "?action=send_email";
+    // console.log(JSON.stringify(cart));
+    var xhr = new XMLHttpRequest();
+    var url = WPJS.ajaxUrl + "?action=send_email";
 
-  //   xhr.open("POST", url, true);
-  //   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  //   xhr.onload = function () {
-  //     const response = xhr.response.trim();
-  //     console.log("response = " + response);
+    xhr.onload = function () {
+      const response = xhr.response.trim();
+      // console.log("response = " + response);
 
-  //     if (response == "success") {
-  //       // console.log("response succes");
-  //       // if (!rememberMeCheckbox.checked) localStorage.clear();
-  //       // resetCart();
-  //       console.log("resetCart");
-  //       // window.location.reload();
-  //     } else {
-  //       //TODO some actions need to be done
-  //       console.log("not response");
-  //     }
-  //   };
+      if (response == "success") {
+        // console.log("response succes");
+        if (localStorage.getItem("rememberMeCheckbox") == "false") {
+          // console.log("resetCustomer");
+          localStorage.removeItem("customer");
+        } else console.log(localStorage.getItem("rememberMeCheckbox"));
+        // console.log("resetCart");
+        localStorage.removeItem("cart");
+        $("body").addClass("noscroll");
+        $(".modal-shadow").fadeIn();
+        $(".modal-shadow").addClass("active");
+        $(".modal-success").addClass("active");
+      } else {
+        //TODO some actions need to be done if not response from server
+        showMessage(
+          "When you send an error has occurred. Please contact site support!"
+        );
+        // console.log("When you send an error has occurred. Please contact site support!");
+      }
+    };
 
-  //   let infoToSend = onlyPurchasedGoods();
-  //   infoToSend += customerinfoToSend();
-  //   // infoToSend += "discountCode=" + discountCode;
+    let infoToSend = onlyPurchasedGoods();
+    infoToSend += customerinfoToSend();
+    // infoToSend += "discountCode=" + discountCode;
 
-  //   // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
+    // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
 
-  //   console.log(infoToSend);
-  //   xhr.send(infoToSend);
+    // console.log(infoToSend);
+    xhr.send(infoToSend);
 
-  //   // xhr.send("foo=bar&rem=sum&more=good");
-  // };
-
-  // formSend();
+    // xhr.send("foo=bar&rem=sum&more=good");
+  };
 
   const cartIsEmptyPlug = function () {
     emptyCartDOMelement = document.querySelector(".js-cart-is-empty-plug");
@@ -445,9 +463,6 @@ const checkValidityOurFunc = (customerForm) => {
 //? https://stripe.com/docs/api/payment_intents/create  <--- full api
 
 const stripe = Stripe(WPJS.pubKey);
-// const stripe = Stripe(
-//   "pk_test_51L8vkDCqha03Dodg279PHWVV1EgXQYLBFY4BFgY8bTpzUvckBZ6VtPC8nOSX4nSd7JQn4rS9BPbW2BmflDZKxjFf0042AQCYuU"
-// );
 let elements;
 
 initialize();
@@ -526,7 +541,7 @@ async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
 
-  //first method recomended by pidor from srtipe
+  /*first method recomended by pidor from srtipe
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
@@ -535,35 +550,51 @@ async function handleSubmit(e) {
     },
     // redirect: "if_required",
   });
+*/
 
   // //todo second method my alternative method
-  // stripe
-  //   .confirmPayment({
-  //     elements,
-  //     confirmParams: {
-  //       // Make sure to change this to your payment completion page
-  //       return_url: "https://moonglade.world/order-complete/",
-  //     },
-  //     // redirect: "if_required",
-  //   })
-  //   .then(function (result) {
-  //     console.log("result= " + JSON.stringify(result));
-  //     if (result.error) {
-  //       setLoading(false);
-  //       // Inform the customer that there was an error.
-  //     }
-  //   });
+  stripe
+    .confirmPayment({
+      elements,
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: "https://moonglade.world/order-complete/",
+      },
+      redirect: "if_required",
+    })
+    .then(function (result) {
+      // console.log("result= " + JSON.stringify(result));
+      if (result.error) {
+        console.log("error");
+        if (
+          result.error.type === "card_error" ||
+          result.error.type === "validation_error"
+        ) {
+          showMessage(result.error.message);
+        } else {
+          showMessage("An unexpected error occurred.");
+        }
+        setLoading(false);
+        // Inform the customer that there was an error.
+      } else if (result.paymentIntent.status == "succeeded") {
+        console.log("paymentIntent");
+        formSend();
+      }
+    });
 
   // This point will only be reached if there is an immediate error when
   // confirming the payment. Otherwise, your customer will be redirected to
   // your `return_url`. For some payment methods like iDEAL, your customer will
   // be redirected to an intermediate site first to authorize the payment, then
   // redirected to the `return_url`.
-  if (error.type === "card_error" || error.type === "validation_error") {
-    showMessage(error.message);
-  } else {
-    showMessage("An unexpected error occurred.");
-  }
+
+  // console(stop);
+
+  // if (error.type === "card_error" || error.type === "validation_error") {
+  //   showMessage(error.message);
+  // } else {
+  //   showMessage("An unexpected error occurred.");
+  // }
 
   // setLoading(false);
 }

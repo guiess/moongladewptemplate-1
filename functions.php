@@ -52,7 +52,7 @@ function site_scripts()
   wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main', 'swiper-main'], null, true);
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main'], null, true);
 
-  if (!is_page('order-complete')) {  
+  if (!is_page('order-complete')) {
     wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
     wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
   }
@@ -208,15 +208,11 @@ function delivery_rank()
 @ini_set('post_max_size', '32M');
 @ini_set('max_execution_time', '300');
 
+//TODO !current_user_can('manage_options') // имеет ли пользователь права редактировать настройки. Если не имеет, стало быть не администратор, а значит закроем для него сайт
 add_action('wp_loaded', function () {
   global $pagenow;
   if (carbon_get_theme_option('maintenance_mode')) {
-    if (
-      (is_page('wp-admin') ||
-        $pagenow !== 'wp-login.php') &&
-      !is_user_logged_in()
-      //TODO !current_user_can('manage_options') // имеет ли пользователь права редактировать настройки. Если не имеет, стало быть не администратор, а значит закроем для него сайт
-    ) {
+    if ($pagenow !== 'wp-login.php' && !is_user_logged_in()) {
       header('HTTP/1.1 Service Unavailable', true, 503);
       header('Content-Type: text/html; charset=utf-8');
       if (file_exists(WP_CONTENT_DIR . '/themes/moonglade/page-dummy.php')) {
