@@ -25,20 +25,37 @@ function site_scripts()
   wp_deregister_script('wp-embed'); // удалим wp-embed.min.js?ver=5.7.2' в футере
 
   // wp_enqueue_style('icomoon-fonts', get_template_directory_uri() . '/assets/fonts/icomoon.woff', [], $version);
-  wp_enqueue_style('main-style', get_stylesheet_uri(), [],); //подключили стили
-  // wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/normalize.css', [], $version); //подключили стили
+
+  // <----STYLES----->  
+  wp_enqueue_style('main-style', get_stylesheet_uri(), [], null); //подключили стили
+
+  if (is_page('order-complete')) {
+    wp_enqueue_style('order-complete-style', get_template_directory_uri() . '/assets/css/order-complete.css', [], null);
+  }
+
+  if (is_page('checkout-payment')) {
+    wp_enqueue_style('checkout-payment-style', get_template_directory_uri() . '/assets/css/checkout-payment.css', [], null);
+  }
+
+  if (!is_page('order-complete')) {
+    wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/normalize.css', [], null);
+    wp_enqueue_style('locomotive-style', get_template_directory_uri() . '/assets/css/locomotive.css', [], null);
+    wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/css/swiper.css', [], null);
+    wp_enqueue_style('forms-style', get_template_directory_uri() . '/assets/css/forms.css', [], null);
+    wp_enqueue_style('tailwind-style', get_template_directory_uri() . '/assets/css/tailwind.css', [], null);
+  }
+  // <----STYLES----->  
+
+  // <----SCRIPTS---->
   wp_enqueue_script('jquery-main', get_template_directory_uri() . '/assets/js/jquery.js', [], null, true);
   wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main'], null, true);
   wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main', 'swiper-main'], null, true);
-  // wp_enqueue_script('inputmask-main', get_template_directory_uri() . '/assets/js/inputmask.js', ['jquery-main', 'gsap-main', 'swiper-main'], null, true);
-
-  // wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main', 'inputmask-main'], null, true);
   wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main'], null, true);
-  wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
 
-  // if (is_page('')) {
-  wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
-  // }
+  if (!is_page('order-complete')) {
+    wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
+    wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
+  }
 
   if (is_page('products')) {
     wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/cart.js', [], null, true);
@@ -62,11 +79,23 @@ function site_scripts()
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
+  $pubKey = "";
+  if (carbon_get_theme_option('settings_payment_mode') == "test") {
+    $pubKey = carbon_get_theme_option('stripe_publishable_key_test');
+  } else if (carbon_get_theme_option('settings_payment_mode') == "live") {
+    $pubKey = carbon_get_theme_option('stripe_publishable_key_live');
+  }
+
   wp_localize_script('main-js', 'WPJS', [
     'siteUrl' => get_template_directory_uri(),
     // 'ajaxUrl' => admin_url('admin-ajax.php', 'http'),
     'ajaxUrl' => admin_url('admin-ajax.php'),
+    'pubKey' => $pubKey,
   ]);
+
+  if (is_page('order-complete')) {
+    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/order-complete.js', [], null, true);
+  }
 }
 
 add_action('after_setup_theme', 'crb_load');
@@ -91,6 +120,7 @@ function register_carbon_fields()
   require_once('includes/carbon-fields-options/post-meta.php');
   require_once('includes/carbon-fields-options/theme-discount.php');
   require_once('includes/carbon-fields-options/theme-delivery.php');
+  require_once('includes/carbon-fields-options/theme-payment.php');
   require_once('includes/carbon-fields-options/theme-settings.php');
 }
 
@@ -178,14 +208,11 @@ function delivery_rank()
 @ini_set('post_max_size', '32M');
 @ini_set('max_execution_time', '300');
 
+//TODO !current_user_can('manage_options') // имеет ли пользователь права редактировать настройки. Если не имеет, стало быть не администратор, а значит закроем для него сайт
 add_action('wp_loaded', function () {
   global $pagenow;
   if (carbon_get_theme_option('maintenance_mode')) {
-    if (
-      is_page('wp-admin') ||
-      $pagenow !== 'wp-login.php' &&
-      !is_user_logged_in()
-    ) {
+    if ($pagenow !== 'wp-login.php' && !is_user_logged_in()) {
       header('HTTP/1.1 Service Unavailable', true, 503);
       header('Content-Type: text/html; charset=utf-8');
       if (file_exists(WP_CONTENT_DIR . '/themes/moonglade/page-dummy.php')) {

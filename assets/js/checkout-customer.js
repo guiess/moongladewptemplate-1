@@ -10,8 +10,10 @@
 
   const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
   const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
-  let discountValue = Number(localStorage.getItem("discountValue")) || 0;
-  let discountCode = localStorage.getItem("discountCode") || "";
+  // let discountValue = Number(localStorage.getItem("discountValue")) || 0;
+  // let discountCode = localStorage.getItem("discountCode") || "";
+  let discountValue = Number(customer.discountValue) || 0;
+  let discountCode = customer.discountCode || "";
   if (!customer.deliveryPrice) customer.deliveryPrice = 0;
 
   // console.log(discountValue);
@@ -280,8 +282,12 @@
       discountValue *= -1;
     }
 
-    localStorage.setItem("discountCode", discountCode);
-    localStorage.setItem("discountValue", discountValue);
+    customer.discountCode = discountCode;
+    customer.discountValue = discountValue;
+    saveCustomer();
+
+    // localStorage.setItem("discountCode", discountCode);
+    // localStorage.setItem("discountValue", discountValue);
     updateCartTotalPrice();
   };
 

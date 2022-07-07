@@ -43,6 +43,8 @@ $(".modal-success .btn-close").click(function () {
   $(".modal-shadow").fadeOut();
   $(".modal-shadow").removeClass("active");
   $(".modal-success").removeClass("active");
+  // location.reload();
+  $(location).attr("href", document.location.origin + '/products');
 });
 
 $("#discountInputField").on("input", function () {
@@ -188,11 +190,12 @@ $(".form-theme--dark select.form-control").on("change", function () {
   }
 });
 
-
 function hasTouch() {
-  return 'ontouchstart' in document.documentElement
-    || navigator.maxTouchPoints > 0
-    || navigator.msMaxTouchPoints > 0;
+  return (
+    "ontouchstart" in document.documentElement ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  );
 }
 
 if (hasTouch()) {
@@ -203,7 +206,7 @@ if (hasTouch()) {
 
       for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
         if (!styleSheet.rules[ri].selectorText) continue;
-
+        
         if (styleSheet.rules[ri].selectorText.match(':hover')) {
           styleSheet.deleteRule(ri);
         }

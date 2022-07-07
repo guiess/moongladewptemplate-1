@@ -4,33 +4,15 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
+require_once('discount-count.php');
+
 $discount_code_from_ajax = $_POST['discountcode'];
 
-$table_fixed = carbon_get_theme_option('coupons_fixed');
-$table_percent = carbon_get_theme_option('coupons_percents');
+$discount_value = calculateDiscount($discount_code_from_ajax);
 
-if (!empty($table_fixed)) {
-  foreach ($table_fixed as $tr) {
-    $code_from_base = $tr["coupons_fixed_code"];
-    if ($code_from_base == $discount_code_from_ajax) {
-      $discount_value = "fix" . $tr["coupons_fixed_value"];
-      echo $discount_value;
-      break;
-    }
-  }
-  if (!$discount_value && !empty($table_percent)) {
-    foreach ($table_percent as $tr) {
-      $code_from_base = $tr["coupons_percent_code"];
-      if ($code_from_base == $discount_code_from_ajax) {
-        $discount_value = "per" . $tr["coupons_percent_value"];
-        echo $discount_value;
-        break;
-      }
-    }
-  }
-  if (!$discount_value) {
-    echo "false";
-  }
-}
+if ($discount_value)
+  echo $discount_value;
+else
+  echo "false";
 
 wp_die();
