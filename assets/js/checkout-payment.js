@@ -550,9 +550,16 @@ async function handleSubmit(e) {
     },
     // redirect: "if_required",
   });
+
+    if (error.type === "card_error" || error.type === "validation_error") {
+    showMessage(error.message);
+  } else {
+    showMessage("An unexpected error occurred.");
+  }
+  setLoading(false);
 */
 
-  // //todo second method my alternative method
+  //second method my alternative method
   stripe
     .confirmPayment({
       elements,
@@ -587,16 +594,6 @@ async function handleSubmit(e) {
   // your `return_url`. For some payment methods like iDEAL, your customer will
   // be redirected to an intermediate site first to authorize the payment, then
   // redirected to the `return_url`.
-
-  // console(stop);
-
-  // if (error.type === "card_error" || error.type === "validation_error") {
-  //   showMessage(error.message);
-  // } else {
-  //   showMessage("An unexpected error occurred.");
-  // }
-
-  // setLoading(false);
 }
 
 // Fetches the payment intent status after payment submission

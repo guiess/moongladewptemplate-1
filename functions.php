@@ -34,7 +34,7 @@ function site_scripts()
   }
 
   if (is_page('checkout-payment')) {
-    wp_enqueue_style('order-complete-style', get_template_directory_uri() . '/assets/css/checkout-payment.css', [], null);
+    wp_enqueue_style('checkout-payment-style', get_template_directory_uri() . '/assets/css/checkout-payment.css', [], null);
   }
 
   if (!is_page('order-complete')) {
