@@ -107,9 +107,48 @@ $passwd = "Moongladesuperfood21";
     $shipFromAddress->addChild("PostalCode", $adressPostalCodeFrom);
     $shipFromAddress->addChild("CountryCode", $adressCountryCodeFrom);
 
-    // $service = $shipment->addChild('Service');
-    // $service->addChild("Code", "02");
-    // $service->addChild("Description", "2nd Day Air");
+    // code for the UPS Service associated with the shipment. 
+    // NOTE: For a complete listing of 
+    // values, refer to Service Codes in the 
+    // Appendix. 
+    // Valid domestic values: 
+    // 01 = Next Day Air 
+    // 02 = 2nd Day Air 
+    // 03 = Ground 
+    // 12 = 3 Day Select 
+    // 13 = Next Day Air Saver 
+    // 14 = UPS Next Day Air Early 
+    // 59 = 2nd Day Air A.M. 
+    // Valid international values: 
+    // 07 = Worldwide Express 
+    // 08 = Worldwide Expedited 
+    // 11= Standard 
+    // 54 = Worldwide Express Plus 
+    // 65 = Saver 
+    // 96 = UPS Worldwide Express 
+    // Freight
+    // 71 = UPS Worldwide Express 
+    // Freight Midday
+    // Required for Rating and ignored for 
+    // Shopping.
+
+    $service = $shipment->addChild('Service');
+    $service->addChild("Code", "07");
+    $service->addChild("Description", "Worldwide Express");
+
+    // Package Valid values: 
+    // 00 = UNKNOWN
+    // 01 = UPS Letter 
+    // 02 = Package
+    // 03 = Tube 
+    // 04 = Pak
+    // 21 = Express Box
+    // 24 = 25KG Box
+    // 25 = 10KG Box
+    // 30 = Pallet
+    // 2a = Small Express Box 
+    // 2b = Medium Express Box
+    // 2c = Large Express Box
 
     $package = $shipment->addChild('Package');
     $packageType = $package->addChild('PackagingType');
@@ -120,6 +159,14 @@ $passwd = "Moongladesuperfood21";
     $unitOfMeasurement = $packageWeight->addChild('UnitOfMeasurement');
     $unitOfMeasurement->addChild("Code", "KGS");
     $packageWeight->addChild("Weight", $deliveryWeight);
+
+    // $packageDimensions = $package->addChild('Dimensions');
+    // $unitOfMeasurement = $packageDimensions->addChild('UnitOfMeasurement');
+    // $unitOfMeasurement->addChild("Code", "CM");
+    // $unitOfMeasurement->addChild("Description", "Centimeters");
+    // $packageDimensions->addChild("Length", "1");
+    // $packageDimensions->addChild("Width", "1");
+    // $packageDimensions->addChild("Height", "1");
 
     $requestXML = $accessRequesttXML->asXML() . $rateRequestXML->asXML();
 

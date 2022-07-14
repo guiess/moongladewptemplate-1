@@ -74,9 +74,16 @@ function site_scripts()
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
-  if (is_page('checkout-payment')) {
-    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/checkout-payment.js', [], null, true);
+  if (is_page('checkout-payment') || is_page('checkout-test')) {
+    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/checkout-payment.js', ['stripe-js', 'paypal-js'], null, true);
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
+    wp_enqueue_script('stripe-js', 'https://js.stripe.com/v3/', [], null, true);
+
+    if (carbon_get_theme_option('settings_paypal_mode') == "sandbox") {
+      wp_enqueue_script('paypal-js', 'https://www.paypal.com/sdk/js?client-id=' . carbon_get_theme_option('paypal_client_id_sandbox') . '&currency=USD&commit=true&disable-funding=credit,card', [], null, true);
+    } elseif (carbon_get_theme_option('settings_paypal_mode') == "live") {
+      wp_enqueue_script('paypal-js', 'https://www.paypal.com/sdk/js?client-id=' . carbon_get_theme_option('paypal_client_id_live') . '&currency=USD&commit=true&disable-funding=credit,card', [], null, true);
+    }
   }
 
   $pubKey = "";

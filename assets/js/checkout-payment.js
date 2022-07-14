@@ -11,6 +11,19 @@ const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
 let discountValue = Number(customer.discountValue) || 0;
 let discountCode = customer.discountCode || "";
 // console.log(JSON.stringify(discountCode));
+const totalPrice = Object.keys(cart).reduce((acc, id) => {
+  const { quantity, price } = cart[id];
+  return acc + price * quantity;
+}, 0);
+
+let discountValueMath;
+if (discountValue < 0) {
+  discountValueMath = Math.abs(discountValue);
+} else {
+  // if (discountValue > 100) return;
+  discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
+}
+discountValueMath = Math.round(discountValueMath);
 
 if (!customer.deliveryPrice) customer.deliveryPrice = 0;
 
@@ -130,27 +143,11 @@ let formSend = function () {};
   const updateCartTotalPrice = () => {
     if (cartEmpty()) return;
 
-    let discountValueMath;
-
-    const totalPrice = Object.keys(cart).reduce((acc, id) => {
-      const { quantity, price } = cart[id];
-      return acc + price * quantity;
-    }, 0);
-
     // document.getElementById("discountInputField").value = discountCode;
 
     if (cartSubtotalPriceDOMElement) {
       cartSubtotalPriceDOMElement.textContent = "$ " + totalPrice;
     }
-
-    if (discountValue < 0) {
-      discountValueMath = Math.abs(discountValue);
-    } else {
-      // if (discountValue > 100) return;
-      discountValueMath = (Math.abs(discountValue) / 100) * totalPrice;
-    }
-
-    discountValueMath = Math.round(discountValueMath);
 
     if (cartDiscountSumDOMElement) {
       cartDiscountSumDOMElement.textContent = discountValueMath
@@ -652,3 +649,135 @@ function setLoading(isLoading) {
     document.querySelector("#button-text").classList.remove("hidden");
   }
 }
+
+//! --------- Paypal underline
+
+const paypalitems = () => {
+  let itemsPayPal = [];
+  const ids = Object.keys(cart);
+  ids.forEach((id) => {
+    // console.log(id);
+    // console.log(cart[id].name);
+    // console.log(cart[id].quantity);
+    // console.log(cart[id].price);
+    let data = new Object();
+    // data.id = id;
+    data.name = cart[id].name;
+    // data.description = id + " ==> " + data.name;
+    data.unit_amount = {
+      currency_code: "USD",
+      value: cart[id].price,
+    };
+    data.quantity = cart[id].quantity;
+    itemsPayPal.push(data);
+  });
+  // // console.log(itemsPayPal, JSON.stringify(itemsPayPal));
+  return itemsPayPal;
+};
+
+console.log(JSON.stringify(paypalitems()));
+
+console.log(
+  totalPrice,
+  Number(customer.deliveryPrice),
+  discountValueMath,
+  totalPrice + Number(customer.deliveryPrice) - discountValueMath + 0
+);
+
+paypal
+  .Buttons({
+    // onCancel: function(data) {
+    //   // Show a cancel page, or return to cart
+    // },
+    // onError: function(err) {
+    //   // For example, redirect to a specific error page
+    //   window.location.href = "/your-error-page-here";
+    // },
+    // onInit: function(data, actions) {
+    //   // Disable the buttons
+    //   actions.disable();
+    //   // Listen for changes to the checkbox
+    //   document.querySelector('#check')
+    //     .addEventListener('change', function(event) {
+    //       // Enable or disable the button when it is checked or unchecked
+    //       if (event.target.checked) {
+    //         actions.enable();
+    //       } else {
+    //         actions.disable();
+    //       }
+    //     });
+    // },
+    // // onClick is called when the button is clicked
+    // onClick: function() {
+    //   // Show a validation error if the checkbox is not checked
+    //   if (!document.querySelector('#check').checked) {
+    //     document.querySelector('#error').classList.remove('hidden');
+    //   }
+    // },
+    // onShippingChange: function(data, actions) {
+    //   if (data.shipping_address.country_code !== 'US') {
+    //     return actions.reject();
+    //   }
+
+    //   return actions.resolve();
+    // },
+    style: {
+      layout: "horizontal",
+      color: "black",
+      shape: "rect",
+      label: "paypal",
+      tagline: false,
+      height: 55,
+    },
+    // Sets up the transaction when a payment button is clicked
+    //? https://developer.paypal.com/docs/api/orders/v2/
+    createOrder: (data, actions) => {
+      return actions.order.create({
+        purchase_units: [
+          {
+            amount: {
+              currency_code: "USD",
+              value: totalPrice + Number(customer.deliveryPrice) - discountValueMath,
+              breakdown: {
+                discount: {
+                  currency_code: "USD",
+                  value: discountValueMath,
+                },
+                shipping: {
+                  currency_code: "USD",
+                  value: Number(customer.deliveryPrice),
+                },
+                item_total: {
+                  /* Required when including the `items` array */
+                  currency_code: "USD",
+                  value: totalPrice,
+                },
+              },
+            },
+            items: paypalitems(),
+          },
+        ],
+      });
+    },
+    // Finalize the transaction after payer approval
+    onApprove: (data, actions) => {
+      return actions.order.capture().then(function (orderData) {
+        // Successful capture! For dev/demo purposes:
+        // console.log(
+        //   "Capture result",
+        //   orderData,
+        //   JSON.stringify(orderData, null, 2)
+        // );
+        // const transaction = orderData.purchase_units[0].payments.captures[0];
+        // alert(
+        //   `Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`
+        // );
+        formSend();
+      });
+    },
+  })
+  .render("#paypal-button-container");
+
+//! ---->
+// Если предыдущий источник финансирования был выбран для запоминания клиентом, он сохраняется для извлечения для будущих транзакций.
+//? paypal.rememberFunding([ paypal.FUNDING.VENMO ]);

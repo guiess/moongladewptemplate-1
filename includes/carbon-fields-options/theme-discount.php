@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-Container::make('theme_options', 'Discounts')
+Container::make('theme_options', 'Discount')
   ->set_icon('dashicons-buddicons-groups')
 
   ->add_tab("FIXED", [

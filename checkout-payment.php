@@ -9,7 +9,6 @@ Template Name: Страница Ввода платежной информаци
 <body>
 
   <?php include(get_template_directory() . "/include/preloader.php"); ?>
-  <script src="https://js.stripe.com/v3/"></script>
 
   <div data-page-layout>
     <div class="wrapper w-full min-h-screen flex flex-col" data-scroller="">
@@ -75,8 +74,8 @@ Template Name: Страница Ввода платежной информаци
                           </div>
                         </div>
                         <h2 class="h5 font-serif mb-15 normal-case">Payment</h2>
-                        <div class="form-group payment-selector-desktop">
-                          <!-- <div class="payment-selector-row">
+                        <!-- <div class="form-group payment-selector-desktop"> -->
+                        <!-- <div class="payment-selector-row">
                             <input type="radio" id="pscard" hidden name="ps">
                             <label for="pscard">Debit / Credit Card</label>
                             <input type="radio" id="psapple" hidden name="ps">
@@ -86,7 +85,7 @@ Template Name: Страница Ввода платежной информаци
                             <input type="radio" id="pspp" hidden name="ps">
                             <label for="pspp">PayPal</label>
                           </div> -->
-                          <!-- <div class="payment-selector-row-second">
+                        <!-- <div class="payment-selector-row-second">
                             <svg width="100" height="58" viewBox="0 0 100 58" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path opacity=".2" d="M97 0a3 3 0 0 1 3 3v52a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3h94Z" fill="#414141" />
                               <path d="M50.239 27.14c-.025 1.803 1.723 2.81 3.04 3.409 1.354.614 1.808 1.007 1.803 1.556-.01.84-1.08 1.212-2.08 1.226-1.746.025-2.76-.44-3.568-.791l-.629 2.744c.81.348 2.309.651 3.864.665 3.649 0 6.036-1.68 6.049-4.284.014-3.305-4.903-3.488-4.87-4.966.012-.448.47-.926 1.475-1.047.498-.062 1.87-.109 3.426.56l.61-2.655A9.908 9.908 0 0 0 56.11 23c-3.435 0-5.851 1.703-5.87 4.14Zm14.99-3.91c-.667 0-1.229.362-1.48.918l-5.212 11.605h3.647l.725-1.87h4.456l.421 1.87H71L68.195 23.23h-2.967Zm.51 3.383 1.052 4.702h-2.882l1.83-4.703Zm-19.922-3.384-2.874 12.524h3.475L49.29 23.23h-3.473Zm-5.14 0-3.617 8.525-1.463-7.248c-.171-.81-.85-1.277-1.602-1.277h-5.912l-.083.364c1.214.245 2.593.642 3.428 1.065.511.26.657.486.825 1.1l2.771 9.995h3.672l5.63-12.524h-3.649Z" fill="url(#a)" />
@@ -123,15 +122,17 @@ Template Name: Страница Ввода платежной информаци
                               </defs>
                             </svg>
                           </div> -->
-                        </div>
-                        <div class="form-group payment-selector-mobile">
+                        <!-- </div> -->
+
+                        <!-- <div class="form-group payment-selector-mobile">
                           <div class="form-group__control">
                             <select id="customerSelectCreditСard" class="form-control">
                               <option value="01">Credit card (Visa, Mastercard, Amex)</option>
                               <option value="Other">Other</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
+
                         <!-- <div class="form-group">
                           <div class="form-group__control"><input name="customerCardNumber" data-inputmask="'mask': '9999 9999 9999 9999'" required="required" class="form-control" type="text" placeholder="Card number" /></div>
                         </div>
@@ -146,6 +147,10 @@ Template Name: Страница Ввода платежной информаци
                             <div class="form-group__control"><input name="customerCardSecurityCode" data-inputmask="'mask': '999'" class="form-control" type="tel" placeholder="Security code" required="required" /></div>
                           </div>
                         </div> -->
+
+                        <div id="paypal-button-container" style="margin-bottom: 25px; margin-top: 20px;">
+                          <!--PayPal.js injects the PayPal Button-->
+                        </div>
 
                         <div id="payment-element">
                           <!--Stripe.js injects the Payment Element-->
