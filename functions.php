@@ -27,55 +27,104 @@ function site_scripts()
   // wp_enqueue_style('icomoon-fonts', get_template_directory_uri() . '/assets/fonts/icomoon.woff', [], $version);
 
   // <----STYLES----->  
-  wp_enqueue_style('main-style', get_stylesheet_uri(), [], null); //подключили стили
+  // wp_enqueue_style('main-style', get_stylesheet_uri(), [], null); //подключили стили
+  if (carbon_get_theme_option('dev_mode')) {
+    $styleCSS = "style.css";
+    $checkoutPaymentCSS = "checkout-payment.css";
+    $formsCSS = "forms.css";
+    $locomotiveCSS = "locomotive.css";
+    $normalizeCSS = "normalize.css";
+    // $normalizeVideoCSS = "normalize-video.css";
+    $orderCompleteCSS = "order-complete.css";
+    // $styleVideoCSS = "style-video.css";
+    $swiperCSS = "swiper.css";
+    $tailwindCSS = "tailwind.css";
+  } else {
+    $styleCSS = "style.min.css";
+    $checkoutPaymentCSS = "checkout-payment.min.css";
+    $formsCSS = "forms.min.css";
+    $locomotiveCSS = "locomotive.min.css";
+    $normalizeCSS = "normalize.min.css";
+    // $normalizeVideoCSS = "normalize-video.min.css";
+    $orderCompleteCSS = "order-complete.min.css";
+    // $styleVideoCSS = "style-video.min.css";
+    $swiperCSS = "swiper.min.css";
+    $tailwindCSS = "tailwind.min.css";
+  }
+
+  wp_enqueue_style('main-style', get_template_directory_uri() . '/' . $styleCSS, [], null);
 
   if (is_page('order-complete')) {
-    wp_enqueue_style('order-complete-style', get_template_directory_uri() . '/assets/css/order-complete.css', [], null);
+    wp_enqueue_style('order-complete-style', get_template_directory_uri() . '/assets/css/' . $orderCompleteCSS, [], null);
   }
 
   if (is_page('checkout-payment')) {
-    wp_enqueue_style('checkout-payment-style', get_template_directory_uri() . '/assets/css/checkout-payment.css', [], null);
+    wp_enqueue_style('checkout-payment-style', get_template_directory_uri() . '/assets/css/' . $checkoutPaymentCSS, [], null);
   }
 
   if (!is_page('order-complete')) {
-    wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/normalize.css', [], null);
-    wp_enqueue_style('locomotive-style', get_template_directory_uri() . '/assets/css/locomotive.css', [], null);
-    wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/css/swiper.css', [], null);
-    wp_enqueue_style('forms-style', get_template_directory_uri() . '/assets/css/forms.css', [], null);
-    wp_enqueue_style('tailwind-style', get_template_directory_uri() . '/assets/css/tailwind.css', [], null);
+    wp_enqueue_style('normalize-style', get_template_directory_uri() . '/assets/css/' . $normalizeCSS, [], null);
+    wp_enqueue_style('locomotive-style', get_template_directory_uri() . '/assets/css/' . $locomotiveCSS, [], null);
+    wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/css/' . $swiperCSS, [], null);
+    wp_enqueue_style('forms-style', get_template_directory_uri() . '/assets/css/' . $formsCSS, [], null);
+    wp_enqueue_style('tailwind-style', get_template_directory_uri() . '/assets/css/' . $tailwindCSS, [], null);
   }
   // <----STYLES----->  
 
   // <----SCRIPTS---->
+  if (carbon_get_theme_option('dev_mode')) {
+    $cookiesJS = "cookies.js";
+    $feedbackJS = "feedback.js";
+    $orderCompleteJS = "order-complete.js";
+    $videoPlayerJS = "video-player.js";
+    $mainJS = "main.js";
+    $cartJS = "cart.js";
+    $checkoutShippingJS = "checkout-shipping.js";
+    $checkoutCustomerJS = "checkout-customer.js";
+    // $confirmPaymentJS = "confirm-payment.js";
+    $checkoutPaymentJS = "checkout-payment.js";
+  } else if (carbon_get_theme_option('dev_mode') == false) {
+    $cookiesJS = "cookies.min.js";
+    $feedbackJS = "feedback.min.js";
+    $orderCompleteJS = "order-complete.min.js";
+    $videoPlayerJS = "video-player.min.js";
+    $mainJS = "main.min.js";
+    $cartJS = "cart.min.js";
+    $checkoutShippingJS = "checkout-shipping.min.js";
+    $checkoutCustomerJS = "checkout-customer.min.js";
+    // $confirmPaymentJS = "confirm-payment.min.js";
+    $checkoutPaymentJS = "checkout-payment.min.js";
+  }
+
   wp_enqueue_script('jquery-main', get_template_directory_uri() . '/assets/js/jquery.js', [], null, true);
   wp_enqueue_script('swiper-main', get_template_directory_uri() . '/assets/js/swiper.js', ['jquery-main'], null, true);
   wp_enqueue_script('gsap-main', get_template_directory_uri() . '/assets/js/gsap.js', ['jquery-main', 'swiper-main'], null, true);
-  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', ['jquery-main', 'gsap-main'], null, true);
+  wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/' . $mainJS, ['jquery-main', 'gsap-main'], null, true);
 
   if (!is_page('order-complete')) {
-    wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
-    wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/cookies.js', [], null, true);
+    wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/' . $videoPlayerJS, [], null, true);
+    wp_enqueue_script('cookies-js', get_template_directory_uri() . '/assets/js/' . $cookiesJS, [], null, true);
   }
 
   if (is_page('products')) {
-    wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/cart.js', [], null, true);
-    wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/feedback.js', [], null, true);
-    wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/video-player.js', [], null, true);
+    wp_enqueue_script('cart-js', get_template_directory_uri() . '/assets/js/' . $cartJS, [], null, true);
+    wp_enqueue_script('feedback-js', get_template_directory_uri() . '/assets/js/' . $feedbackJS, [], null, true);
+    wp_enqueue_script('video-js', get_template_directory_uri() . '/assets/js/' . $videoPlayerJS, [], null, true);
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-customer')) {
-    wp_enqueue_script('discount-js', get_template_directory_uri() . '/assets/js/checkout-customer.js', [], null, true);
+    wp_enqueue_script('discount-js', get_template_directory_uri() . '/assets/js/' . $checkoutCustomerJS, [], null, true);
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-shipping')) {
-    wp_enqueue_script('shipping-js', get_template_directory_uri() . '/assets/js/checkout-shipping.js', [], null, true);
+    wp_enqueue_script('shipping-js', get_template_directory_uri() . '/assets/js/' . $checkoutShippingJS, [], null, true);
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
   }
 
   if (is_page('checkout-payment') || is_page('checkout-test')) {
-    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/checkout-payment.js', ['stripe-js', 'paypal-js'], null, true);
+    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/' . $checkoutPaymentJS, ['stripe-js', 'paypal-js'], null, true);
     wp_enqueue_script('inputmask-js', get_template_directory_uri() . '/assets/js/inputmask.js', [], null, true);
     wp_enqueue_script('stripe-js', 'https://js.stripe.com/v3/', [], null, true);
 
@@ -101,7 +150,7 @@ function site_scripts()
   ]);
 
   if (is_page('order-complete')) {
-    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/order-complete.js', [], null, true);
+    wp_enqueue_script('payment-js', get_template_directory_uri() . '/assets/js/' . $orderCompleteJS, [], null, true);
   }
 }
 
@@ -229,3 +278,44 @@ add_action('wp_loaded', function () {
     }
   }
 });
+
+
+// add_filter('upload_mimes', 'allow_modern_images');
+// function allow_modern_images($mime_types)
+// {
+//   $mime_types['heic'] = 'image/heic';
+//   $mime_types['heif'] = 'image/heif';
+//   $mime_types['heics'] = 'image/heic-sequence';
+//   $mime_types['heifs'] = 'image/heif-sequence';
+//   $mime_types['avif'] = 'image/avif';
+//   $mime_types['avifs'] = 'image/avif-sequence';
+//   return $mime_types;
+// }
+
+// /**
+//  * Enable AVIF Uploads
+//  *
+//  * @param array $mimes Allowed MIME types.
+//  * @returns array Allowed MIME types.
+//  */
+// function allow_avif_uploads($mimes)
+// {
+//   $mimes['avif'] = 'image/avif';
+//   return $mimes;
+// }
+// add_filter('upload_mimes', 'allow_avif_uploads');
+
+
+/* New generation image formats compatibility */
+function wphelp_compatibility_new_image_formats($mime_types)
+{
+  $mime_types['webp'] = 'image/webp';
+  $mime_types['heic'] = 'image/heic';
+  $mime_types['heif'] = 'image/heif';
+  $mime_types['heics'] = 'image/heic-sequence';
+  $mime_types['heifs'] = 'image/heif-sequence';
+  $mime_types['avif'] = 'image/avif';
+  $mime_types['avis'] = 'image/avif-sequence';
+  return $mime_types;
+}
+add_filter('upload_mimes', 'wphelp_compatibility_new_image_formats', 1, 1);

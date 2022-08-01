@@ -34,7 +34,7 @@ Template Name: Страница с Продукцией
                       <div data-element="parallax-box">
                         <div data-scroll="" data-scroll-speed="0.7" data-delay="0.15">
                           <div data-scroll="" data-scroll-call="scale" data-delay="0.8" data-speed="2">
-                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 234 220'%3E%3C/svg%3E" width="234" height="220" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01.png" data-srcset="assets/img/products/hero-decoration01.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01@2x.png 2x" alt="image description" /></picture>
+                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 234 220'%3E%3C/svg%3E" width="234" height="220" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01.webp" data-srcset="assets/img/products/hero-decoration01.webp 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/products/hero-decoration01@2x.webp 2x" alt="image description" /></picture>
                           </div>
                         </div>
                       </div>
@@ -59,9 +59,6 @@ Template Name: Страница с Продукцией
                 <div class="container">
                   <div class="md:grid md:grid-cols-12 mb-50 md:mb-100 relative">
                     <div class="md:col-start-3 md:col-span-9 xl:col-start-4 xl:col-span-6">
-                      <!-- <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5">Moon InSpiration</p> -->
-                      <!-- <p class="text-xxs md:text-sm mb-20 uppercase" data-scroll="" data-css-call="moveUp" data-speed="1.5"></p> -->
-                      <!-- <p class="h4 text-gray font-serif leading-none" data-scroll="" data-scroll-call="split" data-split="lines" data-speed="2"> -->
                       <p class="h4 text-gray font-serif leading-none deltd-mooninsp" data-scroll="" data-speed="2">
                         <?php echo carbon_get_theme_option("slogan_product_text"); ?>
                       <pre class="h4 text-gray font-serif leading-none">MOVE  IN  YOUR   OWN  RHYTHM.</pre>
@@ -131,24 +128,6 @@ Template Name: Страница с Продукцией
                 </div>
               </div>
             </section>
-            <!-- <section class="site-section relative site-section--wide-visual">
-                <div class="section__holder">
-                  <div class="wide-visual" data-scroll="" data-scroll-speed="2" data-scroll-delay="" data-scroll-direction="horizontal">
-                    <picture
-                      ><img
-                        class="w-full max-w-full transition-opacity duration-300 min-h-350 object-cover"
-                        data-component="lazyload"
-                        data-animate="data-animate"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1933 863'%3E%3C/svg%3E"
-                        width="1933"
-                        height="863"
-                        data-src="assets/img/home/wide-photo.jpg"
-                        data-srcset="assets/img/home/wide-photo.jpg 1x, assets/img/home/wide-photo@2x.jpg 2x"
-                        alt="image description"
-                    /></picture>
-                  </div>
-                </div>
-              </section> -->
             <section class="site-section relative site-section--products">
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
@@ -164,10 +143,10 @@ Template Name: Страница с Продукцией
          FOR LIFE</pre>
                     </h2>
                     <div class="flex justify-center lg:-my-40" data-scroll="" data-scroll-speed="0.9">
-                      <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="447" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.png" alt="image description" /></picture>
+                      <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="370" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.webp" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
-                    <pre class="text-gray font-serif">CHOOSE YOUR      
+                      <pre class="text-gray font-serif">CHOOSE YOUR      
                `SUPERPOWDER</pre>
                     </h2>
                   </div>

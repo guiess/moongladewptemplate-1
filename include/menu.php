@@ -45,7 +45,7 @@
       <div class="ml-20 header-part--main">
         <div class="header-menu uppercase" data-header-menu="">
           <div class="header-menu__holder">
-            <span class="header-menu__background bg-black bg-cover absolute lg:hidden" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/header-menu-bg.jpg)"></span>
+            <span class="header-menu__background bg-black bg-cover absolute lg:hidden" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/header-menu-bg.avif)"></span>
             <div class="header-menu__scroller flex flex-col flex-grow" data-menu-scroller="">
               <div class="flex-grow flex items-center justify-center lg:block">
                 <ul class="main-nav main-nav--main">

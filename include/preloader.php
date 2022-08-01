@@ -2,7 +2,7 @@
     <div class="w-full h-full preloader-holder relative">
       <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7/10 flex justify-center">
         <div class="relative" data-preloader-image="">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/preloader/image01@2x.jpg" width="276" height="163" alt="preloader" /><span
+          <img class="preloader-wo-lazyload" src="<?php echo get_template_directory_uri(); ?>/assets/images/preloader/image01@2x.jpg" width="276" height="163" alt="preloader" /><span
             class="preloader__image-overlay absolute w-full h-full top-0 left-0 opacity-50"
             data-image-overlay=""
           ></span>

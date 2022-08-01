@@ -8348,3 +8348,7 @@ textarea:-webkit-autofill {
 .page-dummy .modal-cookie{
   display: none;
 }
+
+.js-cart-item-quantity{
+  cursor: default;
+}
