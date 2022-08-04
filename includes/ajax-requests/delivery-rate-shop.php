@@ -11,7 +11,12 @@ $adressCityTo = $_POST['city'];
 $adressPostalCodeTo = $_POST['postalcode'];
 $adressCountryTo = $_POST['country'];
 
-$shiping_json = calculateDelivery($adressCityTo, $adressPostalCodeTo, $adressCountryTo);
+if (isset($_POST["amount"])) {
+  $amount = $_POST['amount'];
+  $shiping_json = calculateDelivery(intval($amount), $adressCityTo, $adressPostalCodeTo, $adressCountryTo);
+} else {
+  // echo "error";
+}
 
 echo $shiping_json;
 

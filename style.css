@@ -2799,9 +2799,9 @@ textarea:-webkit-autofill {
   padding-top: .4em
 }
 
-.stepper__control:hover {
+/* .stepper__control:hover {
   opacity: .5
-}
+} */
 
 .page-products .hero-section--default .heading-decorated__decoration {
   width: 7em;

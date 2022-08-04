@@ -11,7 +11,8 @@
   // let discountCode = localStorage.getItem("discountCode") || "";
   let discountValue = Number(customer.discountValue) || 0;
   let discountCode = customer.discountCode || "";
-  let deliveryPrice = customer.deliveryPrice || 0;
+  // let deliveryPrice = customer.deliveryPrice || 0;
+  let deliveryPrice = 0;
 
   // console.log(customer);
 
@@ -143,9 +144,9 @@
         : "$ 0";
     }
 
-    if (customer.deliveryPrice) {
+    if (deliveryPrice) {
       Object.keys(cart).length
-        ? (cartDeliveryDOMElement.textContent = "$ " + customer.deliveryPrice)
+        ? (cartDeliveryDOMElement.textContent = "$ " + deliveryPrice)
         : null;
     }
 
@@ -170,10 +171,10 @@
     itemWrapEmpty = document.getElementById("js-cart-wrapper-empty");
   };
 
-  const countItemsInCart = () => {
-    const count = Object.keys(cart).length;
-    return count;
-  };
+  // const countItemsInCart = () => {
+  //   const count = Object.keys(cart).length;
+  //   return count;
+  // };
 
   // const deleteCartItem = (id) => {
   //   if (countItemsInCart() === 1) {
@@ -277,6 +278,15 @@
     xhr.send("discountcode=" + discountCode);
   };
 
+  const cartTotalItemsCounter = () => {
+    totalQuantity = Object.keys(cart).reduce((acc, id) => {
+      const { quantity } = cart[id];
+      return acc + Number(quantity);
+    }, 0);
+
+    return totalQuantity;
+  };
+
   const renderDelivery = function () {
     if (
       cartEmpty() ||
@@ -318,15 +328,24 @@
 
         if (responseJSON.shippingcode[i] == customer.deliveryCode) {
           newOption.setAttribute("selected", "selected");
+          // cartDeliveryDOMElement.textContent = "$ " + responseJSON.price[i];
+          deliveryPrice = responseJSON.price[i];
+          console.log("deliveryPrice", deliveryPrice);
+          customer.deliveryPrice = deliveryPrice;
+          saveCustomer();
+          console.log("customer.deliveryPrice", customer.deliveryPrice);
+          updateCartTotalPrice();
         }
 
         selectedOption.append(newOption);
       }
     };
 
-    infoToSend = `country=${customer.country}&city=${customer.city}&postalcode=${customer.postalCode}`;
+    infoToSend = `amount=${cartTotalItemsCounter()}&country=${
+      customer.country
+    }&city=${customer.city}&postalcode=${customer.postalCode}`;
 
-    // console.log(infoToSend);
+    console.log(infoToSend);
 
     xhr.send(infoToSend);
   };
@@ -392,6 +411,120 @@
     });
   };
 
+  const countWeight = () => {
+    let boxDimension = [
+      [220, 165, 75],
+      [220, 165, 75],
+      [220, 165, 150],
+      [220, 165, 150],
+      [220, 165, 150],
+      [315, 220, 160],
+      [315, 220, 160],
+      [315, 220, 160],
+      [315, 220, 160],
+      [315, 220, 160],
+      [315, 220, 160],
+      [315, 220, 220],
+      [315, 220, 220],
+      [315, 220, 220],
+      [315, 220, 220],
+      [315, 220, 220],
+      [315, 220, 220],
+      [315, 220, 220],
+    ];
+
+    let boxVolume = [];
+    boxDimension.forEach(function (item, i) {
+      let res = item.reduce((acc, rec) => acc * rec);
+      res = res / 1000 / 1000 / 1000;
+      // console.log(res);
+      boxVolume[i] = res;
+    });
+    // console.log(boxVolume);
+
+    // let boxDescription = [
+    //   "Small",
+    //   "Small",
+    //   "Medium",
+    //   "Medium",
+    //   "Medium",
+    //   "Large",
+    //   "Large",
+    //   "Large",
+    //   "Large",
+    //   "Large",
+    //   "Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    //   "Extra Large",
+    // ];
+    // let boxWeightDelta = [
+    //   20, 140, 220, 240, 240, 360, 380, 420, 420, 440, 420, 440, 520, 540, 540,
+    //   560, 680, 680,
+    // ];
+    let boxWeight = [
+      220, 540, 820, 1040, 1240, 1560, 1780, 2020, 2220, 2440, 2620, 2840, 3120,
+      3340, 3540, 3760, 4080, 4280,
+    ];
+
+    totalQuantity = cartTotalItemsCounter();
+    let totalVolume = 0;
+    let totalWeight = 0;
+    let averageLengthWidthHeightInCm = 0;
+
+    while (totalQuantity) {
+      if (totalQuantity > 18) {
+        totalQuantity -= 18;
+        totalVolume = totalVolume + boxVolume[17];
+        totalWeight = totalWeight + boxWeight[17];
+        // console.log(totalQuantity);
+      } else {
+        totalVolume = totalVolume + boxVolume[totalQuantity - 1];
+        totalWeight = totalWeight + boxWeight[totalQuantity - 1];
+        totalQuantity = 0;
+        // console.log(totalQuantity);
+      }
+    }
+    //объём метров кубических
+    console.log("totalVolume", totalVolume);
+    //среднее значение высота длина ширина в см
+    averageLengthWidthHeightInCm = Math.cbrt(totalVolume) * 100;
+    console.log("average length cm3", averageLengthWidthHeightInCm);
+    // масса в килограммах
+    totalWeight /= 1000;
+    console.log("totalWeight", totalWeight);
+    customer.averageLengthWidthHeightInCm = averageLengthWidthHeightInCm;
+    customer.totalWeight = totalWeight;
+  };
+
+  const selectListener = () => {
+    const selectElement = document.getElementById(
+      "customerSelectShippingMethod"
+    );
+
+    selectElement.addEventListener("change", () => {
+      // console.log("selectElement.addEventListener change");
+      deliveryMethodText = selectElement.options[
+        selectElement.selectedIndex
+      ].getAttribute("data-shippingmethod");
+      customer.deliveryMethodText = deliveryMethodText;
+      // console.log(deliveryMethodText);
+      deliveryCode = selectElement.options[selectElement.selectedIndex].value;
+      customer.deliveryCode = deliveryCode;
+      // console.log(deliveryCode);
+      deliveryPrice =
+        selectElement.options[selectElement.selectedIndex].getAttribute(
+          "data-price"
+        );
+      customer.deliveryPrice = deliveryPrice;
+      updateCartTotalPrice();
+    });
+  };
+
   const cartInit = () => {
     allListeners();
     if (cartEmpty()) {
@@ -399,36 +532,12 @@
       hiddenFormEmptyCart.hidden = true;
       return;
     }
-
     renderForm();
     renderCart();
     updateCart();
+    countWeight();
     renderDelivery();
-
-    const selectElement = document.getElementById(
-      "customerSelectShippingMethod"
-    );
-
-    selectElement.addEventListener("change", () => {
-      deliveryMethodText = selectElement.options[
-        selectElement.selectedIndex
-      ].getAttribute("data-shippingmethod");
-      customer.deliveryMethodText = deliveryMethodText;
-      // console.log(deliveryMethodText);
-
-      deliveryCode = selectElement.options[selectElement.selectedIndex].value;
-      customer.deliveryCode = deliveryCode;
-
-      // console.log(deliveryCode);
-
-      deliveryPrice =
-        selectElement.options[selectElement.selectedIndex].getAttribute(
-          "data-price"
-        );
-      customer.deliveryPrice = deliveryPrice;
-
-      updateCartTotalPrice();
-    });
+    selectListener();
   };
 
   cartInit();

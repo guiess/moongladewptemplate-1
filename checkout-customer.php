@@ -94,7 +94,7 @@ Template Name: Страница вводо данных покупателя
                         </div>
                         <div class="md:grid md:grid-cols-2 md:gap-x-20">
                           <div class="form-group">
-                            <div class="form-group__control"><input name="customerInfoCity" data-inputmask-regex="[a-zA-Z0-9]+$" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z0-9]+$" required /></div>
+                            <div class="form-group__control"><input name="customerInfoCity" data-inputmask-regex="[a-zA-Z0-9 ]+$" class="form-control" type="text" placeholder="City" maxlength="50" pattern="[a-zA-Z0-9 ]+$" required /></div>
                           </div>
                           <div class="form-group">
                             <div class="form-group__control"><input name="customerInfoPostalCode" data-inputmask-regex="[a-zA-Z0-9]+$" class="form-control" type="text" placeholder="Postal code" maxlength="10" pattern="[a-zA-Z0-9]+$" required /></div>
@@ -138,7 +138,7 @@ Template Name: Страница вводо данных покупателя
                             </div>
                           </form>
                           <div class="flex justify-between items-baseline text-sm lg:text-md"><span>Subtotal:</span><span class="js-cart-subtotal-price">$ 0</span></div>
-                          <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">$ 0</span></div>
+                          <!-- <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Shipping:</span><span class="js-delivery-sum">$ 0</span></div> -->
                           <div class="flex justify-between items-baseline text-sm lg:text-md mt-10"><span>Discount code:</span><span class="js-discount-sum">$ 0</span></div>
                         </div>
 

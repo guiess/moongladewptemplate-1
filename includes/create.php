@@ -40,6 +40,18 @@ function calculateOrderAmount(array $items): int
   return $amount;
 }
 
+function calculateGoodsAmount(array $items): int
+{
+  $amount = 0;
+  foreach ($items as &$item) {
+    $amount += $item["quantity"];
+  }
+  unset($item); // разорвать ссылку на последний элемент
+  // echo ($amount);
+  // die();
+  return $amount;
+}
+
 header('Content-Type: application/json');
 
 try {
@@ -52,6 +64,8 @@ try {
   // var_dump(json_encode($jsonObjCart));
   // echo json_encode($jsonObjCart);
   $amount_value_int = calculateOrderAmount($jsonObjCart) + 0;
+  $amount_goods = calculateGoodsAmount($jsonObjCart) + 0;
+
 
   if (array_key_exists('discountCode', $jsonObjCustomer)) {
     $discount_value_string = calculateDiscount($jsonObjCustomer["discountCode"]);
@@ -73,7 +87,7 @@ try {
   $adressCityTo = $jsonObjCustomer["city"];
   $adressPostalCodeTo = $jsonObjCustomer["postalCode"];
   $adressCountryTo = $jsonObjCustomer["country"];
-  $delivery_json = calculateDelivery($adressCityTo, $adressPostalCodeTo, $adressCountryTo);
+  $delivery_json = calculateDelivery($amount_goods, $adressCityTo, $adressPostalCodeTo, $adressCountryTo);
   $delivery_json_obj = json_decode($delivery_json, true);
   $delivery_json_obj_deliv_codes = $delivery_json_obj["shippingcode"];
   $delivery_json_obj_deliv_prices = $delivery_json_obj["price"];

@@ -19,14 +19,114 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-function calculateDelivery(string $adressCityTo, string $adressPostalCodeTo, string $adressCountryCodeTo): string
+function calcAverageLWH(int $totalQuantity)
 {
-  // echo $_POST['city'];
+  $totalVolume = 0;
+  $totalWeight = 0;
+  $averageLengthWidthHeightInCm = 0;
+
+  $boxDimension = [
+    [220, 165, 75],
+    [220, 165, 75],
+    [220, 165, 150],
+    [220, 165, 150],
+    [220, 165, 150],
+    [315, 220, 160],
+    [315, 220, 160],
+    [315, 220, 160],
+    [315, 220, 160],
+    [315, 220, 160],
+    [315, 220, 160],
+    [315, 220, 220],
+    [315, 220, 220],
+    [315, 220, 220],
+    [315, 220, 220],
+    [315, 220, 220],
+    [315, 220, 220],
+    [315, 220, 220],
+  ];
+
+  $boxVolume = [];
+  foreach ($boxDimension as $i => $value) {
+    $res = array_product($value);
+    // делим / 1000 / 1000 / 1000;
+    // $res /= 1000000000;
+    // echo $res;
+    // echo $i;
+    // array_push($boxVolume, intval($res));
+    $boxVolume[$i] = $res;
+    // echo $boxVolume[$i];
+    unset($boxDimension[$i]);
+  }
+
+  // $boxDescription = [
+  //   "Small",
+  //   "Small",
+  //   "Medium",
+  //   "Medium",
+  //   "Medium",
+  //   "Large",
+  //   "Large",
+  //   "Large",
+  //   "Large",
+  //   "Large",
+  //   "Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  //   "Extra Large",
+  // ];
+
+  // $boxWeightDelta = [
+  //   20, 140, 220, 240, 240, 360, 380, 420, 420, 440, 420, 440, 520, 540, 540,
+  //   560, 680, 680,
+  // ];
+  $boxWeight = [
+    220, 540, 820, 1040, 1240, 1560, 1780, 2020, 2220, 2440, 2620, 2840, 3120,
+    3340, 3540, 3760, 4080, 4280
+  ];
+
+  while ($totalQuantity) {
+    if ($totalQuantity > 18) {
+      $totalQuantity -= 18;
+      $totalVolume = $totalVolume + $boxVolume[17] / 1000000000;
+      $totalWeight = $totalWeight + $boxWeight[17];
+      // echo $boxVolume[17];
+    } else {
+      $totalVolume = $totalVolume + $boxVolume[$totalQuantity - 1] / 1000000000;
+      $totalWeight = $totalWeight + $boxWeight[$totalQuantity - 1];
+      $totalQuantity = 0;
+      // echo $totalQuantity;
+    }
+  }
+  // echo $totalVolume;
+  // echo $totalWeight;
+  $totalWeight /= 1000;
+  $averageLengthWidthHeightInCm = round(pow($totalVolume, 1 / 3) * 100);
+  return [$averageLengthWidthHeightInCm, $totalWeight];
+}
+
+function calculateDelivery(int $amount,  string $adressCityTo, string $adressPostalCodeTo, string $adressCountryCodeTo): string
+{
+  // echo $_POST['city']; 
+  // return "asd";
+  // wp_die();
+
+  [$averageLengthWidthHeightInCm, $totalWeight] = calcAverageLWH($amount);
+
+  // echo $averageLengthWidthHeightInCm;
+  // echo $totalWeight;
+
+  // echo calcAverageLWH($amount);
+  // wp_die();
 
   $adressCityFrom = carbon_get_theme_option("delivery_from_city");
   $adressPostalCodeFrom = carbon_get_theme_option("delivery_from_postalcode");
   $adressCountryCodeFrom = carbon_get_theme_option("delivery_from_country");
-  $deliveryWeight = carbon_get_theme_option("delivery_weight");
+  // $totalWeight = carbon_get_theme_option("delivery_weight");
 
   $validDomesticValuesXML = new SimpleXMLElement("<ValidDomesticValues></ValidDomesticValues>");
 
@@ -50,23 +150,25 @@ function calculateDelivery(string $adressCityTo, string $adressPostalCodeTo, str
   // echo '<pre>' . var_export($validDomesticValuesXML, true) . '</pre>
   // echo $list->n02 . "\n";
 
-  /* configuration old
-$access = "DDA73248ECBDDD92";
-$userid = "moongladebali";
-$passwd = "Moongladesuperfood21";
-*/
-
   // configuration
   $userid = carbon_get_theme_option("ups_user_id");
   $passwd = carbon_get_theme_option("ups_user_pass");
   $access = carbon_get_theme_option("ups_user_key");
+  $shipping_method = carbon_get_theme_option("shipping_method");
+  $package_method = carbon_get_theme_option("package_method");
 
-  $endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate"; //?testing url
-  // $endpointurl = "https://onlinetools.ups.com/ups.app/xml/Rate"; //?prod url
+  $endpointurl = "";
+  if ((carbon_get_theme_option("settings_delivery_mode") == "test")) {
+    $endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate";
+  } elseif ((carbon_get_theme_option("settings_delivery_mode") == "live")) {
+    $endpointurl = "https://onlinetools.ups.com/ups.app/xml/Rate";
+  }
+
+  // $endpointurl = "https://wwwcie.ups.com/ups.app/xml/Rate";
+
   $outputFileName = "XOLTResult.xml";
 
   try {
-
     // create a simple xml object for AccessRequest & RateRequest
     $accessRequesttXML = new SimpleXMLElement("<AccessRequest></AccessRequest>");
     $rateRequestXML = new SimpleXMLElement("<RatingServiceSelectionRequest></RatingServiceSelectionRequest>");
@@ -133,8 +235,8 @@ $passwd = "Moongladesuperfood21";
     // Shopping.
 
     $service = $shipment->addChild('Service');
-    $service->addChild("Code", "07");
-    $service->addChild("Description", "Worldwide Express");
+    $service->addChild("Code", $shipping_method);
+    $service->addChild("Description", "Saver");
 
     // Package Valid values: 
     // 00 = UNKNOWN
@@ -152,21 +254,24 @@ $passwd = "Moongladesuperfood21";
 
     $package = $shipment->addChild('Package');
     $packageType = $package->addChild('PackagingType');
-    $packageType->addChild("Code", "02");
-    $packageType->addChild("Description", "UPS Package");
+    $packageType->addChild("Code", $package_method);
+    $packageType->addChild("Description", "Pak");
 
     $packageWeight = $package->addChild('PackageWeight');
     $unitOfMeasurement = $packageWeight->addChild('UnitOfMeasurement');
     $unitOfMeasurement->addChild("Code", "KGS");
-    $packageWeight->addChild("Weight", $deliveryWeight);
+    $packageWeight->addChild("Weight", $totalWeight);
 
-    // $packageDimensions = $package->addChild('Dimensions');
-    // $unitOfMeasurement = $packageDimensions->addChild('UnitOfMeasurement');
-    // $unitOfMeasurement->addChild("Code", "CM");
-    // $unitOfMeasurement->addChild("Description", "Centimeters");
-    // $packageDimensions->addChild("Length", "1");
-    // $packageDimensions->addChild("Width", "1");
-    // $packageDimensions->addChild("Height", "1");
+    $packageDimensions = $package->addChild('Dimensions');
+    $unitOfMeasurement = $packageDimensions->addChild('UnitOfMeasurement');
+    $unitOfMeasurement->addChild("Code", "CM");
+    $unitOfMeasurement->addChild("Description", "Centimeters");
+    $packageDimensions->addChild("Length", 22);
+    $packageDimensions->addChild("Width", 17);
+    $packageDimensions->addChild("Height", 15);
+    // $packageDimensions->addChild("Length", $averageLengthWidthHeightInCm);
+    // $packageDimensions->addChild("Width", $averageLengthWidthHeightInCm);
+    // $packageDimensions->addChild("Height", $averageLengthWidthHeightInCm);
 
     $requestXML = $accessRequesttXML->asXML() . $rateRequestXML->asXML();
 

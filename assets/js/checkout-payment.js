@@ -1,10 +1,10 @@
 // localStorage.clear();
 const cart = JSON.parse(localStorage.getItem("cart")) || new Object();
 // console.log(cart);
-// console.log(JSON.stringify(cart));
+console.log(JSON.stringify(cart));
 
 const customer = JSON.parse(localStorage.getItem("customer")) || new Object();
-// console.log(JSON.stringify(customer));
+console.log(JSON.stringify(customer));
 
 // let discountValue = Number(localStorage.getItem("discountValue")) || 0;
 // let discountCode = localStorage.getItem("discountCode") || "";
@@ -25,8 +25,13 @@ if (discountValue < 0) {
 }
 discountValueMath = Math.round(discountValueMath);
 
-if (!customer.deliveryPrice) customer.deliveryPrice = 0;
+if (!customer.deliveryPrice) {
+  // customer.deliveryPrice = 0;
+  location.href = "WPJS/checkout-shipping";
+}
+console.log("customer.deliveryPrice", customer.deliveryPrice);
 
+// сделаем функцию глобальной
 let formSend = function () {};
 
 (function () {
@@ -295,7 +300,7 @@ let formSend = function () {};
     let xmlCustomerinfoToSend = "";
     for (let key in customer) {
       if (customer.hasOwnProperty(key)) {
-        // console.log(`${key} : ${customer[key]}`);
+        console.log(`${key} : ${customer[key]}`);
         xmlCustomerinfoToSend += `${key}=${customer[key]}&`;
       }
     }
@@ -309,7 +314,7 @@ let formSend = function () {};
   formSend = function () {
     if (cartEmpty()) return;
 
-    // console.log(JSON.stringify(cart));
+    console.log(JSON.stringify(cart));
     var xhr = new XMLHttpRequest();
     var url = WPJS.ajaxUrl + "?action=send_email";
 
@@ -321,12 +326,12 @@ let formSend = function () {};
       // console.log("response = " + response);
 
       if (response == "success") {
-        // console.log("response succes");
+        console.log("response succes");
         if (localStorage.getItem("rememberMeCheckbox") == "false") {
-          // console.log("resetCustomer");
+          console.log("resetCustomer");
           localStorage.removeItem("customer");
         } else console.log(localStorage.getItem("rememberMeCheckbox"));
-        // console.log("resetCart");
+        console.log("resetCart");
         localStorage.removeItem("cart");
         $("body").addClass("noscroll");
         $(".modal-shadow").fadeIn();
@@ -337,7 +342,9 @@ let formSend = function () {};
         showMessage(
           "When you send an error has occurred. Please contact site support!"
         );
-        // console.log("When you send an error has occurred. Please contact site support!");
+        console.log(
+          "When you send an error has occurred. Please contact site support!"
+        );
       }
     };
 
@@ -347,7 +354,7 @@ let formSend = function () {};
 
     // infoToSend = infoToSend.substring(0, infoToSend.length - 1);
 
-    // console.log(infoToSend);
+    console.log(infoToSend);
     xhr.send(infoToSend);
 
     // xhr.send("foo=bar&rem=sum&more=good");
@@ -737,7 +744,8 @@ paypal
           {
             amount: {
               currency_code: "USD",
-              value: totalPrice + Number(customer.deliveryPrice) - discountValueMath,
+              value:
+                totalPrice + Number(customer.deliveryPrice) - discountValueMath,
               breakdown: {
                 discount: {
                   currency_code: "USD",

@@ -34,7 +34,7 @@ Template Name: Страница Главная
                       <div data-element="parallax-box">
                         <div data-scroll="" data-scroll-speed="0.7" data-delay="0.15">
                           <div data-scroll="" data-scroll-call="scale" data-delay="0.8" data-speed="2">
-                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 379 425'%3E%3C/svg%3E" width="379" height="425" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01.webp" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01.webp 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01@2x.webp 2x" alt="image description" /></picture>
+                            <picture><img class="w-full max-w-full transition-opacity duration-300" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 379 425'%3E%3C/svg%3E" width="379" height="425" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01.png" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01.png 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/hero-decoration01@2x.png 2x" alt="image description" /></picture>
                           </div>
                         </div>
                       </div>
