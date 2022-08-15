@@ -20,9 +20,9 @@ Template Name: Страница Главная
               <div class="section__holder" data-scroll="" data-scroll-call="ambient-move" data-movement="25">
                 <div class="container">
                   <span class="site-section__bg hero-section__bg hero-section__bg--left" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 800'%3E%3C/svg%3E" width="705" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_1.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 800'%3E%3C/svg%3E" width="705" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_1.jpg" alt="image description" /></picture>
                   </span><span class="site-section__bg hero-section__bg hero-section__bg--right" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 800'%3E%3C/svg%3E" width="705" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_1.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 800'%3E%3C/svg%3E" width="705" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_1.jpg" alt="image description" /></picture>
                   </span>
                   <div class="heading-decorated">
                     <h1 class="heading-decorated__title font-serif uppercase" data-scroll="" data-scroll-call="split" data-delay="0.5" data-split="words, lines" data-speed="2" data-interval="0.07">
@@ -76,9 +76,9 @@ Template Name: Страница Главная
               <div class="section__holder" id="h-photos">
                 <div class="inner-container w-full py-50 xl:py-100 relative">
                   <span class="site-section__bg site-section__bg--left" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 709'%3E%3C/svg%3E" width="705" height="709" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_2.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 709'%3E%3C/svg%3E" width="705" height="709" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_2.jpg" alt="image description" /></picture>
                   </span><span class="site-section__bg site-section__bg--right" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 621'%3E%3C/svg%3E" width="705" height="621" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_2.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 705 621'%3E%3C/svg%3E" width="705" height="621" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_2.jpg" alt="image description" /></picture>
                   </span>
                   <div class="container">
                     <h2 class="font-serif text-center mb-30 lg:mb-60 leading-none flex justify-center h-min:mb-30" data-scroll="" data-scroll-call="split" data-split="chars" data-speed="2" data-animation-type="fade" data-interval="0.05">
@@ -124,7 +124,7 @@ Template Name: Страница Главная
             <section class="site-section relative site-section--wide-visual">
               <div class="section__holder">
                 <div class="wide-visual" data-scroll="" data-scroll-speed="2" data-scroll-delay="" data-scroll-direction="horizontal">
-                  <picture><img class="w-full max-w-full transition-opacity duration-300 min-h-350 object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1933 863'%3E%3C/svg%3E" width="1933" height="863" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.avif" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.avif 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo@2x.avif 2x" alt="image description" /></picture>
+                  <picture><img class="w-full max-w-full transition-opacity duration-300 min-h-350 object-cover" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1933 863'%3E%3C/svg%3E" width="1933" height="863" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/wide-photo@2x.jpg 2x" alt="image description" /></picture>
                 </div>
               </div>
             </section>
@@ -132,7 +132,7 @@ Template Name: Страница Главная
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
                   <span class="site-section__bg site-section__bg--top" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1011'%3E%3C/svg%3E" width="1440" height="1011" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Bg_Light_3.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 1011'%3E%3C/svg%3E" width="1440" height="1011" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Bg_Light_3.jpg" alt="image description" /></picture>
                   </span>
                   <div class="heading-centered text-center mb-50 md:mb-150 laptop:transform laptop:-translate-y-150 laptop:mb-0">
                     <h2 class="mb-0 leading-xs" data-scroll="" data-scroll-call="split" data-speed="2">
@@ -155,7 +155,7 @@ Template Name: Страница Главная
                     <div data-scroll="" data-scroll-repeat="" data-scroll-call="progress-scale" data-from="1.5" data-to="1" data-scroll-id="large-image-scale">
                       <div class="relative parallax-media overflow-hidden" data-scroll="">
                         <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.8">
-                          <picture><img class="w-full max-w-full transition-opacity duration-300 md:transform md:scale-105" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1270 1570'%3E%3C/svg%3E" width="1270" height="1570" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.avif" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.avif 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05@2x.avif 2x" alt="image description" /></picture><span class="bg-black-100 absolute left-0 top-0 w-full h-full"></span>
+                          <picture><img class="w-full max-w-full transition-opacity duration-300 md:transform md:scale-105" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1270 1570'%3E%3C/svg%3E" width="1270" height="1570" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image05@2x.jpg 2x" alt="image description" /></picture><span class="bg-black-100 absolute left-0 top-0 w-full h-full"></span>
                         </div>
                       </div>
                     </div>
@@ -174,9 +174,9 @@ Template Name: Страница Главная
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
                   <span class="site-section__bg site-section__bg--top" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 745'%3E%3C/svg%3E" width="720" height="745" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/bg_Light_Right_4.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 745'%3E%3C/svg%3E" width="720" height="745" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/bg_Light_Right_4.jpg" alt="image description" /></picture>
                   </span><span class="site-section__bg site-section__bg--bottom" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 1008'%3E%3C/svg%3E" width="720" height="1008" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Bg_Light_Left_4.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 1008'%3E%3C/svg%3E" width="720" height="1008" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Bg_Light_Left_4.jpg" alt="image description" /></picture>
                   </span>
                   <div class="md:mb-50 xl:mb-100">
                     <div class="video-block relative video-block--left" data-scroll="" data-scroll-call="video-component" data-scroll-repeat="">
@@ -184,7 +184,7 @@ Template Name: Страница Главная
                         <div class="relative w-full parallax-media overflow-hidden" data-scroll="">
                           <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                             <div data-component="video-poster">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.avif 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('second_video')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
+                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('second_video')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
                             </div>
                           </div>
                         </div>
@@ -216,7 +216,7 @@ Template Name: Страница Главная
                         <div class="relative w-full parallax-media overflow-hidden" data-scroll="">
                           <div class="parallax-media__element" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                             <div data-component="video-poster">
-                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.avif 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('third_video')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
+                              <picture><img class="w-full max-w-full transition-opacity duration-300 object-cover w-full h-full md:transform md:scale-110 origin-center" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 946 540'%3E%3C/svg%3E" width="946" height="540" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image06@2x.jpg 2x" alt="image description" /></picture><video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('third_video')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
                             </div>
                           </div>
                         </div>
@@ -282,11 +282,11 @@ Template Name: Страница Главная
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
                   <span class="site-section__bg site-section__bg--top" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1060 880'%3E%3C/svg%3E" width="1060" height="880" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_5.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1060 880'%3E%3C/svg%3E" width="1060" height="880" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_5.jpg" alt="image description" /></picture>
                   </span><span class="site-section__bg site-section__bg--middle" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 760'%3E%3C/svg%3E" width="960" height="760" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_6.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 760'%3E%3C/svg%3E" width="960" height="760" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_6.jpg" alt="image description" /></picture>
                   </span><span class="site-section__bg site-section__bg--bottom" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1250 990'%3E%3C/svg%3E" width="1250" height="990" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_7.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1250 990'%3E%3C/svg%3E" width="1250" height="990" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Left_7.jpg" alt="image description" /></picture>
                   </span>
                   <div class="md:grid md:grid-cols-12 mb-50 md:mb-100 lg:pt-100 laptop:mb-150 relative">
                     <div class="md:col-start-3 md:col-span-9 xl:col-start-4 xl:col-span-6">
@@ -362,7 +362,7 @@ Template Name: Страница Главная
               <div class="section__holder py-50 laptop:py-80 xl:py-100 relative">
                 <div class="container">
                   <span class="site-section__bg site-section__bg--bottom" data-scroll="" data-scroll-call="fadeIn" data-scroll-position="bottom" data-speed="1">
-                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 735 800'%3E%3C/svg%3E" width="735" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_8.avif" alt="image description" /></picture>
+                    <picture><img data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 735 800'%3E%3C/svg%3E" width="735" height="800" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/bgs/Right_8.jpg" alt="image description" /></picture>
                   </span>
                   <div class="photo-vertical-flow photo-vertical-flow--stacked md:mb-50 xl:mb-100">
                     <div class="photo-vertical-flow__item">
@@ -415,32 +415,32 @@ Template Name: Страница Главная
                   <div class="multi-parallax-visual overflow-hidden relative" id="multiparallax">
                     <div class="top-0 h-full w-full relative" data-no-touch-parallax="" data-scroll="" data-scroll-speed="2" data-scroll-offset="-50%, -100%">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_5.avif" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_5.jpg" />
                         <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/5.jpg" alt="image description" />
                       </picture>
                     </div>
                     <div class="top-0 h-full w-full absolute" data-no-touch-parallax="">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_4.webp" />
-                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/4.webp" alt="image description" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_4.png" />
+                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/4.png" alt="image description" />
                       </picture>
                     </div>
                     <div class="top-0 h-full w-full absolute" data-no-touch-parallax="" data-scroll="" data-scroll-offset="-50%, -100%" data-scroll-speed="0.6">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_3.webp" />
-                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/3.webp" alt="image description" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_3.png" />
+                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/3.png" alt="image description" />
                       </picture>
                     </div>
                     <div class="top-0 h-full w-full absolute" data-no-touch-parallax="" data-scroll="" data-scroll-offset="-50%, -100%" data-scroll-speed="1.3">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_2.webp" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_2.png" />
                         <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/2.png" alt="image description" />
                       </picture>
                     </div>
                     <div class="top-0 h-full w-full absolute" data-no-touch-parallax="" data-scroll="" data-scroll-speed="1.5" data-scroll-offset="-50%, -100%">
                       <picture>
-                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_1.webp" />
-                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/1.webp" alt="image description" data-scroll="" data-scroll-call="progress-scale" data-scroll-id="parallax-scale-image" data-scroll-offset="-50%, -100%" data-from="1" data-to="1.2" />
+                        <source media="(min-width: 1024px)" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/T_1.png" />
+                        <img class="object-cover object-center min-h-400 origin-bottom w-full max-w-none" data-component="lazyload" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 1486'%3E%3C/svg%3E" width="2048" height="1486" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/parallax/1.png" alt="image description" data-scroll="" data-scroll-call="progress-scale" data-scroll-id="parallax-scale-image" data-scroll-offset="-50%, -100%" data-from="1" data-to="1.2" />
                       </picture>
                     </div>
                     <span class="pointer-events-none absolute w-full h-1/2 bg-gradient-to-t from-black to-transparent bottom-0" data-scroll="" data-scroll-speed="1.5" data-scroll-offset="-50%, -100%"></span>
@@ -517,7 +517,7 @@ Template Name: Страница Главная
             <section class="site-section relative laptop:-mt-100 block-prefooter">
               <div class="section__holder">
                 <div class="relative laptop:h-screen" data-scroll="" data-scroll-speed="3" data-scroll-offset="0">
-                  <picture><img width="1440" height="840" class="w-full max-w-full transition-opacity duration-300 laptop:absolute laptop:top-0 laptop:w-full laptop:h-full object-cover min-h-400" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.avif" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.avif 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.avif 2x" alt="image description" /></picture><span class="h-3/12 absolute left-0 -top-5 w-full bg-gradient-to-b from-black to-transparent"></span><span class="h-6/12 absolute left-0 -bottom-5 w-full bg-gradient-to-t from-black to-transparent"></span>
+                  <picture><img width="1440" height="840" class="w-full max-w-full transition-opacity duration-300 laptop:absolute laptop:top-0 laptop:w-full laptop:h-full object-cover min-h-400" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg" data-srcset="<?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 1x, <?php echo get_template_directory_uri() . "/assets/"; ?>images/home/image16@2x.jpg 2x" alt="image description" /></picture><span class="h-3/12 absolute left-0 -top-5 w-full bg-gradient-to-b from-black to-transparent"></span><span class="h-6/12 absolute left-0 -bottom-5 w-full bg-gradient-to-t from-black to-transparent"></span>
                   <div class="absolute w-full flex justify-center p-40 laptop:p-100 bottom-0" data-scroll="" data-scroll-call="reveal-random" data-target-selector="path">
                     <svg class="max-w-full h-auto large-logo" width="316" height="33" viewbox="0 0 316 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M51.4581 2.37256C43.214 7.1359 41.3044 16.4052 45.6696 23.9705C50.0348 31.5287 59.0238 34.515 67.2675 29.7516C75.5116 24.9957 77.4213 15.719 73.056 8.16111C68.6904 0.595448 59.7018 -2.39078 51.4581 2.37256ZM66.766 28.8889C61.3386 32.0229 53.8247 28.6899 49.7323 21.6036C45.6397 14.5099 46.5101 6.33968 51.9371 3.20572C57.3645 0.0717679 64.8784 3.40478 68.9707 10.4911C73.063 17.5851 72.1933 25.7553 66.766 28.8889Z" fill="currentColor"></path>

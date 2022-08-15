@@ -111,7 +111,7 @@ Template Name: Страница с Продукцией
                       <div class="absolute w-full h-full parallax-media h-full overflow-hidden" data-scroll="">
                         <div class="parallax-media__element absolute w-full h-full" data-no-touch-parallax="" data-scroll="" data-scroll-speed="-0.7">
                           <div class="absolute h-full w-full top-0 left-0">
-                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="http://89.22.230.157/wow-super-food.mov" playsinline="" autoplay="" muted="" loop=""></video>
+                            <video class="object-cover w-full h-full md:transform md:scale-110 origin-center absolute left-0 top-0 w-full h-full" src="<?php echo wp_get_attachment_url(carbon_get_theme_option('first_video_products_page')); ?>" playsinline="" autoplay="" muted="" loop=""></video>
                           </div>
                           <span class="absolute left-0 top-0 w-full h-full bg-black opacity-20 pointer-events-none"></span><span class="absolute left-0 top-0 w-full h-full bg-repeat opacity-50 pointer-events-none" style="background-image: url(<?php echo get_template_directory_uri() . "/assets/"; ?>images/noize.png)"></span>
                           <div class="left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute" data-scroll="" data-scroll-call="magnetic" data-scroll-repeat="">
@@ -143,7 +143,7 @@ Template Name: Страница с Продукцией
          FOR LIFE</pre>
                     </h2>
                     <div class="flex justify-center lg:-my-40" data-scroll="" data-scroll-speed="0.9">
-                      <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="370" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.webp" alt="image description" /></picture>
+                      <picture><img class="pauch-big-custom transition-opacity duration-300 max-w-90 md:max-w-150 lg:max-w-full" data-component="lazyload" data-animate="data-animate" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 372'%3E%3C/svg%3E" width="370" height="551" data-src="<?php echo get_template_directory_uri() . "/assets/"; ?>images/products/pauch-big1.png" alt="image description" /></picture>
                     </div>
                     <h2 class="leading-xs mb-0" data-scroll="" data-scroll-call="split" data-speed="2">
                       <pre class="text-gray font-serif">CHOOSE YOUR      
