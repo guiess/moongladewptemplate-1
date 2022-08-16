@@ -198,11 +198,11 @@ Template Name: Страница Главная
                         </div>
                       </div>
                       <div class="flex md:grid md:grid-cols-12 md:gap-x-15 items-start">
-                        <div class="col-span-2 flex min-w-30" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
+                        <div class="col-span-1 flex min-w-30" data-scroll="" data-scroll-call="fadeIn" data-delay="0.5" data-speed="1.5">
                           <span class="video-block__counter">01</span>
                         </div>
-                        <div class="col-span-10 md:col-span-8 flex-grow">
-                          <h2 class="h4 mb-0 video-block__title uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
+                        <div class="col-span-10 md:col-span-9 flex-grow">
+                          <h2 class="h4 mb-0 video-block__title first uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
                             <?php echo carbon_get_theme_option('second_video_text'); ?>
                           </h2>
                         </div>
@@ -234,7 +234,7 @@ Template Name: Страница Главная
                           <span class="video-block__counter">02</span>
                         </div>
                         <div class="col-span-10 md:col-span-8 flex-grow">
-                          <h2 class="h4 mb-0 video-block__title uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
+                          <h2 class="h4 mb-0 video-block__title second uppercase" data-scroll="" data-scroll-call="split" data-split="words, lines" data-speed="2" data-interval="0.05" data-no-whitespace="">
                             <?php echo carbon_get_theme_option('third_video_text'); ?>
                           </h2>
                         </div>

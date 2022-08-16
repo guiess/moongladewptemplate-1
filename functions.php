@@ -52,7 +52,6 @@ function site_scripts()
     $tailwindCSS = "tailwind.min.css";
   }
 
-  wp_enqueue_style('main-style', get_template_directory_uri() . '/' . $styleCSS, [], null);
 
   if (is_page('order-complete')) {
     wp_enqueue_style('order-complete-style', get_template_directory_uri() . '/assets/css/' . $orderCompleteCSS, [], null);
@@ -67,6 +66,12 @@ function site_scripts()
     wp_enqueue_style('locomotive-style', get_template_directory_uri() . '/assets/css/' . $locomotiveCSS, [], null);
     wp_enqueue_style('swiper-style', get_template_directory_uri() . '/assets/css/' . $swiperCSS, [], null);
     wp_enqueue_style('forms-style', get_template_directory_uri() . '/assets/css/' . $formsCSS, [], null);
+    wp_enqueue_style('tailwind-style', get_template_directory_uri() . '/assets/css/' . $tailwindCSS, [], null);
+  }
+
+  wp_enqueue_style('main-style', get_template_directory_uri() . '/' . $styleCSS, [], null);
+
+  if (!is_page('order-complete')) {
     wp_enqueue_style('tailwind-style', get_template_directory_uri() . '/assets/css/' . $tailwindCSS, [], null);
   }
   // <----STYLES----->  

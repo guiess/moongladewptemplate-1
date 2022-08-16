@@ -521,7 +521,7 @@ async function initialize() {
 
   // console.log(clientSecret);
 
-  elements = stripe.elements({ clientSecret, appearance });
+  elements = stripe.elements({ clientSecret, appearance, loader:'always' });
 
   const paymentElement = elements.create("payment");
   paymentElement.mount("#payment-element");
