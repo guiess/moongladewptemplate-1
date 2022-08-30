@@ -78,11 +78,13 @@ Container::make('theme_options', 'Delivery')
 
   ->add_tab('Setup UPS access', [
     Field::make('text', 'ups_user_id', 'UPS user ID')
-      ->set_width(33),
+      ->set_width(25),
     Field::make('text', 'ups_user_pass', 'UPS user password')
-      ->set_width(33),
+      ->set_width(25),
     Field::make('text', 'ups_user_key', 'UPS user access key')
-      ->set_width(33),
+      ->set_width(25),
+    Field::make('text', 'shipper_number', 'Shipper Number')
+      ->set_width(25),
     // Field::make('text', 'contact_email', 'Contact email')
     //   ->set_width(50),
     // Field::make('text', 'facebook_domain_verification', 'Facebook domain verification')

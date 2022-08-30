@@ -5,6 +5,9 @@ Template Name: Страница для тестов
 
 // echo "test";
 
+// $a = wp_mail( 'dearwhynot@gmail.com', 'Какая-то тема', 'Какое-то сообщение' );
+// echo $a;
+
 // Valid domestic values 
 // 01 = Next Day Air 
 // 02 = 2nd Day Air 

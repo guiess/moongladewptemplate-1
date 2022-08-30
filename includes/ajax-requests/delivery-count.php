@@ -156,6 +156,7 @@ function calculateDelivery(int $amount,  string $adressCityTo, string $adressPos
   $access = carbon_get_theme_option("ups_user_key");
   $shipping_method = carbon_get_theme_option("shipping_method");
   $package_method = carbon_get_theme_option("package_method");
+  $shipper_number = carbon_get_theme_option("shipper_number");
 
   $endpointurl = "";
   if ((carbon_get_theme_option("settings_delivery_mode") == "test")) {
@@ -180,11 +181,30 @@ function calculateDelivery(int $amount,  string $adressCityTo, string $adressPos
 
     // create RateRequest XML
     $request = $rateRequestXML->addChild('Request');
-    $request->addChild("RequestAction", "Shop");
-    $request->addChild("RequestOption", "Shop");
+    //FEPO
+    //$request->addChild("RequestAction", "Shop");
+    //$request->addChild("RequestOption", "Shop");
+    $request->addChild("RequestAction", "Rate");
+    $request->addChild("RequestOption", "Rate");
+    //end FEPO
+    //FEPO
+    $pickupType = $rateRequestXML->addChild('PickupType');
+    $pickupType->addChild('Code', "03");
+    //end FEPO
 
     $shipment = $rateRequestXML->addChild('Shipment');
+
+    //FEPO
+    $rateInformation = $shipment->addChild('RateInformation');
+    $rateInformation->addChild('NegotiatedRatesIndicator');
+    //end FEPO
+
     $shipper = $shipment->addChild('Shipper');
+
+    //FEPO
+    $shipper->addChild('ShipperNumber', $shipper_number);
+    //end FEPO
+
     // $shipper->addChild("Name", "Name");
     // $shipper->addChild("ShipperNumber", "");
     $shipperddress = $shipper->addChild('Address');
@@ -314,7 +334,10 @@ function calculateDelivery(int $amount,  string $adressCityTo, string $adressPos
       $shiping_code_array = [];
 
       foreach ($resp->RatedShipment as $xmlValue) {
-        $idr_cost = $xmlValue->TransportationCharges->MonetaryValue;
+        //FEPO
+        //$idr_cost = $xmlValue->TransportationCharges->MonetaryValue;
+        $idr_cost = $xmlValue->NegotiatedRates->NetSummaryCharges->GrandTotal->MonetaryValue;
+        //end FEPO
         $idr_cost = substr($idr_cost, 0, -3);
         $idr_cost = intval($idr_cost);
         // echo $idr_cost . "\n";

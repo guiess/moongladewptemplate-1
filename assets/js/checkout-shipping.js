@@ -224,8 +224,7 @@
             ", " +
             customer.countryName +
             ", " +
-            customer.province +
-            ", " +
+            (customer.province ? customer.province + ", " : "") +
             customer.city +
             ", " +
             customer.address +
