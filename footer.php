@@ -4,7 +4,7 @@
   <div class="modal-video-bg"></div>
   <div class="video-holder">
     <div class="mngld-video">
-      <video id="video" playsinline autoplay muted loop>
+      <video id="video" playsinline muted loop>
         <source src="" type="video/mp4">
       </video>
       <div class="controls">
@@ -16,6 +16,11 @@
           <span>Y</span>
           <span>S</span>
           <span>E</span>
+        </div>
+        <div class="buff" style="display: none;">
+          <div class="lds-circle">
+            <div></div>
+          </div>
         </div>
         <div class="progress">
           <div class="progress-line"></div>

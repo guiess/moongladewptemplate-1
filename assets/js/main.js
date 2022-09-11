@@ -244,3 +244,8 @@ function routinProductModals() {
 setTimeout(() => {
   routinProductModals();
 }, 1000);
+
+$(document).ready(function () {
+  const hasInputmaskMethod = "inputmask" in $(".form-control");
+  if(hasInputmaskMethod) $(".form-control").inputmask({ showMaskOnHover: false });  
+});

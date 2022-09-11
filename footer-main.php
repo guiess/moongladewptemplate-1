@@ -17,6 +17,11 @@
           <span>S</span>
           <span>E</span>
         </div>
+        <div class="buff" style="display: none;">
+          <div class="lds-circle">
+            <div></div>
+          </div>
+        </div>
         <div class="progress">
           <div class="progress-line"></div>
           <div class="progress-selector"></div>
